@@ -1,6 +1,7 @@
 <div align="center">
-  <h1 align="center">Icons Launcher</h1>
-  <h6>This package fork from Flutter Launcher Icons</h6>
+  <h1 align="center">✨ Icons Launcher ✨</h1>
+
+  ###### This package fork from [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons)
 </div>
 
 
@@ -10,15 +11,20 @@
       alt="Platform" />
   </a>
   <a href="https://pub.dartlang.org/packages/icons_launcher">
-    <img src="https://img.shields.io/pub/v/icons_launcher.svg"
+    <img src="https://img.shields.io/pub/v/icons_launcher?label=Pub&logo=dart"
       alt="Pub Package" />
   </a>
-  <a href="https://github.com/mrrhak/icons_launcher/actions?query=workflow%3ACI">
-    <img src="https://img.shields.io/github/workflow/status/mrrhak/icons_launcher/CI?logo=github"
+  <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/stars/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github"></a>
+  <a href="https://github.com/mrrhak/icons_launcher/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=yellow"
+      alt="Contributors" />
+  </a>
+  <a href="https://github.com/mrrhak/icons_launcher/actions?query=workflow%3A">
+    <img src="https://github.com/mrrhak/icons_launcher/actions/workflows/main.yml/badge.svg"
       alt="Build Status" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/github/license/aagarwal1012/animated-text-kit?color=red"
+    <img src="https://img.shields.io/github/license/mrrhak/icons_launcher?color=red&logo=Leanpub"
       alt="License: MIT" />
   </a>
 </div>
@@ -178,3 +184,6 @@ flutter_icons:
   web: true
 ```
 
+---
+
+<p align="center">Maintainer</p>

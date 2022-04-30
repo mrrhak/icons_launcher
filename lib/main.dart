@@ -1,14 +1,14 @@
-import 'dart:io';
-
 import 'package:args/args.dart';
-import 'package:icons_launcher/android.dart' as android_icons_launcher;
 import 'package:icons_launcher/constants.dart';
 import 'package:icons_launcher/custom_exceptions.dart';
-import 'package:icons_launcher/ios.dart' as ios_icons_launcher;
-import 'package:icons_launcher/linux.dart' as linux_icons_launcher;
-import 'package:icons_launcher/macos.dart' as macos_icons_launcher;
-import 'package:icons_launcher/windows.dart' as windows_icons_launcher;
+import 'package:icons_launcher/src/android.dart' as android_icons_launcher;
+import 'package:icons_launcher/src/ios.dart' as ios_icons_launcher;
+import 'package:icons_launcher/src/linux.dart' as linux_icons_launcher;
+import 'package:icons_launcher/src/macos.dart' as macos_icons_launcher;
+import 'package:icons_launcher/src/web.dart' as web_icons_launcher;
+import 'package:icons_launcher/src/windows.dart' as windows_icons_launcher;
 import 'package:path/path.dart' as path;
+import 'package:universal_io/io.dart';
 import 'package:yaml/yaml.dart';
 
 const String fileOption = 'file';
@@ -129,6 +129,10 @@ Future<void> createIconsFromConfig(Map<String, dynamic> config,
 
   if (isNeedingNewLinuxIcon(config)) {
     linux_icons_launcher.createIcons(config, flavor);
+  }
+
+  if (isNeedingNewWebIcon(config)) {
+    web_icons_launcher.createIcons(config, flavor);
   }
 }
 
@@ -268,4 +272,15 @@ bool hasLinuxConfig(Map<String, dynamic> iconsLauncherConfig) {
 bool isNeedingNewLinuxIcon(Map<String, dynamic> iconsLauncherConfig) {
   return hasLinuxConfig(iconsLauncherConfig) &&
       iconsLauncherConfig['linux'] != false;
+}
+
+/// Checks if the config has web.
+bool hasWebConfig(Map<String, dynamic> iconsLauncherConfig) {
+  return iconsLauncherConfig.containsKey('web');
+}
+
+/// Checks if the config need linux.
+bool isNeedingNewWebIcon(Map<String, dynamic> iconsLauncherConfig) {
+  return hasWebConfig(iconsLauncherConfig) &&
+      iconsLauncherConfig['web'] != false;
 }

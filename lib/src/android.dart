@@ -1,9 +1,9 @@
-import 'dart:io';
 import 'package:icons_launcher/constants.dart' as constants;
 import 'package:icons_launcher/custom_exceptions.dart';
 import 'package:icons_launcher/utils.dart';
 import 'package:icons_launcher/xml_templates.dart' as xml_template;
 import 'package:image/image.dart';
+import 'package:universal_io/io.dart';
 
 /// Class android icon template model
 class AndroidIconTemplate {

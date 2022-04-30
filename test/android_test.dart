@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:icons_launcher/android.dart' as android;
 import 'package:icons_launcher/constants.dart';
+import 'package:icons_launcher/src/android.dart' as android;
 import 'package:test/test.dart';
 
 // unit tests for android.dart

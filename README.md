@@ -1,10 +1,19 @@
 <div align="center">
-  <h6>This package fork from Flutter Launcher Icons</h6>
-  <br/>
-
-  [![pub package](https://img.shields.io/pub/v/icons_launcher.svg)](https://pub.dartlang.org/packages/icons_launcher)
   <h1 align="center">Icons Launcher</h1>
+  <h6>This package fork from Flutter Launcher Icons</h6>
 </div>
+
+
+<div align="center">
+
+[![pub package](https://img.shields.io/pub/v/icons_launcher.svg)](https://pub.dartlang.org/packages/icons_launcher)
+### Platform Support
+
+| Android | iOS | MacOS | Web | Linux | Windows |
+| :-----: | :-: | :---: | :-: | :---: | :-----: |
+|   ✔️   | ✔️  |  ✔️  |  ✔️ |  ✔️  |    ✔️   |
+</div>
+
 
 A command-line tool which simplifies the task of updating your Flutter app's icon launcher. Fully flexible, allowing you to choose what platform you wish to update the icon launcher for and if you want.
 
@@ -21,7 +30,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 ##### Method 1: use with pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.0.1"
+  icons_launcher: "^1.1.0"
 
 flutter_icons:
   android: true
@@ -67,7 +76,7 @@ In the above configuration, the package is setup to replace the existing launche
 
 Shown below is the full list of attributes which you can specify within your Icons Launcher configuration.
 
-- `android`/`ios`/`macos`/`windows`/`linux`
+- `android`/`ios`/`web`/`macos`/`windows`/`linux`
   - `true`: Override the default existing Flutter launcher icon for the platform specified
   - `false`: Ignore making launcher icons for this platform
   - `icon/path/here.png`: This will generate a new launcher icons for the platform with the name you specify, without removing the old default existing icon launcher.
@@ -83,6 +92,8 @@ Shown below is the full list of attributes which you can specify within your Ico
 - `image_path_windows`: The location of the icon image file specific for Windows platform (optional - if not defined then the image_path is used)
 
 - `image_path_linux`: The location of the icon image file specific for Linux platform (optional - if not defined then the image_path is used)
+- 
+- `image_path_web`: The location of the icon image file specific for Web platform (optional - if not defined then the image_path is used)
 
 The next two attributes are only used when generating Android icon launcher
 
@@ -106,7 +117,7 @@ The configuration file format is the same.
 ### Use in pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.0.1"
+  icons_launcher: "^1.1.0"
 
 flutter_icons:
   image_path_android: "assets/images/icon-1024x1024.png"
@@ -114,6 +125,7 @@ flutter_icons:
   image_path_macos: 'assets/images/icon-710x599.png'
   image_path_windows: 'assets/images/icon-710x599.png'
   image_path_linux: 'assets/images/icon-710x599.png'
+  image_path_web: 'assets/images/icon-1024x1024.png'
   adaptive_icon_background: "assets/images/christmas-background.png"
   adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png"
   android: true
@@ -123,6 +135,7 @@ flutter_icons:
   remove_alpha_macos: true
   windows: true
   linux: true
+  web: true
 ```
 
 ### Use in custom yaml (icons_launcher.yaml)
@@ -134,6 +147,7 @@ flutter_icons:
   image_path_macos: 'assets/images/icon-710x599.png'
   image_path_windows: 'assets/images/icon-710x599.png'
   image_path_linux: 'assets/images/icon-710x599.png'
+  image_path_web: 'assets/images/icon-1024x1024.png'
   adaptive_icon_background: "assets/images/christmas-background.png"
   adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png"
   android: true
@@ -143,5 +157,6 @@ flutter_icons:
   remove_alpha_macos: true
   windows: true
   linux: true
+  web: true
 ```
 

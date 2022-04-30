@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:image/image.dart';
+import 'package:universal_io/io.dart';
 
 import 'custom_exceptions.dart';
 

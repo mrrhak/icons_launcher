@@ -32,6 +32,9 @@ const String windowsDefaultIconName = 'app_icon';
 const String linuxDefaultIconFolder = 'snap/gui/';
 const String linuxDefaultIconName = 'app_icon';
 
+const String webDefaultFaviconFolder = 'web/';
+const String webDefaultIconFolder = 'web/icons/';
+
 const String errorMissingImagePath =
     'Missing "image_path" or "image_path_android" + "image_path_ios" within configuration';
 const String errorMissingPlatform =

@@ -1,12 +1,13 @@
 flutter_icons:
   #  image_path: "assets/images/icon-128x128.png"
-  image_path_android: "assets/images/icon-1024x1024.png"
-  image_path_ios: "assets/images/icon-1024x1024.png"
+  image_path_android: 'assets/images/icon-1024x1024.png'
+  image_path_ios: 'assets/images/icon-1024x1024.png'
   image_path_macos: 'assets/images/icon-710x599.png'
   image_path_windows: 'assets/images/icon-710x599.png'
   image_path_linux: 'assets/images/icon-710x599.png'
-  adaptive_icon_background: "assets/images/christmas-background.png" # only available for Android 8.0 devices and above
-  adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png" # only available for Android 8.0 devices and above
+  image_path_web: 'assets/images/icon-1024x1024.png'
+  adaptive_icon_background: 'assets/images/christmas-background.png' # only available for Android 8.0 devices and above
+  adaptive_icon_foreground: 'assets/images/icon-foreground-432x432.png' # only available for Android 8.0 devices and above
   remove_alpha_ios: true
   remove_alpha_macos: true
   android: true
@@ -14,3 +15,4 @@ flutter_icons:
   macos: true
   windows: true
   linux: true
+  web: true

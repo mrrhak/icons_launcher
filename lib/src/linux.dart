@@ -40,7 +40,7 @@ Image createResizedImage(LinuxIconTemplate template, Image image) {
 void overwriteDefaultIcons(LinuxIconTemplate template, Image image) {
   final Image newFile = createResizedImage(template, image);
   File(linuxDefaultIconFolder + template.name + '.png')
-    ..writeAsBytesSync(encodeIco(newFile));
+    ..writeAsBytesSync(encodePng(newFile));
 }
 
 /// Save the icons
@@ -51,7 +51,7 @@ void saveNewIcons(LinuxIconTemplate template, Image image,
   File(linuxDefaultIconFolder + iconName + '.png')
       .create(recursive: true)
       .then((File file) {
-    file.writeAsBytesSync(encodeIco(newFile));
+    file.writeAsBytesSync(encodePng(newFile));
   });
 }
 

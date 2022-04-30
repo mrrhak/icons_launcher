@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:icons_launcher/android.dart' as android;
-import 'package:icons_launcher/ios.dart' as ios;
 import 'package:icons_launcher/main.dart' show defaultConfigFile;
 import 'package:icons_launcher/main.dart' as main_dart;
+import 'package:icons_launcher/src/android.dart' as android;
+import 'package:icons_launcher/src/ios.dart' as ios;
 import 'package:path/path.dart';
 import 'package:test/test.dart';
 

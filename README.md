@@ -5,15 +5,33 @@
 
 
 <div align="center">
+  <a href="https://flutter.dev">
+    <img src="https://img.shields.io/badge/Platform-Flutter-02569B?logo=flutter"
+      alt="Platform" />
+  </a>
+  <a href="https://pub.dartlang.org/packages/icons_launcher">
+    <img src="https://img.shields.io/pub/v/icons_launcher.svg"
+      alt="Pub Package" />
+  </a>
+  <a href="https://github.com/mrrhak/icons_launcher/actions?query=workflow%3ACI">
+    <img src="https://img.shields.io/github/workflow/status/mrrhak/icons_launcher/CI?logo=github"
+      alt="Build Status" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/github/license/aagarwal1012/animated-text-kit?color=red"
+      alt="License: MIT" />
+  </a>
+</div>
 
-[![pub package](https://img.shields.io/pub/v/icons_launcher.svg)](https://pub.dartlang.org/packages/icons_launcher)
+<div align="center">
+
 ### Platform Support
 
 | Android | iOS | MacOS | Web | Linux | Windows |
 | :-----: | :-: | :---: | :-: | :---: | :-----: |
 |   ✔️   | ✔️  |  ✔️  |  ✔️ |  ✔️  |    ✔️   |
 </div>
-
+<br/>
 
 A command-line tool which simplifies the task of updating your Flutter app's icon launcher. Fully flexible, allowing you to choose what platform you wish to update the icon launcher for and if you want.
 

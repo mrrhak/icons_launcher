@@ -1,0 +1,15 @@
+dev_dependencies:
+
+  icons_launcher:
+    path: ../../
+
+flutter_icons:
+  image_path: 'assets/images/icon-1024x1024.png'
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  macos: true
+  remove_alpha_macos: true
+  windows: true
+  linux: true
+  web: true

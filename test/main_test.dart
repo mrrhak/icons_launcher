@@ -10,22 +10,26 @@ import 'package:test/test.dart';
 
 // Unit tests for main.dart
 void main() {
-  test('iOS icon list is correct size', () {
-    expect(ios.iosIcons.length, 15);
-  });
-
   test('Android icon list is correct size', () {
     expect(android.androidIcons.length, 5);
+  });
+
+  test('Adaptive foreground icons icon list is correct size', () {
+    expect(android.adaptiveForegroundIcons.length, 6);
+  });
+
+  test('iOS icon list is correct size', () {
+    expect(ios.iosIcons.length, 21);
   });
 
   test(
       'iOS image list used to generate Contents.json for icon directory is correct size',
       () {
-    expect(ios.createImageList('blah').length, 19);
+    expect(ios.createImageList('blah').length, 25);
   });
 
   test('pubspec.yaml file exists', () async {
-    const String path = 'test/config/test_pubspec.yaml';
+    const String path = 'test/config/icons_launcher_test_pubspec.yaml';
     final Map<String, dynamic> config = main_dart.loadConfigFile(path, null);
     expect(config.length, isNotNull);
   });
@@ -35,7 +39,7 @@ void main() {
     final ArgParser parser = ArgParser()
       ..addOption(main_dart.fileOption, abbr: 'f');
     final String testDir =
-        join('.dart_tool', 'flutter_launcher_icons', 'test', 'config_file');
+        join('.dart_tool', 'icons_launcher', 'test', 'config_file');
 
     late String currentDirectory;
     Future<void> setCurrentDirectory(String path) async {
@@ -52,7 +56,7 @@ void main() {
     });
     test('default', () async {
       await setCurrentDirectory('default');
-      await File('flutter_launcher_icons.yaml').writeAsString('''
+      await File('icons_launcher.yaml').writeAsString('''
 flutter_icons:
   android: true
   ios: false

@@ -4,7 +4,7 @@ import 'package:icons_launcher/constants.dart';
 import 'package:icons_launcher/utils.dart';
 import 'package:image/image.dart';
 
-/// File to handle the creation of icons for WINDOWS platform
+/// File to handle the creation of icons for Windows platform
 class WindowsIconTemplate {
   WindowsIconTemplate({required this.size, required this.name});
 
@@ -16,6 +16,7 @@ List<WindowsIconTemplate> windowsIcons = <WindowsIconTemplate>[
   WindowsIconTemplate(name: '', size: 128),
 ];
 
+/// Creates icons with resize
 Image createResizedImage(WindowsIconTemplate template, Image image) {
   if (image.width >= template.size) {
     return copyResize(image,
@@ -30,6 +31,7 @@ Image createResizedImage(WindowsIconTemplate template, Image image) {
   }
 }
 
+/// Overwrites the icon file with the new icon
 void overwriteDefaultIcons(WindowsIconTemplate template, Image image) {
   final Image newFile = createResizedImage(template, image);
   File(windowsDefaultIconFolder +
@@ -39,6 +41,7 @@ void overwriteDefaultIcons(WindowsIconTemplate template, Image image) {
     ..writeAsBytesSync(encodeIco(newFile));
 }
 
+/// Creates new icons
 void saveNewIcons(
     WindowsIconTemplate template, Image image, String newIconName) {
   final String newIconFolder = windowsDefaultIconFolder + newIconName;
@@ -50,6 +53,7 @@ void saveNewIcons(
   });
 }
 
+/// Create icons
 void createIcons(Map<String, dynamic> config, String? flavor) {
   final String filePath = config['image_path_windows'] ?? config['image_path'];
   // decodeImageFile shows error message if null

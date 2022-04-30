@@ -12,10 +12,12 @@ class LinuxIconTemplate {
   final int size;
 }
 
+/// List of icons to create
 List<LinuxIconTemplate> linuxIcons = <LinuxIconTemplate>[
   LinuxIconTemplate(name: linuxDefaultIconName, size: 256),
 ];
 
+/// Create the resized icons
 Image createResizedImage(LinuxIconTemplate template, Image image) {
   if (image.width >= template.size) {
     return copyResize(
@@ -34,12 +36,14 @@ Image createResizedImage(LinuxIconTemplate template, Image image) {
   }
 }
 
+/// Override the default icon
 void overwriteDefaultIcons(LinuxIconTemplate template, Image image) {
   final Image newFile = createResizedImage(template, image);
   File(linuxDefaultIconFolder + template.name + '.png')
     ..writeAsBytesSync(encodeIco(newFile));
 }
 
+/// Save the icons
 void saveNewIcons(LinuxIconTemplate template, Image image,
     {String? newIconName}) {
   final Image newFile = createResizedImage(template, image);
@@ -51,6 +55,7 @@ void saveNewIcons(LinuxIconTemplate template, Image image,
   });
 }
 
+/// Create the icons
 void createIcons(Map<String, dynamic> config, String? flavor) {
   final String filePath = config['image_path_linux'] ?? config['image_path'];
   // decodeImageFile shows error message if null
@@ -84,6 +89,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   createDesktopFile();
 }
 
+/// Create the .desktop extension file
 void createDesktopFile() {
   const String desktopFile = '''
 [Desktop Entry]

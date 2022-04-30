@@ -13,6 +13,7 @@ class MacOSIconTemplate {
   final int size;
 }
 
+/// List of icons to create
 List<MacOSIconTemplate> macosIcons = <MacOSIconTemplate>[
   MacOSIconTemplate(name: '_16', size: 16),
   MacOSIconTemplate(name: '_32', size: 32),
@@ -23,6 +24,7 @@ List<MacOSIconTemplate> macosIcons = <MacOSIconTemplate>[
   MacOSIconTemplate(name: '_1024', size: 1024),
 ];
 
+/// Create the icons
 void createIcons(Map<String, dynamic> config, String? flavor) {
   final String filePath = config['image_path_macos'] ?? config['image_path'];
   // decodeImageFile shows error message if null
@@ -107,6 +109,7 @@ Image createResizedImage(MacOSIconTemplate template, Image image) {
   }
 }
 
+/// Change the icon launcher
 Future<void> changeMacOSIconLauncher(String iconName, String? flavor) async {
   final File macOSConfigFile = File(macosConfigFile);
   final List<String> lines = await macOSConfigFile.readAsLines();
@@ -151,6 +154,7 @@ void modifyContentsFile(String newIconName) {
   });
 }
 
+/// Generate the Contents.json file
 String generateContentsFileAsString(String newIconName) {
   final Map<String, dynamic> contentJson = <String, dynamic>{
     'images': createImageList(newIconName),
@@ -196,6 +200,7 @@ class ContentsInfoObject {
   }
 }
 
+/// Create the image list
 List<Map<String, String>> createImageList(String fileNamePrefix) {
   final List<Map<String, String>> imageList = <Map<String, String>>[
     ContentsImageObject(

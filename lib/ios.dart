@@ -13,6 +13,7 @@ class IosIconTemplate {
   final int size;
 }
 
+/// List of icons to create
 List<IosIconTemplate> iosIcons = <IosIconTemplate>[
   IosIconTemplate(name: '-20x20@1x', size: 20),
   IosIconTemplate(name: '-20x20@2x', size: 40),
@@ -37,6 +38,7 @@ List<IosIconTemplate> iosIcons = <IosIconTemplate>[
   IosIconTemplate(name: '-1024x1024@1x', size: 1024),
 ];
 
+/// Create the icons
 void createIcons(Map<String, dynamic> config, String? flavor) {
   final String filePath = config['image_path_ios'] ?? config['image_path'];
   // decodeImageFile shows error message if null
@@ -107,6 +109,7 @@ void saveNewIcons(IosIconTemplate template, Image image, String newIconName) {
   });
 }
 
+/// Create a resized image
 Image createResizedImage(IosIconTemplate template, Image image) {
   if (image.width >= template.size) {
     return copyResize(image,
@@ -121,6 +124,7 @@ Image createResizedImage(IosIconTemplate template, Image image) {
   }
 }
 
+/// Change the icon launcher to use the new icon
 Future<void> changeIosIconLauncher(String iconName, String? flavor) async {
   final File iOSConfigFile = File(iosConfigFile);
   final List<String> lines = await iOSConfigFile.readAsLines();
@@ -165,6 +169,7 @@ void modifyContentsFile(String newIconName) {
   });
 }
 
+/// Generate the Contents json file
 String generateContentsFileAsString(String newIconName) {
   final Map<String, dynamic> contentJson = <String, dynamic>{
     'images': createImageList(newIconName),
@@ -210,6 +215,7 @@ class ContentsInfoObject {
   }
 }
 
+/// Create the image list
 List<Map<String, String>> createImageList(String fileNamePrefix) {
   final List<Map<String, String>> imageList = <Map<String, String>>[
     ContentsImageObject(

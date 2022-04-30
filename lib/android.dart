@@ -5,6 +5,7 @@ import 'package:icons_launcher/utils.dart';
 import 'package:icons_launcher/xml_templates.dart' as xml_template;
 import 'package:image/image.dart';
 
+/// Class android icon template model
 class AndroidIconTemplate {
   AndroidIconTemplate({required this.size, required this.directoryName});
 
@@ -12,6 +13,7 @@ class AndroidIconTemplate {
   final int size;
 }
 
+/// List of android adaptive icon templates
 final List<AndroidIconTemplate> adaptiveForegroundIcons = <AndroidIconTemplate>[
   AndroidIconTemplate(directoryName: 'drawable-mdpi', size: 108),
   AndroidIconTemplate(directoryName: 'drawable-hdpi', size: 162),
@@ -21,6 +23,7 @@ final List<AndroidIconTemplate> adaptiveForegroundIcons = <AndroidIconTemplate>[
   AndroidIconTemplate(directoryName: 'drawable-anydpi-v21', size: 432),
 ];
 
+/// List of android icon templates
 List<AndroidIconTemplate> androidIcons = <AndroidIconTemplate>[
   AndroidIconTemplate(directoryName: 'mipmap-mdpi', size: 48),
   AndroidIconTemplate(directoryName: 'mipmap-hdpi', size: 72),
@@ -29,6 +32,7 @@ List<AndroidIconTemplate> androidIcons = <AndroidIconTemplate>[
   AndroidIconTemplate(directoryName: 'mipmap-xxxhdpi', size: 192),
 ];
 
+/// Create default icons
 void createDefaultIcons(
     Map<String, dynamic> iconsLauncherConfig, String? flavor) {
   printStatus('Creating default icons Android');
@@ -69,6 +73,7 @@ bool isAndroidIconNameCorrectFormat(String iconName) {
   return true;
 }
 
+/// Create adaptive icons
 void createAdaptiveIcons(
     Map<String, dynamic> iconsLauncherConfig, String? flavor) {
   printStatus('Creating adaptive icons Android');
@@ -296,10 +301,10 @@ List<String> transformAndroidManifestWithNewIconLauncher(
   }).toList();
 }
 
-// File reader
+/// File reader
 List<String> readFileLinesSync(String file) => File(file).readAsLinesSync();
 
-// Retrieves the flutter sdk path
+/// Retrieves the flutter sdk path
 String flutterSdk() {
   final lines = readFileLinesSync(constants.androidLocalProperties);
   const key = 'flutter.sdk=';
@@ -312,6 +317,7 @@ String flutterSdk() {
   return '';
 }
 
+/// Retrieves the string number only
 String? getLineValueNumber(List<String> lines, String key) {
   for (String line in lines) {
     if (line.contains(key)) {

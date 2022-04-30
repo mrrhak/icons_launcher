@@ -4,18 +4,18 @@ description: A new Flutter project to quickly test flutter_launcher_icons.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.13.0 <3.0.0"
+  sdk: ">=2.16.2 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.4
-  icons_launcher:
-    path: ../..
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  icons_launcher:
+    path: ../
 
 flutter:
 

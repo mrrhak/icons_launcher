@@ -21,7 +21,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 ##### Method 1: use with pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.0.0"
+  icons_launcher: "^1.0.1"
 
 flutter_icons:
   android: true
@@ -100,15 +100,13 @@ Create a Icons Launcher configuration file for your flavor. The config file is c
 
 The configuration file format is the same.
 
-An example project with flavor support enabled [has been added to the examples](https://github.com/mrrhak/icons_launcher/tree/master/example/flavors).
-
 ---
 ## Example
 
 ### Use in pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.0.0"
+  icons_launcher: "^1.0.1"
 
 flutter_icons:
   image_path_android: "assets/images/icon-1024x1024.png"

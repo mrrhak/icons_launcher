@@ -17,6 +17,7 @@ const String defaultConfigFile = 'icons_launcher.yaml';
 const String flavorConfigFilePattern = r'^icons_launcher-(.*).yaml$';
 String flavorConfigFile(String flavor) => 'icons_launcher-$flavor.yaml';
 
+/// Returns a list of all the flavors found in the config file.
 List<String> getFlavors() {
   final List<String> flavors = [];
   for (var item in Directory('.').listSync()) {
@@ -31,6 +32,7 @@ List<String> getFlavors() {
   return flavors;
 }
 
+/// Creates icons from the arguments passed to the program.
 Future<void> createIconsFromArguments(List<String> arguments) async {
   final ArgParser parser = ArgParser(allowTrailingOptions: true);
   parser.addFlag(helpFlag, abbr: 'h', help: 'Usage help', negatable: false);
@@ -84,6 +86,8 @@ Future<void> createIconsFromArguments(List<String> arguments) async {
   }
 }
 
+/// Loads the config file from the arguments passed to the program.
+/// Generate icons launcher base on config file.
 Future<void> createIconsFromConfig(Map<String, dynamic> config,
     [String? flavor]) async {
   if (!isImagePathInConfig(config)) {
@@ -128,6 +132,7 @@ Future<void> createIconsFromConfig(Map<String, dynamic> config,
   }
 }
 
+/// Loads the config file from the arguments passed to the program.
 Map<String, dynamic>? loadConfigFileFromArgResults(ArgResults argResults,
     {bool verbose = false}) {
   final String? configFile = argResults[fileOption];
@@ -167,6 +172,7 @@ Map<String, dynamic>? loadConfigFileFromArgResults(ArgResults argResults,
   return null;
 }
 
+/// Load the config file from the given path.
 Map<String, dynamic> loadConfigFile(String path, String? fileOptionResult) {
   final File file = File(path);
   final String yamlString = file.readAsStringSync();
@@ -189,63 +195,76 @@ Map<String, dynamic> loadConfigFile(String path, String? fileOptionResult) {
   return config;
 }
 
+/// Checks if the config image path.
 bool isImagePathInConfig(Map<String, dynamic> flutterIconsConfig) {
   return flutterIconsConfig.containsKey('image_path') ||
       (flutterIconsConfig.containsKey('image_path_android') &&
           flutterIconsConfig.containsKey('image_path_ios'));
 }
 
+/// Checks if the config platform.
 bool hasPlatformConfig(Map<String, dynamic> flutterIconsConfig) {
   return hasAndroidConfig(flutterIconsConfig) ||
       hasIOSConfig(flutterIconsConfig);
 }
 
+/// Checks if the config has android.
 bool hasAndroidConfig(Map<String, dynamic> iconsLauncher) {
   return iconsLauncher.containsKey('android');
 }
 
+/// Checks if the config need android.
 bool isNeedingNewAndroidIcon(Map<String, dynamic> iconsLauncherConfig) {
   return hasAndroidConfig(iconsLauncherConfig) &&
       iconsLauncherConfig['android'] != false;
 }
 
+/// Checks if the config has android adaptive.
 bool hasAndroidAdaptiveConfig(Map<String, dynamic> iconsLauncherConfig) {
   return isNeedingNewAndroidIcon(iconsLauncherConfig) &&
       iconsLauncherConfig.containsKey('adaptive_icon_background') &&
       iconsLauncherConfig.containsKey('adaptive_icon_foreground');
 }
 
+/// Checks if the config has ios.
 bool hasIOSConfig(Map<String, dynamic> iconsLauncherConfig) {
   return iconsLauncherConfig.containsKey('ios');
 }
 
+/// Checks if the config need ios.
 bool isNeedingNewIOSIcon(Map<String, dynamic> iconsLauncherConfig) {
   return hasIOSConfig(iconsLauncherConfig) &&
       iconsLauncherConfig['ios'] != false;
 }
 
+/// Checks if the config has macos.
 bool hasMacOSConfig(Map<String, dynamic> iconsLauncherConfig) {
   return iconsLauncherConfig.containsKey('macos');
 }
 
+/// Checks if the config need macos.
 bool isNeedingNewMacOSIcon(Map<String, dynamic> iconsLauncherConfig) {
   return hasMacOSConfig(iconsLauncherConfig) &&
       iconsLauncherConfig['macos'] != false;
 }
 
+/// Checks if the config has windows.
 bool hasWindowsConfig(Map<String, dynamic> iconsLauncherConfig) {
   return iconsLauncherConfig.containsKey('windows');
 }
 
+/// Checks if the config need windows.
 bool isNeedingNewWindowsIcon(Map<String, dynamic> iconsLauncherConfig) {
   return hasWindowsConfig(iconsLauncherConfig) &&
       iconsLauncherConfig['windows'] != false;
 }
 
+/// Checks if the config has linux.
 bool hasLinuxConfig(Map<String, dynamic> iconsLauncherConfig) {
   return iconsLauncherConfig.containsKey('linux');
 }
 
+/// Checks if the config need linux.
 bool isNeedingNewLinuxIcon(Map<String, dynamic> iconsLauncherConfig) {
   return hasLinuxConfig(iconsLauncherConfig) &&
       iconsLauncherConfig['linux'] != false;

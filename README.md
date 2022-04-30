@@ -1,7 +1,8 @@
 <div align="center">
-
-[![pub package](https://img.shields.io/pub/v/icons_launcher.svg)](https://pub.dartlang.org/packages/icons_launcher)
   <h6>This package fork from Flutter Launcher Icons</h6>
+  <br/>
+
+  [![pub package](https://img.shields.io/pub/v/icons_launcher.svg)](https://pub.dartlang.org/packages/icons_launcher)
   <h1 align="center">Icons Launcher</h1>
 </div>
 

@@ -29,15 +29,12 @@
   </a>
 </div>
 
-<br/>
-
 ### <strong>Platform Support</strong>
 
 | Android | iOS | MacOS | Web | Linux | Windows |
 | :-----: | :-: | :---: | :-: | :---: | :-----: |
 |   ✔️   | ✔️  |   ✔️  |  ✔️ |  ✔️  |    ✔️  |
 
-<br/>
 
 A command-line tool which simplifies the task of updating your Flutter app's icon launcher. Fully flexible, allowing you to choose what platform you wish to update the icon launcher for and if you want.
 

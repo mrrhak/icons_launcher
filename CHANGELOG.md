@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+ - Fixed web support
+   - Replace `'dart:io'` with `universal_io`
+
 ## 1.1.0
  - Add web support
 

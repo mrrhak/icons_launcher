@@ -24,7 +24,7 @@ Image createResizedImage(int iconSize, Image image) {
 
 /// Logging
 void printStatus(String message) {
-  print('• $message');
+  print('🚀 $message');
 }
 
 /// Generate error

@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:icons_launcher/constants.dart';
 import 'package:icons_launcher/utils.dart';
 import 'package:image/image.dart';
+import 'package:universal_io/io.dart';
 
 /// File to handle the creation of icons for Windows platform
 class WindowsIconTemplate {

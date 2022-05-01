@@ -49,8 +49,7 @@ const String errorMissingMinSdk =
     'Cannot not find minSdkVersion from android/app/build.gradle or android/local.properties'
     'Specify minSdkVersion in either android/app/build.gradle or android/local.properties';
 
-const String introMessage = '''
-  ════════════════════════════════════════════
-            ICONS LAUNCHER STARTING                           
-  ════════════════════════════════════════════
-  ''';
+const String introMessage = '''\n
+═════════════════════════════════════════════
+|      ✨  ICONS LAUNCHER STARTING  ✨      |
+═════════════════════════════════════════════\n''';

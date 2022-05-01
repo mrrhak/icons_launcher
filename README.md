@@ -29,14 +29,14 @@
   </a>
 </div>
 
-<div align="center">
+<br/>
 
-### Platform Support
+### <strong>Platform Support</strong>
 
 | Android | iOS | MacOS | Web | Linux | Windows |
 | :-----: | :-: | :---: | :-: | :---: | :-----: |
-|   ✔️   | ✔️  |  ✔️  |  ✔️ |  ✔️  |    ✔️   |
-</div>
+|   ✔️   | ✔️  |   ✔️  |  ✔️ |  ✔️  |    ✔️  |
+
 <br/>
 
 A command-line tool which simplifies the task of updating your Flutter app's icon launcher. Fully flexible, allowing you to choose what platform you wish to update the icon launcher for and if you want.
@@ -54,7 +54,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 ##### Method 1: use with pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.0"
+  icons_launcher: "^1.1.1"
 
 flutter_icons:
   android: true
@@ -141,7 +141,7 @@ The configuration file format is the same.
 ### Use in pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.0"
+  icons_launcher: "^1.1.1"
 
 flutter_icons:
   image_path_android: "assets/images/icon-1024x1024.png"
@@ -186,4 +186,5 @@ flutter_icons:
 
 ---
 
-<p align="center">Maintainer</p>
+<p align="center">Maintained by <a href="https://mrrhak.com">Mrr Hak</a></p>
+<p align="center" style="font-size: 56px">💙</p>

@@ -51,7 +51,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 ##### Method 1: use with pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.2"
+  icons_launcher: "^1.1.3"
 
 flutter_icons:
   android: true
@@ -138,7 +138,7 @@ The configuration file format is the same.
 ### Use in pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.2"
+  icons_launcher: "^1.1.3"
 
 flutter_icons:
   image_path_android: "assets/images/icon-1024x1024.png"

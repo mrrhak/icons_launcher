@@ -100,6 +100,10 @@ Terminal=false
 Type=Application
 Categories=Entertainment;
 ''';
+
   File(linuxDefaultIconFolder + linuxDefaultIconName + '.desktop')
-      .writeAsStringSync(desktopFile);
+      .create(recursive: true)
+      .then((File file) {
+    file.writeAsStringSync(desktopFile);
+  });
 }

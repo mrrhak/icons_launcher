@@ -51,7 +51,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 ##### Method 1: use with pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.1"
+  icons_launcher: "^1.1.2"
 
 flutter_icons:
   android: true
@@ -113,7 +113,7 @@ Shown below is the full list of attributes which you can specify within your Ico
 - `image_path_windows`: The location of the icon image file specific for Windows platform (optional - if not defined then the image_path is used)
 
 - `image_path_linux`: The location of the icon image file specific for Linux platform (optional - if not defined then the image_path is used)
-- 
+
 - `image_path_web`: The location of the icon image file specific for Web platform (optional - if not defined then the image_path is used)
 
 The next two attributes are only used when generating Android icon launcher
@@ -138,7 +138,7 @@ The configuration file format is the same.
 ### Use in pubspec.yaml
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.1"
+  icons_launcher: "^1.1.2"
 
 flutter_icons:
   image_path_android: "assets/images/icon-1024x1024.png"
@@ -159,7 +159,7 @@ flutter_icons:
   web: true
 ```
 
-### Use in custom yaml (icons_launcher.yaml)
+### Or use in custom yaml (icons_launcher.yaml)
 
 ```yaml
 flutter_icons:
@@ -181,7 +181,3 @@ flutter_icons:
   web: true
 ```
 
----
-
-<p align="center">Maintained by <a href="https://mrrhak.com">Mrr Hak</a></p>
-<p align="center" style="font-size: 56px">💙</p>

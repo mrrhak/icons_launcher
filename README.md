@@ -1,9 +1,8 @@
 <div align="center">
   <h1 align="center">✨ Icons Launcher ✨</h1>
 
-  ###### This package fork from [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons)
+  ###### This package is forked from [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons)
 </div>
-
 
 <div align="center">
   <a href="https://flutter.dev">
@@ -29,26 +28,28 @@
   </a>
 </div>
 
-### <strong>Platform Support</strong>
+### **Platform Support**
 
-| Android | iOS | MacOS | Web | Linux | Windows |
-| :-----: | :-: | :---: | :-: | :---: | :-----: |
-|   ✔️   | ✔️  |   ✔️  |  ✔️ |  ✔️  |    ✔️  |
+| Android |  iOS  | MacOS |  Web  | Linux | Windows |
+| :-----: | :---: | :---: | :---: | :---: | :-----: |
+|    ✔️    |   ✔️   |   ✔️   |   ✔️   |   ✔️   |    ✔️    |
 
-
-A command-line tool which simplifies the task of updating your Flutter app's icon launcher. Fully flexible, allowing you to choose what platform you wish to update the icon launcher for and if you want.
+A command-line tool which simplifies the task of updating your Flutter app's launcher icon. Full flexibility allows you to only update the launcher icon for specific platforms as needed.
 
 Want to see older changes? Be sure to check out the [Changelog](https://github.com/mrrhak/icons_launcher/blob/master/CHANGELOG.md).
 
 ---
+
 ## Guide
 
-#### 1. Setup the config file
+### 1. Setup the config file
 
 Add your Icons Launcher configuration to your `pubspec.yaml` or create a new config file called `icons_launcher.yaml`.
+
 An example is shown below. More complex examples [here](https://github.com/mrrhak/icons_launcher/tree/master/example).
 
-##### Method 1: use with pubspec.yaml
+#### Method 1: use with pubspec.yaml
+
 ```yaml
 dev_dependencies:
   icons_launcher: "^1.1.3"
@@ -59,7 +60,8 @@ flutter_icons:
   image_path: "assets/icon/icon.png"
 ```
 
-##### Method 2: create icons_launcher.yaml at project root
+#### Method 2: create icons_launcher.yaml at project root
+
 ```yaml
 flutter_icons:
   android: true
@@ -67,27 +69,25 @@ flutter_icons:
   image_path: "assets/icon/icon.png"
 ```
 
-#### 2. Run the package
+### 2. Run the package
 
-After setting up the configuration, all that is left to do is run the package.
+After setting up the configuration, all that is left to do is run the package:
 
-```
+```sh
 flutter pub get
 flutter pub run icons_launcher:main
 ```
 
-If you name your configuration file something other than `icons_launcher.yaml` or `pubspec.yaml` you will need to specify
-the name of the file when running the package.
+If you name your configuration file something other than `icons_launcher.yaml` or `pubspec.yaml` you will need to specify the name of the file when running the package.
 
-```
+```sh
 flutter pub get
 flutter pub run icons_launcher:main -f <your config file name here>
 ```
 
-Note: If you are not using the existing `pubspec.yaml` ensure that your config file is located in the same directory as it.
+NOTE: If you are not using the existing `pubspec.yaml` your config file must still be located in the same directory as it.
 
 If you encounter any issues [please report them here](https://github.com/mrrhak/icons_launcher/issues).
-
 
 In the above configuration, the package is setup to replace the existing launcher icons in both the Android and iOS project.
 
@@ -102,7 +102,7 @@ Shown below is the full list of attributes which you can specify within your Ico
   - `false`: Ignore making launcher icons for this platform
   - `icon/path/here.png`: This will generate a new launcher icons for the platform with the name you specify, without removing the old default existing icon launcher.
 
-- `image_path`: The location of the icon image file which you want to use as the app icon launcher
+- `image_path`: The location of the icon image file which you want to use as the app launcher icon
 
 - `image_path_android`: The location of the icon image file specific for Android platform (optional - if not defined then the image_path is used)
 
@@ -116,7 +116,7 @@ Shown below is the full list of attributes which you can specify within your Ico
 
 - `image_path_web`: The location of the icon image file specific for Web platform (optional - if not defined then the image_path is used)
 
-The next two attributes are only used when generating Android icon launcher
+The next two attributes are only used when generating Android launcher icon
 
 - `adaptive_icon_background`: The color (E.g. `"#ffffff"`) or image asset (E.g. `"assets/images/christmas-background.png"`) which will
 be used to fill out the background of the adaptive icon.
@@ -136,6 +136,7 @@ The configuration file format is the same.
 ## Example
 
 ### Use in pubspec.yaml
+
 ```yaml
 dev_dependencies:
   icons_launcher: "^1.1.3"
@@ -180,4 +181,3 @@ flutter_icons:
   linux: true
   web: true
 ```
-

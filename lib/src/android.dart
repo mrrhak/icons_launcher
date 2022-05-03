@@ -43,7 +43,7 @@ void createDefaultIcons(
   }
   final File androidManifestFile = File(constants.androidManifestFile);
   if (isCustomAndroidFile(iconsLauncherConfig)) {
-    printStatus('Adding a new Android icon launcher');
+    printStatus('Adding a new Android launcher icon');
     final String iconName = getNewIconName(iconsLauncherConfig);
     isAndroidIconNameCorrectFormat(iconName);
     final String iconPath = '$iconName.png';
@@ -53,7 +53,7 @@ void createDefaultIcons(
     overwriteAndroidManifestWithNewIconLauncher(iconName, androidManifestFile);
   } else {
     printStatus(
-        'Overwriting the default Android icon launcher with a new icon');
+        'Overwriting the default Android launcher icon with a new icon');
     for (AndroidIconTemplate template in androidIcons) {
       overwriteExistingIcons(
           template, image, constants.androidFileName, flavor);
@@ -78,7 +78,7 @@ void createAdaptiveIcons(
     Map<String, dynamic> iconsLauncherConfig, String? flavor) {
   printStatus('Creating adaptive icons Android');
 
-  // Retrieve the necessary Icons Launcher configuration from the pubspec.yaml file
+  // Retrieve the necessary launcher icons configuration from the pubspec.yaml file
   final String backgroundConfig =
       iconsLauncherConfig['adaptive_icon_background'];
   final String foregroundImagePath =
@@ -123,7 +123,7 @@ void updateColorsXmlFile(String backgroundConfig, String? flavor) {
   }
 }
 
-/// Creates the xml file required for the adaptive icon launcher
+/// Creates the xml file required for the adaptive launcher icon
 /// FILE LOCATED HERE: res/mipmap-anydpi/{icon-name-from-yaml-config}.xml
 void createAdaptiveIconMipMapXmlFile(
     Map<String, dynamic> iconsLauncherConfig, String? flavor) {
@@ -162,7 +162,7 @@ void createAdaptiveBackgrounds(Map<String, dynamic> yamlConfig,
         constants.androidAdaptiveBackgroundFileName, flavor);
   }
 
-  // Creates the xml file required for the adaptive icon launcher
+  // Creates the xml file required for the adaptive launcher icon
   // FILE LOCATED HERE:  res/mipmap-anydpi/{icon-name-from-yaml-config}.xml
   if (isCustomAndroidFile(yamlConfig)) {
     File(constants.androidAdaptiveXmlFolder(flavor) +
@@ -194,7 +194,7 @@ void createNewColorsFile(String backgroundColor, String? flavor) {
   });
 }
 
-/// Updates the colors.xml with the new adaptive icon launcher color
+/// Updates the colors.xml with the new adaptive launcher icon color
 void updateColorsFile(File colorsFile, String backgroundColor) {
   // Write foreground color
   final List<String> lines = colorsFile.readAsLinesSync();
@@ -220,19 +220,19 @@ void updateColorsFile(File colorsFile, String backgroundColor) {
 }
 
 /// Check to see if specified Android config is a string or bool
-/// String - Generate new icon launcher with the string specified
+/// String - Generate new launcher icon with the string specified
 /// bool - override the default flutter project icon
 bool isCustomAndroidFile(Map<String, dynamic> config) {
   final dynamic androidConfig = config['android'];
   return androidConfig is String;
 }
 
-/// return the new icon launcher file name
+/// return the new launcher icon file name
 String getNewIconName(Map<String, dynamic> config) {
   return config['android'];
 }
 
-/// Overrides the existing icons launcher in the project
+/// Overrides the existing launcher icons in the project
 /// Note: Do not change interpolation unless you end up with better results (see issue for result when using cubic
 /// interpolation)
 void overwriteExistingIcons(
@@ -252,7 +252,7 @@ void overwriteExistingIcons(
   });
 }
 
-/// Saves new icons launcher to the project, keeping the old icons launcher.
+/// Saves new launcher icons to the project, keeping the old launcher icons.
 /// Note: Do not change interpolation unless you end up with better results
 void saveNewImages(AndroidIconTemplate template, Image image,
     String iconFilePath, String? flavor) {
@@ -267,7 +267,7 @@ void saveNewImages(AndroidIconTemplate template, Image image,
   });
 }
 
-/// Updates the line which specifies the icon launcher within the AndroidManifest.xml
+/// Updates the line which specifies the launcher icon within the AndroidManifest.xml
 /// with the new icon name (only if it has changed)
 ///
 /// Note: default iconName = "ic_launcher"

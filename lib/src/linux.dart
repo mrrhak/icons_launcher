@@ -67,7 +67,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   final dynamic linuxConfig = config['linux'];
   if (flavor != null) {
     final String catalogName = 'AppIcon-$flavor';
-    printStatus('Building Linux icon launcher for $flavor');
+    printStatus('Building Linux launcher icon for $flavor');
     for (LinuxIconTemplate template in linuxIcons) {
       saveNewIcons(template, image, newIconName: catalogName);
     }
@@ -75,12 +75,12 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
     // If the Linux configuration is a string then the user has specified a new icon to be created
     // and for the old icon file to be kept
     final String newIconName = linuxConfig;
-    printStatus('Adding new linux icon launcher');
+    printStatus('Adding new linux launcher icon');
     for (LinuxIconTemplate template in linuxIcons) {
       saveNewIcons(template, image, newIconName: newIconName);
     }
   } else {
-    printStatus('Adding new linux icon launcher');
+    printStatus('Adding new linux launcher icon');
     for (LinuxIconTemplate template in linuxIcons) {
       saveNewIcons(template, image);
     }
@@ -93,7 +93,7 @@ void createDesktopFile() {
   const String desktopFile = '''
 [Desktop Entry]
 Name=Flutter Linux App
-Comment=Flutter Linux Icon Launcher
+Comment=Flutter Linux launcher icon
 Exec=$linuxDefaultIconName
 Icon=$linuxDefaultIconName.png
 Terminal=false

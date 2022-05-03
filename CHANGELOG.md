@@ -2,6 +2,8 @@
 
 ## 1.1.3
  - Fixed linux
+ - Improve grammar and formatting ([#1](https://github.com/mrrhak/icons_launcher/pull/1))
+ - Update README.md
 
 ## 1.1.2
  - Update README.md

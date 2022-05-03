@@ -3,7 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Format, Analyze and Test
+name: Dart CI
 
 on:
   push:

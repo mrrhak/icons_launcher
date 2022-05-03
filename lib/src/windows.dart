@@ -65,7 +65,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   final dynamic windowsConfig = config['windows'];
   if (flavor != null) {
     final String catalogName = 'AppIcon-$flavor';
-    printStatus('Building Windows icon launcher for $flavor');
+    printStatus('Building Windows launcher icon for $flavor');
     for (WindowsIconTemplate template in windowsIcons) {
       saveNewIcons(template, image, catalogName);
     }
@@ -73,7 +73,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
     // If the Windows configuration is a string then the user has specified a new icon to be created
     // and for the old icon file to be kept
     final String newIconName = windowsConfig;
-    printStatus('Adding new Windows icon launcher');
+    printStatus('Adding new Windows launcher icon');
     for (WindowsIconTemplate template in windowsIcons) {
       saveNewIcons(template, image, newIconName);
     }
@@ -81,7 +81,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   // Otherwise the user wants the new icon to use the default icons name and
   // update config file to use it
   else {
-    printStatus('Overwriting default Windows icon launcher with new icon');
+    printStatus('Overwriting default Windows launcher icon with new icon');
     for (WindowsIconTemplate template in windowsIcons) {
       overwriteDefaultIcons(template, image);
     }

@@ -5,26 +5,32 @@
 </div>
 
 <div align="center">
-  <a href="https://flutter.dev">
-    <img src="https://img.shields.io/badge/Platform-Flutter-02569B?logo=flutter"
-      alt="Platform" />
-  </a>
   <a href="https://pub.dartlang.org/packages/icons_launcher">
     <img src="https://img.shields.io/pub/v/icons_launcher?label=Pub&logo=dart"
       alt="Pub Package" />
   </a>
-  <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/stars/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github"></a>
+  <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/stars/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=deeppink&label=Stars" alt="Star on Github"></a>
+  <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/forks/mrrhak/icons_launcher?color=orange&label=Forks&logo=github" alt="Forks on Github"></a>
+  <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/watchers/mrrhak/icons_launcher?color=teal&label=Watchers&logo=github" alt="Watchers on Github"></a>
   <a href="https://github.com/mrrhak/icons_launcher/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=yellow"
+    <img src="https://img.shields.io/github/contributors/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=yellow&label=Contributors"
       alt="Contributors" />
   </a>
   <a href="https://github.com/mrrhak/icons_launcher/actions?query=workflow%3A">
     <img src="https://github.com/mrrhak/icons_launcher/actions/workflows/main.yml/badge.svg"
       alt="Build Status" />
   </a>
+  <a href="https://github.com/mrrhak/icons_launcher">
+    <img src="https://img.shields.io/github/languages/code-size/mrrhak/icons_launcher?color=brown&label=Size"
+      alt="Code size" />
+  </a>
   <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/github/license/mrrhak/icons_launcher?color=red&logo=Leanpub"
+    <img src="https://img.shields.io/github/license/mrrhak/icons_launcher?label=License&color=red&logo=Leanpub"
       alt="License: MIT" />
+  </a>
+  <a href="https://pub.dev/packages/icons_launcher">
+    <img src="https://img.shields.io/badge/Platform-Android%20|%20iOS%20|%20Web%20|%20macOS%20|%20Windows%20|%20Linux%20-blue.svg?logo=flutter"
+      alt="Platform" />
   </a>
 </div>
 

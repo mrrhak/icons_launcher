@@ -43,7 +43,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   final dynamic macosConfig = config['macos'];
   if (flavor != null) {
     final String catalogName = 'AppIcon-$flavor';
-    printStatus('Building MacOS icon launcher for $flavor');
+    printStatus('Building MacOS launcher icon for $flavor');
     for (MacOSIconTemplate template in macosIcons) {
       saveNewIcons(template, image, catalogName);
     }
@@ -54,7 +54,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
     // If the MacOS configuration is a string then the user has specified a new icon to be created
     // and for the old icon file to be kept
     final String newIconName = macosConfig;
-    printStatus('Adding new MacOS icon launcher');
+    printStatus('Adding new MacOS launcher icon');
     for (MacOSIconTemplate template in macosIcons) {
       saveNewIcons(template, image, newIconName);
     }
@@ -65,7 +65,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   // Otherwise the user wants the new icon to use the default icons name and
   // update config file to use it
   else {
-    printStatus('Overwriting default MacOS icon launcher with new icon');
+    printStatus('Overwriting default MacOS launcher icon with new icon');
     for (MacOSIconTemplate template in macosIcons) {
       overwriteDefaultIcons(template, image);
     }
@@ -108,7 +108,7 @@ Image createResizedImage(MacOSIconTemplate template, Image image) {
   }
 }
 
-/// Change the icon launcher
+/// Change the launcher icon
 Future<void> changeMacOSIconLauncher(String iconName, String? flavor) async {
   final File macOSConfigFile = File(macosConfigFile);
   final List<String> lines = await macOSConfigFile.readAsLines();

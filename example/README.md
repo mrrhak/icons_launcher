@@ -1,9 +1,6 @@
-# flutter_launcher_icons
+# icons_launcher_demo
 
-A new example Flutter project to quickly test flutter_launcher_icons.
+A new example flutter project to quickly test icons launcher.
 
 Before being able to run this example you need to navigate to this directory and run the following command
 
-```
-flutter create .
-```

@@ -1,5 +1,7 @@
 const String flutterSdkGradleFile =
     '/packages/flutter_tools/gradle/flutter.gradle';
+String androidMainFolder(String? flavor) =>
+    "android/app/src/${flavor ?? 'main'}/";
 String androidResFolder(String? flavor) =>
     "android/app/src/${flavor ?? 'main'}/res/";
 String androidColorsFile(String? flavor) =>
@@ -8,11 +10,14 @@ const String androidLocalProperties = 'android/local.properties';
 const String androidManifestFile = 'android/app/src/main/AndroidManifest.xml';
 const String androidGradleFile = 'android/app/build.gradle';
 const String androidFileName = 'ic_launcher.png';
+const String androidRoundFileName = 'ic_launcher_round.png';
 const String androidAdaptiveForegroundFileName = 'ic_launcher_foreground.png';
 const String androidAdaptiveBackgroundFileName = 'ic_launcher_background.png';
+const String androidPlayStoreFileName = 'ic_launcher-playstore.png';
 String androidAdaptiveXmlFolder(String? flavor) =>
     androidResFolder(flavor) + 'mipmap-anydpi-v26/';
 const String androidDefaultIconName = 'ic_launcher';
+const String androidDefaultRoundIconName = 'ic_launcher_round';
 
 const String iosDefaultIconFolder =
     'ios/Runner/Assets.xcassets/AppIcon.appiconset/';
@@ -49,7 +54,10 @@ const String errorMissingMinSdk =
     'Cannot not find minSdkVersion from android/app/build.gradle or android/local.properties'
     'Specify minSdkVersion in either android/app/build.gradle or android/local.properties';
 
-const String introMessage = '''\n
+String introMessage() {
+  return '''\n
 ═════════════════════════════════════════════
-|      ✨  ICONS LAUNCHER STARTING  ✨      |
+      ✨  ICONS LAUNCHER STARTING  ✨
+                   v1.1.4
 ═════════════════════════════════════════════\n''';
+}

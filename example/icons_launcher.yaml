@@ -1,18 +1,19 @@
 flutter_icons:
-  #  image_path: "assets/images/icon-128x128.png"
-  image_path_android: 'assets/images/icon-1024x1024.png'
-  image_path_ios: 'assets/images/icon-1024x1024.png'
-  image_path_macos: 'assets/images/icon-710x599.png'
-  image_path_windows: 'assets/images/icon-710x599.png'
-  image_path_linux: 'assets/images/icon-710x599.png'
-  image_path_web: 'assets/images/icon-1024x1024.png'
-  adaptive_icon_background: 'assets/images/christmas-background.png' # only available for Android 8.0 devices and above
-  adaptive_icon_foreground: 'assets/images/icon-foreground-432x432.png' # only available for Android 8.0 devices and above
-  remove_alpha_ios: true
-  remove_alpha_macos: true
+  # image_path: 'assets/ic_logo_border.png'
+  image_path_android: 'assets/ic_logo_border.png'
+  image_path_ios: 'assets/ic_logo_rectangle.png'
+  image_path_macos: 'assets/ic_logo_border.png'
+  image_path_windows: 'assets/ic_logo_border.png'
+  image_path_linux: 'assets/ic_logo_border.png'
+  image_path_web: 'assets/ic_logo_border.png'
+  adaptive_icon_background: 'assets/ic_background.png' # only available for Android 8.0 devices and above
+  adaptive_icon_foreground: 'assets/ic_foreground.png' # only available for Android 8.0 devices and above
+  adaptive_icon_round: 'assets/ic_logo_round.png' # only available for Android 8.0 devices and above #! (Optional)
+  remove_alpha_ios: false
+  remove_alpha_macos: false
   android: true
   ios: true
-  macos: true
-  windows: true
-  linux: true
-  web: true
+  macos: false
+  windows: false
+  linux: false
+  web: false

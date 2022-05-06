@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Flutter Linux App
-Comment=Flutter Linux Icon Launcher
+Comment=Flutter Linux launcher icon
 Exec=app_icon
 Icon=app_icon.png
 Terminal=false

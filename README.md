@@ -21,7 +21,7 @@
       alt="Build Status" />
   </a>
   <a href="https://github.com/mrrhak/icons_launcher">
-    <img src="https://img.shields.io/github/languages/code-size/mrrhak/icons_launcher?color=brown&label=Size"
+    <img src="https://img.shields.io/github/languages/code-size/mrrhak/icons_launcher?logo=github&color=brown&label=Size"
       alt="Code size" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
@@ -58,21 +58,21 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.3"
+  icons_launcher: "^1.1.4"
 
 flutter_icons:
-  android: true
+  image_path: 'assets/ic_logo_border.png'
   ios: true
-  image_path: "assets/icon/icon.png"
+  android: true
 ```
 
 #### Method 2: create icons_launcher.yaml at project root
 
 ```yaml
 flutter_icons:
-  android: true
+  image_path: 'assets/ic_logo_border.png'
   ios: true
-  image_path: "assets/icon/icon.png"
+  android: true
 ```
 
 ### 2. Run the package
@@ -122,12 +122,14 @@ Shown below is the full list of attributes which you can specify within your Ico
 
 - `image_path_web`: The location of the icon image file specific for Web platform (optional - if not defined then the image_path is used)
 
-The next two attributes are only used when generating Android launcher icon
+The next three attributes are only used when generating Android adaptive launcher icon ([Read more](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive))
 
-- `adaptive_icon_background`: The color (E.g. `"#ffffff"`) or image asset (E.g. `"assets/images/christmas-background.png"`) which will
+- `adaptive_icon_background`: The color (E.g. `"#ffffff"`) or image asset (E.g. `"assets/ic_background.png"`) which will
 be used to fill out the background of the adaptive icon.
 
 - `adaptive_icon_foreground`: The image asset which will be used for the icon foreground of the adaptive icon
+
+- `adaptive_icon_round`: The image asset which will be used for the round icon of the adaptive icon (optional)
 
 _Note: iOS icons should [fill the entire image](https://stackoverflow.com/questions/26014461/black-border-on-my-ios-icon) and not contain transparent borders._
 
@@ -145,45 +147,49 @@ The configuration file format is the same.
 
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.3"
+  icons_launcher: "^1.1.4"
 
 flutter_icons:
-  image_path_android: "assets/images/icon-1024x1024.png"
-  image_path_ios: "assets/images/icon-1024x1024.png"
-  image_path_macos: 'assets/images/icon-710x599.png'
-  image_path_windows: 'assets/images/icon-710x599.png'
-  image_path_linux: 'assets/images/icon-710x599.png'
-  image_path_web: 'assets/images/icon-1024x1024.png'
-  adaptive_icon_background: "assets/images/christmas-background.png"
-  adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png"
-  android: true
+  # image_path: 'assets/ic_logo_border.png'
+  image_path_android: 'assets/ic_logo_border.png'
+  image_path_ios: 'assets/ic_logo_rectangle.png'
+  image_path_macos: 'assets/ic_logo_border.png'
+  image_path_windows: 'assets/ic_logo_border.png'
+  image_path_linux: 'assets/ic_logo_border.png'
+  image_path_web: 'assets/ic_logo_border.png'
+  adaptive_icon_background: 'assets/ic_background.png'
+  adaptive_icon_foreground: 'assets/ic_foreground.png' 
+  adaptive_icon_round: 'assets/ic_logo_round.png' #! (Optional)
+  remove_alpha_ios: false
+  remove_alpha_macos: false
   ios: true
-  remove_alpha_ios: true
-  macos: true
-  remove_alpha_macos: true
-  windows: true
-  linux: true
-  web: true
+  android: true
+  macos: false
+  windows: false
+  linux: false
+  web: false
 ```
 
 ### Or use in custom yaml (icons_launcher.yaml)
 
 ```yaml
 flutter_icons:
-  image_path_android: "assets/images/icon-1024x1024.png"
-  image_path_ios: "assets/images/icon-1024x1024.png"
-  image_path_macos: 'assets/images/icon-710x599.png'
-  image_path_windows: 'assets/images/icon-710x599.png'
-  image_path_linux: 'assets/images/icon-710x599.png'
-  image_path_web: 'assets/images/icon-1024x1024.png'
-  adaptive_icon_background: "assets/images/christmas-background.png"
-  adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png"
-  android: true
+  # image_path: 'assets/ic_logo_border.png'
+  image_path_android: 'assets/ic_logo_border.png'
+  image_path_ios: 'assets/ic_logo_rectangle.png'
+  image_path_macos: 'assets/ic_logo_border.png'
+  image_path_windows: 'assets/ic_logo_border.png'
+  image_path_linux: 'assets/ic_logo_border.png'
+  image_path_web: 'assets/ic_logo_border.png'
+  adaptive_icon_background: 'assets/ic_background.png'
+  adaptive_icon_foreground: 'assets/ic_foreground.png' 
+  adaptive_icon_round: 'assets/ic_logo_round.png' #! (Optional)
+  remove_alpha_ios: false
+  remove_alpha_macos: false
   ios: true
-  remove_alpha_ios: true
-  macos: true
-  remove_alpha_macos: true
-  windows: true
-  linux: true
-  web: true
+  android: true
+  macos: false
+  windows: false
+  linux: false
+  web: false
 ```

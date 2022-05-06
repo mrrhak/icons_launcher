@@ -15,12 +15,11 @@ class AndroidIconTemplate {
 
 /// List of android adaptive icon templates
 final List<AndroidIconTemplate> adaptiveForegroundIcons = <AndroidIconTemplate>[
-  AndroidIconTemplate(directoryName: 'drawable-mdpi', size: 108),
-  AndroidIconTemplate(directoryName: 'drawable-hdpi', size: 162),
-  AndroidIconTemplate(directoryName: 'drawable-xhdpi', size: 216),
-  AndroidIconTemplate(directoryName: 'drawable-xxhdpi', size: 324),
-  AndroidIconTemplate(directoryName: 'drawable-xxxhdpi', size: 432),
-  AndroidIconTemplate(directoryName: 'drawable-anydpi-v21', size: 432),
+  AndroidIconTemplate(directoryName: 'mipmap-mdpi', size: 108),
+  AndroidIconTemplate(directoryName: 'mipmap-hdpi', size: 162),
+  AndroidIconTemplate(directoryName: 'mipmap-xhdpi', size: 216),
+  AndroidIconTemplate(directoryName: 'mipmap-xxhdpi', size: 324),
+  AndroidIconTemplate(directoryName: 'mipmap-xxxhdpi', size: 432),
 ];
 
 /// List of android icon templates
@@ -51,6 +50,10 @@ void createDefaultIcons(
       saveNewImages(template, image, iconPath, flavor);
     }
     overwriteAndroidManifestWithNewIconLauncher(iconName, androidManifestFile);
+    if (isConfigAdaptiveRoundIcon(iconsLauncherConfig)) {
+      overwriteAndroidManifestWithNewRoundIconLauncher(
+          iconName, androidManifestFile);
+    }
   } else {
     printStatus(
         'Overwriting the default Android launcher icon with a new icon');
@@ -60,7 +63,33 @@ void createDefaultIcons(
     }
     overwriteAndroidManifestWithNewIconLauncher(
         constants.androidDefaultIconName, androidManifestFile);
+    if (isConfigAdaptiveRoundIcon(iconsLauncherConfig)) {
+      overwriteAndroidManifestWithNewRoundIconLauncher(
+          constants.androidDefaultRoundIconName, androidManifestFile);
+    }
   }
+  // Create play store icon
+  createPlayStoreIcon(image, flavor);
+  removeConflictDir();
+}
+
+void removeConflictDir() {
+  try {
+    final dir = Directory('android/app/src/main/res/drawable-anydpi-v21');
+    dir.deleteSync(recursive: true);
+  } catch (_) {}
+}
+
+/// Create play store icon
+void createPlayStoreIcon(Image image, String? flavor) {
+  final template = AndroidIconTemplate(
+      directoryName: constants.androidMainFolder(flavor), size: 512);
+  final Image newFile = createResizedImage(template.size, image);
+  File(template.directoryName + constants.androidPlayStoreFileName)
+      .create(recursive: true)
+      .then((File file) {
+    file.writeAsBytesSync(encodePng(newFile));
+  });
 }
 
 /// Ensures that the Android icon name is in the correct format
@@ -83,6 +112,7 @@ void createAdaptiveIcons(
       iconsLauncherConfig['adaptive_icon_background'];
   final String foregroundImagePath =
       iconsLauncherConfig['adaptive_icon_foreground'];
+  final String? roundImagePath = iconsLauncherConfig['adaptive_icon_round'];
   final Image? foregroundImage = decodeImageFile(foregroundImagePath);
   if (foregroundImage == null) {
     return;
@@ -100,6 +130,16 @@ void createAdaptiveIcons(
   } else {
     createAdaptiveIconMipMapXmlFile(iconsLauncherConfig, flavor);
     updateColorsXmlFile(backgroundConfig, flavor);
+  }
+
+  if (roundImagePath != null) {
+    final Image? roundImage = decodeImageFile(roundImagePath);
+    if (roundImage != null) {
+      for (AndroidIconTemplate androidIcon in androidIcons) {
+        overwriteExistingRoundIcons(
+            androidIcon, roundImage, constants.androidRoundFileName, flavor);
+      }
+    }
   }
 }
 
@@ -170,16 +210,35 @@ void createAdaptiveBackgrounds(Map<String, dynamic> yamlConfig,
             '.xml')
         .create(recursive: true)
         .then((File adaptiveIcon) {
-      adaptiveIcon.writeAsString(xml_template.icLauncherDrawableBackgroundXml);
+      adaptiveIcon.writeAsString(xml_template.icLauncherMipMapXml);
     });
+
+    if (isConfigAdaptiveRoundIcon(yamlConfig)) {
+      File(constants.androidAdaptiveXmlFolder(flavor) +
+              getNewIconName(yamlConfig) +
+              '_round.xml')
+          .create(recursive: true)
+          .then((File adaptiveIcon) {
+        adaptiveIcon.writeAsString(xml_template.icLauncherRoundMipMapXml);
+      });
+    }
   } else {
     File(constants.androidAdaptiveXmlFolder(flavor) +
             constants.androidDefaultIconName +
             '.xml')
         .create(recursive: true)
         .then((File adaptiveIcon) {
-      adaptiveIcon.writeAsString(xml_template.icLauncherDrawableBackgroundXml);
+      adaptiveIcon.writeAsString(xml_template.icLauncherMipMapXml);
     });
+    if (isConfigAdaptiveRoundIcon(yamlConfig)) {
+      File(constants.androidAdaptiveXmlFolder(flavor) +
+              constants.androidDefaultIconName +
+              '_round.xml')
+          .create(recursive: true)
+          .then((File adaptiveIcon) {
+        adaptiveIcon.writeAsString(xml_template.icLauncherRoundMipMapXml);
+      });
+    }
   }
 }
 
@@ -227,6 +286,12 @@ bool isCustomAndroidFile(Map<String, dynamic> config) {
   return androidConfig is String;
 }
 
+/// Check to see if specified Android adaptive round icon
+bool isConfigAdaptiveRoundIcon(Map<String, dynamic> config) {
+  final String? roundImagePath = config['adaptive_icon_round'];
+  return roundImagePath != null;
+}
+
 /// return the new launcher icon file name
 String getNewIconName(Map<String, dynamic> config) {
   return config['android'];
@@ -236,6 +301,26 @@ String getNewIconName(Map<String, dynamic> config) {
 /// Note: Do not change interpolation unless you end up with better results (see issue for result when using cubic
 /// interpolation)
 void overwriteExistingIcons(
+  AndroidIconTemplate template,
+  Image image,
+  String filename,
+  String? flavor,
+) {
+  final Image newFile = createResizedImage(template.size, image);
+  File(constants.androidResFolder(flavor) +
+          template.directoryName +
+          '/' +
+          filename)
+      .create(recursive: true)
+      .then((File file) {
+    file.writeAsBytesSync(encodePng(newFile));
+  });
+}
+
+/// Overrides the existing launcher round icons in the project
+/// Note: Do not change interpolation unless you end up with better results (see issue for result when using cubic
+/// interpolation)
+void overwriteExistingRoundIcons(
   AndroidIconTemplate template,
   Image image,
   String filename,
@@ -276,9 +361,9 @@ Future<void> overwriteAndroidManifestWithNewIconLauncher(
   // we do not use `file.readAsLinesSync()` here because that always gets rid of the last empty newline
   final List<String> oldManifestLines =
       (await androidManifestFile.readAsString()).split('\n');
-  final List<String> transformedLines =
+  final List<String> transformedLineIcon =
       transformAndroidManifestWithNewIconLauncher(oldManifestLines, iconName);
-  await androidManifestFile.writeAsString(transformedLines.join('\n'));
+  await androidManifestFile.writeAsString(transformedLineIcon.join('\n'));
 }
 
 /// Updates only the line containing android:icon with the specified iconName
@@ -299,6 +384,60 @@ List<String> transformAndroidManifestWithNewIconLauncher(
       return line;
     }
   }).toList();
+}
+
+/// Updates the line which specifies the launcher round icon within the AndroidManifest.xml
+/// with the new icon name (only if it has changed)
+///
+/// Note: default iconName = "ic_launcher_round"
+Future<void> overwriteAndroidManifestWithNewRoundIconLauncher(
+    String iconName, File androidManifestFile) async {
+  // we do not use `file.readAsLinesSync()` here because that always gets rid of the last empty newline
+  final List<String> oldManifestLines =
+      (await androidManifestFile.readAsString()).split('\n');
+  final List<String> transformedLineIconRound =
+      transformAndroidManifestWithNewRoundIconLauncher(
+          oldManifestLines, iconName);
+  await androidManifestFile.writeAsString(transformedLineIconRound.join('\n'));
+}
+
+/// Updates only the line containing android:roundIcon with the specified iconName
+List<String> transformAndroidManifestWithNewRoundIconLauncher(
+    List<String> oldManifestLines, String iconName) {
+  bool isRoundIconExisting = false;
+  final newManifest = oldManifestLines.map((String line) {
+    if (line.contains('android:roundIcon')) {
+      // Using RegExp replace the value of android:roundIcon to point to the new icon
+      // anything but a quote of any length: [^"]*
+      // an escaped quote: \\" (escape slash, because it exists regex)
+      // quote, no quote / quote with things behind : \"[^"]*
+      // repeat as often as wanted with no quote at start: [^"]*(\"[^"]*)*
+      // escaping the slash to place in string: [^"]*(\\"[^"]*)*"
+      // result: any string which does only include escaped quotes
+      isRoundIconExisting = true;
+      return line.replaceAll(RegExp(r'android:roundIcon="[^"]*(\\"[^"]*)*"'),
+          'android:roundIcon="@mipmap/$iconName"');
+    } else {
+      return line;
+    }
+  }).toList();
+
+  if (isRoundIconExisting) {
+    return newManifest;
+  } else {
+    print('Adding android:roundIcon to manifest');
+    return oldManifestLines.map((String line) {
+      if (line.contains('android:icon')) {
+        final addLines =
+            '''android:icon="@mipmap/${constants.androidDefaultIconName}"
+        android:roundIcon="@mipmap/$iconName"''';
+        return line.replaceAll(
+            RegExp(r'android:icon="[^"]*(\\"[^"]*)*"'), addLines);
+      } else {
+        return line;
+      }
+    }).toList();
+  }
 }
 
 /// File reader

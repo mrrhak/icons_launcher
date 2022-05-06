@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.4
+ - Fixed android adaptive icon ([#3](https://github.com/mrrhak/icons_launcher/issues/3))
+ - Android files are generated to `mipmap` instead of `drawable` follow Android Studio
+ - New android config `adaptive_icon_round`
+ - New `ic_launcher-playstore.png` is generated in main folder
+ - Update example app
+ - Update README.md
+
 ## 1.1.3
  - Fixed linux
  - Improve grammar and formatting ([#1](https://github.com/mrrhak/icons_launcher/pull/1))

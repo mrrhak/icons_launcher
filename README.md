@@ -40,7 +40,7 @@
 | :-----: | :---: | :---: | :---: | :---: | :-----: |
 |    ✔️    |   ✔️   |   ✔️   |   ✔️   |   ✔️   |    ✔️    |
 
-A command-line tool which simplifies the task of updating your Flutter app's launcher icon. Full flexibility allows you to only update the launcher icon for specific platforms as needed.
+A command-line tool that simplifies the task of updating your Flutter app's launcher icon. Full flexibility allows you to only update the launcher icon for specific platforms as needed.
 
 Want to see older changes? Be sure to check out the [Changelog](https://github.com/mrrhak/icons_launcher/blob/master/CHANGELOG.md).
 

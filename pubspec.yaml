@@ -1,5 +1,5 @@
 name: icons_launcher
-description: A command-line tool which simplifies the task of updating your Flutter app's launcher icon. Full flexibility allows you to only update the launcher icon for specific platforms as needed.
+description: A command-line tool that simplifies the task of updating your Flutter app's launcher icon.
 version: 1.1.4
 maintainer: Mrr Hak
 homepage: https://github.com/mrrhak/icons_launcher

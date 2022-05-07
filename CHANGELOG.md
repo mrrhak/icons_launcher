@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.5
+ - Fixed issue with pub.dev analysis
+
 ## 1.1.4
  - Fixed android adaptive icon ([#3](https://github.com/mrrhak/icons_launcher/issues/3))
  - Android files are generated to `mipmap` instead of `drawable` follow Android Studio

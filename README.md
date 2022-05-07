@@ -1,7 +1,8 @@
 <div align="center">
   <h1 align="center">✨ Icons Launcher ✨</h1>
-
-  ###### This package is forked from [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons)
+  <p align="center">
+  A command-line tool that simplifies the task of updating your Flutter app's launcher icon. Full flexibility allows you to only update the launcher icon for specific platforms as needed.
+ </p>
 </div>
 
 <div align="center">
@@ -21,7 +22,7 @@
       alt="Build Status" />
   </a>
   <a href="https://github.com/mrrhak/icons_launcher">
-    <img src="https://img.shields.io/github/languages/code-size/mrrhak/icons_launcher?logo=github&color=brown&label=Size"
+    <img src="https://img.shields.io/github/languages/code-size/mrrhak/icons_launcher?logo=github&color=blue&label=Size"
       alt="Code size" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
@@ -34,17 +35,15 @@
   </a>
 </div>
 
+---
+
 ### **Platform Support**
 
-| Android |  iOS  | MacOS |  Web  | Linux | Windows |
-| :-----: | :---: | :---: | :---: | :---: | :-----: |
-|    ✔️    |   ✔️   |   ✔️   |   ✔️   |   ✔️   |    ✔️    |
+| Android |   iOS   |  MacOS  |   Web   |  Linux  | Windows |
+| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
+|    ✔️   |   ✔️   |   ✔️   |   ✔️    |   ✔️   |   ✔️    |
 
-A command-line tool that simplifies the task of updating your Flutter app's launcher icon. Full flexibility allows you to only update the launcher icon for specific platforms as needed.
 
-Want to see older changes? Be sure to check out the [Changelog](https://github.com/mrrhak/icons_launcher/blob/master/CHANGELOG.md).
-
----
 
 ## Guide
 
@@ -58,7 +57,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.4"
+  icons_launcher: ^1.1.5
 
 flutter_icons:
   image_path: 'assets/ic_logo_border.png'
@@ -147,7 +146,7 @@ The configuration file format is the same.
 
 ```yaml
 dev_dependencies:
-  icons_launcher: "^1.1.4"
+  icons_launcher: ^1.1.5
 
 flutter_icons:
   # image_path: 'assets/ic_logo_border.png'
@@ -193,3 +192,8 @@ flutter_icons:
   linux: false
   web: false
 ```
+
+---
+
+  <h6 align="center">This package is forked from <a href="https://pub.dev/packages/flutter_launcher_icons">flutter_launcher_icons</a></h2>
+

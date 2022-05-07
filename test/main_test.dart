@@ -16,7 +16,21 @@ void main() {
 
     // Read message constant
     final message = introMessage();
-    expect(message, contains(yaml['version']));
+    expect(message, contains(yaml['version']),
+        reason: 'Version is not correct');
+  });
+
+  test('Description checker', () {
+    // Read yaml config file
+    final File file = File('pubspec.yaml');
+    final String content = file.readAsStringSync();
+    final Map yaml = loadYaml(content);
+
+    final length = yaml['description'].toString().length;
+    expect(length, greaterThan(60),
+        reason: 'Description should be greater than 60 characters');
+    expect(length, lessThan(180),
+        reason: 'Description should be less than 180 characters');
   });
 
   test('Android icon list is correct size', () {
@@ -35,18 +49,6 @@ void main() {
       'iOS image list used to generate Contents.json for icon directory is correct size',
       () {
     expect(ios.createImageList('blah').length, 25);
-  });
-
-  test('pubspec.yaml file exists', () async {
-    const String path = 'test/config/icons_launcher_test_pubspec.yaml';
-    final Map<String, dynamic> config = main_dart.loadConfigFile(path, null);
-    expect(config.length, isNotNull);
-  });
-
-  test('Incorrect pubspec.yaml path throws correct error message', () async {
-    const String incorrectPath = 'test/config/test_pubspec.yam';
-    expect(() => main_dart.loadConfigFile(incorrectPath, null),
-        throwsA(const TypeMatcher<FileSystemException>()));
   });
 
   test('image_path is in config', () {
@@ -122,14 +124,6 @@ void main() {
       'image_path': 'assets/ic_logo_border.png',
       'android': true,
       'ios': false
-    };
-    expect(main_dart.isNeedingNewIOSIcon(flutterIconsConfig), false);
-  });
-
-  test('No new iOS icon needed - no iOS config', () {
-    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{
-      'image_path': 'assets/ic_logo_border.png',
-      'android': true
     };
     expect(main_dart.isNeedingNewIOSIcon(flutterIconsConfig), false);
   });

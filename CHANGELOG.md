@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.7
+ - Fixed image preview path
+
 ## 1.1.6
  - Fixed generate incorrect android xml file when use background color ([#4](https://github.com/mrrhak/icons_launcher/issues/4))
  - Fixed create android `ic_launcher.xml` and `ic_launcher_round.xml`

@@ -3,7 +3,7 @@ description: A command-line tool that simplifies the task of updating your Flutt
 maintainer: Mrr Hak
 homepage: https://mrrhak.com
 repository: https://github.com/mrrhak/icons_launcher
-version: 1.1.6
+version: 1.1.7
 
 dependencies:
   args: ^2.3.0

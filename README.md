@@ -37,6 +37,10 @@
 
 ---
 
+<p align="center">
+  <img src="./assets/icons_launcher_preview.png" width="500" alt="icons launcher preview"/>
+</p>
+
 ### **Platform Support**
 
 | Android |   iOS   |  MacOS  |   Web   |  Linux  | Windows |
@@ -57,7 +61,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^1.1.5
+  icons_launcher: ^1.1.6
 
 flutter_icons:
   image_path: 'assets/ic_logo_border.png'
@@ -146,7 +150,7 @@ The configuration file format is the same.
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^1.1.5
+  icons_launcher: ^1.1.6
 
 flutter_icons:
   # image_path: 'assets/ic_logo_border.png'
@@ -195,5 +199,5 @@ flutter_icons:
 
 ---
 
-  <h6 align="center">This package is forked from <a href="https://pub.dev/packages/flutter_launcher_icons">flutter_launcher_icons</a></h2>
+  <h6 align="center">This package is forked from <a href="https://pub.dev/packages/flutter_launcher_icons">flutter_launcher_icons</a> which includes fixed common issues and adds more platform support.</h6>
 

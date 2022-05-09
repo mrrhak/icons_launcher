@@ -129,6 +129,9 @@ void createAdaptiveIcons(
     createAdaptiveBackgrounds(iconsLauncherConfig, backgroundConfig, flavor);
   } else {
     createAdaptiveIconMipMapXmlFile(iconsLauncherConfig, flavor);
+    if (isConfigAdaptiveRoundIcon(iconsLauncherConfig)) {
+      createAdaptiveRoundIconMipMapXmlFile(iconsLauncherConfig, flavor);
+    }
     updateColorsXmlFile(backgroundConfig, flavor);
   }
 
@@ -182,6 +185,29 @@ void createAdaptiveIconMipMapXmlFile(
         .create(recursive: true)
         .then((File adaptiveIcon) {
       adaptiveIcon.writeAsString(xml_template.icLauncherXml);
+    });
+  }
+}
+
+/// Creates the xml file for the adaptive launcher round icon
+/// FILE LOCATED HERE: res/mipmap-anydpi/{icon-name-from-yaml-config}.xml
+void createAdaptiveRoundIconMipMapXmlFile(
+    Map<String, dynamic> iconsLauncherConfig, String? flavor) {
+  if (isCustomAndroidFile(iconsLauncherConfig)) {
+    File(constants.androidAdaptiveXmlFolder(flavor) +
+            getNewIconName(iconsLauncherConfig) +
+            '_round.xml')
+        .create(recursive: true)
+        .then((File adaptiveIcon) {
+      adaptiveIcon.writeAsString(xml_template.icLauncherRoundXml);
+    });
+  } else {
+    File(constants.androidAdaptiveXmlFolder(flavor) +
+            constants.androidDefaultIconName +
+            '_round.xml')
+        .create(recursive: true)
+        .then((File adaptiveIcon) {
+      adaptiveIcon.writeAsString(xml_template.icLauncherRoundXml);
     });
   }
 }

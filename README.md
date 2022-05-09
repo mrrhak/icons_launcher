@@ -38,7 +38,7 @@
 ---
 
 <p align="center">
-  <img src="./assets/icons_launcher_preview.png" width="500" alt="icons launcher preview"/>
+  <img src="https://raw.githubusercontent.com/mrrhak/icons_launcher/master/assets/icons_launcher_preview.png" width="500" alt="icons launcher preview"/>
 </p>
 
 ### **Platform Support**

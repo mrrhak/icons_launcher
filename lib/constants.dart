@@ -31,7 +31,7 @@ const String macosAssetFolder = 'macos/Runner/Assets.xcassets/';
 const String macosConfigFile = 'macos/Runner.xcodeproj/project.pbxproj';
 const String macosDefaultIconName = 'app_icon';
 
-const String windowsDefaultIconFolder = 'windows/Runner/resources/';
+const String windowsDefaultIconFolder = 'windows/runner/resources/';
 const String windowsDefaultIconName = 'app_icon';
 
 const String linuxDefaultIconFolder = 'snap/gui/';
@@ -58,6 +58,6 @@ String introMessage() {
   return '''\n
 ═════════════════════════════════════════════
       ✨  ICONS LAUNCHER STARTING  ✨
-                   v1.1.7
+                   v1.1.8
 ═════════════════════════════════════════════\n''';
 }

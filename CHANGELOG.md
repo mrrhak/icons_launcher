@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.8
+ - Fixed generate windows launcher icon from linux system ([#5](https://github.com/mrrhak/icons_launcher/issues/5))
+ - Deprecated `icons_launcher:main`. Use `icons_launcher:create` instead.
+ - Update README.md
+
 ## 1.1.7
  - Fixed image preview path
 

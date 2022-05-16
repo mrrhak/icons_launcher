@@ -12,7 +12,7 @@
   </a>
   <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/stars/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=deeppink&label=Stars" alt="Star on Github"></a>
   <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/forks/mrrhak/icons_launcher?color=orange&label=Forks&logo=github" alt="Forks on Github"></a>
-  <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/watchers/mrrhak/icons_launcher?color=teal&label=Watchers&logo=github" alt="Watchers on Github"></a>
+  <!-- <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/watchers/mrrhak/icons_launcher?color=teal&label=Watchers&logo=github" alt="Watchers on Github"></a> -->
   <a href="https://github.com/mrrhak/icons_launcher/graphs/contributors">
     <img src="https://img.shields.io/github/contributors/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=yellow&label=Contributors"
       alt="Contributors" />
@@ -61,7 +61,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^1.1.7
+  icons_launcher: ^1.1.8
 
 flutter_icons:
   image_path: 'assets/ic_logo_border.png'
@@ -84,14 +84,14 @@ After setting up the configuration, all that is left to do is run the package:
 
 ```sh
 flutter pub get
-flutter pub run icons_launcher:main
+flutter pub run icons_launcher:create
 ```
 
 If you name your configuration file something other than `icons_launcher.yaml` or `pubspec.yaml` you will need to specify the name of the file when running the package.
 
 ```sh
 flutter pub get
-flutter pub run icons_launcher:main -f <your config file name here>
+flutter pub run icons_launcher:create -f <your config file name here>
 ```
 
 NOTE: If you are not using the existing `pubspec.yaml` your config file must still be located in the same directory as it.
@@ -134,7 +134,10 @@ be used to fill out the background of the adaptive icon.
 
 - `adaptive_icon_round`: The image asset which will be used for the round icon of the adaptive icon (optional)
 
-_Note: iOS icons should [fill the entire image](https://stackoverflow.com/questions/26014461/black-border-on-my-ios-icon) and not contain transparent borders._
+#### Note:
+- _Android adaptive icon will generate if you provide `adaptive_icon_background` and `adaptive_icon_foreground`._
+- _`adaptive_icon_round` is optional, if you provide you must provide two config above also, the plugin will modify your `AndroidMainifest.xml` to add `android:roundIcon="@mipmap/ic_launcher_round` and create a new file `ic_launcher_round.xml` to` mipmap-anydpi-v26`_
+- _iOS icons should [fill the entire image](https://stackoverflow.com/questions/26014461/black-border-on-my-ios-icon) and not contain transparent borders._
 
 ---
 ## Flavor support
@@ -150,7 +153,7 @@ The configuration file format is the same.
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^1.1.7
+  icons_launcher: ^1.1.8
 
 flutter_icons:
   # image_path: 'assets/ic_logo_border.png'
@@ -199,5 +202,8 @@ flutter_icons:
 
 ---
 
-  <h6 align="center">This package is forked from <a href="https://pub.dev/packages/flutter_launcher_icons">flutter_launcher_icons</a> which includes fixed common issues and adds more platform support.</h6>
+  <h6 align="center" style="font-size: 8px;">
+  
+  _This package is forked from <a href="https://pub.dev/packages/flutter_launcher_icons">flutter_launcher_icons</a> which includes bugs fixed & adds more platform support._
+  </h6>
 

@@ -1,8 +1,10 @@
-import 'dart:async';
-import 'package:icons_launcher/main.dart' as icons_launcher;
+import 'create.dart' as create;
 
 /// Run the main app
+/// Deprecated. Use `create` instead.
 void main(List<String> arguments) {
-  // Start creating icons
-  unawaited(icons_launcher.createIconsFromArguments(arguments));
+  print(
+      "\n\n⚠️  This 'icons_launcher:main' is deprecated. Use 'icons_launcher:create' instead. ⚠️");
+
+  create.main(arguments);
 }

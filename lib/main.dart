@@ -35,6 +35,7 @@ List<String> getFlavors() {
 /// Creates icons from the arguments passed to the program.
 Future<void> createIconsFromArguments(List<String> arguments) async {
   print(introMessage());
+
   final ArgParser parser = ArgParser(allowTrailingOptions: true);
   parser.addFlag(helpFlag, abbr: 'h', help: 'Usage help', negatable: false);
   // Make default null to differentiate when it is explicitly set

@@ -211,7 +211,11 @@ bool isImagePathInConfig(Map<String, dynamic> flutterIconsConfig) {
 /// Checks if the config platform.
 bool hasPlatformConfig(Map<String, dynamic> flutterIconsConfig) {
   return hasAndroidConfig(flutterIconsConfig) ||
-      hasIOSConfig(flutterIconsConfig);
+      hasIOSConfig(flutterIconsConfig) ||
+      hasMacOSConfig(flutterIconsConfig) ||
+      hasWebConfig(flutterIconsConfig) ||
+      hasWindowsConfig(flutterIconsConfig) ||
+      hasLinuxConfig(flutterIconsConfig);
 }
 
 /// Checks if the config has android.

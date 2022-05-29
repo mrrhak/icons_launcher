@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.9
+ - Fixed platform config checking ([#7](https://github.com/mrrhak/icons_launcher/issues/7))
+ - Update example app
+
 ## 1.1.8
  - Fixed generate windows launcher icon from linux system ([#5](https://github.com/mrrhak/icons_launcher/issues/5))
  - Deprecated `icons_launcher:main`. Use `icons_launcher:create` instead.

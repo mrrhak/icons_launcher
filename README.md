@@ -61,7 +61,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^1.1.9
+  icons_launcher: ^2.0.0
 
 flutter_icons:
   image_path: 'assets/ic_logo_border.png'
@@ -153,7 +153,7 @@ The configuration file format is the same.
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^1.1.9
+  icons_launcher: ^2.0.0
 
 flutter_icons:
   # image_path: 'assets/ic_logo_border.png'

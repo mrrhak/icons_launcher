@@ -1,7 +1,16 @@
-import 'dart:async';
-import 'package:icons_launcher/main.dart' as icons_launcher;
+import 'package:args/args.dart';
+import 'package:icons_launcher/cli_commands.dart';
+import 'package:icons_launcher/utils/constants.dart';
 
 /// Run to create launcher icons
 void main(List<String> arguments) {
-  unawaited(icons_launcher.createIconsFromArguments(arguments));
+  print(startMessage);
+  final parser = ArgParser();
+
+  parser.addOption('path');
+  parser.addOption('flavor');
+
+  final parsedArgs = parser.parse(arguments);
+
+  createLauncherIcons(path: parsedArgs['path'], flavor: parsedArgs['flavor']);
 }

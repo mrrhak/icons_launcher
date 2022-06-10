@@ -2,7 +2,10 @@
   "cSpell.words": [
     "anydpi",
     "appiconset",
+    "hdpi",
+    "Hexa",
     "Mainifest",
+    "mdpi",
     "mipmap",
     "negatable",
     "pbxproj",
@@ -11,6 +14,9 @@
     "unawaited",
     "writeln",
     "xcassets",
-    "xcodeproj"
+    "xcodeproj",
+    "xhdpi",
+    "xxhdpi",
+    "xxxhdpi"
   ]
 }

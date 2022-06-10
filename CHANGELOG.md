@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.0
+ - Improve windows platform to highest quality icon with multiple sizes embedded ([Feature request](https://github.com/mrrhak/icons_launcher/issues/8))
+
 ## 1.1.9
  - Fixed platform config checking ([#7](https://github.com/mrrhak/icons_launcher/issues/7))
  - Update example app

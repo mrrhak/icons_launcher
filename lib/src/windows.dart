@@ -11,8 +11,15 @@ class WindowsIconTemplate {
   final int size;
 }
 
+//? https://www.creativefreedom.co.uk/icon-designers-blog/windows-ico/
+// Give a highest quality icon with a minimum of 256x256 pixels.
+// ico encoder will create multiple sizes of the icon.
+// debug ico file here (https://redketchup.io/icon-editor)
 List<WindowsIconTemplate> windowsIcons = <WindowsIconTemplate>[
-  WindowsIconTemplate(name: '', size: 128),
+  // WindowsIconTemplate(name: '', size: 16),
+  // WindowsIconTemplate(name: '', size: 32),
+  // WindowsIconTemplate(name: '', size: 48),
+  WindowsIconTemplate(name: '', size: 256),
 ];
 
 /// Creates icons with resize

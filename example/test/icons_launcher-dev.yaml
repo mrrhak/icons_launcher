@@ -1,0 +1,12 @@
+icons_launcher:
+  image_path: 'assets/ic_logo_border.png'
+  android: true
+  # adaptive_background_image: 'assets/ic_background.png' # only available for Android 8.0 devices and above
+  adaptive_background_color: '#ffffff' # only available for Android 8.0 devices and above
+  adaptive_foreground_image: 'assets/ic_foreground.png' # only available for Android 8.0 devices and above
+  # adaptive_round_image: 'assets/ic_logo_round.png' # only available for Android 8.0 devices and above #! (Optional)
+  ios: false
+  macos: false
+  windows: false
+  linux: false
+  web: false

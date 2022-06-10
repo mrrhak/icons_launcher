@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.1
+ - Fixed bug windows platform icon list embedded
+
 ## 1.2.0
  - Improve windows platform to highest quality icon with multiple sizes embedded ([Feature request](https://github.com/mrrhak/icons_launcher/issues/8))
 

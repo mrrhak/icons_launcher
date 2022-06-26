@@ -1,7 +1,7 @@
 import 'package:icons_launcher/constants.dart';
 import 'package:icons_launcher/utils.dart';
-import 'package:image/image.dart';
-import 'package:universal_io/io.dart';
+
+import '../icon.dart';
 
 /// File to handle the creation of icons for Web platform
 class WebIconTemplate {
@@ -20,57 +20,40 @@ List<WebIconTemplate> webIcons = <WebIconTemplate>[
 
 WebIconTemplate webFavicon = WebIconTemplate(name: 'favicon', size: 16);
 
-/// Creates icons with resize
-Image createResizedImage(WebIconTemplate template, Image image) {
-  if (image.width >= template.size) {
-    return copyResize(image,
-        width: template.size,
-        height: template.size,
-        interpolation: Interpolation.average);
-  } else {
-    return copyResize(image,
-        width: template.size,
-        height: template.size,
-        interpolation: Interpolation.linear);
-  }
-}
-
 /// Overwrites the default favicon
-void overwriteDefaultFavicon(WebIconTemplate template, Image image) {
-  final Image newFile = createResizedImage(template, image);
-  File(webDefaultFaviconFolder + template.name + '.png')
-    ..writeAsBytesSync(encodePng(newFile));
+void overwriteDefaultFavicon(WebIconTemplate template, Icon image) {
+  image.saveResizedPng(
+    template.size,
+    webDefaultFaviconFolder + template.name + '.png',
+  );
 }
 
 /// Overwrites the default icons
-void overwriteDefaultIcons(WebIconTemplate template, Image image) {
+void overwriteDefaultIcons(WebIconTemplate template, Icon image) {
   try {
-    final Image newFile = createResizedImage(template, image);
-    File(webDefaultIconFolder + template.name + '.png')
-      ..writeAsBytesSync(encodePng(newFile));
+    image.saveResizedPng(
+      template.size,
+      webDefaultIconFolder + template.name + '.png',
+    );
   } catch (e) {
     print(e);
   }
 }
 
 /// Creates new favicon
-void saveNewFavicon(WebIconTemplate template, Image image) {
-  final Image newFile = createResizedImage(template, image);
-  File(webDefaultFaviconFolder + template.name + '.png')
-      .create(recursive: true)
-      .then((File file) {
-    file.writeAsBytesSync(encodePng(newFile));
-  });
+void saveNewFavicon(WebIconTemplate template, Icon image) {
+  image.saveResizedPng(
+    template.size,
+    webDefaultFaviconFolder + template.name + '.png',
+  );
 }
 
 /// Creates new icons
-void saveNewIcons(WebIconTemplate template, Image image) {
-  final Image newFile = createResizedImage(template, image);
-  File(webDefaultIconFolder + template.name + '.png')
-      .create(recursive: true)
-      .then((File file) {
-    file.writeAsBytesSync(encodePng(newFile));
-  });
+void saveNewIcons(WebIconTemplate template, Icon image) {
+  image.saveResizedPng(
+    template.size,
+    webDefaultIconFolder + template.name + '.png',
+  );
 }
 
 /// Create icons
@@ -78,7 +61,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   final String filePath = config['image_path_web'] ?? config['image_path'];
   // decodeImageFile shows error message if null
   // so can return here if image is null
-  final Image? image = decodeImage(File(filePath).readAsBytesSync());
+  final image = Icon.loadFile(filePath);
   if (image == null) {
     return;
   }

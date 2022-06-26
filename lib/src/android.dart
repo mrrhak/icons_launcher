@@ -2,8 +2,9 @@ import 'package:icons_launcher/constants.dart' as constants;
 import 'package:icons_launcher/custom_exceptions.dart';
 import 'package:icons_launcher/utils.dart';
 import 'package:icons_launcher/xml_templates.dart' as xml_template;
-import 'package:image/image.dart';
 import 'package:universal_io/io.dart';
+
+import '../icon.dart';
 
 /// Class android icon template model
 class AndroidIconTemplate {
@@ -36,7 +37,7 @@ void createDefaultIcons(
     Map<String, dynamic> iconsLauncherConfig, String? flavor) {
   printStatus('Creating default icons Android');
   final String filePath = getAndroidIconPath(iconsLauncherConfig);
-  final Image? image = decodeImageFile(filePath);
+  final image = Icon.loadFile(filePath);
   if (image == null) {
     return;
   }
@@ -81,15 +82,11 @@ void removeConflictDir() {
 }
 
 /// Create play store icon
-void createPlayStoreIcon(Image image, String? flavor) {
+void createPlayStoreIcon(Icon image, String? flavor) {
   final template = AndroidIconTemplate(
       directoryName: constants.androidMainFolder(flavor), size: 512);
-  final Image newFile = createResizedImage(template.size, image);
-  File(template.directoryName + constants.androidPlayStoreFileName)
-      .create(recursive: true)
-      .then((File file) {
-    file.writeAsBytesSync(encodePng(newFile));
-  });
+  image.saveResizedPng(template.size,
+      template.directoryName + constants.androidPlayStoreFileName);
 }
 
 /// Ensures that the Android icon name is in the correct format
@@ -113,7 +110,7 @@ void createAdaptiveIcons(
   final String foregroundImagePath =
       iconsLauncherConfig['adaptive_icon_foreground'];
   final String? roundImagePath = iconsLauncherConfig['adaptive_icon_round'];
-  final Image? foregroundImage = decodeImageFile(foregroundImagePath);
+  final foregroundImage = Icon.loadFile(foregroundImagePath);
   if (foregroundImage == null) {
     return;
   }
@@ -136,7 +133,7 @@ void createAdaptiveIcons(
   }
 
   if (roundImagePath != null) {
-    final Image? roundImage = decodeImageFile(roundImagePath);
+    final roundImage = Icon.loadFile(roundImagePath);
     if (roundImage != null) {
       for (AndroidIconTemplate androidIcon in androidIcons) {
         overwriteExistingRoundIcons(
@@ -216,7 +213,7 @@ void createAdaptiveRoundIconMipMapXmlFile(
 void createAdaptiveBackgrounds(Map<String, dynamic> yamlConfig,
     String adaptiveIconBackgroundImagePath, String? flavor) {
   final String filePath = adaptiveIconBackgroundImagePath;
-  final Image? image = decodeImageFile(filePath);
+  final image = Icon.loadFile(filePath);
   if (image == null) {
     return;
   }
@@ -328,19 +325,17 @@ String getNewIconName(Map<String, dynamic> config) {
 /// interpolation)
 void overwriteExistingIcons(
   AndroidIconTemplate template,
-  Image image,
+  Icon image,
   String filename,
   String? flavor,
 ) {
-  final Image newFile = createResizedImage(template.size, image);
-  File(constants.androidResFolder(flavor) +
-          template.directoryName +
-          '/' +
-          filename)
-      .create(recursive: true)
-      .then((File file) {
-    file.writeAsBytesSync(encodePng(newFile));
-  });
+  image.saveResizedPng(
+    template.size,
+    constants.androidResFolder(flavor) +
+        template.directoryName +
+        '/' +
+        filename,
+  );
 }
 
 /// Overrides the existing launcher round icons in the project
@@ -348,34 +343,30 @@ void overwriteExistingIcons(
 /// interpolation)
 void overwriteExistingRoundIcons(
   AndroidIconTemplate template,
-  Image image,
+  Icon image,
   String filename,
   String? flavor,
 ) {
-  final Image newFile = createResizedImage(template.size, image);
-  File(constants.androidResFolder(flavor) +
-          template.directoryName +
-          '/' +
-          filename)
-      .create(recursive: true)
-      .then((File file) {
-    file.writeAsBytesSync(encodePng(newFile));
-  });
+  image.saveResizedPng(
+    template.size,
+    constants.androidResFolder(flavor) +
+        template.directoryName +
+        '/' +
+        filename,
+  );
 }
 
 /// Saves new launcher icons to the project, keeping the old launcher icons.
 /// Note: Do not change interpolation unless you end up with better results
-void saveNewImages(AndroidIconTemplate template, Image image,
+void saveNewImages(AndroidIconTemplate template, Icon image,
     String iconFilePath, String? flavor) {
-  final Image newFile = createResizedImage(template.size, image);
-  File(constants.androidResFolder(flavor) +
-          template.directoryName +
-          '/' +
-          iconFilePath)
-      .create(recursive: true)
-      .then((File file) {
-    file.writeAsBytesSync(encodePng(newFile));
-  });
+  image.saveResizedPng(
+    template.size,
+    constants.androidResFolder(flavor) +
+        template.directoryName +
+        '/' +
+        iconFilePath,
+  );
 }
 
 /// Updates the line which specifies the launcher icon within the AndroidManifest.xml

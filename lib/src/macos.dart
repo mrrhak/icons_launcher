@@ -1,8 +1,10 @@
 import 'dart:convert';
+
 import 'package:icons_launcher/constants.dart';
 import 'package:icons_launcher/utils.dart';
-import 'package:image/image.dart';
 import 'package:universal_io/io.dart';
+
+import '../icon.dart';
 
 /// File to handle the creation of icons for MacOS platform
 class MacOSIconTemplate {
@@ -28,14 +30,14 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   final String filePath = config['image_path_macos'] ?? config['image_path'];
   // decodeImageFile shows error message if null
   // so can return here if image is null
-  final Image? image = decodeImage(File(filePath).readAsBytesSync());
+  final image = Icon.loadFile(filePath);
   if (image == null) {
     return;
   }
   if (config['remove_alpha_macos'] is bool && config['remove_alpha_macos']) {
-    image.channels = Channels.rgb;
+    image.removeAlpha();
   }
-  if (image.channels == Channels.rgba) {
+  if (image.hasAlpha) {
     print(
         '\nWARNING: Icons with alpha channel are not allowed in the Apple App Store.\nSet "remove_alpha_macos: true" to remove it.\n');
   }
@@ -76,36 +78,21 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
 
 /// Note: Do not change interpolation unless you end up with better results (see issue for result when using cubic
 /// interpolation)
-void overwriteDefaultIcons(MacOSIconTemplate template, Image image) {
-  final Image newFile = createResizedImage(template, image);
-  File(macosDefaultIconFolder + macosDefaultIconName + template.name + '.png')
-    ..writeAsBytesSync(encodePng(newFile));
+void overwriteDefaultIcons(MacOSIconTemplate template, Icon image) {
+  image.saveResizedPng(
+    template.size,
+    macosDefaultIconFolder + macosDefaultIconName + template.name + '.png',
+  );
 }
 
 /// Note: Do not change interpolation unless you end up with better results (see issue for result when using cubic
 /// interpolation)
-void saveNewIcons(MacOSIconTemplate template, Image image, String newIconName) {
+void saveNewIcons(MacOSIconTemplate template, Icon image, String newIconName) {
   final String newIconFolder = macosAssetFolder + newIconName + '.appiconset/';
-  final Image newFile = createResizedImage(template, image);
-  File(newIconFolder + newIconName + template.name + '.png')
-      .create(recursive: true)
-      .then((File file) {
-    file.writeAsBytesSync(encodePng(newFile));
-  });
-}
-
-Image createResizedImage(MacOSIconTemplate template, Image image) {
-  if (image.width >= template.size) {
-    return copyResize(image,
-        width: template.size,
-        height: template.size,
-        interpolation: Interpolation.average);
-  } else {
-    return copyResize(image,
-        width: template.size,
-        height: template.size,
-        interpolation: Interpolation.linear);
-  }
+  image.saveResizedPng(
+    template.size,
+    newIconFolder + newIconName + template.name + '.png',
+  );
 }
 
 /// Change the launcher icon

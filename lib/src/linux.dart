@@ -1,7 +1,8 @@
 import 'package:icons_launcher/constants.dart';
 import 'package:icons_launcher/utils.dart';
-import 'package:image/image.dart';
 import 'package:universal_io/io.dart';
+
+import '../icon.dart';
 
 /// File to handle the creation of icons for Linux platform
 class LinuxIconTemplate {
@@ -16,42 +17,15 @@ List<LinuxIconTemplate> linuxIcons = <LinuxIconTemplate>[
   LinuxIconTemplate(name: linuxDefaultIconName, size: 256),
 ];
 
-/// Create the resized icons
-Image createResizedImage(LinuxIconTemplate template, Image image) {
-  if (image.width >= template.size) {
-    return copyResize(
-      image,
-      width: template.size,
-      height: template.size,
-      interpolation: Interpolation.average,
-    );
-  } else {
-    return copyResize(
-      image,
-      width: template.size,
-      height: template.size,
-      interpolation: Interpolation.linear,
-    );
-  }
-}
-
-/// Override the default icon
-void overwriteDefaultIcons(LinuxIconTemplate template, Image image) {
-  final Image newFile = createResizedImage(template, image);
-  File(linuxDefaultIconFolder + template.name + '.png')
-    ..writeAsBytesSync(encodePng(newFile));
-}
+///
 
 /// Save the icons
-void saveNewIcons(LinuxIconTemplate template, Image image,
+void saveNewIcons(LinuxIconTemplate template, Icon image,
     {String? newIconName}) {
-  final Image newFile = createResizedImage(template, image);
   final iconName = newIconName ?? template.name;
-  File(linuxDefaultIconFolder + iconName + '.png')
-      .create(recursive: true)
-      .then((File file) {
-    file.writeAsBytesSync(encodePng(newFile));
-  });
+  final filePath = linuxDefaultIconFolder + iconName + '.png';
+
+  image.saveResizedPng(template.size, filePath);
 }
 
 /// Create the icons
@@ -59,7 +33,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   final String filePath = config['image_path_linux'] ?? config['image_path'];
   // decodeImageFile shows error message if null
   // so can return here if image is null
-  final Image? image = decodeImage(File(filePath).readAsBytesSync());
+  final image = Icon.loadFile(filePath);
   if (image == null) {
     return;
   }

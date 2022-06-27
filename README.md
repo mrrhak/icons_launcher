@@ -61,7 +61,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^2.0.0
+  icons_launcher: ^2.0.0-beta-1
 
 icons_launcher:
   image_path: 'assets/ic_logo_border.png'
@@ -159,7 +159,7 @@ The configuration file format is the same.
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^2.0.0
+  icons_launcher: ^2.0.0-beta-1
 
 icons_launcher:
   # image_path: 'assets/ic_logo_border.png'

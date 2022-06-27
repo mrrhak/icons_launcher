@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0-beta-1
+## 2.0.0-beta.1
  - Rewrite and improve flavor support
  - New flavor script (E.g. `icons_launcher-dev.yaml`)
      ```sh

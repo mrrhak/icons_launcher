@@ -106,33 +106,27 @@ In the above configuration, the package is setup to replace the existing launche
 
 Shown below is the full list of attributes which you can specify within your Icons Launcher configuration.
 
-- `android`/`ios`/`web`/`macos`/`windows`/`linux`
-  - `true`: Override the default existing Flutter launcher icons for the platform specified
-  - `false`: Ignore making launcher icons for the platform specified
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `android` | Boolean | `false` | Override the default existing of android |
+| `ios` | Boolean | `false` | Override the default existing of ios |
+| `web` | Boolean | `false` | Override the default existing of web |
+| `macos` | Boolean | `false` | Override the default existing of macos |
+| `windows` | Boolean | `false` | Override the default existing of windows |
+| `linux` | Boolean | `false` | Override the default existing of linux |
+| `image_path` | String | `null` | The image file path which you want to use as the app launcher icon |
+| `image_path_android` | String | `null` | The image file path specific for Android platform (optional - if not defined then the _image_path_ is used) |
+| `image_path_ios` | String | `null` | The image file path specific for iOS platform (optional - if not defined then the _image_path_ is used) |
+| `image_path_web` | String | `null` | The image file path specific for Web platform (optional - if not defined then the _image_path_ is used) |
+| `image_path_macos` | String | `null` | The image file path specific for macOS platform (optional - if not defined then the _image_path_ is used) |
+| `image_path_windows` | String | `null` | The image file path specific for Windows platform (optional - if not defined then the _image_path_ is used) |
+| `image_path_linux` | String | `null` | The image file path specific for Linux platform (optional - if not defined then the _image_path_ is used) |
+| `color_adaptive_background` | String | `null` | The color (E.g. _"#ffffff"_) used to fill out the background of the adaptive icon |
+| `image_adaptive_background` | String | `null` | The image asset (E.g. _"assets/ic_background.png"_) used to fill out the background of the adaptive icon |
+| `image_adaptive_foreground` | String | `null` | The image asset used for the icon foreground of the adaptive icon |
+| `image_adaptive_round` | String | `null` | The image asset used for the round icon of the adaptive icon (optional) |
 
-- `image_path`: The location of the icon image file which you want to use as the app launcher icon
-
-- `image_path_android`: The location of the icon image file specific for Android platform (optional - if not defined then the image_path is used)
-
-- `image_path_ios`: The location of the icon image file specific for iOS platform (optional - if not defined then the image_path is used)
-
-- `image_path_macos`: The location of the icon image file specific for MacOS platform (optional - if not defined then the image_path is used)
-
-- `image_path_windows`: The location of the icon image file specific for Windows platform (optional - if not defined then the image_path is used)
-
-- `image_path_linux`: The location of the icon image file specific for Linux platform (optional - if not defined then the image_path is used)
-
-- `image_path_web`: The location of the icon image file specific for Web platform (optional - if not defined then the image_path is used)
-
-- `image_adaptive_background`: The image asset (E.g. `"assets/ic_background.png"`) used to fill out the background of the adaptive icon.
-
-- `color_adaptive_background`: The color (E.g. `"#ffffff"`) used to fill out the background of the adaptive icon.
-
-- `image_adaptive_foreground`: The image asset used for the icon foreground of the adaptive icon
-
-- `image_adaptive_round`: The image asset used for the round icon of the adaptive icon (optional)
-
-#### Note:
+### Note:
 - _Android adaptive icon will generate if you provide `image_adaptive_background` or `color_adaptive_background` and `image_adaptive_foreground`._
 - _`image_adaptive_round` is optional, if you provide you must provide two config above also, the plugin will modify your `AndroidMainifest.xml` to add `android:roundIcon="@mipmap/ic_launcher_round` and create a new file `ic_launcher_round.xml` to` mipmap-anydpi-v26`_
 - _iOS icons should [fill the entire image](https://stackoverflow.com/questions/26014461/black-border-on-my-ios-icon) and not contain transparent borders._

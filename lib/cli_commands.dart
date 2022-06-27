@@ -2,15 +2,13 @@ library icons_launcher_cli;
 
 import 'package:icons_launcher/utils/cli_logger.dart';
 import 'package:icons_launcher/utils/constants.dart';
-import 'package:image/image.dart';
+import 'package:icons_launcher/utils/icon.dart';
 import 'package:path/path.dart' as p;
 import 'package:universal_io/io.dart';
 import 'package:yaml/yaml.dart';
-
-import 'class/template.dart';
+import 'utils/template.dart';
 import 'utils/utils.dart';
-
-part 'flavor_helper.dart';
+part 'utils/flavor_helper.dart';
 part 'src/android.dart';
 part 'src/ios.dart';
 part 'src/macos.dart';
@@ -85,26 +83,26 @@ void _checkConfig(Map<String, dynamic> config) {
     exit(1);
   }
 
-  if (config.containsKey('adaptive_foreground_image') &&
-      !config.containsKey('adaptive_background_image') &&
-      !config.containsKey('adaptive_background_color')) {
+  if (config.containsKey('image_adaptive_foreground') &&
+      !config.containsKey('image_adaptive_background') &&
+      !config.containsKey('color_adaptive_background')) {
     CliLogger.error(
-        'Please add an `adaptive_background_image` or `adaptive_background_color` to your config file.');
+        'Please add an `image_adaptive_background` or `color_adaptive_background` to your config file.');
     exit(1);
   }
 
-  if (!config.containsKey('adaptive_foreground_image') &&
-      (config.containsKey('adaptive_background_image') ||
-          config.containsKey('adaptive_background_color'))) {
+  if (!config.containsKey('image_adaptive_foreground') &&
+      (config.containsKey('image_adaptive_background') ||
+          config.containsKey('color_adaptive_background'))) {
     CliLogger.error(
-        'Please add an `adaptive_foreground_image` to your config file.');
+        'Please add an `image_adaptive_foreground` to your config file.');
     exit(1);
   }
 
-  if (config.containsKey('adaptive_background_image') &&
-      config.containsKey('adaptive_background_color')) {
+  if (config.containsKey('image_adaptive_background') &&
+      config.containsKey('color_adaptive_background')) {
     CliLogger.error('Your `icons_launcher` section can not contain both a '
-        '`adaptive_background_image` and `adaptive_background_color`.');
+        '`image_adaptive_background` and `color_adaptive_background`.');
     exit(1);
   }
 
@@ -127,12 +125,6 @@ void _checkConfig(Map<String, dynamic> config) {
   final imagePathWeb =
       _checkImageExists(config: config, parameter: 'image_path_web') ??
           imagePath;
-  // final adaptiveIconBackground =
-  //     _checkImageExists(config: config, parameter: 'adaptive_icon_background');
-  // final adaptiveIconForeground =
-  //     _checkImageExists(config: config, parameter: 'adaptive_icon_foreground');
-  // final adaptiveIconRound =
-  //     _checkImageExists(config: config, parameter: 'adaptive_icon_round');
 
   final List<String> errors = <String>[];
   if (isNeedingNewAndroidIcon(config) && imagePathAndroid == null) {
@@ -181,11 +173,11 @@ void _createIconsByConfig(Map<String, dynamic> config) {
       _checkImageExists(config: config, parameter: 'image_path_web') ??
           imagePath;
   final adaptiveBgImage =
-      _checkImageExists(config: config, parameter: 'adaptive_background_image');
+      _checkImageExists(config: config, parameter: 'image_adaptive_background');
   final adaptiveFgImage =
-      _checkImageExists(config: config, parameter: 'adaptive_foreground_image');
+      _checkImageExists(config: config, parameter: 'image_adaptive_foreground');
   final adaptiveRoundImage =
-      _checkImageExists(config: config, parameter: 'adaptive_round_image');
+      _checkImageExists(config: config, parameter: 'image_adaptive_round');
 
   //! Android
   if (isNeedingNewAndroidIcon(config) && imagePathAndroid != null) {
@@ -193,8 +185,9 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   }
 
   String? adaptiveBg;
-  if (config.containsKey('adaptive_background_color')) {
-    adaptiveBg = config['adaptive_background_color'];
+  if (config.containsKey('color_adaptive_background')) {
+    final adaptiveBgColor = config['color_adaptive_background'].toString();
+    adaptiveBg = adaptiveBgColor;
   } else if (adaptiveBgImage != null) {
     adaptiveBg = adaptiveBgImage;
   }
@@ -202,6 +195,19 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   //! Android Adaptive
   final isAdaptiveIconExists = adaptiveBg != null && adaptiveFgImage != null;
   if (hasAndroidAdaptiveConfig(config) && isAdaptiveIconExists) {
+    final int minSdk = _minSdk();
+    if (minSdk == 0) {
+      CliLogger.error(
+          'Can not find minSdk from android/app/build.gradle or android/local.properties',
+          level: CliLoggerLevel.two);
+      exit(1);
+    }
+    if (minSdk < 26 && imagePathAndroid == null) {
+      CliLogger.error(
+          'Adaptive icon config found but no regular Android config. API 26 the regular Android config is required',
+          level: CliLoggerLevel.two);
+      exit(1);
+    }
     _createAndroidAdaptiveIcon(
       background: adaptiveBg,
       foreground: adaptiveFgImage,

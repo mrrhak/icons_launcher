@@ -1,5 +1,3 @@
-import 'package:image/image.dart';
-
 /// Checks if the config file contains a `platform`
 bool hasPlatformConfig(Map<String, dynamic> config) {
   return isNeedingNewAndroidIcon(config) ||
@@ -23,9 +21,9 @@ bool isNeedingNewAndroidIcon(Map<String, dynamic> config) {
 /// Checks if the config has android adaptive.
 bool hasAndroidAdaptiveConfig(Map<String, dynamic> config) {
   return isNeedingNewAndroidIcon(config) &&
-      (config.containsKey('adaptive_background_image') ||
-          config.containsKey('adaptive_background_color')) &&
-      config.containsKey('adaptive_foreground_image');
+      (config.containsKey('image_adaptive_background') ||
+          config.containsKey('color_adaptive_background')) &&
+      config.containsKey('image_adaptive_foreground');
 }
 
 /// Checks if the config has ios.
@@ -76,25 +74,6 @@ bool hasWebConfig(Map<String, dynamic> config) {
 /// Checks if the config need linux.
 bool isNeedingNewWebIcon(Map<String, dynamic> config) {
   return hasWebConfig(config) && config['web'] == true;
-}
-
-/// Handle resizing images
-Image createResizedImage(int iconSize, Image image) {
-  if (image.width >= iconSize) {
-    return copyResize(
-      image,
-      width: iconSize,
-      height: iconSize,
-      interpolation: Interpolation.average,
-    );
-  } else {
-    return copyResize(
-      image,
-      width: iconSize,
-      height: iconSize,
-      interpolation: Interpolation.linear,
-    );
-  }
 }
 
 /// Checking color code

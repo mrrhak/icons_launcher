@@ -1,19 +1,19 @@
-flutter_icons:
-  # image_path: 'assets/ic_logo_border.png'
-  image_path_android: 'assets/ic_logo_border.png'
-  image_path_ios: 'assets/ic_logo_rectangle.png'
-  image_path_macos: 'assets/ic_logo_border.png'
-  image_path_windows: 'assets/ic_logo_border.png'
-  image_path_linux: 'assets/ic_logo_border.png'
-  image_path_web: 'assets/ic_logo_border.png'
-  adaptive_icon_background: 'assets/ic_background.png' # only available for Android 8.0 devices and above
-  adaptive_icon_foreground: 'assets/ic_foreground.png' # only available for Android 8.0 devices and above
-  adaptive_icon_round: 'assets/ic_logo_round.png' # only available for Android 8.0 devices and above #! (Optional)
-  remove_alpha_ios: false
-  remove_alpha_macos: false
+# flutter pub run icons_launcher:create --flavor prod
+icons_launcher:
+  image_path: 'assets/ic_logo_border.png'
+  # image_path_android: 'assets/ic_logo_border.png'
+  # image_path_ios: 'assets/ic_logo_rectangle.png'
+  # image_path_macos: 'assets/ic_logo_border.png'
+  # image_path_windows: 'assets/ic_logo_border.png'
+  # image_path_linux: 'assets/ic_logo_border.png'
+  # image_path_web: 'assets/ic_logo_border.png'
+  # color_adaptive_background: '#ffffff' # only available for Android 8.0 devices and above
+  image_adaptive_background: 'assets/ic_background.png' # only available for Android 8.0 devices and above
+  image_adaptive_foreground: 'assets/ic_foreground.png' # only available for Android 8.0 devices and above
+  image_adaptive_round: 'assets/ic_logo_round.png' # only available for Android 8.0 devices and above #! (Optional)
   android: true
   ios: true
-  macos: false
-  windows: true
-  linux: false
   web: true
+  macos: false
+  windows: false
+  linux: false

@@ -1,5 +1,40 @@
 # Changelog
 
+## 2.0.0-beta-1
+ - Rewrite and improve flavor support
+ - New flavor script (E.g. `icons_launcher-dev.yaml`)
+     ```sh
+     flutter pub run icons_launcher:create --flavor dev
+     ```
+ - Add new config
+   - `color_adaptive_background`
+ - ## Breaking changes:
+   - Rename runner from `icons_launcher:main` to  `icons_launcher:create`
+
+      ```sh
+      flutter pub run icons_launcher:create
+      ```
+   - Rename config from `flutter_icons:` to `icons_launcher:`
+
+      ```yaml
+      icons_launcher:
+        image_path: 'icon.png'
+        android: true
+      ```
+   - Rename config option:
+     - from `adaptive_icon_background` to `image_adaptive_background`
+     - from `adaptive_icon_foreground` to `image_adaptive_foreground`
+     - from `adaptive_icon_round` to `image_adaptive_round`
+   - Config option removed
+     - `remove_alpha_ios`
+     - `remove_alpha_macos`
+
+## 1.2.1
+ - Fixed bug windows platform icon list embedded
+
+## 1.2.0
+ - Improve windows platform to highest quality icon with multiple sizes embedded ([Feature request](https://github.com/mrrhak/icons_launcher/issues/8))
+
 ## 1.1.9
  - Fixed platform config checking ([#7](https://github.com/mrrhak/icons_launcher/issues/7))
  - Update example app
@@ -23,7 +58,7 @@
 ## 1.1.4
  - Fixed android adaptive icon ([#3](https://github.com/mrrhak/icons_launcher/issues/3))
  - Android files are generated to `mipmap` instead of `drawable` follow Android Studio
- - New android config `adaptive_icon_round`
+ - New android config `image_adaptive_round`
  - New `ic_launcher-playstore.png` is generated in main folder
  - Update example app
  - Update README.md

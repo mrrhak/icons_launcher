@@ -3,7 +3,7 @@ part of icons_launcher_cli;
 void _createLinuxIcons({required String imagePath}) {
   CliLogger.info('Creating Linux icons...');
 
-  final image = decodeImage(File(imagePath).readAsBytesSync());
+  final image = Icon.loadFile(imagePath);
   if (image == null) {
     CliLogger.error('The file $imagePath could not be read.',
         level: CliLoggerLevel.two);
@@ -21,13 +21,10 @@ void _createLinuxIcons({required String imagePath}) {
 
 void _saveImageLinux(
   LinuxIconTemplate template,
-  Image image,
+  Icon image,
   String fileName,
 ) {
-  final resizedImage = createResizedImage(template.size, image);
-  final file = File('$LINUX_DEFAULT_ICON_DIR$fileName');
-  file.createSync(recursive: true);
-  file.writeAsBytesSync(encodePng(resizedImage));
+  image.saveResizedPng(template.size, '$LINUX_DEFAULT_ICON_DIR$fileName');
 }
 
 void _createLinuxDesktopFile() {

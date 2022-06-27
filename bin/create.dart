@@ -4,7 +4,7 @@ import 'package:icons_launcher/utils/constants.dart';
 
 /// Run to create launcher icons
 void main(List<String> arguments) {
-  print(startMessage);
+  print(START_MESSAGE);
   final parser = ArgParser();
 
   parser.addOption('path');
@@ -13,4 +13,5 @@ void main(List<String> arguments) {
   final parsedArgs = parser.parse(arguments);
 
   createLauncherIcons(path: parsedArgs['path'], flavor: parsedArgs['flavor']);
+  print(END_MESSAGE);
 }

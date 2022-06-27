@@ -4,9 +4,19 @@ const String START_MESSAGE = '''\n
 ╔════════════════════════════════════════════════════╗
 ║             ✨✨  ICONS LAUNCHER  ✨✨             ║
 ╠════════════════════════════════════════════════════╣
-║                   Version: 2.0.0                   ║
+║                Version: $packageVersion               ║
 ╚════════════════════════════════════════════════════╝
 \n''';
+
+const String END_MESSAGE = '''\n
+==> GENERATE LAUNCHER ICONS SUCCESSFULLY <==
+            ❤️   THANK YOU! ❤️
+''';
+
+const String FLUTTER_SDK_GRADLE_FILE =
+    '/packages/flutter_tools/gradle/flutter.gradle';
+const String ANDROID_LOCAL_PROPERTIES = 'android/local.properties';
+const String ANDROID_GRADLE_FILE = 'android/app/build.gradle';
 
 const String ANDROID_COLOR_FILE = 'values/colors.xml';
 
@@ -106,11 +116,3 @@ const String LINUX_DEFAULT_ICON_DIR = 'snap/gui/';
 const String LINUX_DEFAULT_ICON_NAME = 'app_icon';
 
 const String LINUX_DEFAULT_ICON_FILE_NAME = '$LINUX_DEFAULT_ICON_NAME.png';
-
-const String startMessage = '''\n
-╔════════════════════════════════════════════════════╗
-║             ✨✨  ICONS LAUNCHER  ✨✨             ║
-╠════════════════════════════════════════════════════╣
-║                   Version: $packageVersion                   ║
-╚════════════════════════════════════════════════════╝
-\n''';

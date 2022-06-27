@@ -3,7 +3,7 @@ part of icons_launcher_cli;
 void _createMacOSIcons({required String imagePath}) {
   CliLogger.info('Creating macOS icons...');
 
-  final image = decodeImage(File(imagePath).readAsBytesSync());
+  final image = Icon.loadFile(imagePath);
   if (image == null) {
     CliLogger.error('The file $imagePath could not be read.',
         level: CliLoggerLevel.two);
@@ -27,11 +27,8 @@ void _createMacOSIcons({required String imagePath}) {
   CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
 }
 
-void _saveImageMacOS(MacOSIconTemplate template, Image image) {
-  final resizedImage = createResizedImage(template.size, image);
-  final file = File(
-    '$MACOS_DEFAULT_APP_ICON_DIR$MACOS_DEFAULT_ICON_NAME${template.name}.png',
-  );
-  file.createSync(recursive: true);
-  file.writeAsBytesSync(encodePng(resizedImage));
+void _saveImageMacOS(MacOSIconTemplate template, Icon image) {
+  final filePath =
+      '$MACOS_DEFAULT_APP_ICON_DIR$MACOS_DEFAULT_ICON_NAME${template.name}.png';
+  image.saveResizedPng(template.size, filePath);
 }

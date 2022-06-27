@@ -19,7 +19,7 @@ final adaptiveIcons = <AndroidMipMapIconTemplate>[
 void _createAndroidIcons({required String imagePath}) {
   CliLogger.info('Creating Android icons...');
 
-  final image = decodeImage(File(imagePath).readAsBytesSync());
+  final image = Icon.loadFile(imagePath);
   if (image == null) {
     CliLogger.error('The file $imagePath could not be read.',
         level: CliLoggerLevel.two);
@@ -40,33 +40,25 @@ void _createAndroidIcons({required String imagePath}) {
 
 void _saveImageAndroid(
   AndroidMipMapIconTemplate template,
-  Image image,
+  Icon image,
   String fileName,
 ) {
-  final resizedImage = createResizedImage(template.size, image);
-
   // When the flavor value is not specified we will place all the data inside the main directory.
   // However if the flavor value is specified, we need to place the data in the correct directory.
   // Default: android/app/src/main/res/
   // With a flavor: android/app/src/[flavor name]/res/
-  final file = File(
-    '${_flavorHelper.androidResFolder}${template.directoryName}/$fileName',
-  );
-  file.createSync(recursive: true);
-  file.writeAsBytesSync(encodePng(resizedImage));
+  final filePath =
+      '${_flavorHelper.androidResFolder}${template.directoryName}/$fileName';
+  image.saveResizedPng(template.size, filePath);
 }
 
-void _createPlayStoreIcon(Image image) {
+void _createPlayStoreIcon(Icon image) {
   final template = AndroidMipMapIconTemplate(
     directoryName: _flavorHelper.androidResFolder,
     size: 512,
   );
-  final Image resizedImage = createResizedImage(template.size, image);
-
-  final file =
-      File('${template.directoryName}/$ANDROID_PLAYSTORE_ICON_FILE_NAME');
-  file.createSync(recursive: true);
-  file.writeAsBytesSync(encodePng(resizedImage));
+  image.saveResizedPng(template.size,
+      '${template.directoryName}/$ANDROID_PLAYSTORE_ICON_FILE_NAME');
 }
 
 void _updateAndroidManifestIconLauncher() {
@@ -127,8 +119,7 @@ void _createAdaptiveBackground(
     _createIcLauncherColorXmlFile();
   } else {
     try {
-      final file = File(background).readAsBytesSync();
-      final backgroundImage = decodeImage(file);
+      final backgroundImage = Icon.loadFile(background);
       if (backgroundImage == null) {
         CliLogger.error(
           'The file $background could not be read.',
@@ -151,7 +142,7 @@ void _createAdaptiveBackground(
       _createIcLauncherMipMapXmlFile();
     } catch (e) {
       CliLogger.error(
-        'Incorrect `$background` of `adaptive_background_color` or `adaptive_background_image`',
+        'Incorrect `$background` of `color_adaptive_background` or `image_adaptive_background`',
         level: CliLoggerLevel.two,
       );
       exit(1);
@@ -163,7 +154,7 @@ void _createAdaptiveForeground(
   List<AndroidMipMapIconTemplate> adaptiveIcons,
   String foreground,
 ) {
-  final foregroundImage = decodeImage(File(foreground).readAsBytesSync());
+  final foregroundImage = Icon.loadFile(foreground);
   if (foregroundImage == null) {
     CliLogger.error(
       'The file $foreground could not be read.',
@@ -189,7 +180,7 @@ void _createAdaptiveRound(
   List<AndroidMipMapIconTemplate> adaptiveIcons,
   String round,
 ) {
-  final roundImage = decodeImage(File(round).readAsBytesSync());
+  final roundImage = Icon.loadFile(round);
   if (roundImage == null) {
     CliLogger.error(
       'The file $round could not be read.',
@@ -238,7 +229,7 @@ void _createColorsFile(String backgroundColor) {
     color = '#FF' + backgroundColor.replaceAll('#', '');
   } else {
     CliLogger.error(
-      'Incorrect `$backgroundColor` of `adaptive_background_color`',
+      'Incorrect `$backgroundColor` of `color_adaptive_background`',
       level: CliLoggerLevel.two,
     );
     exit(1);
@@ -256,7 +247,7 @@ void _updateColorsFile(File colorsXml, String backgroundColor) {
     color = '#FF' + backgroundColor.replaceAll('#', '');
   } else {
     CliLogger.error(
-      'Incorrect `$backgroundColor` of `adaptive_background_color`',
+      'Incorrect `$backgroundColor` of `color_adaptive_background`',
       level: CliLoggerLevel.two,
     );
     exit(1);
@@ -357,7 +348,7 @@ android:icon="@mipmap/$ANDROID_ICON_NAME"
       manifestLines.replaceRange(index, index + 1, [lineUpdated]);
       androidManifestFile.writeAsStringSync(manifestLines.join('\n'));
       CliLogger.success(
-        'Updated `android:roundIcon` to manifest',
+        'Created `android:roundIcon` to manifest',
         level: CliLoggerLevel.two,
       );
     }
@@ -377,6 +368,70 @@ void _removeAndroidManifestIconLauncherRound() {
         .replaceAll(RegExp(r'android:roundIcon="[^"]*(\\"[^"]*)*"'), '');
     manifestLines.replaceRange(index, index + 1, [lineUpdated]);
     androidManifestFile.writeAsStringSync(manifestLines.join('\n'));
-    print('   ⚡ Removed `android:roundIcon` from manifest');
+    CliLogger.success('Removed `android:roundIcon` from manifest',
+        level: CliLoggerLevel.two);
   }
+}
+
+// Retrieves the minSdk value
+int _minSdk() {
+  String? minSdkValue;
+
+  final File androidGradleFile = File(ANDROID_GRADLE_FILE);
+  final androidLines = androidGradleFile.readAsLinesSync();
+
+  //! First try -> app/build.gradle file
+  const androidLineKey = 'minSdkVersion';
+  minSdkValue = _getLineValueNumber(androidLines, androidLineKey);
+
+  //! Second try -> local.properties
+  if (minSdkValue == null) {
+    final localLines = File(ANDROID_LOCAL_PROPERTIES).readAsLinesSync();
+    const localKey = 'flutter.minSdkVersion=';
+    minSdkValue = _getLineValueNumber(localLines, localKey);
+  }
+
+  //! Third try -> flutter.gradle file (default flutter sdk)
+  if (minSdkValue == null) {
+    final gradleFile = '${_flutterSdk()}$FLUTTER_SDK_GRADLE_FILE';
+    final List<String> flutterLines = File(gradleFile).readAsLinesSync();
+    const flutterLineKey = 'minSdkVersion =';
+    minSdkValue = _getLineValueNumber(flutterLines, flutterLineKey);
+  }
+
+  return int.tryParse(minSdkValue ?? '0') ?? 0;
+}
+
+// Retrieves the flutter sdk path
+String _flutterSdk() {
+  final lines = File(ANDROID_LOCAL_PROPERTIES).readAsLinesSync();
+  const key = 'flutter.sdk=';
+  for (String line in lines) {
+    if (line.contains(key)) {
+      if (line.contains('//') && line.indexOf('//') < line.indexOf(key)) {
+        // This line is commented
+        continue;
+      }
+      // Remove the key and return the flutter sdk path
+      return line.replaceAll(key, '').trim();
+    }
+  }
+  return '';
+}
+
+// Retrieves the string number only
+String? _getLineValueNumber(List<String> lines, String key) {
+  for (String line in lines) {
+    if (line.contains(key)) {
+      if (line.contains('//') && line.indexOf('//') < line.indexOf(key)) {
+        // This line is commented
+        continue;
+      }
+      final value = line.replaceAll(RegExp(r'[^\d]'), '').trim();
+      if (value.isNotEmpty) {
+        return value;
+      }
+    }
+  }
+  return null;
 }

@@ -45,10 +45,10 @@ class CliLogger {
         space = '';
         break;
       case CliLoggerLevel.two:
-        space = '   ';
+        space = '    ';
         break;
       case CliLoggerLevel.three:
-        space = '      ';
+        space = '       ';
         break;
     }
     return space;

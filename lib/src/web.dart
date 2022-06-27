@@ -3,7 +3,7 @@ part of icons_launcher_cli;
 void _createWebIcons({required String imagePath}) {
   CliLogger.info('Creating Web icons...');
 
-  final image = decodeImage(File(imagePath).readAsBytesSync());
+  final image = Icon.loadFile(imagePath);
   if (image == null) {
     CliLogger.error('The file $imagePath could not be read.',
         level: CliLoggerLevel.two);
@@ -27,16 +27,11 @@ void _createWebIcons({required String imagePath}) {
   CliLogger.success('Generated favicon image', level: CliLoggerLevel.two);
 }
 
-void _saveImageWeb(WebIconTemplate template, Image image) {
-  final resizedImage = createResizedImage(template.size, image);
-  final file = File('$WEB_DEFAULT_ICON_DIR${template.name}');
-  file.createSync(recursive: true);
-  file.writeAsBytesSync(encodePng(resizedImage));
+void _saveImageWeb(WebIconTemplate template, Icon image) {
+  image.saveResizedPng(template.size, '$WEB_DEFAULT_ICON_DIR${template.name}');
 }
 
-void _saveFaviconImageWeb(WebIconTemplate template, Image image) {
-  final resizedImage = createResizedImage(template.size, image);
-  final file = File('$WEB_DEFAULT_FAVICON_DIR${template.name}');
-  file.createSync(recursive: true);
-  file.writeAsBytesSync(encodePng(resizedImage));
+void _saveFaviconImageWeb(WebIconTemplate template, Icon image) {
+  image.saveResizedPng(
+      template.size, '$WEB_DEFAULT_FAVICON_DIR${template.name}');
 }

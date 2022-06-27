@@ -1,5 +1,6 @@
 part of icons_launcher_cli;
 
+/// Start create windows icons
 void _createWindowsIcons({required String imagePath}) {
   CliLogger.info('Creating Windows icons...');
 
@@ -37,6 +38,7 @@ void _createWindowsIcons({required String imagePath}) {
   );
 }
 
+/// Save windows image
 void _saveImageWindow(
   List<Icon> images,
   String fileName,

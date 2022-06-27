@@ -1,3 +1,4 @@
+/// Android template
 class AndroidMipMapIconTemplate {
   AndroidMipMapIconTemplate({required this.directoryName, required this.size});
 
@@ -5,6 +6,7 @@ class AndroidMipMapIconTemplate {
   final int size;
 }
 
+/// iOS template
 class IosIconTemplate {
   IosIconTemplate({required this.size, required this.name});
 
@@ -12,6 +14,7 @@ class IosIconTemplate {
   final int size;
 }
 
+/// Web template
 class WebIconTemplate {
   WebIconTemplate({required this.size, required this.name});
 
@@ -19,6 +22,7 @@ class WebIconTemplate {
   final int size;
 }
 
+/// MacOS template
 class MacOSIconTemplate {
   MacOSIconTemplate({required this.size, required this.name});
 
@@ -26,6 +30,7 @@ class MacOSIconTemplate {
   final int size;
 }
 
+/// Windows template
 class WindowsIconTemplate {
   WindowsIconTemplate({required this.size, required this.name});
 
@@ -33,6 +38,7 @@ class WindowsIconTemplate {
   final int size;
 }
 
+/// Linux template
 class LinuxIconTemplate {
   LinuxIconTemplate({required this.size, required this.name});
 

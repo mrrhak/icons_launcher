@@ -1,5 +1,6 @@
 part of icons_launcher_cli;
 
+/// Start create web icons
 void _createWebIcons({required String imagePath}) {
   CliLogger.info('Creating Web icons...');
 
@@ -27,10 +28,12 @@ void _createWebIcons({required String imagePath}) {
   CliLogger.success('Generated favicon image', level: CliLoggerLevel.two);
 }
 
+/// Save web image
 void _saveImageWeb(WebIconTemplate template, Icon image) {
   image.saveResizedPng(template.size, '$WEB_DEFAULT_ICON_DIR${template.name}');
 }
 
+/// Save favicon image
 void _saveFaviconImageWeb(WebIconTemplate template, Icon image) {
   image.saveResizedPng(
       template.size, '$WEB_DEFAULT_FAVICON_DIR${template.name}');

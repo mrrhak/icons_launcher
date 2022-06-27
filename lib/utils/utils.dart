@@ -86,7 +86,7 @@ bool isValidHexaCode(String hexaCode) {
     return false;
   }
 
-  for (var i = 1; i < hexaCode.length; i++)
+  for (var i = 1; i < hexaCode.length; i++) {
     if (!((hexaCode[i].codeUnitAt(0) <= '0'.codeUnitAt(0) &&
             hexaCode[i].codeUnitAt(0) <= 9) ||
         (hexaCode[i].codeUnitAt(0) >= 'a'.codeUnitAt(0) &&
@@ -95,6 +95,7 @@ bool isValidHexaCode(String hexaCode) {
             hexaCode[i].codeUnitAt(0) <= 'F'.codeUnitAt(0)))) {
       return false;
     }
+  }
 
   return true;
 }
@@ -106,6 +107,7 @@ bool isImageFile(String fileName) {
       fileName.endsWith('.jpeg');
 }
 
+/// Get color xml content
 String getColorXmlContent(String color) {
   return '''
 <?xml version="1.0" encoding="utf-8"?>

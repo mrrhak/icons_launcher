@@ -13,6 +13,7 @@ class IconTemplate {
 class Icon {
   const Icon._(this.image);
 
+  /// Load an image from bytes
   static Icon? _loadBytes(Uint8List bytes) {
     final image = decodeImage(bytes);
     if (image == null) {
@@ -22,6 +23,7 @@ class Icon {
     return Icon._(image);
   }
 
+  /// Load an image from file
   static Icon? loadFile(String filePath) {
     return Icon._loadBytes(File(filePath).readAsBytesSync());
   }
@@ -30,6 +32,7 @@ class Icon {
 
   bool get hasAlpha => image.channels == Channels.rgba;
 
+  /// Remove alpha channel from the image
   void removeAlpha() {
     image.channels = Channels.rgb;
   }

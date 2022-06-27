@@ -16,6 +16,7 @@ final adaptiveIcons = <AndroidMipMapIconTemplate>[
   AndroidMipMapIconTemplate(directoryName: 'mipmap-xxxhdpi', size: 432),
 ];
 
+/// Start create Android icons
 void _createAndroidIcons({required String imagePath}) {
   CliLogger.info('Creating Android icons...');
 
@@ -38,6 +39,7 @@ void _createAndroidIcons({required String imagePath}) {
   _updateAndroidManifestIconLauncher();
 }
 
+/// Save the image to the Android directory
 void _saveImageAndroid(
   AndroidMipMapIconTemplate template,
   Icon image,
@@ -52,6 +54,7 @@ void _saveImageAndroid(
   image.saveResizedPng(template.size, filePath);
 }
 
+/// Create the play store icon
 void _createPlayStoreIcon(Icon image) {
   final template = AndroidMipMapIconTemplate(
     directoryName: _flavorHelper.androidResFolder,
@@ -61,6 +64,7 @@ void _createPlayStoreIcon(Icon image) {
       '${template.directoryName}/$ANDROID_PLAYSTORE_ICON_FILE_NAME');
 }
 
+/// Update the Android manifest with the new launcher icon
 void _updateAndroidManifestIconLauncher() {
   final androidManifestFile = File(ANDROID_MANIFEST_FILE);
   final androidManifestString = androidManifestFile.readAsStringSync();
@@ -89,6 +93,7 @@ void _updateAndroidManifestIconLauncher() {
   );
 }
 
+/// Start android adaptive icons
 void _createAndroidAdaptiveIcon({
   required String background,
   required String foreground,
@@ -109,6 +114,7 @@ void _createAndroidAdaptiveIcon({
   }
 }
 
+/// Create the adaptive background
 void _createAdaptiveBackground(
   List<AndroidMipMapIconTemplate> adaptiveIcons,
   String background,
@@ -150,6 +156,7 @@ void _createAdaptiveBackground(
   }
 }
 
+/// Create the adaptive foreground
 void _createAdaptiveForeground(
   List<AndroidMipMapIconTemplate> adaptiveIcons,
   String foreground,
@@ -176,6 +183,7 @@ void _createAdaptiveForeground(
   );
 }
 
+/// Create the adaptive round
 void _createAdaptiveRound(
   List<AndroidMipMapIconTemplate> adaptiveIcons,
   String round,
@@ -204,6 +212,7 @@ void _createAdaptiveRound(
   _createAndroidManifestIconLauncherRound();
 }
 
+/// Handle colors.xml file
 void _handleColorsXmlFile(String backgroundColor) {
   final File colorsXml =
       File('${_flavorHelper.androidResFolder}$ANDROID_COLOR_FILE');
@@ -222,6 +231,7 @@ void _handleColorsXmlFile(String backgroundColor) {
   }
 }
 
+/// Create colors.xml file
 void _createColorsFile(String backgroundColor) {
   String color = backgroundColor;
 
@@ -240,6 +250,7 @@ void _createColorsFile(String backgroundColor) {
   file.writeAsStringSync(getColorXmlContent(color));
 }
 
+// Update colors.xml file
 void _updateColorsFile(File colorsXml, String backgroundColor) {
   String color = backgroundColor;
 
@@ -273,6 +284,7 @@ void _updateColorsFile(File colorsXml, String backgroundColor) {
   colorsXml.writeAsStringSync(lines.join('\n'));
 }
 
+/// Create ic_launcher_color.xml file
 void _createIcLauncherColorXmlFile() {
   final icLauncherXml = File(
       '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_XML_FILE_NAME');
@@ -284,6 +296,7 @@ void _createIcLauncherColorXmlFile() {
   );
 }
 
+/// Create ic luncher xml file
 void _createIcLauncherMipMapXmlFile() {
   final icLauncherXml = File(
       '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_XML_FILE_NAME');
@@ -306,6 +319,7 @@ void _createIcLauncherMipMapXmlFile() {
 //   );
 // }
 
+/// Create ic_launcher_round.xml file
 void _createIcLauncherRoundMipMapXmlFile() {
   final icLauncherXml = File(
       '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME');
@@ -317,6 +331,7 @@ void _createIcLauncherRoundMipMapXmlFile() {
   );
 }
 
+/// Create android manifest icon launcher round
 void _createAndroidManifestIconLauncherRound() {
   final androidManifestFile = File(ANDROID_MANIFEST_FILE);
   final androidManifestString = androidManifestFile.readAsStringSync();
@@ -355,6 +370,7 @@ android:icon="@mipmap/$ANDROID_ICON_NAME"
   }
 }
 
+/// Remove android manifest icon launcher round
 void _removeAndroidManifestIconLauncherRound() {
   final androidManifestFile = File(ANDROID_MANIFEST_FILE);
   final androidManifestString = androidManifestFile.readAsStringSync();
@@ -373,7 +389,7 @@ void _removeAndroidManifestIconLauncherRound() {
   }
 }
 
-// Retrieves the minSdk value
+/// Retrieves the minSdk value
 int _minSdk() {
   String? minSdkValue;
 
@@ -402,7 +418,7 @@ int _minSdk() {
   return int.tryParse(minSdkValue ?? '0') ?? 0;
 }
 
-// Retrieves the flutter sdk path
+/// Retrieves the flutter sdk path
 String _flutterSdk() {
   final lines = File(ANDROID_LOCAL_PROPERTIES).readAsLinesSync();
   const key = 'flutter.sdk=';
@@ -419,7 +435,7 @@ String _flutterSdk() {
   return '';
 }
 
-// Retrieves the string number only
+/// Retrieves the string number only
 String? _getLineValueNumber(List<String> lines, String key) {
   for (String line in lines) {
     if (line.contains(key)) {

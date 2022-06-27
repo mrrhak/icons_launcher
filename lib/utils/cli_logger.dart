@@ -14,6 +14,7 @@ class CliLogger {
     print('$space⚡  $message');
   }
 
+  /// Logs a error message at the given level.
   static void error(
     String message, {
     CliLoggerLevel level = CliLoggerLevel.one,
@@ -22,6 +23,7 @@ class CliLogger {
     print('$space❌  $message');
   }
 
+  /// Logs a warning message at the given level.
   static void warning(
     String message, {
     CliLoggerLevel level = CliLoggerLevel.one,
@@ -30,6 +32,7 @@ class CliLogger {
     print('$space⚠️  $message');
   }
 
+  /// Logs a success message at the given level.
   static void success(
     String message, {
     CliLoggerLevel level = CliLoggerLevel.one,

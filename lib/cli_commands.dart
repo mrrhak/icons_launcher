@@ -29,6 +29,7 @@ void createLauncherIcons({String? path, String? flavor}) {
   _createIconsByConfig(config);
 }
 
+/// Get config file
 Map<String, dynamic> _getConfig({String? configFile}) {
   String filePath;
   if (configFile != null) {
@@ -57,6 +58,7 @@ Map<String, dynamic> _getConfig({String? configFile}) {
   return _yamlToMap(yamlMap['icons_launcher'] as YamlMap);
 }
 
+/// Convert yaml to map
 Map<String, dynamic> _yamlToMap(YamlMap yamlMap) {
   final Map<String, dynamic> map = <String, dynamic>{};
   for (final MapEntry<dynamic, dynamic> entry in yamlMap.entries) {
@@ -77,6 +79,7 @@ Map<String, dynamic> _yamlToMap(YamlMap yamlMap) {
   return map;
 }
 
+/// Validate config options
 void _checkConfig(Map<String, dynamic> config) {
   if (!hasPlatformConfig(config)) {
     CliLogger.error('Please add a `platform` target to your config file.');
@@ -152,6 +155,7 @@ void _checkConfig(Map<String, dynamic> config) {
   }
 }
 
+/// Create icons base on config
 void _createIconsByConfig(Map<String, dynamic> config) {
   final imagePath = _checkImageExists(config: config, parameter: 'image_path');
   final imagePathAndroid =
@@ -241,6 +245,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   }
 }
 
+/// Check image exists
 String? _checkImageExists({
   required Map<String, dynamic> config,
   required String parameter,

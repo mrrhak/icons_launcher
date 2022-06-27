@@ -1,5 +1,6 @@
 part of icons_launcher_cli;
 
+/// Start create macos icons
 void _createMacOSIcons({required String imagePath}) {
   CliLogger.info('Creating macOS icons...');
 
@@ -27,6 +28,7 @@ void _createMacOSIcons({required String imagePath}) {
   CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
 }
 
+/// Save macos image
 void _saveImageMacOS(MacOSIconTemplate template, Icon image) {
   final filePath =
       '$MACOS_DEFAULT_APP_ICON_DIR$MACOS_DEFAULT_ICON_NAME${template.name}.png';

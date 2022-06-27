@@ -1,5 +1,6 @@
 part of icons_launcher_cli;
 
+/// Start create linux icons
 void _createLinuxIcons({required String imagePath}) {
   CliLogger.info('Creating Linux icons...');
 
@@ -19,6 +20,7 @@ void _createLinuxIcons({required String imagePath}) {
   CliLogger.success('Created desktop entry file', level: CliLoggerLevel.two);
 }
 
+/// Save linux image
 void _saveImageLinux(
   LinuxIconTemplate template,
   Icon image,
@@ -27,6 +29,7 @@ void _saveImageLinux(
   image.saveResizedPng(template.size, '$LINUX_DEFAULT_ICON_DIR$fileName');
 }
 
+/// Create linux desktop file
 void _createLinuxDesktopFile() {
   const String desktopFile = '''
 [Desktop Entry]

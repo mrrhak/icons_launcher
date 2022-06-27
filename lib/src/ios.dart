@@ -1,5 +1,6 @@
 part of icons_launcher_cli;
 
+/// Start create ios icons
 void _createIosIcons({required String imagePath}) {
   CliLogger.info('Creating iOS icons...');
 
@@ -49,6 +50,7 @@ void _createIosIcons({required String imagePath}) {
   CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
 }
 
+/// Save ios image
 void _saveImageIos(IosIconTemplate template, Icon image) {
   final filePath =
       '$IOS_DEFAULT_ICON_DIR$IOS_DEFAULT_ICON_NAME${template.name}.png';

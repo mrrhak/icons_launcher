@@ -10,6 +10,14 @@ void _createIosIcons({required String imagePath}) {
     exit(1);
   }
 
+  if (image.hasAlpha) {
+    CliLogger.warning('App icon for iOS/iPadOS not support alpha channel',
+        level: CliLoggerLevel.two);
+    image.removeAlpha();
+    CliLogger.success('Removed alpha channel from icon',
+        level: CliLoggerLevel.two);
+  }
+
   final iosIcons = <IosIconTemplate>[
     IosIconTemplate(name: '-20x20@1x', size: 20),
     IosIconTemplate(name: '-20x20@2x', size: 40),

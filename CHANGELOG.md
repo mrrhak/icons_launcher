@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-beta.2
+ - Fixed auto remove image alpha channel for iOS platform to follow AppStore guideline
+ - Fixed iOS flavor
+ - Improved pub score
+
 ## 2.0.0-beta.1
  - Rewrite and improve flavor support
  - New flavor script (E.g. `icons_launcher-dev.yaml`)

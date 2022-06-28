@@ -85,11 +85,6 @@ const String IC_LAUNCHER_ROUND_MIP_MAP_XML = '''
 </adaptive-icon>
 ''';
 
-const String IOS_DEFAULT_ICON_DIR =
-    'ios/Runner/Assets.xcassets/AppIcon.appiconset/';
-
-const String IOS_ASSET_DIR = 'ios/Runner/Assets.xcassets/';
-
 const String IOS_CONFIG_FILE = 'ios/Runner.xcodeproj/project.pbxproj';
 
 const String IOS_DEFAULT_ICON_NAME = 'Icon-App';

@@ -50,8 +50,9 @@ Map<String, dynamic> _getConfig({String? configFile}) {
   final Map yamlMap = loadYaml(File(filePath).readAsStringSync()) as Map;
 
   if (yamlMap['icons_launcher'] is! Map) {
-    throw Exception(
+    CliLogger.error(
         "Your $filePath file does not contain a 'icons_launcher' section.");
+    exit(1);
   }
 
   // yamlMap has the type YamlMap, which has several unwanted side effects

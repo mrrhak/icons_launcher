@@ -53,6 +53,6 @@ void _createIosIcons({required String imagePath}) {
 /// Save ios image
 void _saveImageIos(IosIconTemplate template, Icon image) {
   final filePath =
-      '$IOS_DEFAULT_ICON_DIR$IOS_DEFAULT_ICON_NAME${template.name}.png';
+      '${_flavorHelper.iOSAssetsAppIconFolder}$IOS_DEFAULT_ICON_NAME${template.name}.png';
   image.saveResizedPng(template.size, filePath);
 }

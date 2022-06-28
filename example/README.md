@@ -1,4 +1,4 @@
-# Installation (2.0.0-beta.1)
+# Installation (2.0.0-beta.2)
 ```sh
 flutter pub add --dev icons_launcher
 ```

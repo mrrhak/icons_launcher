@@ -2,7 +2,7 @@
 icons_launcher:
   image_path: 'assets/ic_logo_border.png'
   # image_path_android: 'assets/ic_logo_border.png'
-  # image_path_ios: 'assets/ic_logo_rectangle.png'
+  image_path_ios: 'assets/ic_logo_rectangle.png'
   # image_path_macos: 'assets/ic_logo_border.png'
   # image_path_windows: 'assets/ic_logo_border.png'
   # image_path_linux: 'assets/ic_logo_border.png'

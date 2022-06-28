@@ -12,6 +12,7 @@ class IconTemplate {
 
 class Icon {
   const Icon._(this.image);
+  final Image image;
 
   /// Load an image from bytes
   static Icon? _loadBytes(Uint8List bytes) {
@@ -28,13 +29,12 @@ class Icon {
     return Icon._loadBytes(File(filePath).readAsBytesSync());
   }
 
-  final Image image;
-
   bool get hasAlpha => image.channels == Channels.rgba;
 
   /// Remove alpha channel from the image
   void removeAlpha() {
     image.channels = Channels.rgb;
+    image.fillBackground(0xFFFFFFFF);
   }
 
   /// Create a resized copy of this Icon

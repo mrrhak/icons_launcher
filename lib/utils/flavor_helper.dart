@@ -99,6 +99,11 @@ class _FlavorHelper {
     return _iOSFlavorName;
   }
 
+  /// Get iOS assets app icon folder
+  String get iOSAssetsAppIconFolder {
+    return 'ios/Runner/Assets.xcassets/${_flavor ?? ''}AppIcon.appiconset/';
+  }
+
   /// Get iOS assets launch image folder
   String get iOSAssetsLaunchImageFolder {
     return 'ios/Runner/Assets.xcassets/LaunchImage$_iOSFlavorName.imageset/';

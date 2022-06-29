@@ -4,6 +4,14 @@ enum CliLoggerLevel {
   three,
 }
 
+// Reset:   \x1B[0m
+// Black:   \x1B[30m
+// White:   \x1B[37m
+// Red:     \x1B[31m
+// Green:   \x1B[32m
+// Yellow:  \x1B[33m
+// Blue:    \x1B[34m
+// Cyan:    \x1B[36m
 class CliLogger {
   CliLogger();
   static void info(
@@ -11,7 +19,7 @@ class CliLogger {
     CliLoggerLevel level = CliLoggerLevel.one,
   }) {
     final String space = _getSpace(level);
-    print('$space⚡  $message');
+    print('\x1B[34m$space🌱  $message\x1B[0m');
   }
 
   /// Logs a error message at the given level.
@@ -29,7 +37,7 @@ class CliLogger {
     CliLoggerLevel level = CliLoggerLevel.one,
   }) {
     final String space = _getSpace(level);
-    print('$space⚠️  $message');
+    print('\x1B[33m$space🚧 $message\x1B[0m');
   }
 
   /// Logs a success message at the given level.
@@ -38,7 +46,7 @@ class CliLogger {
     CliLoggerLevel level = CliLoggerLevel.one,
   }) {
     final String space = _getSpace(level);
-    print('$space✅  $message');
+    print('\x1B[32m$space✅  $message\x1B[0m');
   }
 
   static String _getSpace(CliLoggerLevel level) {
@@ -48,10 +56,10 @@ class CliLogger {
         space = '';
         break;
       case CliLoggerLevel.two:
-        space = '    ';
+        space = '      ';
         break;
       case CliLoggerLevel.three:
-        space = '       ';
+        space = '         ';
         break;
     }
     return space;

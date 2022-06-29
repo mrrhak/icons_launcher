@@ -4,6 +4,7 @@
  - Fixed auto remove image alpha channel for iOS platform to follow AppStore guideline
  - Fixed iOS flavor
  - Improved pub score
+ - Improved log
 
 ## 2.0.0-beta.1
  - Rewrite and improve flavor support

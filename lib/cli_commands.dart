@@ -21,7 +21,7 @@ late _FlavorHelper _flavorHelper;
 /// Create launcher icons
 void createLauncherIcons({String? path, String? flavor}) {
   if (flavor != null) {
-    print('📱  Flavor $flavor detected! (Android, iOS)');
+    print('📱  Flavor $flavor detected! (Android, iOS)\n');
   }
   _flavorHelper = _FlavorHelper(flavor);
   final config = _getConfig(configFile: path);

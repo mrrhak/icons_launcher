@@ -59,17 +59,19 @@ void saveNewIcons(WebIconTemplate template, Icon image) {
 /// Create icons
 void createIcons(Map<String, dynamic> config, String? flavor) {
   final String filePath = config['image_path_web'] ?? config['image_path'];
+  final String faviconPath = config['favicon_path'] ?? filePath;
   // decodeImageFile shows error message if null
   // so can return here if image is null
   final image = Icon.loadFile(filePath);
-  if (image == null) {
+  final favicon = Icon.loadFile(faviconPath);
+  if (image == null || favicon == null) {
     return;
   }
 
   final dynamic webConfig = config['web'];
   if (flavor != null) {
     printStatus('Building Web launcher icon for $flavor');
-    saveNewFavicon(webFavicon, image);
+    saveNewFavicon(webFavicon, favicon);
     for (WebIconTemplate template in webIcons) {
       saveNewIcons(template, image);
     }
@@ -77,7 +79,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
     // If the Web configuration is a string then the user has specified a new icon to be created
     // and for the old icon file to be kept
     printStatus('Adding new Web launcher icon');
-    saveNewFavicon(webFavicon, image);
+    saveNewFavicon(webFavicon, favicon);
     for (WebIconTemplate template in webIcons) {
       saveNewIcons(template, image);
     }
@@ -86,7 +88,7 @@ void createIcons(Map<String, dynamic> config, String? flavor) {
   // update config file to use it
   else {
     printStatus('Overwriting default Web launcher icon with new icon');
-    overwriteDefaultFavicon(webFavicon, image);
+    overwriteDefaultFavicon(webFavicon, favicon);
     for (WebIconTemplate template in webIcons) {
       overwriteDefaultIcons(template, image);
     }

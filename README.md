@@ -61,7 +61,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^2.0.0-beta.2
+  icons_launcher: ^2.0.0-beta.3
 
 icons_launcher:
   image_path: 'assets/ic_logo_border.png'
@@ -118,6 +118,7 @@ Shown below is the full list of attributes which you can specify within your Ico
 | `image_path_android` | String | `null` | The image file path specific for Android platform (optional - if not defined then the _image_path_ is used) |
 | `image_path_ios` | String | `null` | The image file path specific for iOS platform (optional - if not defined then the _image_path_ is used) |
 | `image_path_web` | String | `null` | The image file path specific for Web platform (optional - if not defined then the _image_path_ is used) |
+| `favicon_path_web` | String | `null` | The image file path specific for Web platform (optional - if not defined then the _image_path_ is used) |
 | `image_path_macos` | String | `null` | The image file path specific for macOS platform (optional - if not defined then the _image_path_ is used) |
 | `image_path_windows` | String | `null` | The image file path specific for Windows platform (optional - if not defined then the _image_path_ is used) |
 | `image_path_linux` | String | `null` | The image file path specific for Linux platform (optional - if not defined then the _image_path_ is used) |
@@ -153,7 +154,7 @@ The configuration file format is the same.
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^2.0.0-beta.2
+  icons_launcher: ^2.0.0-beta.3
 
 icons_launcher:
   # image_path: 'assets/ic_logo_border.png'
@@ -163,6 +164,7 @@ icons_launcher:
   image_path_windows: 'assets/ic_logo_border.png'
   image_path_linux: 'assets/ic_logo_border.png'
   image_path_web: 'assets/ic_logo_border.png'
+  favicon_path_web: 'assets/ic_logo_round.png'
   image_adaptive_background: 'assets/ic_background.png'
   image_adaptive_foreground: 'assets/ic_foreground.png' 
   image_adaptive_round: 'assets/ic_logo_round.png' #! (Optional)
@@ -185,6 +187,7 @@ icons_launcher:
   image_path_windows: 'assets/ic_logo_border.png'
   image_path_linux: 'assets/ic_logo_border.png'
   image_path_web: 'assets/ic_logo_border.png'
+  favicon_path_web: 'assets/ic_logo_round.png'
   image_adaptive_background: 'assets/ic_background.png'
   image_adaptive_foreground: 'assets/ic_foreground.png' 
   image_adaptive_round: 'assets/ic_logo_round.png' #! (Optional)

@@ -22,6 +22,16 @@ void _createWebIcons({required String imagePath}) {
     _saveImageWeb(template, image);
   }
   CliLogger.success('Generated icon images', level: CliLoggerLevel.two);
+}
+
+/// Start create web favicon
+void _createWebFavicon({required String imagePath}) {
+  final image = Icon.loadFile(imagePath);
+  if (image == null) {
+    CliLogger.error('The file $imagePath could not be read.',
+        level: CliLoggerLevel.two);
+    exit(1);
+  }
 
   final webFavicon = WebIconTemplate(name: 'favicon.png', size: 16);
   _saveFaviconImageWeb(webFavicon, image);

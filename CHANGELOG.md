@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.0-beta.3
+ - Add web custom favicon support 
+
 ## 2.0.0-beta.2
  - Fixed auto remove image alpha channel for iOS platform to follow AppStore guideline
  - Fixed iOS flavor

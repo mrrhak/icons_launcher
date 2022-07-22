@@ -177,6 +177,9 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   final imagePathWeb =
       _checkImageExists(config: config, parameter: 'image_path_web') ??
           imagePath;
+  final faviconPathWeb =
+      _checkImageExists(config: config, parameter: 'favicon_path_web') ??
+          imagePath;
   final adaptiveBgImage =
       _checkImageExists(config: config, parameter: 'image_adaptive_background');
   final adaptiveFgImage =
@@ -231,8 +234,13 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   }
 
   //! Web
-  if (isNeedingNewWebIcon(config) && imagePathWeb != null) {
-    _createWebIcons(imagePath: imagePathWeb);
+  if (isNeedingNewWebIcon(config)) {
+    if (imagePathWeb != null) {
+      _createWebIcons(imagePath: imagePathWeb);
+    }
+    if (faviconPathWeb != null) {
+      _createWebFavicon(imagePath: faviconPathWeb);
+    }
   }
 
   //! Windows

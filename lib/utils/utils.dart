@@ -1,79 +1,82 @@
 /// Checks if the config file contains a `platform`
 bool hasPlatformConfig(Map<String, dynamic> config) {
-  return isNeedingNewAndroidIcon(config) ||
-      isNeedingNewIOSIcon(config) ||
-      isNeedingNewMacOSIcon(config) ||
-      isNeedingNewWindowsIcon(config) ||
-      isNeedingNewWebIcon(config) ||
-      isNeedingNewLinuxIcon(config);
+  final bool isHasPlatforms = config.containsKey('platforms');
+  final platforms = config['platforms'] as Map<String, dynamic>;
+  final bool isHasPlatformSpecific = isNeedingNewAndroidIcon(platforms) ||
+      isNeedingNewIosIcon(platforms) ||
+      isNeedingNewMacOSIcon(platforms) ||
+      isNeedingNewWindowsIcon(platforms) ||
+      isNeedingNewWebIcon(platforms) ||
+      isNeedingNewLinuxIcon(platforms);
+  return isHasPlatforms && isHasPlatformSpecific;
 }
 
 /// Checks if the config has android.
-bool hasAndroidConfig(Map<String, dynamic> config) {
-  return config.containsKey('android');
+bool hasAndroidConfig(Map<String, dynamic> platforms) {
+  return platforms.containsKey('android');
 }
 
 /// Checks if the config need android.
-bool isNeedingNewAndroidIcon(Map<String, dynamic> config) {
-  return hasAndroidConfig(config) && config['android'] == true;
+bool isNeedingNewAndroidIcon(Map<String, dynamic> platforms) {
+  return hasAndroidConfig(platforms) && platforms['android']['enable'] == true;
 }
 
 /// Checks if the config has android adaptive.
-bool hasAndroidAdaptiveConfig(Map<String, dynamic> config) {
-  return isNeedingNewAndroidIcon(config) &&
-      (config.containsKey('image_adaptive_background') ||
-          config.containsKey('color_adaptive_background')) &&
-      config.containsKey('image_adaptive_foreground');
+bool hasAndroidAdaptiveConfig(Map<String, dynamic> platforms) {
+  return isNeedingNewAndroidIcon(platforms) &&
+      (platforms['android'].containsKey('adaptive_background_image') ||
+          platforms['android'].containsKey('adaptive_background_color')) &&
+      platforms['android'].containsKey('adaptive_foreground_image');
 }
 
 /// Checks if the config has ios.
-bool hasIosConfig(Map<String, dynamic> config) {
-  return config.containsKey('ios');
+bool hasIosConfig(Map<String, dynamic> platforms) {
+  return platforms.containsKey('ios');
 }
 
 /// Checks if the config need ios.
-bool isNeedingNewIOSIcon(Map<String, dynamic> config) {
-  return hasIosConfig(config) && config['ios'] == true;
+bool isNeedingNewIosIcon(Map<String, dynamic> platforms) {
+  return hasIosConfig(platforms) && platforms['ios']['enable'] == true;
 }
 
 /// Checks if the config has macos.
-bool hasMacOSConfig(Map<String, dynamic> config) {
-  return config.containsKey('macos');
+bool hasMacOSConfig(Map<String, dynamic> platforms) {
+  return platforms.containsKey('macos');
 }
 
 /// Checks if the config need macos.
-bool isNeedingNewMacOSIcon(Map<String, dynamic> config) {
-  return hasMacOSConfig(config) && config['macos'] == true;
+bool isNeedingNewMacOSIcon(Map<String, dynamic> platforms) {
+  return hasMacOSConfig(platforms) && platforms['macos']['enable'] == true;
 }
 
 /// Checks if the config has windows.
-bool hasWindowsConfig(Map<String, dynamic> config) {
-  return config.containsKey('windows');
+bool hasWindowsConfig(Map<String, dynamic> platforms) {
+  return platforms.containsKey('windows');
 }
 
 /// Checks if the config need windows.
-bool isNeedingNewWindowsIcon(Map<String, dynamic> config) {
-  return hasWindowsConfig(config) && config['windows'] == true;
+bool isNeedingNewWindowsIcon(Map<String, dynamic> platforms) {
+  return hasWindowsConfig(platforms) && platforms['windows']['enable'] == true;
 }
 
 /// Checks if the config has linux.
-bool hasLinuxConfig(Map<String, dynamic> config) {
-  return config.containsKey('linux');
+bool hasLinuxConfig(Map<String, dynamic> platforms) {
+  return platforms.containsKey('linux');
 }
 
 /// Checks if the config need linux.
-bool isNeedingNewLinuxIcon(Map<String, dynamic> config) {
-  return hasLinuxConfig(config) && config['linux'] == true;
+bool isNeedingNewLinuxIcon(Map<String, dynamic> platforms) {
+  return hasLinuxConfig(platforms) && platforms['linux']['enable'] == true;
 }
 
 /// Checks if the config has web.
-bool hasWebConfig(Map<String, dynamic> config) {
-  return config.containsKey('web');
+bool hasWebConfig(Map<String, dynamic> platforms) {
+  return platforms.containsKey('web');
 }
 
 /// Checks if the config need linux.
-bool isNeedingNewWebIcon(Map<String, dynamic> config) {
-  return hasWebConfig(config) && config['web'] == true;
+bool isNeedingNewWebIcon(Map<String, dynamic> platforms) {
+  return hasWebConfig(platforms) && platforms['web']['enable'] == true;
 }
 
 /// Checking color code

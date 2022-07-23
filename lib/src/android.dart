@@ -148,7 +148,7 @@ void _createAdaptiveBackground(
       _createIcLauncherMipMapXmlFile();
     } catch (e) {
       CliLogger.error(
-        'Incorrect `$background` of `color_adaptive_background` or `image_adaptive_background`',
+        'Incorrect `$background` of `adaptive_background_color` or `adaptive_background_image`',
         level: CliLoggerLevel.two,
       );
       exit(1);
@@ -239,7 +239,7 @@ void _createColorsFile(String backgroundColor) {
     color = '#FF' + backgroundColor.replaceAll('#', '');
   } else {
     CliLogger.error(
-      'Incorrect `$backgroundColor` of `color_adaptive_background`',
+      'Incorrect `$backgroundColor` of `adaptive_background_color`',
       level: CliLoggerLevel.two,
     );
     exit(1);
@@ -258,7 +258,7 @@ void _updateColorsFile(File colorsXml, String backgroundColor) {
     color = '#FF' + backgroundColor.replaceAll('#', '');
   } else {
     CliLogger.error(
-      'Incorrect `$backgroundColor` of `color_adaptive_background`',
+      'Incorrect `$backgroundColor` of `adaptive_background_color`',
       level: CliLoggerLevel.two,
     );
     exit(1);

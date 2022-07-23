@@ -65,8 +65,11 @@ dev_dependencies:
 
 icons_launcher:
   image_path: 'assets/ic_logo_border.png'
-  ios: true
-  android: true
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
 ```
 
 #### Method 2: create icons_launcher.yaml at project root
@@ -74,8 +77,11 @@ icons_launcher:
 ```yaml
 icons_launcher:
   image_path: 'assets/ic_logo_border.png'
-  ios: true
-  android: true
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
 ```
 
 ### 2. Run the package
@@ -106,6 +112,23 @@ In the above configuration, the package is setup to replace the existing launche
 
 Shown below is the full list of attributes which you can specify within your Icons Launcher configuration.
 
+| Icons Launcher Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `image_path` | String | `null` | The image file path |
+| `platforms` | String | `null` | Use for specific platform to generate icons |
+
+---
+
+| Platforms Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `android` | String | `null` | Use for specific android platform |
+| `ios` | String | `null` | Use for specific android platform |
+| `macos` | String | `null` | Use for specific android platform |
+| `windows` | String | `null` | Use for specific android platform |
+| `web` | String | `null` | Use for specific android platform |
+| `linux` | String | `null` | Use for specific android platform |
+
+<!-- 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
 | `android` | Boolean | `false` | Override the default existing of android |
@@ -130,7 +153,7 @@ Shown below is the full list of attributes which you can specify within your Ico
 ### Note:
 - _Android adaptive icon will generate if you provide `image_adaptive_background` or `color_adaptive_background` and `image_adaptive_foreground`._
 - _`image_adaptive_round` is optional, if you provide you must provide two config above also, the plugin will modify your `AndroidMainifest.xml` to add `android:roundIcon="@mipmap/ic_launcher_round` and create a new file `ic_launcher_round.xml` to` mipmap-anydpi-v26`_
-- _iOS icons should [fill the entire image](https://stackoverflow.com/questions/26014461/black-border-on-my-ios-icon) and not contain transparent borders._
+- _iOS icons should [fill the entire image](https://stackoverflow.com/questions/26014461/black-border-on-my-ios-icon) and not contain transparent borders._ -->
 
 ---
 ## Flavor support
@@ -157,44 +180,60 @@ dev_dependencies:
   icons_launcher: ^2.0.0-beta.3
 
 icons_launcher:
-  # image_path: 'assets/ic_logo_border.png'
-  image_path_android: 'assets/ic_logo_border.png'
-  image_path_ios: 'assets/ic_logo_rectangle.png'
-  image_path_macos: 'assets/ic_logo_border.png'
-  image_path_windows: 'assets/ic_logo_border.png'
-  image_path_linux: 'assets/ic_logo_border.png'
-  image_path_web: 'assets/ic_logo_border.png'
-  favicon_path_web: 'assets/ic_logo_round.png'
-  image_adaptive_background: 'assets/ic_background.png'
-  image_adaptive_foreground: 'assets/ic_foreground.png' 
-  image_adaptive_round: 'assets/ic_logo_round.png' #! (Optional)
-  ios: true
-  android: true
-  macos: false
-  windows: false
-  linux: false
-  web: false
+  image_path: 'assets/ic_logo_border.png'
+  platforms:
+    android:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      # adaptive_background_color: '#ffffff' # only available for Android 8.0 devices and above
+      adaptive_background_image: 'assets/ic_background.png'
+      adaptive_foreground_image: 'assets/ic_foreground.png'
+      adaptive_round_image: 'assets/ic_logo_round.png'
+    ios:
+      enable: true
+      image_path: 'assets/ic_logo_rectangle.png'
+    web:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      favicon_path: 'assets/ic_logo_round.png'
+    macos:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    windows:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    linux:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
 ```
 
 ### Or use in custom yaml (icons_launcher.yaml)
 
 ```yaml
 icons_launcher:
-  # image_path: 'assets/ic_logo_border.png'
-  image_path_android: 'assets/ic_logo_border.png'
-  image_path_ios: 'assets/ic_logo_rectangle.png'
-  image_path_macos: 'assets/ic_logo_border.png'
-  image_path_windows: 'assets/ic_logo_border.png'
-  image_path_linux: 'assets/ic_logo_border.png'
-  image_path_web: 'assets/ic_logo_border.png'
-  favicon_path_web: 'assets/ic_logo_round.png'
-  image_adaptive_background: 'assets/ic_background.png'
-  image_adaptive_foreground: 'assets/ic_foreground.png' 
-  image_adaptive_round: 'assets/ic_logo_round.png' #! (Optional)
-  ios: true
-  android: true
-  macos: false
-  windows: false
-  linux: false
-  web: false
+  image_path: 'assets/ic_logo_border.png'
+  platforms:
+    android:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      # adaptive_background_color: '#ffffff' # only available for Android 8.0 devices and above
+      adaptive_background_image: 'assets/ic_background.png'
+      adaptive_foreground_image: 'assets/ic_foreground.png'
+      adaptive_round_image: 'assets/ic_logo_round.png'
+    ios:
+      enable: true
+      image_path: 'assets/ic_logo_rectangle.png'
+    web:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      favicon_path: 'assets/ic_logo_round.png'
+    macos:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    windows:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    linux:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
 ```

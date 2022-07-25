@@ -18,7 +18,7 @@
       alt="Contributors" />
   </a>
   <a href="https://github.com/mrrhak/icons_launcher/actions?query=workflow%3A">
-    <img src="https://github.com/mrrhak/icons_launcher/actions/workflows/main.yml/badge.svg"
+    <img src="https://github.com/mrrhak/icons_launcher/actions/workflows/format-analyze-test.yml/badge.svg"
       alt="Build Status" />
   </a>
   <a href="https://github.com/mrrhak/icons_launcher">

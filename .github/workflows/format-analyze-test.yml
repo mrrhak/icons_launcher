@@ -12,7 +12,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  format-analyze-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +22,9 @@ jobs:
 
       - name: Install dependencies
         run: dart pub get
+
+      - name: Generate package version
+        run: dart run build_runner build --delete-conflicting-outputs
 
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .

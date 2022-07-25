@@ -1,6 +1,6 @@
 enum Flavor {
-  dev,
-  prod,
+  DEV,
+  PROD,
 }
 
 class F {
@@ -10,9 +10,9 @@ class F {
 
   static String get title {
     switch (appFlavor) {
-      case Flavor.dev:
+      case Flavor.DEV:
         return 'Dev App';
-      case Flavor.prod:
+      case Flavor.PROD:
         return 'Prod App';
       default:
         return 'title';

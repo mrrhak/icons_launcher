@@ -1,72 +1,47 @@
-import 'package:icons_launcher/constants.dart';
-import 'package:icons_launcher/icon.dart';
-import 'package:icons_launcher/utils.dart';
+part of icons_launcher_cli;
 
-/// File to handle the creation of icons for Windows platform
-class WindowsIconTemplate {
-  WindowsIconTemplate({required this.size, required this.name});
+/// Start create windows icons
+void _createWindowsIcons({required String imagePath}) {
+  CliLogger.info('Creating Windows icons...');
 
-  final String name;
-  final int size;
-}
+  final image = Icon.loadFile(imagePath);
+  if (image == null) {
+    CliLogger.error('The file $imagePath could not be read.',
+        level: CliLoggerLevel.two);
+    exit(1);
+  }
 
-//? https://www.creativefreedom.co.uk/icon-designers-blog/windows-ico/
+  //? https://www.creativefreedom.co.uk/icon-designers-blog/windows-ico/
 // Give a highest quality icon with a minimum of 256x256 pixels.
 // debug ico file here (https://redketchup.io/icon-editor)
-List<WindowsIconTemplate> windowsIcons = <WindowsIconTemplate>[
-  WindowsIconTemplate(name: '', size: 16),
-  WindowsIconTemplate(name: '', size: 24),
-  WindowsIconTemplate(name: '', size: 32),
-  WindowsIconTemplate(name: '', size: 48),
-  WindowsIconTemplate(name: '', size: 64),
-  WindowsIconTemplate(name: '', size: 96),
-  WindowsIconTemplate(name: '', size: 128),
-  WindowsIconTemplate(name: '', size: 256),
-];
+  final List<WindowsIconTemplate> windowsIcons = <WindowsIconTemplate>[
+    WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 16),
+    WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 24),
+    WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 32),
+    WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 48),
+    WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 64),
+    WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 96),
+    WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 128),
+    WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 256),
+  ];
 
-/// Overwrites the icon file with the new icon
-void overwriteDefaultIcons(List<Icon> images) {
-  Icon.saveIco(
-    images,
-    windowsDefaultIconFolder + windowsDefaultIconName + '.ico',
+  final images = <Icon>[];
+  for (final template in windowsIcons) {
+    final resizedImage = image.copyResized(template.size);
+    images.add(resizedImage);
+  }
+  _saveImageWindow(images, WINDOWS_DEFAULT_ICON_FILE_NAME);
+
+  CliLogger.success(
+    'Generated app icon image',
+    level: CliLoggerLevel.two,
   );
 }
 
-/// Creates new icons
-void saveNewIcons(List<Icon> images, String newIconName) {
-  final String newIconFolder = windowsDefaultIconFolder + newIconName;
-  Icon.saveIco(images, newIconFolder + newIconName + '.ico');
-}
-
-/// Create icons
-void createIcons(Map<String, dynamic> config, String? flavor) {
-  final String filePath = config['image_path_windows'] ?? config['image_path'];
-  // decodeImageFile shows error message if null
-  // so can return here if image is null
-  final image = Icon.loadFile(filePath);
-  if (image == null) {
-    return;
-  }
-
-  final dynamic windowsConfig = config['windows'];
-  if (windowsConfig is String) {
-    // If the Windows configuration is a string then the user has specified a new icon to be created
-    // and for the old icon file to be kept
-    final String newIconName = windowsConfig;
-    printStatus('Adding new Windows launcher icon');
-    final images = <Icon>[];
-    for (WindowsIconTemplate template in windowsIcons) {
-      final resizedImage = image.copyResized(template.size);
-      images.add(resizedImage);
-    }
-    saveNewIcons(images, newIconName);
-  } else {
-    printStatus('Overwriting default Windows launcher icon with new icon');
-    final images = <Icon>[];
-    for (WindowsIconTemplate template in windowsIcons) {
-      final resizedImage = image.copyResized(template.size);
-      images.add(resizedImage);
-    }
-    overwriteDefaultIcons(images);
-  }
+/// Save windows image
+void _saveImageWindow(
+  List<Icon> images,
+  String fileName,
+) {
+  Icon.saveIco(images, '$WINDOWS_DEFAULT_ICON_DIR$fileName');
 }

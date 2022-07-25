@@ -1,96 +1,50 @@
-import 'package:icons_launcher/constants.dart';
-import 'package:icons_launcher/utils.dart';
+part of icons_launcher_cli;
 
-import '../icon.dart';
+/// Start create web icons
+void _createWebIcons({required String imagePath}) {
+  CliLogger.info('Creating Web icons...');
 
-/// File to handle the creation of icons for Web platform
-class WebIconTemplate {
-  WebIconTemplate({required this.size, required this.name});
+  final image = Icon.loadFile(imagePath);
+  if (image == null) {
+    CliLogger.error('The file $imagePath could not be read.',
+        level: CliLoggerLevel.two);
+    exit(1);
+  }
 
-  final String name;
-  final int size;
+  final webIcons = <WebIconTemplate>[
+    WebIconTemplate(name: 'Icon-192.png', size: 192),
+    WebIconTemplate(name: 'Icon-512.png', size: 512),
+    WebIconTemplate(name: 'Icon-maskable-192.png', size: 192),
+    WebIconTemplate(name: 'Icon-maskable-512.png', size: 512),
+  ];
+
+  for (final template in webIcons) {
+    _saveImageWeb(template, image);
+  }
+  CliLogger.success('Generated icon images', level: CliLoggerLevel.two);
 }
 
-List<WebIconTemplate> webIcons = <WebIconTemplate>[
-  WebIconTemplate(name: 'Icon-192', size: 192),
-  WebIconTemplate(name: 'Icon-512', size: 512),
-  WebIconTemplate(name: 'Icon-maskable-192', size: 192),
-  WebIconTemplate(name: 'Icon-maskable-512', size: 512),
-];
+/// Start create web favicon
+void _createWebFavicon({required String imagePath}) {
+  final image = Icon.loadFile(imagePath);
+  if (image == null) {
+    CliLogger.error('The file $imagePath could not be read.',
+        level: CliLoggerLevel.two);
+    exit(1);
+  }
 
-WebIconTemplate webFavicon = WebIconTemplate(name: 'favicon', size: 16);
+  final webFavicon = WebIconTemplate(name: 'favicon.png', size: 16);
+  _saveFaviconImageWeb(webFavicon, image);
+  CliLogger.success('Generated favicon image', level: CliLoggerLevel.two);
+}
 
-/// Overwrites the default favicon
-void overwriteDefaultFavicon(WebIconTemplate template, Icon image) {
+/// Save web image
+void _saveImageWeb(WebIconTemplate template, Icon image) {
+  image.saveResizedPng(template.size, '$WEB_DEFAULT_ICON_DIR${template.name}');
+}
+
+/// Save favicon image
+void _saveFaviconImageWeb(WebIconTemplate template, Icon image) {
   image.saveResizedPng(
-    template.size,
-    webDefaultFaviconFolder + template.name + '.png',
-  );
-}
-
-/// Overwrites the default icons
-void overwriteDefaultIcons(WebIconTemplate template, Icon image) {
-  try {
-    image.saveResizedPng(
-      template.size,
-      webDefaultIconFolder + template.name + '.png',
-    );
-  } catch (e) {
-    print(e);
-  }
-}
-
-/// Creates new favicon
-void saveNewFavicon(WebIconTemplate template, Icon image) {
-  image.saveResizedPng(
-    template.size,
-    webDefaultFaviconFolder + template.name + '.png',
-  );
-}
-
-/// Creates new icons
-void saveNewIcons(WebIconTemplate template, Icon image) {
-  image.saveResizedPng(
-    template.size,
-    webDefaultIconFolder + template.name + '.png',
-  );
-}
-
-/// Create icons
-void createIcons(Map<String, dynamic> config, String? flavor) {
-  final String filePath = config['image_path_web'] ?? config['image_path'];
-  final String faviconPath = config['favicon_path'] ?? filePath;
-  // decodeImageFile shows error message if null
-  // so can return here if image is null
-  final image = Icon.loadFile(filePath);
-  final favicon = Icon.loadFile(faviconPath);
-  if (image == null || favicon == null) {
-    return;
-  }
-
-  final dynamic webConfig = config['web'];
-  if (flavor != null) {
-    printStatus('Building Web launcher icon for $flavor');
-    saveNewFavicon(webFavicon, favicon);
-    for (WebIconTemplate template in webIcons) {
-      saveNewIcons(template, image);
-    }
-  } else if (webConfig is String) {
-    // If the Web configuration is a string then the user has specified a new icon to be created
-    // and for the old icon file to be kept
-    printStatus('Adding new Web launcher icon');
-    saveNewFavicon(webFavicon, favicon);
-    for (WebIconTemplate template in webIcons) {
-      saveNewIcons(template, image);
-    }
-  }
-  // Otherwise the user wants the new icon to use the default icons name and
-  // update config file to use it
-  else {
-    printStatus('Overwriting default Web launcher icon with new icon');
-    overwriteDefaultFavicon(webFavicon, favicon);
-    for (WebIconTemplate template in webIcons) {
-      overwriteDefaultIcons(template, image);
-    }
-  }
+      template.size, '$WEB_DEFAULT_FAVICON_DIR${template.name}');
 }

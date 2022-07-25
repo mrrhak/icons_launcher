@@ -61,21 +61,27 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^1.2.1
+  icons_launcher: ^2.0.0
 
-flutter_icons:
+icons_launcher:
   image_path: 'assets/ic_logo_border.png'
-  ios: true
-  android: true
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
 ```
 
 #### Method 2: create icons_launcher.yaml at project root
 
 ```yaml
-flutter_icons:
+icons_launcher:
   image_path: 'assets/ic_logo_border.png'
-  ios: true
-  android: true
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
 ```
 
 ### 2. Run the package
@@ -91,7 +97,7 @@ If you name your configuration file something other than `icons_launcher.yaml` o
 
 ```sh
 flutter pub get
-flutter pub run icons_launcher:create -f <your config file name here>
+flutter pub run icons_launcher:create --path <your config file name here>
 ```
 
 NOTE: If you are not using the existing `pubspec.yaml` your config file must still be located in the same directory as it.
@@ -106,43 +112,69 @@ In the above configuration, the package is setup to replace the existing launche
 
 Shown below is the full list of attributes which you can specify within your Icons Launcher configuration.
 
-- `android`/`ios`/`web`/`macos`/`windows`/`linux`
-  - `true`: Override the default existing Flutter launcher icon for the platform specified
-  - `false`: Ignore making launcher icons for this platform
-  - `icon/path/here.png`: This will generate a new launcher icons for the platform with the name you specify, without removing the old default existing icon launcher.
+| Icons Launcher Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `image_path` | String | `null` | The image file path |
+| `platforms` | Object | `null` | Use for specific platform to generate icons |
 
-- `image_path`: The location of the icon image file which you want to use as the app launcher icon
+---
 
-- `image_path_android`: The location of the icon image file specific for Android platform (optional - if not defined then the image_path is used)
+| Platforms Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `android` | Object | `null` | Use for specific android platform |
+| `ios` | Object | `null` | Use for specific android platform |
+| `macos` | Object | `null` | Use for specific android platform |
+| `windows` | Object | `null` | Use for specific android platform |
+| `web` | Object | `null` | Use for specific android platform |
+| `linux` | Object | `null` | Use for specific android platform |
 
-- `image_path_ios`: The location of the icon image file specific for iOS platform (optional - if not defined then the image_path is used)
+| Android Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable android platform |
+| `image_path` | String | `null` | The image file path |
+| `adaptive_background_color` | String | `null` | Color for fill out the background of the adaptive icon (_"#ffffff"_) |
+| `adaptive_background_image` | String | `null` | Image for fill out the background of the adaptive icon |
+| `adaptive_foreground_image` | String | `null` | Image for the icon foreground of the adaptive icon |
+| `adaptive_round_image` | String | `null` | Image for the round icon of the adaptive icon (optional) |
 
-- `image_path_macos`: The location of the icon image file specific for MacOS platform (optional - if not defined then the image_path is used)
+| IOS Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable ios platform |
+| `image_path` | String | `null` | The image file path |
 
-- `image_path_windows`: The location of the icon image file specific for Windows platform (optional - if not defined then the image_path is used)
+| Web Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable ios platform |
+| `image_path` | String | `null` | The image file path |
+| `favicon_path` | String | `null` | The image file path |
 
-- `image_path_linux`: The location of the icon image file specific for Linux platform (optional - if not defined then the image_path is used)
+| macOS Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable macos platform |
+| `image_path` | String | `null` | The image file path |
 
-- `image_path_web`: The location of the icon image file specific for Web platform (optional - if not defined then the image_path is used)
+| Windows Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable windows platform |
+| `image_path` | String | `null` | The image file path |
 
-The next three attributes are only used when generating Android adaptive launcher icon ([Read more](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive))
-
-- `adaptive_icon_background`: The color (E.g. `"#ffffff"`) or image asset (E.g. `"assets/ic_background.png"`) which will
-be used to fill out the background of the adaptive icon.
-
-- `adaptive_icon_foreground`: The image asset which will be used for the icon foreground of the adaptive icon
-
-- `adaptive_icon_round`: The image asset which will be used for the round icon of the adaptive icon (optional)
-
-#### Note:
-- _Android adaptive icon will generate if you provide `adaptive_icon_background` and `adaptive_icon_foreground`._
-- _`adaptive_icon_round` is optional, if you provide you must provide two config above also, the plugin will modify your `AndroidMainifest.xml` to add `android:roundIcon="@mipmap/ic_launcher_round` and create a new file `ic_launcher_round.xml` to` mipmap-anydpi-v26`_
-- _iOS icons should [fill the entire image](https://stackoverflow.com/questions/26014461/black-border-on-my-ios-icon) and not contain transparent borders._
+| Linux Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable linux platform |
+| `image_path` | String | `null` | The image file path |
 
 ---
 ## Flavor support
 
 Create a Icons Launcher configuration file for your flavor. The config file is called `icons_launcher-<flavor>.yaml` by replacing `<flavor>` by the name of your desired flavor.
+
+Example: `icons_launcher-dev.yaml`
+
+Run with flavor:
+```sh
+flutter pub get
+flutter pub run icons_launcher:create --flavor dev
+```
 
 The configuration file format is the same.
 
@@ -153,57 +185,63 @@ The configuration file format is the same.
 
 ```yaml
 dev_dependencies:
-  icons_launcher: ^1.2.1
+  icons_launcher: ^2.0.0
 
-flutter_icons:
-  # image_path: 'assets/ic_logo_border.png'
-  image_path_android: 'assets/ic_logo_border.png'
-  image_path_ios: 'assets/ic_logo_rectangle.png'
-  image_path_macos: 'assets/ic_logo_border.png'
-  image_path_windows: 'assets/ic_logo_border.png'
-  image_path_linux: 'assets/ic_logo_border.png'
-  image_path_web: 'assets/ic_logo_border.png'
-  adaptive_icon_background: 'assets/ic_background.png'
-  adaptive_icon_foreground: 'assets/ic_foreground.png' 
-  adaptive_icon_round: 'assets/ic_logo_round.png' #! (Optional)
-  remove_alpha_ios: false
-  remove_alpha_macos: false
-  ios: true
-  android: true
-  macos: false
-  windows: false
-  linux: false
-  web: false
+icons_launcher:
+  image_path: 'assets/ic_logo_border.png'
+  platforms:
+    android:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      # adaptive_background_color: '#ffffff'
+      adaptive_background_image: 'assets/ic_background.png'
+      adaptive_foreground_image: 'assets/ic_foreground.png'
+      adaptive_round_image: 'assets/ic_logo_round.png'
+    ios:
+      enable: true
+      image_path: 'assets/ic_logo_rectangle.png'
+    web:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      favicon_path: 'assets/ic_logo_round.png'
+    macos:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    windows:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    linux:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
 ```
 
 ### Or use in custom yaml (icons_launcher.yaml)
 
 ```yaml
-flutter_icons:
-  # image_path: 'assets/ic_logo_border.png'
-  image_path_android: 'assets/ic_logo_border.png'
-  image_path_ios: 'assets/ic_logo_rectangle.png'
-  image_path_macos: 'assets/ic_logo_border.png'
-  image_path_windows: 'assets/ic_logo_border.png'
-  image_path_linux: 'assets/ic_logo_border.png'
-  image_path_web: 'assets/ic_logo_border.png'
-  adaptive_icon_background: 'assets/ic_background.png'
-  adaptive_icon_foreground: 'assets/ic_foreground.png' 
-  adaptive_icon_round: 'assets/ic_logo_round.png' #! (Optional)
-  remove_alpha_ios: false
-  remove_alpha_macos: false
-  ios: true
-  android: true
-  macos: false
-  windows: false
-  linux: false
-  web: false
+icons_launcher:
+  image_path: 'assets/ic_logo_border.png'
+  platforms:
+    android:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      # adaptive_background_color: '#ffffff'
+      adaptive_background_image: 'assets/ic_background.png'
+      adaptive_foreground_image: 'assets/ic_foreground.png'
+      adaptive_round_image: 'assets/ic_logo_round.png'
+    ios:
+      enable: true
+      image_path: 'assets/ic_logo_rectangle.png'
+    web:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      favicon_path: 'assets/ic_logo_round.png'
+    macos:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    windows:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    linux:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
 ```
-
----
-
-  <h6 align="center" style="font-size: 8px;">
-  
-  _This package is forked from <a href="https://pub.dev/packages/flutter_launcher_icons">flutter_launcher_icons</a> which includes bugs fixed & adds more platform support._
-  </h6>
-

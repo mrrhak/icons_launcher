@@ -115,45 +115,53 @@ Shown below is the full list of attributes which you can specify within your Ico
 | Icons Launcher Option | Type | Default | Description |
 | --- | --- | --- | --- |
 | `image_path` | String | `null` | The image file path |
-| `platforms` | String | `null` | Use for specific platform to generate icons |
+| `platforms` | Object | `null` | Use for specific platform to generate icons |
 
 ---
 
 | Platforms Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `android` | String | `null` | Use for specific android platform |
-| `ios` | String | `null` | Use for specific android platform |
-| `macos` | String | `null` | Use for specific android platform |
-| `windows` | String | `null` | Use for specific android platform |
-| `web` | String | `null` | Use for specific android platform |
-| `linux` | String | `null` | Use for specific android platform |
+| `android` | Object | `null` | Use for specific android platform |
+| `ios` | Object | `null` | Use for specific android platform |
+| `macos` | Object | `null` | Use for specific android platform |
+| `windows` | Object | `null` | Use for specific android platform |
+| `web` | Object | `null` | Use for specific android platform |
+| `linux` | Object | `null` | Use for specific android platform |
 
-<!-- 
-| Option | Type | Default | Description |
+| Android Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `android` | Boolean | `false` | Override the default existing of android |
-| `ios` | Boolean | `false` | Override the default existing of ios |
-| `web` | Boolean | `false` | Override the default existing of web |
-| `macos` | Boolean | `false` | Override the default existing of macos |
-| `windows` | Boolean | `false` | Override the default existing of windows |
-| `linux` | Boolean | `false` | Override the default existing of linux |
-| `image_path` | String | `null` | The image file path which you want to use as the app launcher icon |
-| `image_path_android` | String | `null` | The image file path specific for Android platform (optional - if not defined then the _image_path_ is used) |
-| `image_path_ios` | String | `null` | The image file path specific for iOS platform (optional - if not defined then the _image_path_ is used) |
-| `image_path_web` | String | `null` | The image file path specific for Web platform (optional - if not defined then the _image_path_ is used) |
-| `favicon_path_web` | String | `null` | The image file path specific for Web platform (optional - if not defined then the _image_path_ is used) |
-| `image_path_macos` | String | `null` | The image file path specific for macOS platform (optional - if not defined then the _image_path_ is used) |
-| `image_path_windows` | String | `null` | The image file path specific for Windows platform (optional - if not defined then the _image_path_ is used) |
-| `image_path_linux` | String | `null` | The image file path specific for Linux platform (optional - if not defined then the _image_path_ is used) |
-| `color_adaptive_background` | String | `null` | The color (E.g. _"#ffffff"_) used to fill out the background of the adaptive icon |
-| `image_adaptive_background` | String | `null` | The image asset (E.g. _"assets/ic_background.png"_) used to fill out the background of the adaptive icon |
-| `image_adaptive_foreground` | String | `null` | The image asset used for the icon foreground of the adaptive icon |
-| `image_adaptive_round` | String | `null` | The image asset used for the round icon of the adaptive icon (optional) |
+| `enable` | Boolean | `false` | Use for enable android platform |
+| `image_path` | String | `null` | The image file path |
+| `adaptive_background_color` | String | `null` | Color for fill out the background of the adaptive icon (_"#ffffff"_) |
+| `adaptive_background_image` | String | `null` | Image for fill out the background of the adaptive icon |
+| `adaptive_foreground_image` | String | `null` | Image for the icon foreground of the adaptive icon |
+| `adaptive_round_image` | String | `null` | Image for the round icon of the adaptive icon (optional) |
 
-### Note:
-- _Android adaptive icon will generate if you provide `image_adaptive_background` or `color_adaptive_background` and `image_adaptive_foreground`._
-- _`image_adaptive_round` is optional, if you provide you must provide two config above also, the plugin will modify your `AndroidMainifest.xml` to add `android:roundIcon="@mipmap/ic_launcher_round` and create a new file `ic_launcher_round.xml` to` mipmap-anydpi-v26`_
-- _iOS icons should [fill the entire image](https://stackoverflow.com/questions/26014461/black-border-on-my-ios-icon) and not contain transparent borders._ -->
+| IOS Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable ios platform |
+| `image_path` | String | `null` | The image file path |
+
+| Web Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable ios platform |
+| `image_path` | String | `null` | The image file path |
+| `favicon_path` | String | `null` | The image file path |
+
+| macOS Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable macos platform |
+| `image_path` | String | `null` | The image file path |
+
+| Windows Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable windows platform |
+| `image_path` | String | `null` | The image file path |
+
+| Linux Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `enable` | Boolean | `false` | Use for enable linux platform |
+| `image_path` | String | `null` | The image file path |
 
 ---
 ## Flavor support

@@ -5,13 +5,18 @@ import 'package:universal_io/io.dart';
 
 /// Icon template
 class IconTemplate {
+  /// Constructor
   const IconTemplate({required this.size});
 
+  /// Size
   final int size;
 }
 
+/// Icon
 class Icon {
   const Icon._(this.image);
+
+  /// Image
   final Image image;
 
   /// Load an image from bytes
@@ -29,6 +34,7 @@ class Icon {
     return Icon._loadBytes(File(filePath).readAsBytesSync());
   }
 
+  /// Check image is alpha
   bool get hasAlpha => image.channels == Channels.rgba;
 
   /// Remove alpha channel from the image

@@ -1,7 +1,37 @@
 # Changelog
 
-## 2.0.0-beta.3
+## 2.0.0
  - Add web custom favicon support 
+ - ## Config breaking changes:
+
+    ```yaml
+      icons_launcher:
+        image_path: 'assets/ic_logo_border.png'
+        platforms:
+          android:
+            enable: true
+            image_path: 'assets/ic_logo_border.png'
+            # adaptive_background_color: '#ffffff'
+            adaptive_background_image: 'assets/ic_background.png'
+            adaptive_foreground_image: 'assets/ic_foreground.png'
+            adaptive_round_image: 'assets/ic_logo_round.png'
+          ios:
+            enable: true
+            image_path: 'assets/ic_logo_rectangle.png'
+          web:
+            enable: true
+            image_path: 'assets/ic_logo_border.png'
+            favicon_path: 'assets/ic_logo_round.png'
+          macos:
+            enable: false
+            image_path: 'assets/ic_logo_border.png'
+          windows:
+            enable: false
+            image_path: 'assets/ic_logo_border.png'
+          linux:
+            enable: false
+            image_path: 'assets/ic_logo_border.png'
+    ```
 
 ## 2.0.0-beta.2
  - Fixed auto remove image alpha channel for iOS platform to follow AppStore guideline

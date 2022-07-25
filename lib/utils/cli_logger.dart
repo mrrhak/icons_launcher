@@ -1,6 +1,12 @@
+/// Log levels
 enum CliLoggerLevel {
+  /// Level one
   one,
+
+  /// Level two
   two,
+
+  /// Level three
   three,
 }
 
@@ -12,8 +18,13 @@ enum CliLoggerLevel {
 // Yellow:  \x1B[33m
 // Blue:    \x1B[34m
 // Cyan:    \x1B[36m
+
+/// Cli Logger
 class CliLogger {
+  /// Constructor
   CliLogger();
+
+  /// Log info
   static void info(
     String message, {
     CliLoggerLevel level = CliLoggerLevel.one,

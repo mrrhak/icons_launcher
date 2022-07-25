@@ -1,5 +1,6 @@
 part of icons_launcher_cli;
 
+/// Android icons template
 final androidIcons = <AndroidMipMapIconTemplate>[
   AndroidMipMapIconTemplate(directoryName: 'mipmap-mdpi', size: 48),
   AndroidMipMapIconTemplate(directoryName: 'mipmap-hdpi', size: 72),
@@ -8,6 +9,7 @@ final androidIcons = <AndroidMipMapIconTemplate>[
   AndroidMipMapIconTemplate(directoryName: 'mipmap-xxxhdpi', size: 192),
 ];
 
+/// Android adaptive icons template
 final adaptiveIcons = <AndroidMipMapIconTemplate>[
   AndroidMipMapIconTemplate(directoryName: 'mipmap-mdpi', size: 108),
   AndroidMipMapIconTemplate(directoryName: 'mipmap-hdpi', size: 162),

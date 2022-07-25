@@ -1,5 +1,5 @@
 import 'package:args/args.dart';
-import 'package:icons_launcher/cli_commands_test.dart';
+import 'package:icons_launcher/cli_commands.dart';
 import 'package:icons_launcher/utils/constants.dart';
 
 /// Run to create launcher icons

@@ -39,6 +39,7 @@ analyzer:
     - 'lib/i18n/stock_messages_*.dart'
     - 'lib/src/http/**'
     - 'example/**'
+    - lib/src/version.dart
 
 linter:
   rules:

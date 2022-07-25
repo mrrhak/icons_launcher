@@ -1,2 +1,2 @@
-/// Generated code. Do not modify.
+// Generated code. Do not modify.
 const packageVersion = '2.0.0';

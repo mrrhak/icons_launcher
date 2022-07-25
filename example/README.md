@@ -1,4 +1,4 @@
-# Installation (2.0.0-beta.2)
+# Installation
 ```sh
 flutter pub add --dev icons_launcher
 ```
@@ -10,8 +10,11 @@ flutter pub add --dev icons_launcher
 ```yaml
 icons_launcher:
   image_path: 'assets/ic_logo_border.png'
-  ios: true
-  android: true
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
 ```
 
 - Use different images for each platform
@@ -19,22 +22,30 @@ icons_launcher:
 ```yaml
 icons_launcher:
   image_path: 'assets/ic_logo_border.png'
-  # image_path_android: 'assets/ic_logo_border.png'
-  # image_path_ios: 'assets/ic_logo_rectangle.png'
-  # image_path_macos: 'assets/ic_logo_border.png'
-  # image_path_windows: 'assets/ic_logo_border.png'
-  # image_path_linux: 'assets/ic_logo_border.png'
-  # image_path_web: 'assets/ic_logo_border.png'
-  # color_adaptive_background: '#ffffff'
-  image_adaptive_background: 'assets/ic_background.png'
-  image_adaptive_foreground: 'assets/ic_foreground.png'
-  image_adaptive_round: 'assets/ic_logo_round.png'
-  android: true
-  ios: true
-  web: true
-  macos: false
-  windows: false
-  linux: false
+  platforms:
+    android:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      # adaptive_background_color: '#ffffff'
+      adaptive_background_image: 'assets/ic_background.png'
+      adaptive_foreground_image: 'assets/ic_foreground.png'
+      adaptive_round_image: 'assets/ic_logo_round.png'
+    ios:
+      enable: true
+      image_path: 'assets/ic_logo_rectangle.png'
+    web:
+      enable: true
+      image_path: 'assets/ic_logo_border.png'
+      favicon_path: 'assets/ic_logo_round.png'
+    macos:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    windows:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
+    linux:
+      enable: false
+      image_path: 'assets/ic_logo_border.png'
 ```
 
 After configured, now you can run generation

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+ - Fixed bug with `adaptive_background_color` and `adaptive_round_image` on android thanks to [Carapacik](https://github.com/mrrhak/icons_launcher/pull/17)
+ - Improve config validation
+
 ## 2.0.0
  - Add web custom favicon support 
  - ## Config breaking changes:

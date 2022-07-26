@@ -311,17 +311,6 @@ void _createIcLauncherMipMapXmlFile() {
   );
 }
 
-// void _createIcLauncherRoundColorXmlFile() {
-//   final icLauncherXml = File(
-//       '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME');
-//   icLauncherXml.createSync(recursive: true);
-//   icLauncherXml.writeAsStringSync(IC_LAUNCHER_ROUND_BACKGROUND_COLOR_XML);
-//   CliLogger.success(
-//     'Created `$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME`',
-//     level: CliLoggerLevel.two,
-//   );
-// }
-
 /// Create ic_launcher_round.xml file
 void _createIcLauncherRoundMipMapXmlFile(bool backgroundIsColor) {
   final icLauncherXml = File(

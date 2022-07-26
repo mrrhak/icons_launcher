@@ -110,7 +110,7 @@ void _createAndroidAdaptiveIcon({
   _createAdaptiveForeground(adaptiveIcons, foreground);
   _createAdaptiveBackground(adaptiveIcons, background);
   if (round != null) {
-    _createAdaptiveRound(androidIcons, round);
+    _createAdaptiveRound(androidIcons, round, isValidHexaCode(background));
   } else {
     _removeAndroidManifestIconLauncherRound();
   }
@@ -189,6 +189,7 @@ void _createAdaptiveForeground(
 void _createAdaptiveRound(
   List<AndroidMipMapIconTemplate> adaptiveIcons,
   String round,
+  bool backgroundIsColor,
 ) {
   final roundImage = Icon.loadFile(round);
   if (roundImage == null) {
@@ -210,7 +211,7 @@ void _createAdaptiveRound(
     'Generated adaptive round images',
     level: CliLoggerLevel.two,
   );
-  _createIcLauncherRoundMipMapXmlFile();
+  _createIcLauncherRoundMipMapXmlFile(backgroundIsColor);
   _createAndroidManifestIconLauncherRound();
 }
 
@@ -322,11 +323,13 @@ void _createIcLauncherMipMapXmlFile() {
 // }
 
 /// Create ic_launcher_round.xml file
-void _createIcLauncherRoundMipMapXmlFile() {
+void _createIcLauncherRoundMipMapXmlFile(bool backgroundIsColor) {
   final icLauncherXml = File(
       '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME');
   icLauncherXml.createSync(recursive: true);
-  icLauncherXml.writeAsStringSync(IC_LAUNCHER_ROUND_MIP_MAP_XML);
+  icLauncherXml.writeAsStringSync(backgroundIsColor
+      ? IC_LAUNCHER_ROUND_BACKGROUND_COLOR_XML
+      : IC_LAUNCHER_ROUND_MIP_MAP_XML);
   CliLogger.success(
     'Created `$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME`',
     level: CliLoggerLevel.two,

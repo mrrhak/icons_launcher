@@ -1,14 +1,18 @@
 /// Checks if the config file contains a `platform`
 bool hasPlatformConfig(Map<String, dynamic> config) {
   final bool isHasPlatforms = config.containsKey('platforms');
-  final platforms = config['platforms'] as Map<String, dynamic>;
-  final bool isHasPlatformSpecific = isNeedingNewAndroidIcon(platforms) ||
-      isNeedingNewIosIcon(platforms) ||
-      isNeedingNewMacOSIcon(platforms) ||
-      isNeedingNewWindowsIcon(platforms) ||
-      isNeedingNewWebIcon(platforms) ||
-      isNeedingNewLinuxIcon(platforms);
-  return isHasPlatforms && isHasPlatformSpecific;
+  if (isHasPlatforms) {
+    final platforms = config['platforms'] as Map<String, dynamic>;
+    final bool isHasPlatformSpecific = isNeedingNewAndroidIcon(platforms) ||
+        isNeedingNewIosIcon(platforms) ||
+        isNeedingNewMacOSIcon(platforms) ||
+        isNeedingNewWindowsIcon(platforms) ||
+        isNeedingNewWebIcon(platforms) ||
+        isNeedingNewLinuxIcon(platforms);
+
+    return isHasPlatformSpecific;
+  }
+  return false;
 }
 
 /// Checks if the config has android.

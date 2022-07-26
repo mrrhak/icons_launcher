@@ -89,7 +89,6 @@ void _checkConfig(Map<String, dynamic> config) {
   final List<String> errors = <String>[];
   final globalImagePath =
       _checkImageExists(config: config, parameter: 'image_path');
-
   final platforms = config['platforms'] as Map<String, dynamic>;
 
   // ANDROID

@@ -1,3 +1,5 @@
+import 'package:universal_io/io.dart';
+
 /// Checks if the config file contains a `platform`
 bool hasPlatformConfig(Map<String, dynamic> config) {
   final bool isHasPlatforms = config.containsKey('platforms');
@@ -122,4 +124,26 @@ String getColorXmlContent(String color) {
   <color name="ic_launcher_background">${color.toUpperCase()}</color>
 </resources>
 ''';
+}
+
+/// Delete file
+bool deleteFile(String filePath) {
+  try {
+    final file = File(filePath);
+    file.deleteSync(recursive: true);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+/// Remove directory
+bool removeDir(String dirPath) {
+  try {
+    final dir = Directory(dirPath);
+    dir.deleteSync(recursive: true);
+    return true;
+  } catch (_) {
+    return false;
+  }
 }

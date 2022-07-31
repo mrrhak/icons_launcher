@@ -59,7 +59,7 @@ void _saveImageAndroid(
 /// Create the play store icon
 void _createPlayStoreIcon(Icon image) {
   final template = AndroidMipMapIconTemplate(
-    directoryName: _flavorHelper.androidResFolder,
+    directoryName: _flavorHelper.androidMainFolder,
     size: 512,
   );
   image.saveResizedPng(template.size,
@@ -112,7 +112,7 @@ void _createAndroidAdaptiveIcon({
   if (round != null) {
     _createAdaptiveRound(androidIcons, round, isValidHexaCode(background));
   } else {
-    _removeAndroidManifestIconLauncherRound();
+    _removeAdaptiveRound(androidIcons);
   }
 }
 
@@ -207,12 +207,27 @@ void _createAdaptiveRound(
       ANDROID_ADAPTIVE_ROUND_ICON_FILE_NAME,
     );
   }
+  _createIcLauncherRoundMipMapXmlFile(backgroundIsColor);
+  _createAndroidManifestIconLauncherRound();
   CliLogger.success(
     'Generated adaptive round images',
     level: CliLoggerLevel.two,
   );
-  _createIcLauncherRoundMipMapXmlFile(backgroundIsColor);
-  _createAndroidManifestIconLauncherRound();
+}
+
+/// Remove the adaptive round
+void _removeAdaptiveRound(List<AndroidMipMapIconTemplate> adaptiveIcons) {
+  for (final template in adaptiveIcons) {
+    final filePath =
+        '${_flavorHelper.androidResFolder}${template.directoryName}/$ANDROID_ADAPTIVE_ROUND_ICON_FILE_NAME';
+    deleteFile(filePath);
+  }
+  _removeAndroidManifestIconLauncherRound();
+  _removeIcLauncherRoundMipMapXmlFile();
+  CliLogger.success(
+    'Removed adaptive round images',
+    level: CliLoggerLevel.two,
+  );
 }
 
 /// Handle colors.xml file
@@ -321,6 +336,17 @@ void _createIcLauncherRoundMipMapXmlFile(bool backgroundIsColor) {
       : IC_LAUNCHER_ROUND_MIP_MAP_XML);
   CliLogger.success(
     'Created `$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME`',
+    level: CliLoggerLevel.two,
+  );
+}
+
+/// Remove ic_launcher_round.xml file
+void _removeIcLauncherRoundMipMapXmlFile() {
+  final icRoundLauncherXmlPath =
+      '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME';
+  deleteFile(icRoundLauncherXmlPath);
+  CliLogger.success(
+    'Removed `$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME`',
     level: CliLoggerLevel.two,
   );
 }

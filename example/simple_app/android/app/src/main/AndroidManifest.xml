@@ -4,7 +4,9 @@
         android:label="simple_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-		android:roundIcon="@mipmap/ic_launcher_round">
+		android:roundIcon="@mipmap/ic_launcher_round"
+		
+		>
         <activity
             android:name=".MainActivity"
             android:exported="true"

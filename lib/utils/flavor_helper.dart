@@ -4,9 +4,11 @@ part of icons_launcher_cli;
 class _FlavorHelper {
   _FlavorHelper(this._flavor) {
     if (_flavor != null) {
+      _androidMainFolder = 'android/app/src/$_flavor/';
       _androidResFolder = 'android/app/src/$_flavor/res/';
       _iOSFlavorName = _flavor!.capitalize();
     } else {
+      _androidMainFolder = 'android/app/src/main/';
       _androidResFolder = 'android/app/src/main/res/';
       _iOSFlavorName = '';
     }
@@ -15,6 +17,7 @@ class _FlavorHelper {
   // Android related path values
   final String? _flavor;
   late String _androidResFolder;
+  late String _androidMainFolder;
 
   /// Get flavor name
   String? get flavor {
@@ -24,6 +27,11 @@ class _FlavorHelper {
   /// Get Android res folder
   String get androidResFolder {
     return _androidResFolder;
+  }
+
+  /// Get Android main folder
+  String get androidMainFolder {
+    return _androidMainFolder;
   }
 
   /// Get Android drawable folder

@@ -1,3 +1,5 @@
+import 'package:icons_launcher/utils/constants.dart';
+
 /// Android template
 class AndroidMipMapIconTemplate {
   /// Constructor
@@ -11,15 +13,38 @@ class AndroidMipMapIconTemplate {
 }
 
 /// iOS template
+///
+/// See https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/AppIconType.html
 class IosIconTemplate {
   /// Constructor
-  IosIconTemplate({required this.size, required this.name});
-
-  /// Icon name
-  final String name;
+  IosIconTemplate(
+      {required this.sizeName,
+      required this.scaledSize,
+      required this.scale,
+      required this.idiom});
 
   /// Icon size
-  final int size;
+  final int scaledSize;
+
+  /// Icon size name to use in file names.
+  final String sizeName;
+
+  /// The device type for the image.
+  /// See https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/ImageSetType.html#//apple_ref/doc/uid/TP40015170-CH25-SW2
+  final String idiom;
+
+  /// Scale
+  final int scale;
+
+  /// Icon file name
+  String get filename => '$IOS_DEFAULT_ICON_NAME-$sizeName@${scale}x.png';
+
+  Map<String, String> toJson() => {
+        'size': sizeName,
+        'idiom': idiom,
+        'filename': filename,
+        'scale': '${scale}x'
+      };
 }
 
 /// Web template

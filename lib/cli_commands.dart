@@ -1,5 +1,7 @@
 library icons_launcher_cli;
 
+import 'dart:convert';
+
 import 'package:icons_launcher/utils/cli_logger.dart';
 import 'package:icons_launcher/utils/constants.dart';
 import 'package:icons_launcher/utils/icon.dart';

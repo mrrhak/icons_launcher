@@ -13,6 +13,15 @@ class IosContents {
       };
 }
 
+/// Generates a list of IosIconTemplates according to the parameters:
+///
+/// [size] is the image size @1x scale to use in pixels.
+/// [sizeName] if not provided will use the naming scheme: '\<size>x\<size>',
+/// where \<size> is the rounded [size] value.
+/// [scales] is an array of integers indicating the different scales for which
+/// we will generate images.
+/// [idiom] is the device family name to use within the Asset Catalog's
+/// description of each icon generated.
 List<IosIconTemplate> _createIosTemplates(
     {required double size,
     String? sizeName,

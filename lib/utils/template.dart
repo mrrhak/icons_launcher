@@ -33,7 +33,7 @@ class IosIconTemplate {
   /// See https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/ImageSetType.html#//apple_ref/doc/uid/TP40015170-CH25-SW2
   final String idiom;
 
-  /// Scale
+  /// The targeted display scale for the image, currently one of {1, 2, 3}
   final int scale;
 
   /// Icon file name

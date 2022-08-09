@@ -1,29 +1,11 @@
 part of icons_launcher_cli;
 
-/// Wrapper to allow generation of the Contents.json file used by the Asset
-/// Catalog "App Icon Type":
-/// https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/AppIconType.html
-class IosContents {
-  /// Provide a list of [images] to be created in your Asset set.
-  const IosContents({required this.images});
-
-  /// The meta data for each asset file to create.
-  final List<IosIconTemplate> images;
-
-  /// For use with a [JsonEncoder] to generate this Asset's Contents.json file.
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        'images': images.map((image) => image.toJson()).toList(),
-        'info': {'author': 'icons_launcher', 'version': 1}
-      };
-}
-
 /// Generates a list of IosIconTemplates according to the parameters:
 ///
 /// [size] is the image size @1x scale to use in pixels.
 /// [sizeName] if not provided will use the naming scheme: '\<size>x\<size>',
 /// where \<size> is the rounded [size] value.
-/// [scales] is an array of integers indicating the different scales for which
-/// we will generate images.
+/// [scales] are the different size multiples for which we will generate images.
 /// [idiom] is the device family name to use within the Asset Catalog's
 /// description of each icon generated.
 List<IosIconTemplate> _createIosTemplates(
@@ -85,14 +67,17 @@ void _createIosIcons({required String imagePath}) {
 
   final filenames = <String>{};
   for (final template in iosIcons) {
-    // Multiple idioms can use the same file, so check if we already created it.
+    // Multiple icon variants can use the same file, so check if we already
+    // created it.
     if (filenames.contains(template.filename) == false) {
       filenames.add(template.filename);
       _saveImageIos(template, image);
     }
   }
 
-  _saveContentsJson(IosContents(images: iosIcons));
+  AppleAppIconType(
+          images: iosIcons, assetPath: _flavorHelper.iOSAssetsAppIconFolder)
+      .saveContentsJson();
 
   CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
 }
@@ -102,11 +87,4 @@ void _saveImageIos(IosIconTemplate template, Icon image) {
   final filePath =
       '${_flavorHelper.iOSAssetsAppIconFolder}${template.filename}';
   image.saveResizedPng(template.scaledSize, filePath);
-}
-
-void _saveContentsJson(IosContents contents) {
-  final filePath = '${_flavorHelper.iOSAssetsAppIconFolder}Contents.json';
-  final file = File(filePath);
-  const encoder = JsonEncoder.withIndent('  ');
-  file.writeAsStringSync(encoder.convert(contents), flush: true);
 }

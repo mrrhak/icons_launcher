@@ -1,5 +1,22 @@
 part of icons_launcher_cli;
 
+/// Generates templates according to the parameters:
+///
+/// [size] is the image size @1x scale to use in pixels.
+/// [scales] are the different size multiples for which we will generate images.
+List<MacOSIconTemplate> _createMacTemplates(
+    {required int size, required List<int> scales}) {
+  final templates = <MacOSIconTemplate>[];
+  for (int scale in scales) {
+    templates.add(MacOSIconTemplate(
+        sizeName: '${size}x$size',
+        scaledSize: size * scale,
+        scale: scale,
+        idiom: 'mac'));
+  }
+  return templates;
+}
+
 /// Start create macos icons
 void _createMacOSIcons({required String imagePath}) {
   CliLogger.info('Creating macOS icons...');
@@ -12,25 +29,29 @@ void _createMacOSIcons({required String imagePath}) {
   }
 
   final macosIcons = <MacOSIconTemplate>[
-    MacOSIconTemplate(name: '_16', size: 16),
-    MacOSIconTemplate(name: '_32', size: 32),
-    MacOSIconTemplate(name: '_64', size: 64),
-    MacOSIconTemplate(name: '_128', size: 128),
-    MacOSIconTemplate(name: '_256', size: 256),
-    MacOSIconTemplate(name: '_512', size: 512),
-    MacOSIconTemplate(name: '_1024', size: 1024),
+    ..._createMacTemplates(size: 16, scales: [1, 2]),
+    ..._createMacTemplates(size: 32, scales: [1, 2]),
+    ..._createMacTemplates(size: 128, scales: [1, 2]),
+    ..._createMacTemplates(size: 256, scales: [1, 2]),
+    ..._createMacTemplates(size: 512, scales: [1, 2]),
   ];
 
+  final filenames = <String>{};
   for (final template in macosIcons) {
-    _saveImageMacOS(template, image);
+    if (filenames.contains(template.filename) == false) {
+      filenames.add(template.filename);
+      _saveImageMacOS(template, image);
+    }
   }
+
+  AppleAppIconType(images: macosIcons, assetPath: MACOS_DEFAULT_APP_ICON_DIR)
+      .saveContentsJson();
 
   CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
 }
 
 /// Save macos image
 void _saveImageMacOS(MacOSIconTemplate template, Icon image) {
-  final filePath =
-      '$MACOS_DEFAULT_APP_ICON_DIR$MACOS_DEFAULT_ICON_NAME${template.name}.png';
-  image.saveResizedPng(template.size, filePath);
+  final filePath = '$MACOS_DEFAULT_APP_ICON_DIR${template.filename}';
+  image.saveResizedPng(template.scaledSize, filePath);
 }

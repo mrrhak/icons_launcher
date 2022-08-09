@@ -39,11 +39,13 @@ class IosIconTemplate {
   /// Icon file name
   String get filename => '$IOS_DEFAULT_ICON_NAME-$sizeName@${scale}x.png';
 
+  /// Used to encode the attributes for this asset file in a corresponding
+  /// Asset's Contents.json file.
   Map<String, String> toJson() => {
-        'size': sizeName,
-        'idiom': idiom,
         'filename': filename,
-        'scale': '${scale}x'
+        'idiom': idiom,
+        'scale': '${scale}x',
+        'size': sizeName
       };
 }
 

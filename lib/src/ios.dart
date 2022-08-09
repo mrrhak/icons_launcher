@@ -1,15 +1,19 @@
 part of icons_launcher_cli;
 
-/// Wrapper to allow generation of the Asset Catalog
-/// Format: https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/AppIconType.html
+/// Wrapper to allow generation of the Contents.json file used by the Asset
+/// Catalog "App Icon Type":
+/// https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/AppIconType.html
 class IosContents {
+  /// Provide a list of [images] to be created in your Asset set.
   const IosContents({required this.images});
 
+  /// The meta data for each asset file to create.
   final List<IosIconTemplate> images;
 
+  /// For use with a [JsonEncoder] to generate this Asset's Contents.json file.
   Map<String, dynamic> toJson() => <String, dynamic>{
         'images': images.map((image) => image.toJson()).toList(),
-        'info': {'version': 1, 'author': 'icons_launcher'}
+        'info': {'author': 'icons_launcher', 'version': 1}
       };
 }
 
@@ -79,8 +83,13 @@ void _createIosIcons({required String imagePath}) {
     //..._createIosTemplates(size: 72, scales: [1, 2], idiom: 'ipad'),
   ];
 
+  final filenames = <String>{};
   for (final template in iosIcons) {
-    _saveImageIos(template, image);
+    // Multiple idioms can use the same file, so check if we already created it.
+    if (filenames.contains(template.filename) == false) {
+      filenames.add(template.filename);
+      _saveImageIos(template, image);
+    }
   }
 
   _saveContentsJson(IosContents(images: iosIcons));

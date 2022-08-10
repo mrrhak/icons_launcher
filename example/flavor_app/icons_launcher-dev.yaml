@@ -18,7 +18,7 @@ icons_launcher:
       image_path: 'assets/ic_logo_border.png'
       favicon_path: 'assets/ic_logo_round.png'
     macos:
-      enable: false
+      enable: true
       image_path: 'assets/ic_logo_border.png'
     windows:
       enable: false

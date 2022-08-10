@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:icons_launcher/utils/constants.dart';
 
+import 'cli_logger.dart';
+
 /// Android template
 class AndroidMipMapIconTemplate {
   /// Constructor
@@ -150,5 +152,7 @@ class AppleAppIconType {
     final file = File('${assetPath}Contents.json');
     const encoder = JsonEncoder.withIndent('  ');
     file.writeAsStringSync(encoder.convert(this), flush: true);
+    CliLogger.success('Generated `Contents.json` file',
+        level: CliLoggerLevel.two);
   }
 }

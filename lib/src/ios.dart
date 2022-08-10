@@ -74,12 +74,10 @@ void _createIosIcons({required String imagePath}) {
       _saveImageIos(template, image);
     }
   }
-
+  CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
   AppleAppIconType(
           images: iosIcons, assetPath: _flavorHelper.iOSAssetsAppIconFolder)
       .saveContentsJson();
-
-  CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
 }
 
 /// Save ios image

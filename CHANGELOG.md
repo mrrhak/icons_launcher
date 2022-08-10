@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.3
+ - Fixed missing generate Contents.json for ios and macos ([#20](https://github.com/mrrhak/icons_launcher/issues/20))
+
 ## 2.0.2
  - Fixed generate playstore icon wrong location ([#19](https://github.com/mrrhak/icons_launcher/issues/19))
  - Fixed android adaptive round icon not remove ([#18](https://github.com/mrrhak/icons_launcher/issues/18))

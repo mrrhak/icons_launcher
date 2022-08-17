@@ -324,40 +324,42 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   }
 
   //! Android
-  if (isNeedingNewAndroidIcon(platforms) && imagePathAndroid != null) {
-    _createAndroidIcons(imagePath: imagePathAndroid);
-  }
-
-  String? adaptiveBg;
-  if (platforms['android'].containsKey('adaptive_background_color')) {
-    final adaptiveBgColor =
-        platforms['android']['adaptive_background_color'].toString();
-    adaptiveBg = adaptiveBgColor;
-  } else if (adaptiveBgImage != null) {
-    adaptiveBg = adaptiveBgImage;
-  }
-
-  //! Android Adaptive
-  final isAdaptiveIconExists = adaptiveBg != null && adaptiveFgImage != null;
-  if (hasAndroidAdaptiveConfig(platforms) && isAdaptiveIconExists) {
-    final int minSdk = _minSdk();
-    if (minSdk == 0) {
-      CliLogger.error(
-          'Can not find minSdk from android/app/build.gradle or android/local.properties',
-          level: CliLoggerLevel.two);
-      exit(1);
+  if (isNeedingNewAndroidIcon(platforms)) {
+    if (imagePathAndroid != null) {
+      _createAndroidIcons(imagePath: imagePathAndroid);
     }
-    if (minSdk < 26 && imagePathAndroid == null) {
-      CliLogger.error(
-          'Adaptive icon config found but no regular Android config. API 26 the regular Android config is required',
-          level: CliLoggerLevel.two);
-      exit(1);
+
+    String? adaptiveBg;
+    if (platforms['android'].containsKey('adaptive_background_color')) {
+      final adaptiveBgColor =
+          platforms['android']['adaptive_background_color'].toString();
+      adaptiveBg = adaptiveBgColor;
+    } else if (adaptiveBgImage != null) {
+      adaptiveBg = adaptiveBgImage;
     }
-    _createAndroidAdaptiveIcon(
-      background: adaptiveBg,
-      foreground: adaptiveFgImage,
-      round: adaptiveRoundImage,
-    );
+
+    //! Android Adaptive
+    final isAdaptiveIconExists = adaptiveBg != null && adaptiveFgImage != null;
+    if (hasAndroidAdaptiveConfig(platforms) && isAdaptiveIconExists) {
+      final int minSdk = _minSdk();
+      if (minSdk == 0) {
+        CliLogger.error(
+            'Can not find minSdk from android/app/build.gradle or android/local.properties',
+            level: CliLoggerLevel.two);
+        exit(1);
+      }
+      if (minSdk < 26 && imagePathAndroid == null) {
+        CliLogger.error(
+            'Adaptive icon config found but no regular Android config. API 26 the regular Android config is required',
+            level: CliLoggerLevel.two);
+        exit(1);
+      }
+      _createAndroidAdaptiveIcon(
+        background: adaptiveBg,
+        foreground: adaptiveFgImage,
+        round: adaptiveRoundImage,
+      );
+    }
   }
 
   //! iOS

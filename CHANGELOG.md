@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.4
+ - Fixed android config validation ([#22](https://github.com/mrrhak/icons_launcher/issues/22))
+
 ## 2.0.3
  - Fixed missing generate Contents.json for ios and macos ([#20](https://github.com/mrrhak/icons_launcher/issues/20))
 

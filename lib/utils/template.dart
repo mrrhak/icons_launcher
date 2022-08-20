@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:icons_launcher/utils/constants.dart';
-
+import 'package:universal_io/io.dart';
 import 'cli_logger.dart';
 
 /// Android template

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.5
+ - Flutter 3.3
+ - Improve pub analytic
+
 ## 2.0.4
  - Fixed android config validation ([#22](https://github.com/mrrhak/icons_launcher/issues/22))
 

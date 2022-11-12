@@ -15,9 +15,13 @@ void _createLinuxIcons({required String imagePath}) {
   _saveImageLinux(template, image, LINUX_DEFAULT_ICON_FILE_NAME);
 
   CliLogger.success('Generated app icon image', level: CliLoggerLevel.two);
-
-  _createLinuxDesktopFile();
-  CliLogger.success('Created desktop entry file', level: CliLoggerLevel.two);
+  // If not existed => Create new once
+  // Otherwise not do anything just update icon file above
+  final file = File('$LINUX_DEFAULT_ICON_DIR$LINUX_DEFAULT_ICON_NAME.desktop');
+  if (!file.existsSync()) {
+    _createLinuxDesktopFile();
+    CliLogger.success('Created desktop entry file', level: CliLoggerLevel.two);
+  }
 }
 
 /// Save linux image

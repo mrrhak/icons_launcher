@@ -9,7 +9,7 @@ funding:
   - https://ko-fi.com/mrrhak
 screenshots:
   - description: "Icons Launcher"
-    path: https://raw.githubusercontent.com/mrrhak/icons_launcher/master/assets/icons_launcher_preview.png
+    path: "https://raw.githubusercontent.com/mrrhak/icons_launcher/master/assets/icons_launcher_preview.png"
 
 dependencies:
   args: ^2.3.1

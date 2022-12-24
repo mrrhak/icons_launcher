@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 align="center" style="font-size: 70px;">✨ Icons Launcher ✨</h1>
+  <h1 align="center" style="font-size: 50px;">✨ Icons Launcher ✨</h1>
   <p align="center">
   A command-line tool that simplifies the task of updating your Flutter app's launcher icon. Full flexibility allows you to only update the launcher icon for specific platforms as needed.
  </p>
@@ -17,6 +17,7 @@
     <a href="https://ko-fi.com/mrrhak">
       <img width="150" alt="Ko-fi" src="https://user-images.githubusercontent.com/26390946/161375565-e7d64410-bbcf-4a28-896b-7514e106478e.png">
     </a>
+  </div>
   <!--  Donations -->
 </div>
 

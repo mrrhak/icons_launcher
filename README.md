@@ -1,8 +1,23 @@
 <div align="center">
-  <h1 align="center">✨ Icons Launcher ✨</h1>
+  <h1 align="center" style="font-size: 70px;">✨ Icons Launcher ✨</h1>
   <p align="center">
   A command-line tool that simplifies the task of updating your Flutter app's launcher icon. Full flexibility allows you to only update the launcher icon for specific platforms as needed.
  </p>
+</div>
+
+<div align="center">
+   <!--  Donations -->
+  <a href="https://ko-fi.com/mrrhak">
+    <img width="300" src="https://user-images.githubusercontent.com/26390946/161375567-9e14cd0e-1675-4896-a576-a449b0bcd293.png">
+  </a>
+  <div align="center">
+    <a href="https://www.buymeacoffee.com/mrrhak">
+      <img width="150" alt="buymeacoffee" src="https://user-images.githubusercontent.com/26390946/161375563-69c634fd-89d2-45ac-addd-931b03996b34.png">
+    </a>
+    <a href="https://ko-fi.com/mrrhak">
+      <img width="150" alt="Ko-fi" src="https://user-images.githubusercontent.com/26390946/161375565-e7d64410-bbcf-4a28-896b-7514e106478e.png">
+    </a>
+  <!--  Donations -->
 </div>
 
 <div align="center">
@@ -43,11 +58,9 @@
 
 ### **Platform Support**
 
-| Android |   iOS   |  MacOS  |   Web   |  Linux  | Windows |
-| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
-|    ✔️   |   ✔️   |   ✔️   |   ✔️    |   ✔️   |   ✔️    |
-
-
+| Android | iOS | MacOS | Web | Linux | Windows |
+| :-----: | :-: | :---: | :-: | :---: | :-----: |
+|   ✔️    | ✔️  |  ✔️   | ✔️  |  ✔️   |   ✔️    |
 
 ## Guide
 
@@ -61,7 +74,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 icons_launcher:
-  image_path: 'assets/ic_logo_border.png'
+  image_path: "assets/ic_logo_border.png"
   platforms:
     android:
       enable: true
@@ -97,58 +110,59 @@ In the above configuration, the package is setup to replace the existing launche
 
 Shown below is the full list of attributes which you can specify within your Icons Launcher configuration.
 
-| Icons Launcher Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `image_path` | String | `null` | The image file path |
-| `platforms` | Object | `null` | Use for specific platform to generate icons |
+| Icons Launcher Option | Type   | Default | Description                                 |
+| --------------------- | ------ | ------- | ------------------------------------------- |
+| `image_path`          | String | `null`  | The image file path                         |
+| `platforms`           | Object | `null`  | Use for specific platform to generate icons |
 
 ---
 
-| Platforms Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `android` | Object | `null` | Use for specific android platform |
-| `ios` | Object | `null` | Use for specific android platform |
-| `macos` | Object | `null` | Use for specific android platform |
-| `windows` | Object | `null` | Use for specific android platform |
-| `web` | Object | `null` | Use for specific android platform |
-| `linux` | Object | `null` | Use for specific android platform |
+| Platforms Option | Type   | Default | Description                       |
+| ---------------- | ------ | ------- | --------------------------------- |
+| `android`        | Object | `null`  | Use for specific android platform |
+| `ios`            | Object | `null`  | Use for specific android platform |
+| `macos`          | Object | `null`  | Use for specific android platform |
+| `windows`        | Object | `null`  | Use for specific android platform |
+| `web`            | Object | `null`  | Use for specific android platform |
+| `linux`          | Object | `null`  | Use for specific android platform |
 
-| Android Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `enable` | Boolean | `false` | Use for enable android platform |
-| `image_path` | String | `null` | The image file path |
-| `adaptive_background_color` | String | `null` | Color for fill out the background of the adaptive icon (_"#ffffff"_) |
-| `adaptive_background_image` | String | `null` | Image for fill out the background of the adaptive icon |
-| `adaptive_foreground_image` | String | `null` | Image for the icon foreground of the adaptive icon |
-| `adaptive_round_image` | String | `null` | Image for the round icon of the adaptive icon (optional) |
+| Android Option              | Type    | Default | Description                                                          |
+| --------------------------- | ------- | ------- | -------------------------------------------------------------------- |
+| `enable`                    | Boolean | `false` | Use for enable android platform                                      |
+| `image_path`                | String  | `null`  | The image file path                                                  |
+| `adaptive_background_color` | String  | `null`  | Color for fill out the background of the adaptive icon (_"#ffffff"_) |
+| `adaptive_background_image` | String  | `null`  | Image for fill out the background of the adaptive icon               |
+| `adaptive_foreground_image` | String  | `null`  | Image for the icon foreground of the adaptive icon                   |
+| `adaptive_round_image`      | String  | `null`  | Image for the round icon of the adaptive icon (optional)             |
 
-| IOS Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `enable` | Boolean | `false` | Use for enable ios platform |
-| `image_path` | String | `null` | The image file path |
+| IOS Option   | Type    | Default | Description                 |
+| ------------ | ------- | ------- | --------------------------- |
+| `enable`     | Boolean | `false` | Use for enable ios platform |
+| `image_path` | String  | `null`  | The image file path         |
 
-| Web Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `enable` | Boolean | `false` | Use for enable ios platform |
-| `image_path` | String | `null` | The image file path |
-| `favicon_path` | String | `null` | The image file path |
+| Web Option     | Type    | Default | Description                 |
+| -------------- | ------- | ------- | --------------------------- |
+| `enable`       | Boolean | `false` | Use for enable ios platform |
+| `image_path`   | String  | `null`  | The image file path         |
+| `favicon_path` | String  | `null`  | The image file path         |
 
-| macOS Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `enable` | Boolean | `false` | Use for enable macos platform |
-| `image_path` | String | `null` | The image file path |
+| macOS Option | Type    | Default | Description                   |
+| ------------ | ------- | ------- | ----------------------------- |
+| `enable`     | Boolean | `false` | Use for enable macos platform |
+| `image_path` | String  | `null`  | The image file path           |
 
-| Windows Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `enable` | Boolean | `false` | Use for enable windows platform |
-| `image_path` | String | `null` | The image file path |
+| Windows Option | Type    | Default | Description                     |
+| -------------- | ------- | ------- | ------------------------------- |
+| `enable`       | Boolean | `false` | Use for enable windows platform |
+| `image_path`   | String  | `null`  | The image file path             |
 
-| Linux Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `enable` | Boolean | `false` | Use for enable linux platform |
-| `image_path` | String | `null` | The image file path |
+| Linux Option | Type    | Default | Description                   |
+| ------------ | ------- | ------- | ----------------------------- |
+| `enable`     | Boolean | `false` | Use for enable linux platform |
+| `image_path` | String  | `null`  | The image file path           |
 
 ---
+
 ## Flavor support
 
 Create a Icons Launcher configuration file for your flavor. The config file is called `icons_launcher-<flavor>.yaml` by replacing `<flavor>` by the name of your desired flavor.
@@ -156,6 +170,7 @@ Create a Icons Launcher configuration file for your flavor. The config file is c
 Example: `icons_launcher-dev.yaml`
 
 Run with flavor:
+
 ```sh
 flutter pub get
 flutter pub run icons_launcher:create --flavor dev
@@ -164,33 +179,34 @@ flutter pub run icons_launcher:create --flavor dev
 The configuration file format is the same.
 
 ---
+
 ## Example
 
 ```yaml
 icons_launcher:
-  image_path: 'assets/ic_logo_border.png'
+  image_path: "assets/ic_logo_border.png"
   platforms:
     android:
       enable: true
-      image_path: 'assets/ic_logo_border.png'
+      image_path: "assets/ic_logo_border.png"
       # adaptive_background_color: '#ffffff'
-      adaptive_background_image: 'assets/ic_background.png'
-      adaptive_foreground_image: 'assets/ic_foreground.png'
-      adaptive_round_image: 'assets/ic_logo_round.png'
+      adaptive_background_image: "assets/ic_background.png"
+      adaptive_foreground_image: "assets/ic_foreground.png"
+      adaptive_round_image: "assets/ic_logo_round.png"
     ios:
       enable: true
-      image_path: 'assets/ic_logo_rectangle.png'
+      image_path: "assets/ic_logo_rectangle.png"
     web:
       enable: true
-      image_path: 'assets/ic_logo_border.png'
-      favicon_path: 'assets/ic_logo_round.png'
+      image_path: "assets/ic_logo_border.png"
+      favicon_path: "assets/ic_logo_round.png"
     macos:
       enable: false
-      image_path: 'assets/ic_logo_border.png'
+      image_path: "assets/ic_logo_border.png"
     windows:
       enable: false
-      image_path: 'assets/ic_logo_border.png'
+      image_path: "assets/ic_logo_border.png"
     linux:
       enable: false
-      image_path: 'assets/ic_logo_border.png'
+      image_path: "assets/ic_logo_border.png"
 ```

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.7
+
+- Added funding URLs
+- Added screenshots
+- Upgrade dependencies
+
 ## 2.0.6
 
 - Fixed always overwrite `.desktop` file of Linux platform ([#23](https://github.com/mrrhak/icons_launcher/issues/23))

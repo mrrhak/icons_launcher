@@ -26,3 +26,6 @@ icons_launcher:
     linux:
       enable: false
       image_path: "assets/ic_logo_border.png"
+    chrome_extension:
+      enable: true
+      image_path: "assets/ic_logo_border.png"

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.8
+
+- Added chrome extension support
+
 ## 2.0.7
 
 - Added funding URLs

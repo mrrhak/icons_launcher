@@ -59,9 +59,9 @@
 
 ### **Platform Support**
 
-| Android | iOS | MacOS | Web | Linux | Windows |
-| :-----: | :-: | :---: | :-: | :---: | :-----: |
-|   ✔️    | ✔️  |  ✔️   | ✔️  |  ✔️   |   ✔️    |
+| Android | iOS | MacOS | Web | Linux | Windows | Chrome Extension |
+| :-----: | :-: | :---: | :-: | :---: | :-----: | :-----: |
+|   ✔️    | ✔️  |  ✔️   | ✔️  |  ✔️   |   ✔️    |   ✔️    |
 
 ## Guide
 
@@ -126,6 +126,7 @@ Shown below is the full list of attributes which you can specify within your Ico
 | `windows`        | Object | `null`  | Use for specific android platform |
 | `web`            | Object | `null`  | Use for specific android platform |
 | `linux`          | Object | `null`  | Use for specific android platform |
+| `chrome_extension`          | Object | `null`  | Use for specific android platform |
 
 | Android Option              | Type    | Default | Description                                                          |
 | --------------------------- | ------- | ------- | -------------------------------------------------------------------- |
@@ -162,6 +163,10 @@ Shown below is the full list of attributes which you can specify within your Ico
 | `enable`     | Boolean | `false` | Use for enable linux platform |
 | `image_path` | String  | `null`  | The image file path           |
 
+| Chrome Extension Option | Type    | Default | Description                   |
+| ------------ | ------- | ------- | ----------------------------- |
+| `enable`     | Boolean | `false` | Use for enable linux platform |
+| `image_path` | String  | `null`  | The image file path           |
 ---
 
 ## Flavor support
@@ -208,6 +213,9 @@ icons_launcher:
       enable: false
       image_path: "assets/ic_logo_border.png"
     linux:
+      enable: false
+      image_path: "assets/ic_logo_border.png"
+    chrome_extension:
       enable: false
       image_path: "assets/ic_logo_border.png"
 ```

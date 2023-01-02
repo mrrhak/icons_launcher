@@ -11,3 +11,5 @@ pubspec.lock
 doc/api/
 
 # example/test/
+
+.history

@@ -10,7 +10,8 @@ bool hasPlatformConfig(Map<String, dynamic> config) {
         isNeedingNewMacOSIcon(platforms) ||
         isNeedingNewWindowsIcon(platforms) ||
         isNeedingNewWebIcon(platforms) ||
-        isNeedingNewLinuxIcon(platforms);
+        isNeedingNewLinuxIcon(platforms) ||
+        isNeedingNewChromeExtensionIcon(platforms);
 
     return isHasPlatformSpecific;
   }

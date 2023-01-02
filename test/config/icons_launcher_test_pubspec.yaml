@@ -11,3 +11,4 @@ flutter_icons:
   windows: true
   linux: true
   web: true
+  chrome_extension: true

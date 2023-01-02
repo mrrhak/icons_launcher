@@ -15,6 +15,7 @@ part 'src/macos.dart';
 part 'src/web.dart';
 part 'src/windows.dart';
 part 'src/linux.dart';
+part 'src/chrome_extension.dart';
 
 late _FlavorHelper _flavorHelper;
 
@@ -177,6 +178,19 @@ void _checkConfig(Map<String, dynamic> config) {
     }
   }
 
+  // CHROME EXTENSION
+  if (isNeedingNewChromeExtensionIcon(platforms)) {
+    final chromeExtensionConfig =
+        platforms['chrome_extension'] as Map<String, dynamic>;
+    final chromeExtensionImagePath = _checkImageExists(
+            config: chromeExtensionConfig, parameter: 'image_path') ??
+        globalImagePath;
+    if (chromeExtensionImagePath == null) {
+      errors.add(
+          'Please add a `image_path` for Chrome Extension to your config file.');
+    }
+  }
+
   if (errors.isNotEmpty) {
     errors.forEach(CliLogger.error);
     exit(1);
@@ -323,6 +337,17 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
+  String? chromeExtensionImagePath;
+  if (isNeedingNewChromeExtensionIcon(platforms)) {
+    final newImagePath = _checkImageExists(
+      config: platforms['chrome_extension'],
+      parameter: 'image_path',
+    );
+    if (newImagePath != null) {
+      chromeExtensionImagePath = newImagePath;
+    }
+  }
+
   //! Android
   if (isNeedingNewAndroidIcon(platforms)) {
     if (imagePathAndroid != null) {
@@ -390,6 +415,12 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   //! Linux
   if (isNeedingNewLinuxIcon(platforms) && imagePathLinux != null) {
     _createLinuxIcons(imagePath: imagePathLinux);
+  }
+
+  //! Chrome Extension
+  if (isNeedingNewChromeExtensionIcon(platforms) &&
+      chromeExtensionImagePath != null) {
+    _createChromeExtensionIcons(imagePath: chromeExtensionImagePath);
   }
 }
 

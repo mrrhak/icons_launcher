@@ -85,6 +85,17 @@ bool isNeedingNewWebIcon(Map<String, dynamic> platforms) {
   return hasWebConfig(platforms) && platforms['web']['enable'] == true;
 }
 
+/// Checks if the config has chrome extension.
+bool hasChromeExtensionConfig(Map<String, dynamic> platforms) {
+  return platforms.containsKey('chrome_extension');
+}
+
+/// Checks if the config need chrome extension.
+bool isNeedingNewChromeExtensionIcon(Map<String, dynamic> platforms) {
+  return hasChromeExtensionConfig(platforms) &&
+      platforms['chrome_extension']['enable'] == true;
+}
+
 /// Checking color code
 bool isValidHexaCode(String hexaCode) {
   if (hexaCode[0] != '#') {

@@ -88,6 +88,7 @@ const String IC_LAUNCHER_BACKGROUND_COLOR_XML = '''
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
   <background android:drawable="@color/ic_launcher_background"/>
   <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+  <monochrome android:drawable="@mipmap/ic_launcher_monochrome"/>
 </adaptive-icon>
 ''';
 
@@ -97,6 +98,7 @@ const String IC_LAUNCHER_MIP_MAP_XML = '''
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
   <background android:drawable="@mipmap/ic_launcher_background"/>
   <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+  <monochrome android:drawable="@mipmap/ic_launcher_monochrome"/>
 </adaptive-icon>
 ''';
 
@@ -106,6 +108,7 @@ const String IC_LAUNCHER_ROUND_BACKGROUND_COLOR_XML = '''
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
   <background android:drawable="@color/ic_launcher_background"/>
   <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+  <monochrome android:drawable="@mipmap/ic_launcher_monochrome"/>
 </adaptive-icon>
 ''';
 
@@ -115,6 +118,7 @@ const String IC_LAUNCHER_ROUND_MIP_MAP_XML = '''
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
   <background android:drawable="@mipmap/ic_launcher_background"/>
   <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+  <monochrome android:drawable="@mipmap/ic_launcher_monochrome"/>
 </adaptive-icon>
 ''';
 

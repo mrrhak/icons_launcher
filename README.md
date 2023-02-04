@@ -135,6 +135,7 @@ Shown below is the full list of attributes which you can specify within your Ico
 | `adaptive_background_image` | String  | `null`  | Image for fill out the background of the adaptive icon               |
 | `adaptive_foreground_image` | String  | `null`  | Image for the icon foreground of the adaptive icon                   |
 | `adaptive_round_image`      | String  | `null`  | Image for the round icon of the adaptive icon (optional)             |
+| `adaptive_monochrome_image` | String  | `null`  | Image for the monochrome version of the adaptive icon (optional)     |
 
 | IOS Option   | Type    | Default | Description                 |
 | ------------ | ------- | ------- | --------------------------- |
@@ -194,6 +195,7 @@ icons_launcher:
       adaptive_background_image: "assets/ic_background.png"
       adaptive_foreground_image: "assets/ic_foreground.png"
       adaptive_round_image: "assets/ic_logo_round.png"
+      adaptive_monochrome_image: "assets/ic_logo_monochrome.png"
     ios:
       enable: true
       image_path: "assets/ic_logo_rectangle.png"

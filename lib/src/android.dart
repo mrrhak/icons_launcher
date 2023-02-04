@@ -100,6 +100,7 @@ void _createAndroidAdaptiveIcon({
   required String background,
   required String foreground,
   String? round,
+  String? monochrome,
 }) {
   String message = 'Creating Android adaptive icons...';
   if (round != null) {
@@ -113,6 +114,11 @@ void _createAndroidAdaptiveIcon({
     _createAdaptiveRound(androidIcons, round, isValidHexaCode(background));
   } else {
     _removeAdaptiveRound(androidIcons);
+  }
+  if (monochrome != null) {
+    _createAdaptiveMonochrome(androidIcons, monochrome);
+  } else {
+    _removeAdaptiveMonochrome(androidIcons);
   }
 }
 
@@ -228,6 +234,19 @@ void _removeAdaptiveRound(List<AndroidMipMapIconTemplate> adaptiveIcons) {
     'Removed adaptive round images',
     level: CliLoggerLevel.two,
   );
+}
+
+/// Create the adaptive monochrome icon
+void _createAdaptiveMonochrome(
+  List<AndroidMipMapIconTemplate> adaptiveIcons,
+  String monochrome,
+) {
+  throw UnimplementedError();
+}
+
+/// Remove the adaptive monochrome icon
+void _removeAdaptiveMonochrome(List<AndroidMipMapIconTemplate> adaptiveIcons) {
+  throw UnimplementedError();
 }
 
 /// Handle colors.xml file

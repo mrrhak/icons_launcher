@@ -51,6 +51,13 @@ const String ANDROID_ADAPTIVE_ROUND_ICON_NAME = 'ic_launcher_round';
 const String ANDROID_ADAPTIVE_ROUND_ICON_FILE_NAME =
     '$ANDROID_ADAPTIVE_ROUND_ICON_NAME.png';
 
+/// Android adaptive monochrome icon name
+const String ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME = 'ic_launcher_monochrome';
+
+/// Android adaptive monochrome icon name with extension
+const String ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME =
+    '$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME.png';
+
 /// Android adaptive foreground icon name
 const String ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME = 'ic_launcher_foreground';
 

@@ -241,12 +241,39 @@ void _createAdaptiveMonochrome(
   List<AndroidMipMapIconTemplate> adaptiveIcons,
   String monochrome,
 ) {
-  throw UnimplementedError();
+  final monochromeImage = Icon.loadFile(monochrome);
+  if (monochromeImage == null) {
+    CliLogger.error(
+      'The file $monochrome could not be read.',
+      level: CliLoggerLevel.two,
+    );
+    exit(1);
+  }
+
+  for (final template in adaptiveIcons) {
+    _saveImageAndroid(
+      template,
+      monochromeImage,
+      ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME,
+    );
+  }
+  CliLogger.success(
+    'Generated adaptive monochrome images',
+    level: CliLoggerLevel.two,
+  );
 }
 
 /// Remove the adaptive monochrome icon
 void _removeAdaptiveMonochrome(List<AndroidMipMapIconTemplate> adaptiveIcons) {
-  throw UnimplementedError();
+  for (final template in adaptiveIcons) {
+    final filePath =
+        '${_flavorHelper.androidResFolder}${template.directoryName}/$ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME';
+    deleteFile(filePath);
+  }
+  CliLogger.success(
+    'Removed adaptive monochrome images',
+    level: CliLoggerLevel.two,
+  );
 }
 
 /// Handle colors.xml file

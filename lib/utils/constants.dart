@@ -51,6 +51,13 @@ const String ANDROID_ADAPTIVE_ROUND_ICON_NAME = 'ic_launcher_round';
 const String ANDROID_ADAPTIVE_ROUND_ICON_FILE_NAME =
     '$ANDROID_ADAPTIVE_ROUND_ICON_NAME.png';
 
+/// Android adaptive monochrome icon name
+const String ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME = 'ic_launcher_monochrome';
+
+/// Android adaptive monochrome icon name with extension
+const String ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME =
+    '$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME.png';
+
 /// Android adaptive foreground icon name
 const String ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME = 'ic_launcher_foreground';
 
@@ -79,8 +86,9 @@ const String ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME =
 const String IC_LAUNCHER_BACKGROUND_COLOR_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-  <background android:drawable="@color/ic_launcher_background"/>
-  <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+  <background android:drawable="@color/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
+  <monochrome android:drawable="@mipmap/$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME"/>
 </adaptive-icon>
 ''';
 
@@ -88,8 +96,9 @@ const String IC_LAUNCHER_BACKGROUND_COLOR_XML = '''
 const String IC_LAUNCHER_MIP_MAP_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-  <background android:drawable="@mipmap/ic_launcher_background"/>
-  <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+  <background android:drawable="@mipmap/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
+  <monochrome android:drawable="@mipmap/$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME"/>
 </adaptive-icon>
 ''';
 
@@ -97,8 +106,9 @@ const String IC_LAUNCHER_MIP_MAP_XML = '''
 const String IC_LAUNCHER_ROUND_BACKGROUND_COLOR_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-  <background android:drawable="@color/ic_launcher_background"/>
-  <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+  <background android:drawable="@color/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
+  <monochrome android:drawable="@mipmap/$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME"/>
 </adaptive-icon>
 ''';
 
@@ -106,8 +116,9 @@ const String IC_LAUNCHER_ROUND_BACKGROUND_COLOR_XML = '''
 const String IC_LAUNCHER_ROUND_MIP_MAP_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-  <background android:drawable="@mipmap/ic_launcher_background"/>
-  <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+  <background android:drawable="@mipmap/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
+  <monochrome android:drawable="@mipmap/$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME"/>
 </adaptive-icon>
 ''';
 

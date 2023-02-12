@@ -8,8 +8,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
-  flutter_flavorizr: ^2.1.3
+  cupertino_icons: ^1.0.5
+  flutter_flavorizr: ^2.1.5
+
+dependency_overrides:
+  image: ^4.0.13
 
 dev_dependencies:
   flutter_test:

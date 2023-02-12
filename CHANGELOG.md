@@ -1,4 +1,8 @@
 # Changelog
+## 2.1.0
+
+- Added new support android material 3 monochrome icons ([#28](https://github.com/mrrhak/icons_launcher/pull/28))
+- Upgrade dependencies
 
 ## 2.0.7
 

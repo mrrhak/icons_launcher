@@ -347,6 +347,16 @@ void _createIconsByConfig(Map<String, dynamic> config) {
       chromeExtensionImagePath = newImagePath;
     }
   }
+  String? adaptiveMonochrome;
+  if (isNeedingNewAndroidIcon(platforms)) {
+    final newImagePath = _checkImageExists(
+      config: platforms['android'],
+      parameter: 'adaptive_monochrome_image',
+    );
+    if (newImagePath != null) {
+      adaptiveMonochrome = newImagePath;
+    }
+  }
 
   //! Android
   if (isNeedingNewAndroidIcon(platforms)) {
@@ -383,6 +393,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
         background: adaptiveBg,
         foreground: adaptiveFgImage,
         round: adaptiveRoundImage,
+        monochrome: adaptiveMonochrome,
       );
     }
   }

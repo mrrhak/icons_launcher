@@ -100,6 +100,7 @@ void _createAndroidAdaptiveIcon({
   required String background,
   required String foreground,
   String? round,
+  String? monochrome,
 }) {
   String message = 'Creating Android adaptive icons...';
   if (round != null) {
@@ -113,6 +114,11 @@ void _createAndroidAdaptiveIcon({
     _createAdaptiveRound(androidIcons, round, isValidHexaCode(background));
   } else {
     _removeAdaptiveRound(androidIcons);
+  }
+  if (monochrome != null) {
+    _createAdaptiveMonochrome(androidIcons, monochrome);
+  } else {
+    _removeAdaptiveMonochrome(androidIcons);
   }
 }
 
@@ -226,6 +232,46 @@ void _removeAdaptiveRound(List<AndroidMipMapIconTemplate> adaptiveIcons) {
   _removeIcLauncherRoundMipMapXmlFile();
   CliLogger.success(
     'Removed adaptive round images',
+    level: CliLoggerLevel.two,
+  );
+}
+
+/// Create the adaptive monochrome icon
+void _createAdaptiveMonochrome(
+  List<AndroidMipMapIconTemplate> adaptiveIcons,
+  String monochrome,
+) {
+  final monochromeImage = Icon.loadFile(monochrome);
+  if (monochromeImage == null) {
+    CliLogger.error(
+      'The file $monochrome could not be read.',
+      level: CliLoggerLevel.two,
+    );
+    exit(1);
+  }
+
+  for (final template in adaptiveIcons) {
+    _saveImageAndroid(
+      template,
+      monochromeImage,
+      ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME,
+    );
+  }
+  CliLogger.success(
+    'Generated adaptive monochrome images',
+    level: CliLoggerLevel.two,
+  );
+}
+
+/// Remove the adaptive monochrome icon
+void _removeAdaptiveMonochrome(List<AndroidMipMapIconTemplate> adaptiveIcons) {
+  for (final template in adaptiveIcons) {
+    final filePath =
+        '${_flavorHelper.androidResFolder}${template.directoryName}/$ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME';
+    deleteFile(filePath);
+  }
+  CliLogger.success(
+    'Removed adaptive monochrome images',
     level: CliLoggerLevel.two,
   );
 }

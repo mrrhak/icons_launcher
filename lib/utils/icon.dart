@@ -14,10 +14,10 @@ class IconTemplate {
 
 /// Icon
 class Icon {
-  const Icon._(this.image);
+  Icon._(this.image);
 
   /// Image
-  final Image image;
+  Image image;
 
   /// Load an image from bytes
   static Icon? _loadBytes(Uint8List bytes) {
@@ -34,13 +34,19 @@ class Icon {
     return Icon._loadBytes(File(filePath).readAsBytesSync());
   }
 
-  /// Check image is alpha
-  bool get hasAlpha => image.channels == Channels.rgba;
+  /// Check image has an alpha channel
+  bool get hasAlpha => image.hasAlpha;
 
   /// Remove alpha channel from the image
   void removeAlpha() {
-    image.channels = Channels.rgb;
-    image.fillBackground(0xFFFFFFFF);
+    if (!hasAlpha) {
+      return;
+    }
+
+    image.backgroundColor = ColorUint8.rgb(255, 255, 255);
+    image = image.convert(
+      numChannels: 3,
+    );
   }
 
   /// Create a resized copy of this Icon
@@ -74,7 +80,11 @@ class Icon {
 
   /// Save the resized image to a Windows ico file
   static void saveIco(List<Icon> icons, String filePath) {
-    final data = encodeIcoImages(icons.map((e) => e.image).toList());
+    final image = Image(width: 256, height: 256);
+    image.frames = icons.map((icon) => icon.image).toList();
+    image.frameType = FrameType.sequence;
+
+    final data = encodeIco(image);
     final file = File(filePath);
     file.createSync(recursive: true);
     file.writeAsBytesSync(data);

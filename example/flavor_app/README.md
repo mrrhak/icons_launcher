@@ -8,6 +8,6 @@ First: `flutter pub get`
 
 Then generate `dev` and `prod` flavors with the commands:
 ```
-flutter pub run icons_launcher:create --flavor dev
-flutter pub run icons_launcher:create --flavor prod
+dart run icons_launcher:create --flavor dev
+dart run icons_launcher:create --flavor prod
 ```

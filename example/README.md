@@ -53,18 +53,18 @@ After configured, now you can run generation
   
 ```sh
 flutter pub get
-flutter pub run icons_launcher:create
+dart run icons_launcher:create
 ```
 Or with custom yaml file
 
 ```sh
 flutter pub get
-flutter pub run icons_launcher:create --path <your config file name here>
+dart run icons_launcher:create --path <your config file name here>
 ```
 
 Or flavor app ([Example](https://github.com/mrrhak/icons_launcher/tree/master/example/flavor_app))
 
 ```sh
 flutter pub get
-flutter pub run icons_launcher:create --flavor <your flavor>
+dart icons_launcher:create --flavor <your flavor>
 ```

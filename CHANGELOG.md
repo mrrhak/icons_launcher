@@ -1,4 +1,10 @@
 # Changelog
+## 2.1.1
+
+- Bump Dart SDK lower bound to <4.0.0 to support Dart 3
+- Update doc command to use `dart run` instead of `flutter pub run` that deprecated
+- Upgrade dependencies
+
 ## 2.1.0
 
 - Added new support android material 3 monochrome icons ([#28](https://github.com/mrrhak/icons_launcher/pull/28))

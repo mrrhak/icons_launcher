@@ -8,5 +8,5 @@ First: `flutter pub get`
 
 Then generate icons with the command:
 ```
-flutter pub run icons_launcher:create --path icons_launcher.yaml
+dart run icons_launcher:create --path icons_launcher.yaml
 ```

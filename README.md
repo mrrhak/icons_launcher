@@ -89,14 +89,14 @@ After setting up the configuration, all that is left to do is run the package:
 
 ```sh
 flutter pub get
-flutter pub run icons_launcher:create
+dart run icons_launcher:create
 ```
 
 If you name your configuration file something other than `icons_launcher.yaml` or `pubspec.yaml` you will need to specify the name of the file when running the package.
 
 ```sh
 flutter pub get
-flutter pub run icons_launcher:create --path <your config file name here>
+dart run icons_launcher:create --path <your config file name here>
 ```
 
 NOTE: If you are not using the existing `pubspec.yaml` your config file must still be located in the same directory as it.
@@ -175,7 +175,7 @@ Run with flavor:
 
 ```sh
 flutter pub get
-flutter pub run icons_launcher:create --flavor dev
+dart run icons_launcher:create --flavor dev
 ```
 
 The configuration file format is the same.

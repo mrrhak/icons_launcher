@@ -116,9 +116,9 @@ void _createAndroidAdaptiveIcon({
     _removeAdaptiveRound(androidIcons);
   }
   if (monochrome != null) {
-    _createAdaptiveMonochrome(androidIcons, monochrome);
+    _createAdaptiveMonochrome(adaptiveIcons, monochrome);
   } else {
-    _removeAdaptiveMonochrome(androidIcons);
+    _removeAdaptiveMonochrome(adaptiveIcons);
   }
 }
 

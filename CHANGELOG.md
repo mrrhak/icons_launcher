@@ -1,4 +1,9 @@
 # Changelog
+
+## 2.1.2
+
+- Fixed android monochrome icon is smaller and blurred ([#32](https://github.com/mrrhak/icons_launcher/pull/32))
+
 ## 2.1.1
 
 - Bump Dart SDK lower bound to <4.0.0 to support Dart 3

@@ -408,7 +408,7 @@ void _createAndroidManifestIconLauncherRound() {
   if (index != -1) {
     final lineUpdated = manifestLines.elementAt(index).replaceAll(
           RegExp(r'android:roundIcon="[^"]*(\\"[^"]*)*"'),
-          'android:roundIcon="@mipmap/$ANDROID_ADAPTIVE_ROUND_ICON_NAME"',
+          'android:roundIcon="@mipmap/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME_WITHOUT_EXTENSION"',
         );
     manifestLines.replaceRange(index, index + 1, [lineUpdated]);
     androidManifestFile.writeAsStringSync(manifestLines.join('\n'));
@@ -424,7 +424,7 @@ void _createAndroidManifestIconLauncherRound() {
           .elementAt(index)
           .replaceAll(RegExp(r'android:icon="[^"]*(\\"[^"]*)*"'), '''
 android:icon="@mipmap/$ANDROID_ICON_NAME"
-\t\tandroid:roundIcon="@mipmap/$ANDROID_ADAPTIVE_ROUND_ICON_NAME"''');
+\t\tandroid:roundIcon="@mipmap/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME_WITHOUT_EXTENSION"''');
 
       manifestLines.replaceRange(index, index + 1, [lineUpdated]);
       androidManifestFile.writeAsStringSync(manifestLines.join('\n'));

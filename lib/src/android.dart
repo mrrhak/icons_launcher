@@ -109,9 +109,10 @@ void _createAndroidAdaptiveIcon({
   CliLogger.info(message);
 
   _createAdaptiveForeground(adaptiveIcons, foreground);
-  _createAdaptiveBackground(adaptiveIcons, background);
+  _createAdaptiveBackground(adaptiveIcons, background, monochrome);
   if (round != null) {
-    _createAdaptiveRound(androidIcons, round, isValidHexaCode(background));
+    _createAdaptiveRound(
+        androidIcons, round, isValidHexaCode(background), monochrome != null);
   } else {
     _removeAdaptiveRound(androidIcons);
   }
@@ -125,12 +126,13 @@ void _createAndroidAdaptiveIcon({
 /// Create the adaptive background
 void _createAdaptiveBackground(
   List<AndroidMipMapIconTemplate> adaptiveIcons,
-  String background,
-) {
+  String background, [
+  String? monochrome,
+]) {
   // Check background is hexa color or image
   if (isValidHexaCode(background)) {
     _handleColorsXmlFile(background);
-    _createIcLauncherColorXmlFile();
+    _createIcLauncherColorXmlFile(monochrome != null);
   } else {
     try {
       final backgroundImage = Icon.loadFile(background);
@@ -153,7 +155,7 @@ void _createAdaptiveBackground(
         'Generated adaptive background images',
         level: CliLoggerLevel.two,
       );
-      _createIcLauncherMipMapXmlFile();
+      _createIcLauncherMipMapXmlFile(monochrome != null);
     } catch (e) {
       CliLogger.error(
         'Incorrect `$background` of `adaptive_background_color` or `adaptive_background_image`',
@@ -196,6 +198,7 @@ void _createAdaptiveRound(
   List<AndroidMipMapIconTemplate> adaptiveIcons,
   String round,
   bool backgroundIsColor,
+  bool hasMonochrome,
 ) {
   final roundImage = Icon.loadFile(round);
   if (roundImage == null) {
@@ -213,7 +216,7 @@ void _createAdaptiveRound(
       ANDROID_ADAPTIVE_ROUND_ICON_FILE_NAME,
     );
   }
-  _createIcLauncherRoundMipMapXmlFile(backgroundIsColor);
+  _createIcLauncherRoundMipMapXmlFile(backgroundIsColor, hasMonochrome);
   _createAndroidManifestIconLauncherRound();
   CliLogger.success(
     'Generated adaptive round images',
@@ -349,11 +352,13 @@ void _updateColorsFile(File colorsXml, String backgroundColor) {
 }
 
 /// Create ic_launcher_color.xml file
-void _createIcLauncherColorXmlFile() {
+void _createIcLauncherColorXmlFile(bool hasMonochrome) {
   final icLauncherXml = File(
       '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_XML_FILE_NAME');
   icLauncherXml.createSync(recursive: true);
-  icLauncherXml.writeAsStringSync(IC_LAUNCHER_BACKGROUND_COLOR_XML);
+  icLauncherXml.writeAsStringSync(hasMonochrome
+      ? IC_LAUNCHER_BACKGROUND_COLOR_XML
+      : IC_LAUNCHER_BACKGROUND_COLOR_NO_MONOCHROME_XML);
   CliLogger.success(
     'Created `$ANDROID_ADAPTIVE_XML_FILE_NAME`',
     level: CliLoggerLevel.two,
@@ -361,11 +366,13 @@ void _createIcLauncherColorXmlFile() {
 }
 
 /// Create ic luncher xml file
-void _createIcLauncherMipMapXmlFile() {
+void _createIcLauncherMipMapXmlFile(bool hasMonochrome) {
   final icLauncherXml = File(
       '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_XML_FILE_NAME');
   icLauncherXml.createSync(recursive: true);
-  icLauncherXml.writeAsStringSync(IC_LAUNCHER_MIP_MAP_XML);
+  icLauncherXml.writeAsStringSync(hasMonochrome
+      ? IC_LAUNCHER_MIP_MAP_XML
+      : IC_LAUNCHER_MIP_MAP_NO_MONOCHROME_XML);
   CliLogger.success(
     'Created `$ANDROID_ADAPTIVE_XML_FILE_NAME`',
     level: CliLoggerLevel.two,
@@ -373,13 +380,26 @@ void _createIcLauncherMipMapXmlFile() {
 }
 
 /// Create ic_launcher_round.xml file
-void _createIcLauncherRoundMipMapXmlFile(bool backgroundIsColor) {
+void _createIcLauncherRoundMipMapXmlFile(
+    bool backgroundIsColor, bool hasMonochrome) {
   final icLauncherXml = File(
       '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME');
+  String contents;
+  if (backgroundIsColor) {
+    if (hasMonochrome) {
+      contents = IC_LAUNCHER_ROUND_BACKGROUND_COLOR_XML;
+    } else {
+      contents = IC_LAUNCHER_ROUND_BACKGROUND_COLOR_NO_MONOCHROME_XML;
+    }
+  } else {
+    if (hasMonochrome) {
+      contents = IC_LAUNCHER_ROUND_MIP_MAP_XML;
+    } else {
+      contents = IC_LAUNCHER_ROUND_MIP_MAP_NO_MONOCHROME_XML;
+    }
+  }
   icLauncherXml.createSync(recursive: true);
-  icLauncherXml.writeAsStringSync(backgroundIsColor
-      ? IC_LAUNCHER_ROUND_BACKGROUND_COLOR_XML
-      : IC_LAUNCHER_ROUND_MIP_MAP_XML);
+  icLauncherXml.writeAsStringSync(contents);
   CliLogger.success(
     'Created `$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME`',
     level: CliLoggerLevel.two,

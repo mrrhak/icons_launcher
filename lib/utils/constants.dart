@@ -96,6 +96,15 @@ const String IC_LAUNCHER_BACKGROUND_COLOR_XML = '''
 </adaptive-icon>
 ''';
 
+/// Android launcher background color with no monochrome xml
+const String IC_LAUNCHER_BACKGROUND_COLOR_NO_MONOCHROME_XML = '''
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+  <background android:drawable="@color/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
+</adaptive-icon>
+''';
+
 /// Android launcher background image xml
 const String IC_LAUNCHER_MIP_MAP_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
@@ -103,6 +112,15 @@ const String IC_LAUNCHER_MIP_MAP_XML = '''
   <background android:drawable="@mipmap/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
   <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
   <monochrome android:drawable="@mipmap/$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME"/>
+</adaptive-icon>
+''';
+
+/// Android launcher background image with no monochrome xml
+const String IC_LAUNCHER_MIP_MAP_NO_MONOCHROME_XML = '''
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+  <background android:drawable="@mipmap/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
 </adaptive-icon>
 ''';
 
@@ -116,6 +134,15 @@ const String IC_LAUNCHER_ROUND_BACKGROUND_COLOR_XML = '''
 </adaptive-icon>
 ''';
 
+/// Android launcher background round color with no monochrome xml
+const String IC_LAUNCHER_ROUND_BACKGROUND_COLOR_NO_MONOCHROME_XML = '''
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+  <background android:drawable="@color/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
+</adaptive-icon>
+''';
+
 /// Android launcher background round image xml
 const String IC_LAUNCHER_ROUND_MIP_MAP_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
@@ -123,6 +150,15 @@ const String IC_LAUNCHER_ROUND_MIP_MAP_XML = '''
   <background android:drawable="@mipmap/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
   <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_ROUND_ICON_NAME"/>
   <monochrome android:drawable="@mipmap/$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME"/>
+</adaptive-icon>
+''';
+
+/// Android launcher background round image with no monochrome xml
+const String IC_LAUNCHER_ROUND_MIP_MAP_NO_MONOCHROME_XML = '''
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+  <background android:drawable="@mipmap/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
 </adaptive-icon>
 ''';
 

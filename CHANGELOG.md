@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.3
+
+- Fix round icons on android and ability to use without monochrome ([#35](https://github.com/mrrhak/icons_launcher/pull/35))
+
 ## 2.1.2
 
 - Fixed android monochrome icon is smaller and blurred ([#32](https://github.com/mrrhak/icons_launcher/pull/32))

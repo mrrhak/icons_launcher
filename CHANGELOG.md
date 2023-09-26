@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.4
+
+- Adds pub topics to package metadata
+- Updates minimum supported SDK version to Dart 3
+- Upgrade dependencies
+
 ## 2.1.3
 
 - Fix round icons on android and ability to use without monochrome ([#35](https://github.com/mrrhak/icons_launcher/pull/35))

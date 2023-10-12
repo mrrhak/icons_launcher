@@ -35,6 +35,8 @@ void _createWebFavicon({required String imagePath}) {
 
   final webFavicon = WebIconTemplate(name: 'favicon.png', size: 16);
   _saveFaviconImageWeb(webFavicon, image);
+  final webFaviconIco = WebIconTemplate(name: 'favicon.ico', size: 16);
+  _saveFaviconImageWeb(webFaviconIco, image);
   CliLogger.success('Generated favicon image', level: CliLoggerLevel.two);
 }
 

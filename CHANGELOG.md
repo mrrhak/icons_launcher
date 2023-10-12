@@ -1,5 +1,6 @@
 # Changelog
-
+## 2.1.5
+- Adds favicon.ico to web
 ## 2.1.4
 
 - Adds pub topics to package metadata

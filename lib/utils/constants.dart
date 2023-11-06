@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import '../src/version.dart';
 
 /// Start message for the CLI
@@ -78,7 +80,7 @@ const String ANDROID_ADAPTIVE_XML_DIR = 'mipmap-anydpi-v26';
 /// Android adaptive icon file
 const String ANDROID_ADAPTIVE_XML_FILE_NAME = '$ANDROID_ICON_NAME.xml';
 
-/// Android adapttive round xml file without extension
+/// Android adaptive round xml file without extension
 const String ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME_WITHOUT_EXTENSION =
     'ic_launcher_rounded';
 

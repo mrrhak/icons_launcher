@@ -1,4 +1,4 @@
-part of icons_launcher_cli;
+part of '../cli_commands.dart';
 
 /// Flavor helper class
 class _FlavorHelper {

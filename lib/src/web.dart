@@ -1,4 +1,4 @@
-part of icons_launcher_cli;
+part of '../cli_commands.dart';
 
 /// Start create web icons
 void _createWebIcons({required String imagePath}) {

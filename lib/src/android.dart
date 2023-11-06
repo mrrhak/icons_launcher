@@ -1,4 +1,4 @@
-part of icons_launcher_cli;
+part of '../cli_commands.dart';
 
 /// Android icons template
 final androidIcons = <AndroidMipMapIconTemplate>[
@@ -303,7 +303,7 @@ void _createColorsFile(String backgroundColor) {
   String color = backgroundColor;
 
   if ((color.length == 4 || color.length == 7) && color.length != 9) {
-    color = '#FF' + backgroundColor.replaceAll('#', '');
+    color = '#FF${backgroundColor.replaceAll('#', '')}';
   } else {
     CliLogger.error(
       'Incorrect `$backgroundColor` of `adaptive_background_color`',
@@ -322,7 +322,7 @@ void _updateColorsFile(File colorsXml, String backgroundColor) {
   String color = backgroundColor;
 
   if ((color.length == 4 || color.length == 7) && color.length != 9) {
-    color = '#FF' + backgroundColor.replaceAll('#', '');
+    color = '#FF${backgroundColor.replaceAll('#', '')}';
   } else {
     CliLogger.error(
       'Incorrect `$backgroundColor` of `adaptive_background_color`',

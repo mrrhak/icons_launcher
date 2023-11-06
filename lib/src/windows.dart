@@ -1,4 +1,4 @@
-part of icons_launcher_cli;
+part of '../cli_commands.dart';
 
 /// Start create windows icons
 void _createWindowsIcons({required String imagePath}) {

@@ -1,4 +1,4 @@
-part of icons_launcher_cli;
+part of '../cli_commands.dart';
 
 /// Generates templates according to the parameters:
 ///

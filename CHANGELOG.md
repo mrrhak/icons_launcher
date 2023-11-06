@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.5
+- Update lints suggestion
+- Update README.md
+  
 ## 2.1.4
 
 - Adds pub topics to package metadata

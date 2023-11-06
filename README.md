@@ -26,6 +26,10 @@
     <img src="https://img.shields.io/pub/v/icons_launcher?label=Pub&logo=dart"
       alt="Pub Package" />
   </a>
+  <a href="https://pub.dartlang.org/packages/icons_launcher/score">
+    <img src="https://img.shields.io/pub/points/icons_launcher?label=Score&logo=dart"
+      alt="Pub Package" />
+  </a>
   <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/stars/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=deeppink&label=Stars" alt="Star on Github"></a>
   <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/forks/mrrhak/icons_launcher?color=orange&label=Forks&logo=github" alt="Forks on Github"></a>
   <!-- <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/watchers/mrrhak/icons_launcher?color=teal&label=Watchers&logo=github" alt="Watchers on Github"></a> -->
@@ -57,11 +61,11 @@
   <img src="https://raw.githubusercontent.com/mrrhak/icons_launcher/master/assets/icons_launcher_preview.png" width="500" alt="icons launcher preview"/>
 </p>
 
-### **Platform Support**
+### Platform Support
 
 | Android | iOS | MacOS | Web | Linux | Windows |
 | :-----: | :-: | :---: | :-: | :---: | :-----: |
-|   ✔️    | ✔️  |  ✔️   | ✔️  |  ✔️   |   ✔️    |
+|   ✅    | ✅  |  ✅   | ✅  |  ✅   |   ✅    |
 
 ## Guide
 
@@ -99,7 +103,9 @@ flutter pub get
 dart run icons_launcher:create --path <your config file name here>
 ```
 
-NOTE: If you are not using the existing `pubspec.yaml` your config file must still be located in the same directory as it.
+> **Note**
+> 
+> If you are not using the existing `pubspec.yaml` your config file must still be located in the same directory as it.
 
 If you encounter any issues [please report them here](https://github.com/mrrhak/icons_launcher/issues).
 

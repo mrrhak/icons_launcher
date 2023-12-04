@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2.1.6
+- Add default Android min SDK
 - Add CONTRIBUTING.md
 - Update Dart Analysis
 

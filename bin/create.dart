@@ -12,6 +12,9 @@ void main(List<String> arguments) {
 
   final parsedArgs = parser.parse(arguments);
 
-  createLauncherIcons(path: parsedArgs['path'], flavor: parsedArgs['flavor']);
+  createLauncherIcons(
+    path: parsedArgs['path'] as String?,
+    flavor: parsedArgs['flavor'] as String?,
+  );
   print(END_MESSAGE);
 }

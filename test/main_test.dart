@@ -8,9 +8,9 @@ void main() {
   test('Version checker', () {
     //! dart run build_runner build
     // Read yaml config file
-    final File file = File('pubspec.yaml');
-    final String content = file.readAsStringSync();
-    final Map yaml = loadYaml(content);
+    final file = File('pubspec.yaml');
+    final content = file.readAsStringSync();
+    final yaml = loadYaml(content) as Map<String, dynamic>;
 
     expect(packageVersion, yaml['version'].toString(),
         reason: 'Version is not correct');
@@ -18,9 +18,9 @@ void main() {
 
   test('Description checker', () {
     // Read yaml config file
-    final File file = File('pubspec.yaml');
-    final String content = file.readAsStringSync();
-    final Map yaml = loadYaml(content);
+    final file = File('pubspec.yaml');
+    final content = file.readAsStringSync();
+    final yaml = loadYaml(content) as Map<String, dynamic>;
 
     final length = yaml['description'].toString().length;
     expect(length, greaterThan(60),

@@ -29,7 +29,7 @@ class CliLogger {
     String message, {
     CliLoggerLevel level = CliLoggerLevel.one,
   }) {
-    final String space = _getSpace(level);
+    final space = _getSpace(level);
     print('\x1B[34m$space🌱  $message\x1B[0m');
   }
 
@@ -38,7 +38,7 @@ class CliLogger {
     String message, {
     CliLoggerLevel level = CliLoggerLevel.one,
   }) {
-    final String space = _getSpace(level);
+    final space = _getSpace(level);
     print('$space❌  $message');
   }
 
@@ -47,7 +47,7 @@ class CliLogger {
     String message, {
     CliLoggerLevel level = CliLoggerLevel.one,
   }) {
-    final String space = _getSpace(level);
+    final space = _getSpace(level);
     print('\x1B[33m$space🚧 $message\x1B[0m');
   }
 
@@ -56,12 +56,12 @@ class CliLogger {
     String message, {
     CliLoggerLevel level = CliLoggerLevel.one,
   }) {
-    final String space = _getSpace(level);
+    final space = _getSpace(level);
     print('\x1B[32m$space✅  $message\x1B[0m');
   }
 
   static String _getSpace(CliLoggerLevel level) {
-    String space = '';
+    var space = '';
     switch (level) {
       case CliLoggerLevel.one:
         space = '';

@@ -102,7 +102,7 @@ void _createAndroidAdaptiveIcon({
   String? round,
   String? monochrome,
 }) {
-  String message = 'Creating Android adaptive icons...';
+  var message = 'Creating Android adaptive icons...';
   if (round != null) {
     message = 'Creating Android adaptive icons with round...';
   }
@@ -281,7 +281,7 @@ void _removeAdaptiveMonochrome(List<AndroidMipMapIconTemplate> adaptiveIcons) {
 
 /// Handle colors.xml file
 void _handleColorsXmlFile(String backgroundColor) {
-  final File colorsXml =
+  final colorsXml =
       File('${_flavorHelper.androidResFolder}$ANDROID_COLOR_FILE');
   if (colorsXml.existsSync()) {
     CliLogger.success(
@@ -300,7 +300,7 @@ void _handleColorsXmlFile(String backgroundColor) {
 
 /// Create colors.xml file
 void _createColorsFile(String backgroundColor) {
-  String color = backgroundColor;
+  var color = backgroundColor;
 
   if ((color.length == 4 || color.length == 7) && color.length != 9) {
     color = '#FF${backgroundColor.replaceAll('#', '')}';
@@ -319,7 +319,7 @@ void _createColorsFile(String backgroundColor) {
 
 // Update colors.xml file
 void _updateColorsFile(File colorsXml, String backgroundColor) {
-  String color = backgroundColor;
+  var color = backgroundColor;
 
   if ((color.length == 4 || color.length == 7) && color.length != 9) {
     color = '#FF${backgroundColor.replaceAll('#', '')}';
@@ -331,10 +331,10 @@ void _updateColorsFile(File colorsXml, String backgroundColor) {
     exit(1);
   }
 
-  final List<String> lines = colorsXml.readAsLinesSync();
-  bool foundExisting = false;
-  for (int x = 0; x < lines.length; x++) {
-    String line = lines[x];
+  final lines = colorsXml.readAsLinesSync();
+  var foundExisting = false;
+  for (var x = 0; x < lines.length; x++) {
+    var line = lines[x];
     if (line.contains('name="ic_launcher_background"')) {
       foundExisting = true;
       // replace anything between tags which does not contain another tag
@@ -479,7 +479,7 @@ void _removeAndroidManifestIconLauncherRound() {
 int _minSdk() {
   String? minSdkValue;
 
-  final File androidGradleFile = File(ANDROID_GRADLE_FILE);
+  final androidGradleFile = File(ANDROID_GRADLE_FILE);
   final androidLines = androidGradleFile.readAsLinesSync();
 
   //! First try -> app/build.gradle file
@@ -496,7 +496,7 @@ int _minSdk() {
   //! Third try -> flutter.gradle file (default flutter sdk)
   if (minSdkValue == null) {
     final gradleFile = '${_flutterSdk()}$FLUTTER_SDK_GRADLE_FILE';
-    final List<String> flutterLines = File(gradleFile).readAsLinesSync();
+    final flutterLines = File(gradleFile).readAsLinesSync();
     const flutterLineKey = 'minSdkVersion =';
     minSdkValue = _getLineValueNumber(flutterLines, flutterLineKey);
   }
@@ -508,7 +508,7 @@ int _minSdk() {
 String _flutterSdk() {
   final lines = File(ANDROID_LOCAL_PROPERTIES).readAsLinesSync();
   const key = 'flutter.sdk=';
-  for (String line in lines) {
+  for (var line in lines) {
     if (line.contains(key)) {
       if (line.contains('//') && line.indexOf('//') < line.indexOf(key)) {
         // This line is commented
@@ -523,7 +523,7 @@ String _flutterSdk() {
 
 /// Retrieves the string number only
 String? _getLineValueNumber(List<String> lines, String key) {
-  for (String line in lines) {
+  for (var line in lines) {
     if (line.contains(key)) {
       if (line.contains('//') && line.indexOf('//') < line.indexOf(key)) {
         // This line is commented

@@ -2,10 +2,10 @@ import 'package:universal_io/io.dart';
 
 /// Checks if the config file contains a `platform`
 bool hasPlatformConfig(Map<String, dynamic> config) {
-  final bool isHasPlatforms = config.containsKey('platforms');
+  final isHasPlatforms = config.containsKey('platforms');
   if (isHasPlatforms) {
     final platforms = config['platforms'] as Map<String, dynamic>;
-    final bool isHasPlatformSpecific = isNeedingNewAndroidIcon(platforms) ||
+    final isHasPlatformSpecific = isNeedingNewAndroidIcon(platforms) ||
         isNeedingNewIosIcon(platforms) ||
         isNeedingNewMacOSIcon(platforms) ||
         isNeedingNewWindowsIcon(platforms) ||
@@ -24,15 +24,19 @@ bool hasAndroidConfig(Map<String, dynamic> platforms) {
 
 /// Checks if the config need android.
 bool isNeedingNewAndroidIcon(Map<String, dynamic> platforms) {
-  return hasAndroidConfig(platforms) && platforms['android']['enable'] == true;
+  return hasAndroidConfig(platforms) &&
+      (platforms['android'] as Map<String, dynamic>)['enable'] == true;
 }
 
 /// Checks if the config has android adaptive.
 bool hasAndroidAdaptiveConfig(Map<String, dynamic> platforms) {
   return isNeedingNewAndroidIcon(platforms) &&
-      (platforms['android'].containsKey('adaptive_background_image') ||
-          platforms['android'].containsKey('adaptive_background_color')) &&
-      platforms['android'].containsKey('adaptive_foreground_image');
+      ((platforms['android'] as Map<String, dynamic>)
+              .containsKey('adaptive_background_image') ||
+          (platforms['android'] as Map<String, dynamic>)
+              .containsKey('adaptive_background_color')) &&
+      (platforms['android'] as Map<String, dynamic>)
+          .containsKey('adaptive_foreground_image');
 }
 
 /// Checks if the config has ios.
@@ -42,7 +46,8 @@ bool hasIosConfig(Map<String, dynamic> platforms) {
 
 /// Checks if the config need ios.
 bool isNeedingNewIosIcon(Map<String, dynamic> platforms) {
-  return hasIosConfig(platforms) && platforms['ios']['enable'] == true;
+  return hasIosConfig(platforms) &&
+      (platforms['ios'] as Map<String, dynamic>)['enable'] == true;
 }
 
 /// Checks if the config has macos.
@@ -52,7 +57,8 @@ bool hasMacOSConfig(Map<String, dynamic> platforms) {
 
 /// Checks if the config need macos.
 bool isNeedingNewMacOSIcon(Map<String, dynamic> platforms) {
-  return hasMacOSConfig(platforms) && platforms['macos']['enable'] == true;
+  return hasMacOSConfig(platforms) &&
+      (platforms['macos'] as Map<String, dynamic>)['enable'] == true;
 }
 
 /// Checks if the config has windows.
@@ -62,7 +68,8 @@ bool hasWindowsConfig(Map<String, dynamic> platforms) {
 
 /// Checks if the config need windows.
 bool isNeedingNewWindowsIcon(Map<String, dynamic> platforms) {
-  return hasWindowsConfig(platforms) && platforms['windows']['enable'] == true;
+  return hasWindowsConfig(platforms) &&
+      (platforms['windows'] as Map<String, dynamic>)['enable'] == true;
 }
 
 /// Checks if the config has linux.
@@ -72,7 +79,8 @@ bool hasLinuxConfig(Map<String, dynamic> platforms) {
 
 /// Checks if the config need linux.
 bool isNeedingNewLinuxIcon(Map<String, dynamic> platforms) {
-  return hasLinuxConfig(platforms) && platforms['linux']['enable'] == true;
+  return hasLinuxConfig(platforms) &&
+      (platforms['linux'] as Map<String, dynamic>)['enable'] == true;
 }
 
 /// Checks if the config has web.
@@ -82,7 +90,8 @@ bool hasWebConfig(Map<String, dynamic> platforms) {
 
 /// Checks if the config need linux.
 bool isNeedingNewWebIcon(Map<String, dynamic> platforms) {
-  return hasWebConfig(platforms) && platforms['web']['enable'] == true;
+  return hasWebConfig(platforms) &&
+      (platforms['web'] as Map<String, dynamic>)['enable'] == true;
 }
 
 /// Checking color code

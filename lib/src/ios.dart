@@ -15,7 +15,7 @@ List<IosIconTemplate> _createIosTemplates(
     required String idiom}) {
   final templates = <IosIconTemplate>[];
   sizeName ??= '${size.round()}x${size.round()}';
-  for (int scale in scales) {
+  for (var scale in scales) {
     final scaledSize = (size * scale).round();
     templates.add(IosIconTemplate(
         sizeName: sizeName,

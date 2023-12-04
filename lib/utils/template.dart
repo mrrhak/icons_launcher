@@ -1,7 +1,9 @@
 import 'dart:convert';
-import 'package:icons_launcher/utils/constants.dart';
+
 import 'package:universal_io/io.dart';
+
 import 'cli_logger.dart';
+import 'constants.dart';
 
 /// Android template
 class AndroidMipMapIconTemplate {

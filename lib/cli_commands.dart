@@ -1,20 +1,22 @@
 library icons_launcher_cli;
 
-import 'package:icons_launcher/utils/cli_logger.dart';
-import 'package:icons_launcher/utils/constants.dart';
-import 'package:icons_launcher/utils/icon.dart';
 import 'package:path/path.dart' as p;
 import 'package:universal_io/io.dart';
 import 'package:yaml/yaml.dart';
+
+import 'utils/cli_logger.dart';
+import 'utils/constants.dart';
+import 'utils/icon.dart';
 import 'utils/template.dart';
 import 'utils/utils.dart';
-part 'utils/flavor_helper.dart';
+
 part 'src/android.dart';
 part 'src/ios.dart';
+part 'src/linux.dart';
 part 'src/macos.dart';
 part 'src/web.dart';
 part 'src/windows.dart';
-part 'src/linux.dart';
+part 'utils/flavor_helper.dart';
 
 late _FlavorHelper _flavorHelper;
 
@@ -47,7 +49,7 @@ Map<String, dynamic> _getConfig({String? configFile}) {
     filePath = 'pubspec.yaml';
   }
 
-  final Map yamlMap = loadYaml(File(filePath).readAsStringSync()) as Map;
+  final yamlMap = loadYaml(File(filePath).readAsStringSync()) as Map;
 
   if (yamlMap['icons_launcher'] is! Map) {
     CliLogger.error(
@@ -61,8 +63,8 @@ Map<String, dynamic> _getConfig({String? configFile}) {
 
 /// Convert yaml to map
 Map<String, dynamic> _yamlToMap(YamlMap yamlMap) {
-  final Map<String, dynamic> map = <String, dynamic>{};
-  for (final MapEntry<dynamic, dynamic> entry in yamlMap.entries) {
+  final map = <String, dynamic>{};
+  for (final entry in yamlMap.entries) {
     if (entry.value is YamlList) {
       final list = <String>[];
       for (final value in entry.value as YamlList) {
@@ -86,7 +88,7 @@ void _checkConfig(Map<String, dynamic> config) {
     CliLogger.error('Please add a `platforms` target to your config file.');
     exit(1);
   }
-  final List<String> errors = <String>[];
+  final errors = <String>[];
   final globalImagePath =
       _checkImageExists(config: config, parameter: 'image_path');
   final platforms = config['platforms'] as Map<String, dynamic>;
@@ -189,10 +191,10 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   final imagePath = _checkImageExists(config: config, parameter: 'image_path');
   final platforms = config['platforms'] as Map<String, dynamic>;
 
-  String? imagePathAndroid = imagePath;
+  var imagePathAndroid = imagePath;
   if (isNeedingNewAndroidIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['android'],
+      config: platforms['android'] as Map<String, dynamic>,
       parameter: 'image_path',
     );
     if (newImagePath != null) {
@@ -204,10 +206,10 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  String? imagePathIos = imagePath;
+  var imagePathIos = imagePath;
   if (isNeedingNewIosIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['ios'],
+      config: platforms['ios'] as Map<String, dynamic>,
       parameter: 'image_path',
     );
     if (newImagePath != null) {
@@ -219,10 +221,10 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  String? imagePathMacos = imagePath;
+  var imagePathMacos = imagePath;
   if (isNeedingNewMacOSIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['macos'],
+      config: platforms['macos'] as Map<String, dynamic>,
       parameter: 'image_path',
     );
     if (newImagePath != null) {
@@ -234,10 +236,10 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  String? imagePathWindows = imagePath;
+  var imagePathWindows = imagePath;
   if (isNeedingNewWindowsIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['windows'],
+      config: platforms['windows'] as Map<String, dynamic>,
       parameter: 'image_path',
     );
     if (newImagePath != null) {
@@ -249,10 +251,10 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  String? imagePathLinux = imagePath;
+  var imagePathLinux = imagePath;
   if (isNeedingNewLinuxIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['linux'],
+      config: platforms['linux'] as Map<String, dynamic>,
       parameter: 'image_path',
     );
     if (newImagePath != null) {
@@ -264,10 +266,10 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  String? imagePathWeb = imagePath;
+  var imagePathWeb = imagePath;
   if (isNeedingNewWebIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['web'],
+      config: platforms['web'] as Map<String, dynamic>,
       parameter: 'image_path',
     );
     if (newImagePath != null) {
@@ -279,10 +281,10 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  String? faviconPathWeb = imagePathWeb;
+  var faviconPathWeb = imagePathWeb;
   if (isNeedingNewWebIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['web'],
+      config: platforms['web'] as Map<String, dynamic>,
       parameter: 'favicon_path',
     );
     if (newImagePath != null) {
@@ -293,7 +295,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   String? adaptiveBgImage;
   if (isNeedingNewAndroidIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['android'],
+      config: platforms['android'] as Map<String, dynamic>,
       parameter: 'adaptive_background_image',
     );
     if (newImagePath != null) {
@@ -304,7 +306,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   String? adaptiveFgImage;
   if (isNeedingNewAndroidIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['android'],
+      config: platforms['android'] as Map<String, dynamic>,
       parameter: 'adaptive_foreground_image',
     );
     if (newImagePath != null) {
@@ -315,7 +317,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   String? adaptiveRoundImage;
   if (isNeedingNewAndroidIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['android'],
+      config: platforms['android'] as Map<String, dynamic>,
       parameter: 'adaptive_round_image',
     );
     if (newImagePath != null) {
@@ -326,7 +328,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   String? adaptiveMonochrome;
   if (isNeedingNewAndroidIcon(platforms)) {
     final newImagePath = _checkImageExists(
-      config: platforms['android'],
+      config: platforms['android'] as Map<String, dynamic>,
       parameter: 'adaptive_monochrome_image',
     );
     if (newImagePath != null) {
@@ -341,9 +343,11 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
 
     String? adaptiveBg;
-    if (platforms['android'].containsKey('adaptive_background_color')) {
-      final adaptiveBgColor =
-          platforms['android']['adaptive_background_color'].toString();
+    if ((platforms['android'] as Map<String, dynamic>)
+        .containsKey('adaptive_background_color')) {
+      final adaptiveBgColor = (platforms['android']
+              as Map<String, dynamic>)['adaptive_background_color']
+          .toString();
       adaptiveBg = adaptiveBgColor;
     } else if (adaptiveBgImage != null) {
       adaptiveBg = adaptiveBgImage;
@@ -352,7 +356,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     //! Android Adaptive
     final isAdaptiveIconExists = adaptiveBg != null && adaptiveFgImage != null;
     if (hasAndroidAdaptiveConfig(platforms) && isAdaptiveIconExists) {
-      final int minSdk = _minSdk();
+      final minSdk = _minSdk();
       if (minSdk == 0) {
         CliLogger.error(
             'Can not find minSdk from android/app/build.gradle or android/local.properties',
@@ -410,7 +414,7 @@ String? _checkImageExists({
   required Map<String, dynamic> config,
   required String parameter,
 }) {
-  final String? image = config[parameter]?.toString();
+  final image = config[parameter]?.toString();
   if (image != null) {
     if (image.isNotEmpty && !File(image).existsSync()) {
       CliLogger.error(

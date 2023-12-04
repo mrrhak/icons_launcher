@@ -7,7 +7,7 @@ part of '../cli_commands.dart';
 List<MacOSIconTemplate> _createMacTemplates(
     {required int size, required List<int> scales}) {
   final templates = <MacOSIconTemplate>[];
-  for (int scale in scales) {
+  for (var scale in scales) {
     templates.add(MacOSIconTemplate(
         sizeName: '${size}x$size',
         scaledSize: size * scale,

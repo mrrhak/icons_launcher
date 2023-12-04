@@ -35,7 +35,7 @@ void _saveImageLinux(
 
 /// Create linux desktop file
 void _createLinuxDesktopFile() {
-  const String desktopFile = '''
+  const desktopFile = '''
 [Desktop Entry]
 Name=Flutter Linux App
 Comment=Flutter Linux launcher icon

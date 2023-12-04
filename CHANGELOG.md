@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.6
+- Add CONTRIBUTING.md
+- Update Dart Analysis
+
 ## 2.1.5
 - Update lints suggestion
 - Update README.md

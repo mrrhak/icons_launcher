@@ -21,3 +21,6 @@ jobs:
 
       - name: Analyze
         run: dart analyze --fatal-infos --fatal-warnings .
+
+      - name: Test
+        run: dart test

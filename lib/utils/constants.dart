@@ -21,6 +21,10 @@ const String END_MESSAGE = '''\n
 const String FLUTTER_SDK_GRADLE_FILE =
     '/packages/flutter_tools/gradle/flutter.gradle';
 
+/// Default min_sdk value for android
+/// https://github.com/flutter/flutter/blob/master/packages/flutter_tools/gradle/flutter.gradle#L35-L37
+const int ANDROID_DEFAULT_MIN_SDK = 21;
+
 /// Android local properties file location
 const String ANDROID_LOCAL_PROPERTIES = 'android/local.properties';
 

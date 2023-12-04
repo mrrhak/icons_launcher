@@ -501,7 +501,8 @@ int _minSdk() {
     minSdkValue = _getLineValueNumber(flutterLines, flutterLineKey);
   }
 
-  return int.tryParse(minSdkValue ?? '0') ?? 0;
+  if (minSdkValue != null) return int.tryParse(minSdkValue) ?? 0;
+  return ANDROID_DEFAULT_MIN_SDK;
 }
 
 /// Retrieves the flutter sdk path

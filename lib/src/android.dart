@@ -500,6 +500,7 @@ int _minSdk() {
     const flutterLineKey = 'minSdkVersion =';
     minSdkValue = _getLineValueNumber(flutterLines, flutterLineKey);
   }
+  
   if (minSdkValue != null) return int.tryParse(minSdkValue) ?? 0;
   return ANDROID_DEFAULT_MIN_SDK;
 }

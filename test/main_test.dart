@@ -10,7 +10,7 @@ void main() {
     // Read yaml config file
     final file = File('pubspec.yaml');
     final content = file.readAsStringSync();
-    final yaml = loadYaml(content) as Map<String, dynamic>;
+    final yaml = loadYaml(content) as Map;
 
     expect(packageVersion, yaml['version'].toString(),
         reason: 'Version is not correct');
@@ -20,7 +20,7 @@ void main() {
     // Read yaml config file
     final file = File('pubspec.yaml');
     final content = file.readAsStringSync();
-    final yaml = loadYaml(content) as Map<String, dynamic>;
+    final yaml = loadYaml(content) as Map;
 
     final length = yaml['description'].toString().length;
     expect(length, greaterThan(60),

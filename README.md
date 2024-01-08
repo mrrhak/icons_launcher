@@ -65,7 +65,7 @@
 
 | Android | iOS | macOS | Web | Linux | Windows |
 | :-----: | :-: | :---: | :-: | :---: | :-----: |
-|   ✅    | ✅  |  ✅   | ✅  |  ✅   |   ✅    |
+|   ✅    | ✅  |   ✅   | ✅  |  ✅    |   ✅    |
 
 ## Guide
 
@@ -133,41 +133,41 @@ Shown below is the full list of attributes which you can specify within your Ico
 | `web`            | Object | `null`  | Use for specific Web platform     |
 | `linux`          | Object | `null`  | Use for specific Linux platform   |
 
-| Android Option              | Type    | Default | Description                                                          |
-| --------------------------- | ------- | ------- | -------------------------------------------------------------------- |
-| `enable`                    | Boolean | `false` | Use for enable Android platform                                      |
-| `image_path`                | String  | `null`  | The image file path                                                  |
-| `adaptive_background_color` | String  | `null`  | Color for fill out the background of the adaptive icon (_"#ffffff"_) |
-| `adaptive_background_image` | String  | `null`  | Image for fill out the background of the adaptive icon               |
-| `adaptive_foreground_image` | String  | `null`  | Image for the icon foreground of the adaptive icon                   |
-| `adaptive_round_image`      | String  | `null`  | Image for the round icon of the adaptive icon (optional)             |
-| `adaptive_monochrome_image` | String  | `null`  | Image for the monochrome version of the adaptive icon (optional)     |
+| Android Option              | Type    | Default | Description                                            |
+| --------------------------- | ------- | ------- | ------------------------------------------------------ |
+| `enable`                    | Boolean | `false` | Use for enable Android platform                        |
+| `image_path`                | String  | `null`  | The image file path                                    |
+| `adaptive_background_color` | String  | `null`  | Color for fill out the background of the adaptive icon |
+| `adaptive_background_image` | String  | `null`  | Image for fill out the background of the adaptive icon |
+| `adaptive_foreground_image` | String  | `null`  | Image for the icon foreground of the adaptive icon     |
+| `adaptive_round_image`      | String  | `null`  | Image for the round icon of the adaptive icon          |
+| `adaptive_monochrome_image` | String  | `null`  | Image for the monochrome version of the adaptive icon  |
 
-| iOS Option   | Type    | Default | Description                 |
-| ------------ | ------- | ------- | --------------------------- |
-| `enable`     | Boolean | `false` | Use for enable iOS platform |
-| `image_path` | String  | `null`  | The image file path         |
-
-| Web Option     | Type    | Default | Description                 |
-| -------------- | ------- | ------- | --------------------------- |
-| `enable`       | Boolean | `false` | Use for enable Web platform |
-| `image_path`   | String  | `null`  | The image file path         |
-| `favicon_path` | String  | `null`  | The image file path         |
-
-| macOS Option | Type    | Default | Description                   |
-| ------------ | ------- | ------- | ----------------------------- |
-| `enable`     | Boolean | `false` | Use for enable macOS platform |
-| `image_path` | String  | `null`  | The image file path           |
+| iOS Option     | Type    | Default | Description                     |
+| -------------- | ------- | ------- | ------------------------------- |
+| `enable`       | Boolean | `false` | Use for enable iOS platform     |
+| `image_path`   | String  | `null`  | The image file path             |
+    
+| Web Option     | Type    | Default | Description                     |
+| -------------- | ------- | ------- | ------------------------------- |
+| `enable`       | Boolean | `false` | Use for enable Web platform     |
+| `image_path`   | String  | `null`  | The image file path             |
+| `favicon_path` | String  | `null`  | The image file path             |
+    
+| macOS Option   | Type    | Default | Description                     |
+| -------------- | ------- | ------- | ------------------------------- |
+| `enable`       | Boolean | `false` | Use for enable macOS platform   |
+| `image_path`   | String  | `null`  | The image file path             |
 
 | Windows Option | Type    | Default | Description                     |
 | -------------- | ------- | ------- | ------------------------------- |
 | `enable`       | Boolean | `false` | Use for enable Windows platform |
 | `image_path`   | String  | `null`  | The image file path             |
 
-| Linux Option | Type    | Default | Description                   |
-| ------------ | ------- | ------- | ----------------------------- |
-| `enable`     | Boolean | `false` | Use for enable Linux platform |
-| `image_path` | String  | `null`  | The image file path           |
+| Linux Option   | Type    | Default | Description                     |
+| -------------- | ------- | ------- | ------------------------------- |
+| `enable`       | Boolean | `false` | Use for enable Linux platform   |
+| `image_path`   | String  | `null`  | The image file path             |
 
 ---
 

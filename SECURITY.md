@@ -4,7 +4,7 @@
 
 | Android | iOS | MacOS | Web | Linux | Windows |
 | :-----: | :-: | :---: | :-: | :---: | :-----: |
-|   ✅    | ✅  |  ✅   | ✅  |  ✅   |   ✅    |
+|   ✅    |  ✅  |  ✅   | ✅  |   ✅   |   ✅    |
 
 ## Supported Versions
 

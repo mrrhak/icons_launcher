@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dart-lang/setup-dart@v1.6.0
+      - uses: dart-lang/setup-dart@v1.6.4
 
       - name: Install Dependencies
         run: dart pub get
@@ -26,6 +26,6 @@ jobs:
         run: dart test
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

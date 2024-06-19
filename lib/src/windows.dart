@@ -1,7 +1,7 @@
 part of '../cli_commands.dart';
 
 /// Start create windows icons
-void _createWindowsIcons({required String imagePath}) {
+void createWindowsIcons({required String imagePath}) {
   CliLogger.info('Creating Windows icons...');
 
   final image = Icon.loadFile(imagePath);

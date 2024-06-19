@@ -18,7 +18,7 @@ List<MacOSIconTemplate> _createMacTemplates(
 }
 
 /// Start create macos icons
-void _createMacOSIcons({required String imagePath}) {
+void createMacOSIcons({required String imagePath}) {
   CliLogger.info('Creating macOS icons...');
 
   final image = Icon.loadFile(imagePath);

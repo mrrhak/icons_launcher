@@ -4,17 +4,17 @@ import '../src/version.dart';
 
 /// Start message for the CLI
 const String START_MESSAGE = '''\n
-╔════════════════════════════════════════════════════╗
-║             ✨✨  ICONS LAUNCHER  ✨✨             ║
-╠════════════════════════════════════════════════════╣
-║                   Version: $packageVersion                   ║
-╚════════════════════════════════════════════════════╝
+╔══════════════════════════════════════════════════╗
+║               ✨ ICONS LAUNCHER ✨               ║
+╠══════════════════════════════════════════════════╣
+║                  Version: $packageVersion                  ║
+╚══════════════════════════════════════════════════╝
 \n''';
 
 /// End message for the CLI
 const String END_MESSAGE = '''\n
-==> GENERATE LAUNCHER ICONS SUCCESSFULLY <==
-            ❤️   THANK YOU! ❤️
+==> GENERATE ICONS LAUNCHER SUCCESSFULLY <==
+              ❤️ THANK YOU! ❤️
 ''';
 
 /// Flutter sdk gradle file location
@@ -64,6 +64,8 @@ const String ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME = 'ic_launcher_monochrome';
 const String ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME =
     '$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME.png';
 
+const String ANDROID_NOTIFICATION_ICON_FILE_NAME = 'ic_notification.png';
+
 /// Android adaptive foreground icon name
 const String ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME = 'ic_launcher_foreground';
 
@@ -86,7 +88,7 @@ const String ANDROID_ADAPTIVE_XML_FILE_NAME = '$ANDROID_ICON_NAME.xml';
 
 /// Android adaptive round xml file without extension
 const String ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME_WITHOUT_EXTENSION =
-    'ic_launcher_rounded';
+    'ic_launcher_round';
 
 /// Android adaptive round icon file
 const String ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME =
@@ -135,7 +137,7 @@ const String IC_LAUNCHER_ROUND_BACKGROUND_COLOR_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
   <background android:drawable="@color/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
-  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_ROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
   <monochrome android:drawable="@mipmap/$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME"/>
 </adaptive-icon>
 ''';
@@ -145,7 +147,7 @@ const String IC_LAUNCHER_ROUND_BACKGROUND_COLOR_NO_MONOCHROME_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
   <background android:drawable="@color/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
-  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_ROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
 </adaptive-icon>
 ''';
 
@@ -154,7 +156,7 @@ const String IC_LAUNCHER_ROUND_MIP_MAP_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
   <background android:drawable="@mipmap/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
-  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_ROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
   <monochrome android:drawable="@mipmap/$ANDROID_ADAPTIVE_MONOCHROME_ICON_NAME"/>
 </adaptive-icon>
 ''';
@@ -164,7 +166,7 @@ const String IC_LAUNCHER_ROUND_MIP_MAP_NO_MONOCHROME_XML = '''
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
   <background android:drawable="@mipmap/$ANDROID_ADAPTIVE_BACKGROUND_ICON_NAME"/>
-  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_ROUND_ICON_NAME"/>
+  <foreground android:drawable="@mipmap/$ANDROID_ADAPTIVE_FOREGROUND_ICON_NAME"/>
 </adaptive-icon>
 ''';
 

@@ -68,11 +68,11 @@
 
   ```yaml
   icons_launcher:
-    image_path: "assets/ic_logo_border.png"
+    image_path: "assets/ic_logo_radius.png"
     platforms:
       android:
         enable: true
-        image_path: "assets/ic_logo_border.png"
+        image_path: "assets/ic_logo_radius.png"
         # adaptive_background_color: '#ffffff'
         adaptive_background_image: "assets/ic_background.png"
         adaptive_foreground_image: "assets/ic_foreground.png"
@@ -82,17 +82,17 @@
         image_path: "assets/ic_logo_rectangle.png"
       web:
         enable: true
-        image_path: "assets/ic_logo_border.png"
+        image_path: "assets/ic_logo_radius.png"
         favicon_path: "assets/ic_logo_round.png"
       macos:
         enable: false
-        image_path: "assets/ic_logo_border.png"
+        image_path: "assets/ic_logo_radius.png"
       windows:
         enable: false
-        image_path: "assets/ic_logo_border.png"
+        image_path: "assets/ic_logo_radius.png"
       linux:
         enable: false
-        image_path: "assets/ic_logo_border.png"
+        image_path: "assets/ic_logo_radius.png"
   ```
 
 ## 2.0.0-beta.2

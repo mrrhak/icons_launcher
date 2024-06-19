@@ -1,7 +1,7 @@
 part of '../cli_commands.dart';
 
 /// Start create linux icons
-void _createLinuxIcons({required String imagePath}) {
+void createLinuxIcons({required String imagePath}) {
   CliLogger.info('Creating Linux icons...');
 
   final image = Icon.loadFile(imagePath);

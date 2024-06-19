@@ -9,7 +9,7 @@ flutter pub add --dev icons_launcher
 
 ```yaml
 icons_launcher:
-  image_path: 'assets/ic_logo_border.png'
+  image_path: 'assets/ic_logo_radius.png'
   platforms:
     android:
       enable: true
@@ -21,32 +21,33 @@ icons_launcher:
 
 ```yaml
 icons_launcher:
-  image_path: 'assets/ic_logo_border.png'
+  image_path: 'assets/ic_logo_radius.png'
   platforms:
     android:
       enable: true
-      image_path: 'assets/ic_logo_border.png'
+      image_path: 'assets/ic_logo_radius.png'
+      notification_image: "assets/ic_foreground.png"
       # adaptive_background_color: '#ffffff'
       adaptive_background_image: 'assets/ic_background.png'
       adaptive_foreground_image: 'assets/ic_foreground.png'
       adaptive_round_image: 'assets/ic_logo_round.png'
-      adaptive_monochrome_image: 'assets/ic_logo_monochrome.png'
+      adaptive_monochrome_image: 'assets/ic_black_white.png'
     ios:
       enable: true
       image_path: 'assets/ic_logo_rectangle.png'
     web:
       enable: true
-      image_path: 'assets/ic_logo_border.png'
+      image_path: 'assets/ic_logo_radius.png'
       favicon_path: 'assets/ic_logo_round.png'
     macos:
       enable: false
-      image_path: 'assets/ic_logo_border.png'
+      image_path: 'assets/ic_logo_radius.png'
     windows:
       enable: false
-      image_path: 'assets/ic_logo_border.png'
+      image_path: 'assets/ic_logo_radius.png'
     linux:
       enable: false
-      image_path: 'assets/ic_logo_border.png'
+      image_path: 'assets/ic_logo_radius.png'
 ```
 
 After configured, now you can run generation

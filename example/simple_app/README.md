@@ -10,3 +10,8 @@ Then generate icons with the command:
 ```
 dart run icons_launcher:create --path icons_launcher.yaml
 ```
+
+## Run app
+```
+flutter run
+```

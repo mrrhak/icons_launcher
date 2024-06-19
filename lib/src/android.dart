@@ -18,8 +18,17 @@ final adaptiveIcons = <AndroidMipMapIconTemplate>[
   AndroidMipMapIconTemplate(directoryName: 'mipmap-xxxhdpi', size: 432),
 ];
 
+/// Android notification icons template
+final notificationIcons = <AndroidMipMapIconTemplate>[
+  AndroidMipMapIconTemplate(directoryName: 'drawable-mdpi', size: 24),
+  AndroidMipMapIconTemplate(directoryName: 'drawable-hdpi', size: 36),
+  AndroidMipMapIconTemplate(directoryName: 'drawable-xhdpi', size: 48),
+  AndroidMipMapIconTemplate(directoryName: 'drawable-xxhdpi', size: 72),
+  AndroidMipMapIconTemplate(directoryName: 'drawable-xxxhdpi', size: 96),
+];
+
 /// Start create Android icons
-void _createAndroidIcons({required String imagePath}) {
+void createAndroidIcons({required String imagePath}) {
   CliLogger.info('Creating Android icons...');
 
   final image = Icon.loadFile(imagePath);
@@ -62,8 +71,10 @@ void _createPlayStoreIcon(Icon image) {
     directoryName: _flavorHelper.androidMainFolder,
     size: 512,
   );
-  image.saveResizedPng(template.size,
-      '${template.directoryName}/$ANDROID_PLAYSTORE_ICON_FILE_NAME');
+  image.saveResizedPng(
+    template.size,
+    '${template.directoryName}/$ANDROID_PLAYSTORE_ICON_FILE_NAME',
+  );
 }
 
 /// Update the Android manifest with the new launcher icon
@@ -96,7 +107,7 @@ void _updateAndroidManifestIconLauncher() {
 }
 
 /// Start android adaptive icons
-void _createAndroidAdaptiveIcon({
+void createAndroidAdaptiveIcon({
   required String background,
   required String foreground,
   String? round,
@@ -253,6 +264,9 @@ void _createAdaptiveMonochrome(
     exit(1);
   }
 
+  // Convert to grayscale
+  monochromeImage.convertToGrayscale();
+
   for (final template in adaptiveIcons) {
     _saveImageAndroid(
       template,
@@ -267,7 +281,7 @@ void _createAdaptiveMonochrome(
 }
 
 /// Remove the adaptive monochrome icon
-void _removeAdaptiveMonochrome(List<AndroidMipMapIconTemplate> adaptiveIcons) {
+void _removeAdaptiveMonochrome(List<AndroidMipMapIconTemplate> templateIcons) {
   for (final template in adaptiveIcons) {
     final filePath =
         '${_flavorHelper.androidResFolder}${template.directoryName}/$ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME';
@@ -275,6 +289,43 @@ void _removeAdaptiveMonochrome(List<AndroidMipMapIconTemplate> adaptiveIcons) {
   }
   CliLogger.success(
     'Removed adaptive monochrome images',
+    level: CliLoggerLevel.two,
+  );
+}
+
+/// Start android adaptive icons
+void createAndroidNotificationIcon(String notification) {
+  var message = 'Creating Android notification icons...';
+  CliLogger.info(message);
+  _createNotificationIcon(notificationIcons, notification);
+}
+
+/// Create the notification icon
+void _createNotificationIcon(
+  List<AndroidMipMapIconTemplate> templateIcons,
+  String notification,
+) {
+  final notificationImage = Icon.loadFile(notification);
+  if (notificationImage == null) {
+    CliLogger.error(
+      'The file $notificationImage could not be read.',
+      level: CliLoggerLevel.two,
+    );
+    exit(1);
+  }
+
+  // Convert to white
+  notificationImage.convertToWhite();
+
+  for (final template in templateIcons) {
+    _saveImageAndroid(
+      template,
+      notificationImage,
+      ANDROID_NOTIFICATION_ICON_FILE_NAME,
+    );
+  }
+  CliLogger.success(
+    'Generated notification images',
     level: CliLoggerLevel.two,
   );
 }

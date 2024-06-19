@@ -39,6 +39,13 @@ bool hasAndroidAdaptiveConfig(Map<String, dynamic> platforms) {
           .containsKey('adaptive_foreground_image');
 }
 
+/// Checks if the config has android notification.
+bool hasAndroidNotificationConfig(Map<String, dynamic> platforms) {
+  return hasAndroidConfig(platforms) &&
+      (platforms['android'] as Map<String, dynamic>)
+          .containsKey('notification_image');
+}
+
 /// Checks if the config has ios.
 bool hasIosConfig(Map<String, dynamic> platforms) {
   return platforms.containsKey('ios');

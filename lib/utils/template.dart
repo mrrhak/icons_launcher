@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:universal_io/io.dart';
 
+import '../src/version.dart';
 import 'cli_logger.dart';
 import 'constants.dart';
 
@@ -22,11 +23,12 @@ class AndroidMipMapIconTemplate {
 /// See https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/AppIconType.html
 abstract class AppleIconTemplate {
   /// Constructor
-  AppleIconTemplate(
-      {required this.sizeName,
-      required this.scaledSize,
-      required this.scale,
-      required this.idiom});
+  AppleIconTemplate({
+    required this.sizeName,
+    required this.scaledSize,
+    required this.scale,
+    required this.idiom,
+  });
 
   /// Icon size
   final int scaledSize;
@@ -59,15 +61,26 @@ class IosIconTemplate extends AppleIconTemplate {
       required super.idiom});
 
   @override
-  String get filename => '$IOS_DEFAULT_ICON_NAME-$sizeName@${scale}x.png';
+  String get filename => scale == 0
+      ? '$IOS_DEFAULT_ICON_NAME-$sizeName.png'
+      : '$IOS_DEFAULT_ICON_NAME-$sizeName@${scale}x.png';
 
   @override
-  Map<String, dynamic> toJson() => <String, String>{
-        'filename': filename,
-        'idiom': idiom,
-        'scale': '${scale}x',
-        'size': sizeName
-      };
+  Map<String, dynamic> toJson() {
+    var json = <String, String>{
+      'filename': filename,
+      'platform': 'ios',
+      'idiom': idiom,
+      'scale': '${scale}x',
+      'size': sizeName
+    };
+
+    if (scale == 0) {
+      json.remove('scale');
+    }
+
+    return json;
+  }
 }
 
 /// Web template
@@ -85,11 +98,12 @@ class WebIconTemplate {
 /// MacOS template
 class MacOSIconTemplate extends AppleIconTemplate {
   /// Constructor
-  MacOSIconTemplate(
-      {required super.sizeName,
-      required super.scaledSize,
-      required super.scale,
-      required super.idiom});
+  MacOSIconTemplate({
+    required super.sizeName,
+    required super.scaledSize,
+    required super.scale,
+    required super.idiom,
+  });
 
   @override
   String get filename => '${MACOS_DEFAULT_ICON_NAME}_$scaledSize.png';
@@ -144,7 +158,11 @@ class AppleAppIconType {
   /// For use with a [JsonEncoder] to generate this Asset's Contents.json file.
   Map<String, dynamic> toJson() => <String, dynamic>{
         'images': images.map((image) => image.toJson()).toList(),
-        'info': {'author': 'icons_launcher', 'version': 1}
+        'info': {
+          'author': 'icons_launcher',
+          'version': packageVersion,
+          'github': 'https://github.com/mrrhak/icons_launcher'
+        }
       };
 
   /// Writes out the Contents.json file.
@@ -152,7 +170,9 @@ class AppleAppIconType {
     final file = File('${assetPath}Contents.json');
     const encoder = JsonEncoder.withIndent('  ');
     file.writeAsStringSync(encoder.convert(this), flush: true);
-    CliLogger.success('Generated `Contents.json` file',
-        level: CliLoggerLevel.two);
+    CliLogger.success(
+      'Generated `Contents.json` file',
+      level: CliLoggerLevel.two,
+    );
   }
 }

@@ -339,7 +339,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   //! Android
   if (isNeedingNewAndroidIcon(platforms)) {
     if (imagePathAndroid != null) {
-      _createAndroidIcons(imagePath: imagePathAndroid);
+      createAndroidIcons(imagePath: imagePathAndroid);
     }
 
     String? adaptiveBg;
@@ -369,43 +369,59 @@ void _createIconsByConfig(Map<String, dynamic> config) {
             level: CliLoggerLevel.two);
         exit(1);
       }
-      _createAndroidAdaptiveIcon(
+
+      createAndroidAdaptiveIcon(
         background: adaptiveBg,
         foreground: adaptiveFgImage,
         round: adaptiveRoundImage,
         monochrome: adaptiveMonochrome,
       );
     }
+
+    //! Android Notification
+    if (hasAndroidNotificationConfig(platforms)) {
+      final notificationImagePath = _checkImageExists(
+        config: platforms['android'] as Map<String, dynamic>,
+        parameter: 'notification_image',
+      );
+
+      if (notificationImagePath == null) {
+        CliLogger.error('Could not find image path for Android Notification');
+        exit(1);
+      }
+
+      createAndroidNotificationIcon(notificationImagePath);
+    }
   }
 
   //! iOS
   if (isNeedingNewIosIcon(platforms) && imagePathIos != null) {
-    _createIosIcons(imagePath: imagePathIos);
+    createIosIcons(imagePath: imagePathIos);
   }
 
   //! macOS
   if (isNeedingNewMacOSIcon(platforms) && imagePathMacos != null) {
-    _createMacOSIcons(imagePath: imagePathMacos);
+    createMacOSIcons(imagePath: imagePathMacos);
   }
 
   //! Web
   if (isNeedingNewWebIcon(platforms)) {
     if (imagePathWeb != null) {
-      _createWebIcons(imagePath: imagePathWeb);
+      createWebIcons(imagePath: imagePathWeb);
     }
     if (faviconPathWeb != null) {
-      _createWebFavicon(imagePath: faviconPathWeb);
+      createWebFavicon(imagePath: faviconPathWeb);
     }
   }
 
   //! Windows
   if (isNeedingNewWindowsIcon(platforms) && imagePathWindows != null) {
-    _createWindowsIcons(imagePath: imagePathWindows);
+    createWindowsIcons(imagePath: imagePathWindows);
   }
 
   //! Linux
   if (isNeedingNewLinuxIcon(platforms) && imagePathLinux != null) {
-    _createLinuxIcons(imagePath: imagePathLinux);
+    createLinuxIcons(imagePath: imagePathLinux);
   }
 }
 

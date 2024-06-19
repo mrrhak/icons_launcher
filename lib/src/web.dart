@@ -1,7 +1,7 @@
 part of '../cli_commands.dart';
 
 /// Start create web icons
-void _createWebIcons({required String imagePath}) {
+void createWebIcons({required String imagePath}) {
   CliLogger.info('Creating Web icons...');
 
   final image = Icon.loadFile(imagePath);
@@ -25,7 +25,7 @@ void _createWebIcons({required String imagePath}) {
 }
 
 /// Start create web favicon
-void _createWebFavicon({required String imagePath}) {
+void createWebFavicon({required String imagePath}) {
   final image = Icon.loadFile(imagePath);
   if (image == null) {
     CliLogger.error('The file $imagePath could not be read.',

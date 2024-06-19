@@ -89,4 +89,17 @@ class Icon {
     file.createSync(recursive: true);
     file.writeAsBytesSync(data);
   }
+
+  void convertToGrayscale() => image = grayscale(image);
+
+  void convertToWhite() {
+    for (var y = 0; y < image.height; y++) {
+      for (var x = 0; x < image.width; x++) {
+        var pixel = image.getPixel(x, y);
+        if (pixel.a > 0) {
+          image.setPixel(x, y, image.getColor(255, 255, 255, pixel.a));
+        }
+      }
+    }
+  }
 }

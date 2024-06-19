@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 align="center" style="font-size: 50px;">✨ Icons Launcher ✨</h1>
+  <h1 align="center" style="font-size: 50px;">🍃 Icons Launcher 🍃</h1>
   <p align="center">
   A command-line tool that simplifies the task of updating your Flutter app's launcher icon. Full flexibility allows you to only update the launcher icon for specific platforms as needed.
  </p>
@@ -25,6 +25,12 @@
   <a href="https://pub.dartlang.org/packages/icons_launcher">
     <img src="https://img.shields.io/pub/v/icons_launcher?label=Pub&logo=dart"
       alt="Pub Package" />
+  </a>
+  <a href="https://pub.dev/packages/icons_launcher">
+    <img src="https://img.shields.io/pub/likes/icons_launcher?style=flat&logo=dart&label=Likes" alt="Pub Likes"/>
+  </a>
+  <a href="https://pub.dev/packages/icons_launcher">
+    <img alt="Pub Popularity" src="https://img.shields.io/pub/popularity/icons_launcher?style=flat&logo=dart&label=Popularity&link=https%3A%2F%2Fpub.dev%2Fpackages%2Ficons_launcher">
   </a>
   <a href="https://pub.dartlang.org/packages/icons_launcher/score">
     <img src="https://img.shields.io/pub/points/icons_launcher?label=Score&logo=dart"
@@ -79,7 +85,7 @@ An example is shown below. More complex examples [here](https://github.com/mrrha
 
 ```yaml
 icons_launcher:
-  image_path: "assets/ic_logo_border.png"
+  image_path: "assets/ic_logo_radius.png"
   platforms:
     android:
       enable: true
@@ -137,6 +143,7 @@ Shown below is the full list of attributes which you can specify within your Ico
 | --------------------------- | ------- | ------- | ------------------------------------------------------ |
 | `enable`                    | Boolean | `false` | Use for enable Android platform                        |
 | `image_path`                | String  | `null`  | The image file path                                    |
+| `notification_image`        | String  | `null`  | Image for the notification icon                        |
 | `adaptive_background_color` | String  | `null`  | Color for fill out the background of the adaptive icon |
 | `adaptive_background_image` | String  | `null`  | Image for fill out the background of the adaptive icon |
 | `adaptive_foreground_image` | String  | `null`  | Image for the icon foreground of the adaptive icon     |
@@ -192,30 +199,31 @@ The configuration file format is the same.
 
 ```yaml
 icons_launcher:
-  image_path: "assets/ic_logo_border.png"
+  image_path: "assets/ic_logo_radius.png"
   platforms:
     android:
       enable: true
-      image_path: "assets/ic_logo_border.png"
+      image_path: "assets/ic_logo_radius.png"
+      notification_image: "assets/ic_foreground.png"
       # adaptive_background_color: '#ffffff'
       adaptive_background_image: "assets/ic_background.png"
       adaptive_foreground_image: "assets/ic_foreground.png"
       adaptive_round_image: "assets/ic_logo_round.png"
-      adaptive_monochrome_image: "assets/ic_logo_monochrome.png"
+      adaptive_monochrome_image: "assets/ic_black_white.png"
     ios:
       enable: true
       image_path: "assets/ic_logo_rectangle.png"
     web:
       enable: true
-      image_path: "assets/ic_logo_border.png"
+      image_path: "assets/ic_logo_radius.png"
       favicon_path: "assets/ic_logo_round.png"
     macos:
       enable: false
-      image_path: "assets/ic_logo_border.png"
+      image_path: "assets/ic_logo_radius.png"
     windows:
       enable: false
-      image_path: "assets/ic_logo_border.png"
+      image_path: "assets/ic_logo_radius.png"
     linux:
       enable: false
-      image_path: "assets/ic_logo_border.png"
+      image_path: "assets/ic_logo_radius.png"
 ```

@@ -4,6 +4,7 @@
     "appiconset",
     "Carapacik",
     "codecov",
+    "flavorizr",
     "gcov",
     "hdpi",
     "Hexa",
@@ -27,5 +28,6 @@
     "xhdpi",
     "xxhdpi",
     "xxxhdpi"
-  ]
+  ],
+  "cSpell.ignoreWords": ["Grayscale"]
 }

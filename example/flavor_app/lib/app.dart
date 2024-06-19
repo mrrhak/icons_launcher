@@ -5,7 +5,8 @@ import 'flavors.dart';
 import 'pages/my_home_page.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: _flavorBanner(
-        child: const MyHomePage(),
+        child: MyHomePage(),
         show: kDebugMode,
       ),
     );
@@ -27,17 +28,17 @@ class App extends StatelessWidget {
   }) =>
       show
           ? Banner(
-              location: BannerLocation.topStart,
-              message: F.name,
-              color: Colors.green.withOpacity(0.6),
-              textStyle: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 12.0,
-                  letterSpacing: 1.0),
-              textDirection: TextDirection.ltr,
-              child: child,
-            )
+        child: child,
+        location: BannerLocation.topStart,
+        message: F.name,
+        color: Colors.green.withOpacity(0.6),
+        textStyle: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 12.0,
+            letterSpacing: 1.0),
+        textDirection: TextDirection.ltr,
+      )
           : Container(
-              child: child,
-            );
+        child: child,
+      );
 }

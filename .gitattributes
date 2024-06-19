@@ -1,0 +1,3 @@
+test/* linguist-vendored
+coverage/* linguist-generated
+example/* linguist-documentation

@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.0-beta.1
+- Add new Android Notification Icon generator
+- Update Android Adaptive Icon Monochrome auto convert image to grayscale
+- Update Android Adaptive Icon Round Manifest
+- Update logo asset files
+- Improvement iOS Icon generator and set idiom to universal
+- Update README.md
+- Upgrade dependencies
+
 ## 2.1.7
 - Update README.md
 

@@ -52,22 +52,23 @@ void createIosIcons({required String imagePath}) {
 
   // https://developer.apple.com/design/human-interface-guidelines/app-icons
   final iosIcons = <IosIconTemplate>[
-    ..._createIosTemplates(size: 20, scales: [2, 3]),
+    ..._createIosTemplates(size: 20, scales: [1, 2, 3]),
     // Settings on iPhone, iPad Pro, iPad, iPad mini (58, 87)
-    ..._createIosTemplates(size: 29, scales: [2, 3]),
+    ..._createIosTemplates(size: 29, scales: [1, 2, 3]),
     // Notifications on iPhone, iPad Pro, iPad, iPad mini (76, 114)
     ..._createIosTemplates(size: 38, scales: [2, 3]),
     // Spotlight on iPhone, iPad Pro, iPad, iPad mini (80, 120)
-    ..._createIosTemplates(size: 40, scales: [2, 3]),
+    ..._createIosTemplates(size: 40, scales: [1, 2, 3]),
     // Home Screen on iPhone (120, 180)
     ..._createIosTemplates(size: 60, scales: [2, 3]),
     ..._createIosTemplates(size: 64, scales: [2, 3]),
     ..._createIosTemplates(size: 68, scales: [2]),
     // Home Screen on iPad, iPad mini (152)
-    ..._createIosTemplates(size: 76, scales: [2]),
+    ..._createIosTemplates(size: 76, scales: [1, 2]),
     // Home Screen on iPad Pro (167)
     ..._createIosTemplates(size: 83.5, sizeName: '83.5x83.5', scales: [2]),
     ..._createIosTemplates(size: 1024, scales: [0]),
+    ..._createIosTemplates(size: 1024, scales: [1], idiom: 'ios-marketing'),
   ];
 
   final filenames = <String>{};

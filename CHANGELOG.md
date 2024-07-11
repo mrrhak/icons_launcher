@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0-beta.2
+- Improvement web favicon size
+- Improvement iOS Icon generator and set idiom to universal
+
 ## 3.0.0-beta.1
 - Add new Android Notification Icon generator
 - Update Android Adaptive Icon Monochrome auto convert image to grayscale

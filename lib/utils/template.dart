@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:universal_io/io.dart';
 
-import '../src/version.dart';
 import 'cli_logger.dart';
 import 'constants.dart';
 
@@ -160,8 +159,7 @@ class AppleAppIconType {
         'images': images.map((image) => image.toJson()).toList(),
         'info': {
           'author': 'icons_launcher',
-          'version': packageVersion,
-          'github': 'https://github.com/mrrhak/icons_launcher'
+          'version': 1,
         }
       };
 

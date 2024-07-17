@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0-beta.3
+- Fixed iOS Icon generator
+- Update logs message
+
 ## 3.0.0-beta.2
 - Improvement web favicon size
 - Improvement iOS Icon generator and set idiom to universal

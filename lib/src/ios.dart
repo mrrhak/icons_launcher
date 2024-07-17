@@ -52,6 +52,7 @@ void createIosIcons({required String imagePath}) {
 
   // https://developer.apple.com/design/human-interface-guidelines/app-icons
   final iosIcons = <IosIconTemplate>[
+    // Notifications on iPhone, iPad Pro, iPad, iPad mini (20, 29)
     ..._createIosTemplates(size: 20, scales: [1, 2, 3]),
     // Settings on iPhone, iPad Pro, iPad, iPad mini (58, 87)
     ..._createIosTemplates(size: 29, scales: [1, 2, 3]),
@@ -67,8 +68,8 @@ void createIosIcons({required String imagePath}) {
     ..._createIosTemplates(size: 76, scales: [1, 2]),
     // Home Screen on iPad Pro (167)
     ..._createIosTemplates(size: 83.5, sizeName: '83.5x83.5', scales: [2]),
+    // App Store
     ..._createIosTemplates(size: 1024, scales: [0]),
-    ..._createIosTemplates(size: 1024, scales: [1], idiom: 'ios-marketing'),
   ];
 
   final filenames = <String>{};

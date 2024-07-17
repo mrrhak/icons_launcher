@@ -13,8 +13,12 @@ const String START_MESSAGE = '''\n
 
 /// End message for the CLI
 const String END_MESSAGE = '''\n
-==> GENERATE ICONS LAUNCHER SUCCESSFULLY <==
-              ❤️ THANK YOU! ❤️
+==> ✅ GENERATE ICONS LAUNCHER SUCCESSFULLY ✅ <==
+
+Give a 👍 on Pub.dev https://pub.dev/packages/icons_launcher.
+Give a ⭐️ on GitHub https://github.com/mrrhak/icons_launcher.
+
+                💚 THANK YOU! 💚
 ''';
 
 /// Flutter sdk gradle file location

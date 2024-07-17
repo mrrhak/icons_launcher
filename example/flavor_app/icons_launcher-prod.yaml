@@ -1,7 +1,6 @@
 # dart run icons_launcher:create --flavor prod
 
 icons_launcher:
-  image_path: "assets/ic_logo_radius.png"
   platforms:
     android:
       enable: true

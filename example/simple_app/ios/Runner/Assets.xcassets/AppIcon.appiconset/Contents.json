@@ -138,18 +138,10 @@
       "platform": "ios",
       "idiom": "universal",
       "size": "1024x1024"
-    },
-    {
-      "filename": "Icon-App-1024x1024@1x.png",
-      "platform": "ios",
-      "idiom": "ios-marketing",
-      "scale": "1x",
-      "size": "1024x1024"
     }
   ],
   "info": {
     "author": "icons_launcher",
-    "version": "3.0.0-beta.2",
-    "github": "https://github.com/mrrhak/icons_launcher"
+    "version": 1
   }
 }

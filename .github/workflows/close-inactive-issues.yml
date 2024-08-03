@@ -4,8 +4,8 @@ on:
   issue_comment:
     types: [created]
   schedule:
-    # Schedule for zero minutes after the hour, every hour
-    - cron: '0 * * * *'
+    # Workflow will run at midnight (00:00) UTC every day
+    - cron: '0 0 * * *'
 
 permissions:
   issues: write

@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Improvement package CI/CD
+
 ## 3.0.0-beta.3
 - Fixed iOS Icon generator
 - Update logs message

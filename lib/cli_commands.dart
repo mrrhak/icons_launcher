@@ -21,9 +21,9 @@ part 'utils/flavor_helper.dart';
 late _FlavorHelper _flavorHelper;
 
 /// Create launcher icons
-void createLauncherIcons({String? path, String? flavor}) {
+void createIconsLauncher({String? path, String? flavor}) {
   if (flavor != null) {
-    print('📱  Flavor $flavor detected! (Android, iOS)\n');
+    print('\n📱  Starting with $flavor flavor 🚀\n');
   }
   _flavorHelper = _FlavorHelper(flavor);
   final config = _getConfig(configFile: path);

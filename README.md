@@ -182,13 +182,26 @@ Shown below is the full list of attributes which you can specify within your Ico
 
 Create a Icons Launcher configuration file for your flavor. The config file is called `icons_launcher-<flavor>.yaml` by replacing `<flavor>` by the name of your desired flavor.
 
-Example: `icons_launcher-dev.yaml`
+Example: `icons_launcher-dev.yaml`, `icons_launcher-uat.yaml`, `icons_launcher-prod.yaml`
 
 Run with flavor:
 
 ```sh
 flutter pub get
+# create for dev flavor
 dart run icons_launcher:create --flavor dev
+
+# create for uat flavor
+dart run icons_launcher:create --flavor uat
+
+# create for prod flavor
+dart run icons_launcher:create --flavor prod
+```
+
+Alternatively, you can run multiple flavors at the same time with the following command:
+
+```bash
+dart run icons_launcher:create --flavors dev,uat,prod
 ```
 
 The configuration file format is the same.

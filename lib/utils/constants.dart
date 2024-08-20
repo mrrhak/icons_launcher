@@ -3,20 +3,21 @@
 import '../src/version.dart';
 
 /// Start message for the CLI
-const String START_MESSAGE = '''\n
+const String START_MESSAGE = '''
 ╔══════════════════════════════════════════════════╗
 ║               🍃 ICONS LAUNCHER 🍃               ║
 ╠══════════════════════════════════════════════════╣
 ║               Version: $packageVersion              ║
 ╚══════════════════════════════════════════════════╝
-\n''';
+''';
 
 /// End message for the CLI
 const String END_MESSAGE = '''\n
 ==> ✅ GENERATE ICONS LAUNCHER SUCCESSFULLY ✅ <==
 
-Give a 👍 on Pub.dev https://pub.dev/packages/icons_launcher.
-Give a ⭐️ on GitHub https://github.com/mrrhak/icons_launcher.
+🙏 If this package helped you, please don't forget to
+Give a 👍 on Pub.dev https://pub.dev/packages/icons_launcher
+Give a ⭐️ on GitHub https://github.com/mrrhak/icons_launcher
 
                 💚 THANK YOU! 💚
 ''';

@@ -2,6 +2,7 @@
 
 ## Unreleased
 - Improvement package CI/CD
+- Add new command for generating all flavors at once: `--flavors`
 
 ## 3.0.0-beta.3
 - Fixed iOS Icon generator

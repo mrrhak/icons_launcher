@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
-- Improvement package CI/CD
+## 3.0.0-beta.4
+- Add new support `Dark` and `Tinted` icons for iOS 18
 - Add new command for generating all flavors at once: `--flavors`
+- Improvement package CI/CD
 
 ## 3.0.0-beta.3
 - Fixed iOS Icon generator

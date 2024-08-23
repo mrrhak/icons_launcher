@@ -207,6 +207,8 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   }
 
   var imagePathIos = imagePath;
+  String? imagePathIosDark;
+  String? imagePathIosTinted;
   if (isNeedingNewIosIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['ios'] as Map<String, dynamic>,
@@ -219,6 +221,16 @@ void _createIconsByConfig(Map<String, dynamic> config) {
       CliLogger.error('Could not find image path for iOS');
       exit(1);
     }
+
+    imagePathIosDark = _checkImageExists(
+      config: platforms['ios'] as Map<String, dynamic>,
+      parameter: 'dark_path',
+    );
+
+    imagePathIosTinted = _checkImageExists(
+      config: platforms['ios'] as Map<String, dynamic>,
+      parameter: 'tinted_path',
+    );
   }
 
   var imagePathMacos = imagePath;
@@ -396,7 +408,11 @@ void _createIconsByConfig(Map<String, dynamic> config) {
 
   //! iOS
   if (isNeedingNewIosIcon(platforms) && imagePathIos != null) {
-    createIosIcons(imagePath: imagePathIos);
+    createIosIcons(
+      imagePath: imagePathIos,
+      darkPath: imagePathIosDark,
+      tintedPath: imagePathIosTinted,
+    );
   }
 
   //! macOS

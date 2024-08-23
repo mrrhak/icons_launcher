@@ -154,6 +154,8 @@ Shown below is the full list of attributes which you can specify within your Ico
 | -------------- | ------- | ------- | ------------------------------- |
 | `enable`       | Boolean | `false` | Use for enable iOS platform     |
 | `image_path`   | String  | `null`  | The image file path             |
+| `dark_path`    | String  | `null`  | The dark image file path        |
+| `tinted_path`  | String  | `null`  | The tinted image file path      |
     
 | Web Option     | Type    | Default | Description                     |
 | -------------- | ------- | ------- | ------------------------------- |
@@ -182,13 +184,23 @@ Shown below is the full list of attributes which you can specify within your Ico
 
 Create a Icons Launcher configuration file for your flavor. The config file is called `icons_launcher-<flavor>.yaml` by replacing `<flavor>` by the name of your desired flavor.
 
-Example: `icons_launcher-dev.yaml`
+Example: `icons_launcher-dev.yaml` and `icons_launcher-prod.yaml`
 
 Run with flavor:
 
 ```sh
 flutter pub get
+# create for dev flavor
 dart run icons_launcher:create --flavor dev
+
+# create for prod flavor
+dart run icons_launcher:create --flavor prod
+```
+
+Alternatively, you can run multiple flavors at the same time with the following command:
+
+```bash
+dart run icons_launcher:create --flavors dev,prod
 ```
 
 The configuration file format is the same.
@@ -213,6 +225,9 @@ icons_launcher:
     ios:
       enable: true
       image_path: "assets/ic_logo_rectangle.png"
+      # For iOS 18+ (support dark and tinted)
+      # dark_path: "assets/ic_logo_rectangle_dark.png"
+      # tinted_path: "assets/ic_logo_rectangle_tinted.png"
     web:
       enable: true
       image_path: "assets/ic_logo_radius.png"
@@ -227,3 +242,8 @@ icons_launcher:
       enable: false
       image_path: "assets/ic_logo_radius.png"
 ```
+---
+
+## Activities
+
+![Alt](https://repobeats.axiom.co/api/embed/5309e2f5c1da2066439a06cc4ef66881a13947c5.svg "analytics")

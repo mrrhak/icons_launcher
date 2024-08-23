@@ -27,6 +27,8 @@ abstract class AppleIconTemplate {
     required this.scaledSize,
     required this.scale,
     required this.idiom,
+    this.platform,
+    this.appearances,
   });
 
   /// Icon size
@@ -45,33 +47,87 @@ abstract class AppleIconTemplate {
   /// Icon file name
   String get filename;
 
+  /// Icon platform
+  final String? platform;
+
+  /// Icon appearances
+  final List<IconAppearance>? appearances;
+
   /// Used to encode the attributes for this asset file in a corresponding
   /// Asset's Contents.json file.
   Map<String, dynamic> toJson();
 }
 
+class IconAppearance {
+  IconAppearance({
+    required this.appearance,
+    required this.value,
+  });
+
+  final String appearance;
+  final String value;
+
+  Map<String, String> toJson() {
+    return <String, String>{
+      'appearance': appearance,
+      'value': value,
+    };
+  }
+
+  IconAppearance fromJson(Map<String, String> json) {
+    return IconAppearance(
+      appearance: json['appearance'] as String,
+      value: json['value'] as String,
+    );
+  }
+}
+
 /// iOS template
 class IosIconTemplate extends AppleIconTemplate {
   /// Constructor
-  IosIconTemplate(
-      {required super.sizeName,
-      required super.scaledSize,
-      required super.scale,
-      required super.idiom});
+  IosIconTemplate({
+    required super.sizeName,
+    required super.scaledSize,
+    required super.scale,
+    required super.idiom,
+    super.platform,
+    super.appearances,
+  });
 
   @override
-  String get filename => scale == 0
-      ? '$IOS_DEFAULT_ICON_NAME-$sizeName.png'
-      : '$IOS_DEFAULT_ICON_NAME-$sizeName@${scale}x.png';
+  String get filename {
+    var isDarkAppearance = appearances != null &&
+        appearances!
+            .any((e) => e.appearance == 'luminosity' && e.value == 'dark');
+
+    var isTintedAppearance = appearances != null &&
+        appearances!
+            .any((e) => e.appearance == 'luminosity' && e.value == 'tinted');
+
+    var defaultName = IOS_DEFAULT_ICON_NAME;
+    if (isDarkAppearance) {
+      defaultName = '$defaultName-Dark';
+    } else if (isTintedAppearance) {
+      defaultName = '$defaultName-Tinted';
+    }
+
+    if (scale == 0) {
+      return '$defaultName-$sizeName.png';
+    } else {
+      return '$defaultName-$sizeName@${scale}x.png';
+    }
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    var json = <String, String>{
+    var json = <String, dynamic>{
       'filename': filename,
-      'platform': 'ios',
       'idiom': idiom,
       'scale': '${scale}x',
-      'size': sizeName
+      'size': sizeName,
+      if (platform != null) 'platform': platform,
+      if (appearances != null)
+        'appearances': appearances!.map((e) => e.toJson()).toList(),
     };
 
     if (scale == 0) {
@@ -146,22 +202,42 @@ class LinuxIconTemplate {
 class AppleAppIconType {
   /// Provide a list of [images] to be created in your Asset set, whose
   /// Contents.json file can be written out to [assetPath].
-  const AppleAppIconType({required this.images, required this.assetPath});
+  const AppleAppIconType({
+    required this.images,
+    required this.assetPath,
+    this.darkImages,
+    this.tintedImages,
+  });
 
   /// The meta data for each asset file to create.
   final List<AppleIconTemplate> images;
+  final List<AppleIconTemplate>? darkImages;
+  final List<AppleIconTemplate>? tintedImages;
 
   /// Where to write out the Contents.json file.
   final String assetPath;
 
   /// For use with a [JsonEncoder] to generate this Asset's Contents.json file.
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        'images': images.map((image) => image.toJson()).toList(),
-        'info': {
-          'author': 'icons_launcher',
-          'version': 1,
-        }
-      };
+  Map<String, dynamic> toJson() {
+    final imagesMap = <Map<String, dynamic>>[];
+    imagesMap.addAll(images.map((e) => e.toJson()));
+
+    if (darkImages != null) {
+      imagesMap.addAll(darkImages!.map((e) => e.toJson()));
+    }
+
+    if (tintedImages != null) {
+      imagesMap.addAll(tintedImages!.map((e) => e.toJson()));
+    }
+
+    return <String, dynamic>{
+      'images': imagesMap,
+      'info': {
+        'author': 'icons_launcher',
+        'version': 1,
+      }
+    };
+  }
 
   /// Writes out the Contents.json file.
   void saveContentsJson() {

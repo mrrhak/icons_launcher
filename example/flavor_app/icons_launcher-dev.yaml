@@ -14,6 +14,9 @@ icons_launcher:
     ios:
       enable: true
       image_path: "assets/ic_logo_rectangle.png"
+      # For iOS 18+ (support dark and tinted)
+      # dark_path: "assets/ic_logo_rectangle_dark.png"
+      # tinted_path: "assets/ic_logo_rectangle_tinted.png"
     web:
       enable: true
       image_path: "assets/ic_logo_radius.png"

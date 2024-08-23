@@ -51,8 +51,6 @@ class Icon {
 
   /// Create a resized copy of this Icon
   Icon copyResized(int iconSize) {
-    // Note: Do not change interpolation unless you end up with better results
-    // (see issue for result when using cubic interpolation)
     if (image.width >= iconSize) {
       return Icon._(copyResize(
         image,

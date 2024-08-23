@@ -4,8 +4,8 @@ on:
   issue_comment:
     types: [created]
   schedule:
-    # Workflow will run at midnight (00:00) UTC every day
-    - cron: '0 0 * * *'
+    # Workflow will run every week on Sunday at midnight
+    - cron: '0 0 * * 0'
 
 permissions:
   issues: write

@@ -21,9 +21,9 @@ part 'utils/flavor_helper.dart';
 late _FlavorHelper _flavorHelper;
 
 /// Create launcher icons
-void createLauncherIcons({String? path, String? flavor}) {
+void createIconsLauncher({String? path, String? flavor}) {
   if (flavor != null) {
-    print('📱  Flavor $flavor detected! (Android, iOS)\n');
+    print('\n📱  Starting with $flavor flavor 🚀\n');
   }
   _flavorHelper = _FlavorHelper(flavor);
   final config = _getConfig(configFile: path);
@@ -207,6 +207,8 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   }
 
   var imagePathIos = imagePath;
+  String? imagePathIosDark;
+  String? imagePathIosTinted;
   if (isNeedingNewIosIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['ios'] as Map<String, dynamic>,
@@ -219,6 +221,16 @@ void _createIconsByConfig(Map<String, dynamic> config) {
       CliLogger.error('Could not find image path for iOS');
       exit(1);
     }
+
+    imagePathIosDark = _checkImageExists(
+      config: platforms['ios'] as Map<String, dynamic>,
+      parameter: 'dark_path',
+    );
+
+    imagePathIosTinted = _checkImageExists(
+      config: platforms['ios'] as Map<String, dynamic>,
+      parameter: 'tinted_path',
+    );
   }
 
   var imagePathMacos = imagePath;
@@ -396,7 +408,11 @@ void _createIconsByConfig(Map<String, dynamic> config) {
 
   //! iOS
   if (isNeedingNewIosIcon(platforms) && imagePathIos != null) {
-    createIosIcons(imagePath: imagePathIos);
+    createIosIcons(
+      imagePath: imagePathIos,
+      darkPath: imagePathIosDark,
+      tintedPath: imagePathIosTinted,
+    );
   }
 
   //! macOS

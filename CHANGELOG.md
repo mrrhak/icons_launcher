@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.0.0
+- Add new support `Light`, `Dark` and `Tinted` icons for iOS 18+
+- Add new Android `Notification Icon` generator
+- Add new command for generating all flavors at once: `--flavors`
+- Update iOS Icon generator set idiom to `universal`
+- Update Android `Adaptive Icon`
+- Update `web favicon` size
+- Update example `logo asset` files
+- Update `logs` message
+- Update `README.md`
+
 ## 3.0.0-beta.4
 - Add new support `Dark` and `Tinted` icons for iOS 18
 - Add new command for generating all flavors at once: `--flavors`

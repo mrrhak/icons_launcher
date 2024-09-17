@@ -83,150 +83,213 @@ void createIosIcons({
 
   // https://developer.apple.com/design/human-interface-guidelines/app-icons
   final iosIcons = <IosIconTemplate>[
-    // Notifications on iPhone, iPad Pro, iPad, iPad mini (20, 29)
-    ..._createIosTemplates(size: 20, idiom: 'iphone', scales: [2, 3]),
-    ..._createIosTemplates(size: 20, idiom: 'ipad', scales: [1, 2]),
-    // Settings on iPhone, iPad Pro, iPad, iPad mini (58, 87)
-    ..._createIosTemplates(size: 29, idiom: 'iphone', scales: [1, 2, 3]),
-    ..._createIosTemplates(size: 29, idiom: 'ipad', scales: [1, 2]),
-    // Spotlight on iPhone, iPad Pro, iPad, iPad mini (80, 120)
-    ..._createIosTemplates(size: 40, idiom: 'iphone', scales: [2, 3]),
-    ..._createIosTemplates(size: 40, idiom: 'ipad', scales: [1, 2]),
-    // Home Screen on iPhone (120, 180)
-    ..._createIosTemplates(size: 60, idiom: 'iphone', scales: [2, 3]),
-    // Home Screen on iPad, iPad mini (152)
-    ..._createIosTemplates(size: 76, idiom: 'ipad', scales: [1, 2]),
-    // Home Screen on iPad Pro (167)
     ..._createIosTemplates(
-        size: 83.5, idiom: 'ipad', sizeName: '83.5x83.5', scales: [2]),
-    // App Store
-    ..._createIosTemplates(size: 1024, idiom: 'ios-marketing', scales: [1]),
+      size: 20,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
+    ),
+    ..._createIosTemplates(
+      size: 29,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
+    ),
+    ..._createIosTemplates(
+      size: 38,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
+    ),
+    ..._createIosTemplates(
+      size: 40,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
+    ),
+    ..._createIosTemplates(
+      size: 60,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
+    ),
+    ..._createIosTemplates(
+      size: 64,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
+    ),
+    ..._createIosTemplates(
+      size: 68,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2],
+    ),
+    ..._createIosTemplates(
+      size: 76,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2],
+    ),
+    ..._createIosTemplates(
+      size: 83.5,
+      platform: 'ios',
+      idiom: 'universal',
+      sizeName: '83.5x83.5',
+      scales: [2],
+    ),
+    ..._createIosTemplates(
+      size: 1024,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [1],
+    ),
   ];
 
   final iosDarkIcons = <IosIconTemplate>[
-    // Notifications on iPhone, iPad Pro, iPad, iPad mini (20, 29)
     ..._createIosTemplates(
       size: 20,
-      idiom: 'iphone',
+      platform: 'ios',
+      idiom: 'universal',
       scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
     ),
     ..._createIosTemplates(
-      size: 20,
-      idiom: 'ipad',
-      scales: [1, 2],
-      appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
-    ),
-    // Settings on iPhone, iPad Pro, iPad, iPad mini (58, 87)
-    ..._createIosTemplates(
       size: 29,
-      idiom: 'iphone',
-      scales: [1, 2, 3],
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
     ),
     ..._createIosTemplates(
-      size: 29,
-      idiom: 'ipad',
-      scales: [1, 2],
-      appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
-    ),
-    // Spotlight on iPhone, iPad Pro, iPad, iPad mini (80, 120)
-    ..._createIosTemplates(
-      size: 40,
-      idiom: 'iphone',
+      size: 38,
+      platform: 'ios',
+      idiom: 'universal',
       scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
     ),
     ..._createIosTemplates(
       size: 40,
-      idiom: 'ipad',
-      scales: [1, 2],
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
     ),
-    // Home Screen on iPhone (120, 180)
     ..._createIosTemplates(
       size: 60,
-      idiom: 'iphone',
+      platform: 'ios',
+      idiom: 'universal',
       scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
     ),
-    // Home Screen on iPad, iPad mini (152)
     ..._createIosTemplates(
-      size: 76,
-      idiom: 'ipad',
-      scales: [1, 2],
+      size: 64,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
     ),
-    // Home Screen on iPad Pro (167)
+    ..._createIosTemplates(
+      size: 68,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2],
+      appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
+    ),
+    ..._createIosTemplates(
+      size: 76,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2],
+      appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
+    ),
     ..._createIosTemplates(
       size: 83.5,
-      idiom: 'ipad',
+      platform: 'ios',
+      idiom: 'universal',
       sizeName: '83.5x83.5',
       scales: [2],
+      appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
+    ),
+    ..._createIosTemplates(
+      size: 1024,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [1],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'dark')],
     ),
   ];
 
   final iosTintedIcons = <IosIconTemplate>[
-    // Notifications on iPhone, iPad Pro, iPad, iPad mini (20, 29)
     ..._createIosTemplates(
       size: 20,
-      idiom: 'iphone',
+      platform: 'ios',
+      idiom: 'universal',
       scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
     ),
     ..._createIosTemplates(
-      size: 20,
-      idiom: 'ipad',
-      scales: [1, 2],
-      appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
-    ),
-    // Settings on iPhone, iPad Pro, iPad, iPad mini (58, 87)
-    ..._createIosTemplates(
       size: 29,
-      idiom: 'iphone',
-      scales: [1, 2, 3],
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
     ),
     ..._createIosTemplates(
-      size: 29,
-      idiom: 'ipad',
-      scales: [1, 2],
-      appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
-    ),
-    // Spotlight on iPhone, iPad Pro, iPad, iPad mini (80, 120)
-    ..._createIosTemplates(
-      size: 40,
-      idiom: 'iphone',
+      size: 38,
+      platform: 'ios',
+      idiom: 'universal',
       scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
     ),
     ..._createIosTemplates(
       size: 40,
-      idiom: 'ipad',
-      scales: [1, 2],
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
     ),
-    // Home Screen on iPhone (120, 180)
     ..._createIosTemplates(
       size: 60,
-      idiom: 'iphone',
+      platform: 'ios',
+      idiom: 'universal',
       scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
     ),
-    // Home Screen on iPad, iPad mini (152)
     ..._createIosTemplates(
-      size: 76,
-      idiom: 'ipad',
-      scales: [1, 2],
+      size: 64,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2, 3],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
     ),
-    // Home Screen on iPad Pro (167)
+    ..._createIosTemplates(
+      size: 68,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2],
+      appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
+    ),
+    ..._createIosTemplates(
+      size: 76,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [2],
+      appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
+    ),
     ..._createIosTemplates(
       size: 83.5,
-      idiom: 'ipad',
+      platform: 'ios',
+      idiom: 'universal',
       sizeName: '83.5x83.5',
       scales: [2],
+      appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
+    ),
+    ..._createIosTemplates(
+      size: 1024,
+      platform: 'ios',
+      idiom: 'universal',
+      scales: [1],
       appearances: [IconAppearance(appearance: 'luminosity', value: 'tinted')],
     ),
   ];
@@ -240,7 +303,7 @@ void createIosIcons({
       _saveImageIos(template, image);
     }
   }
-  CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
+  CliLogger.success('Generated app light icons', level: CliLoggerLevel.two);
 
   // https://github.com/fluttercommunity/flutter_launcher_icons/pull/569/files
   if (darkImage != null) {

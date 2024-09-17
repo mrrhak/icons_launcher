@@ -7,13 +7,13 @@ const String START_MESSAGE = '''
 ╔══════════════════════════════════════════════════╗
 ║               🍃 ICONS LAUNCHER 🍃               ║
 ╠══════════════════════════════════════════════════╣
-║               Version: $packageVersion              ║
+║                  Version: $packageVersion                  ║
 ╚══════════════════════════════════════════════════╝
 ''';
 
 /// End message for the CLI
 const String END_MESSAGE = '''\n
-==> ✅ GENERATE ICONS LAUNCHER SUCCESSFULLY ✅ <==
+==> 🎉 GENERATE ICONS LAUNCHER SUCCESSFULLY 🎉 <==
 
 🙏 If this package helped you, please don't forget to
 Give a 👍 on Pub.dev https://pub.dev/packages/icons_launcher

@@ -4,7 +4,7 @@ maintainer: Mrr Hak
 homepage: https://mrrhak.com
 repository: https://github.com/mrrhak/icons_launcher/tree/master
 issue_tracker: https://github.com/mrrhak/icons_launcher/issues
-version: 3.0.0-beta.4
+version: 3.0.0
 funding:
   - https://ko-fi.com/mrrhak
 screenshots:
@@ -30,4 +30,4 @@ dev_dependencies:
 topics:
   - icons
   - app-icon
-  - icon-launcher
+  - icons-launcher

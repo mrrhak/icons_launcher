@@ -1,5 +1,3 @@
-library icons_launcher_cli;
-
 import 'package:path/path.dart' as p;
 import 'package:universal_io/io.dart';
 import 'package:yaml/yaml.dart';

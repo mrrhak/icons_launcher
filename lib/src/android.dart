@@ -531,7 +531,9 @@ int _minSdk() {
   String? minSdkValue;
 
   final androidGradleFile = File(ANDROID_GRADLE_FILE);
-  final List<String> androidLines = androidGradleFile.existsSync() ? androidGradleFile.readAsLinesSync() : [];
+  final androidLines = androidGradleFile.existsSync()
+      ? androidGradleFile.readAsLinesSync()
+      : <String>[];
 
   //! First try -> app/build.gradle file
   const androidLineKey = 'minSdkVersion';
@@ -545,10 +547,12 @@ int _minSdk() {
 
   //! Third try -> app/build.gradle.kts file
   if (minSdkValue == null) {
-  final androidGradleKtsFile = File(ANDROID_GRADLE_KTS_FILE);
-  final List<String> androidKtsLines = androidGradleKtsFile.existsSync() ? androidGradleKtsFile.readAsLinesSync() : [];
-  const androidKotlinLineKey = 'minSdk =';
-  minSdkValue = _getLineValueNumber(androidKtsLines, androidKotlinLineKey);
+    final androidGradleKtsFile = File(ANDROID_GRADLE_KTS_FILE);
+    final androidKtsLines = androidGradleKtsFile.existsSync()
+        ? androidGradleKtsFile.readAsLinesSync()
+        : <String>[];
+    const androidKotlinLineKey = 'minSdk =';
+    minSdkValue = _getLineValueNumber(androidKtsLines, androidKotlinLineKey);
   }
 
   //! Fourth try -> local.properties

@@ -29,12 +29,12 @@
   <a href="https://pub.dev/packages/icons_launcher">
     <img src="https://img.shields.io/pub/likes/icons_launcher?style=flat&logo=dart&label=Likes" alt="Pub Likes"/>
   </a>
-  <a href="https://pub.dev/packages/icons_launcher">
-    <img alt="Pub Popularity" src="https://img.shields.io/pub/popularity/icons_launcher?style=flat&logo=dart&label=Popularity&link=https%3A%2F%2Fpub.dev%2Fpackages%2Ficons_launcher">
-  </a>
   <a href="https://pub.dartlang.org/packages/icons_launcher/score">
     <img src="https://img.shields.io/pub/points/icons_launcher?label=Score&logo=dart"
-      alt="Pub Package" />
+      alt="Pub Score" />
+  </a>
+  <a href="https://pub.dev/packages/icons_launcher">
+    <img alt="Pub Monthly Downloads" src="https://img.shields.io/pub/dm/icons_launcher?style=flat&color=blue&logo=dart&label=Downloads&link=https%3A%2F%2Fpub.dev%2Fpackages%2Ficons_launcher">
   </a>
   <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/stars/mrrhak/icons_launcher.svg?style=flat&logo=github&colorB=deeppink&label=Stars" alt="Star on Github"></a>
   <a href="https://github.com/mrrhak/icons_launcher"><img src="https://img.shields.io/github/forks/mrrhak/icons_launcher?color=orange&label=Forks&logo=github" alt="Forks on Github"></a>

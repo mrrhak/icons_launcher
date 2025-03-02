@@ -9,7 +9,3 @@ pubspec.lock
 
 # Directory created by dartdoc
 doc/api/
-
-# example/test/
-.vscode/
-coverage/

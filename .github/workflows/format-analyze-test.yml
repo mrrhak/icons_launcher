@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dart-lang/setup-dart@v1.6.4
+      - uses: dart-lang/setup-dart@v1.7.1
 
       - name: Install Dependencies
         run: dart pub get

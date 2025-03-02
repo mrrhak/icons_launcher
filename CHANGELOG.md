@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1
+- Add support to Flutter v3.29.0
+- Update example app
+- Update README.md
+- Upgrade dependencies
+
 ## 3.0.0
 - Add new support `Light`, `Dark` and `Tinted` icons for iOS 18+
 - Add new Android `Notification Icon` generator

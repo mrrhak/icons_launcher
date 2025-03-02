@@ -531,20 +531,34 @@ int _minSdk() {
   String? minSdkValue;
 
   final androidGradleFile = File(ANDROID_GRADLE_FILE);
-  final androidLines = androidGradleFile.readAsLinesSync();
+  final List<String> androidLines = androidGradleFile.existsSync() ? androidGradleFile.readAsLinesSync() : [];
 
   //! First try -> app/build.gradle file
   const androidLineKey = 'minSdkVersion';
   minSdkValue = _getLineValueNumber(androidLines, androidLineKey);
 
-  //! Second try -> local.properties
+  //! Second try -> app/build.gradle file
+  if (minSdkValue == null) {
+    const newAndroidLineKey = 'minSdk =';
+    minSdkValue = _getLineValueNumber(androidLines, newAndroidLineKey);
+  }
+
+  //! Third try -> app/build.gradle.kts file
+  if (minSdkValue == null) {
+  final androidGradleKtsFile = File(ANDROID_GRADLE_KTS_FILE);
+  final List<String> androidKtsLines = androidGradleKtsFile.existsSync() ? androidGradleKtsFile.readAsLinesSync() : [];
+  const androidKotlinLineKey = 'minSdk =';
+  minSdkValue = _getLineValueNumber(androidKtsLines, androidKotlinLineKey);
+  }
+
+  //! Fourth try -> local.properties
   if (minSdkValue == null) {
     final localLines = File(ANDROID_LOCAL_PROPERTIES).readAsLinesSync();
     const localKey = 'flutter.minSdkVersion=';
     minSdkValue = _getLineValueNumber(localLines, localKey);
   }
 
-  //! Third try -> flutter.gradle file (default flutter sdk)
+  //! Fifth try -> flutter.gradle file (default flutter sdk)
   if (minSdkValue == null) {
     final gradleFile = '${_flutterSdk()}$FLUTTER_SDK_GRADLE_FILE';
     final flutterLines = File(gradleFile).readAsLinesSync();

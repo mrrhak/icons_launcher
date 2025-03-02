@@ -2,6 +2,7 @@
 
 ## 3.0.1
 - Add support to Flutter v3.29.0
+- Update example app
 - Update README.md
 - Upgrade dependencies
 

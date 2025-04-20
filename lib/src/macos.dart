@@ -50,6 +50,7 @@ void createMacOSIcons({required String imagePath}) {
 
 /// Save macos image
 void _saveImageMacOS(MacOSIconTemplate template, Icon image) {
-  final filePath = '$MACOS_DEFAULT_APP_ICON_DIR${template.filename}';
+  final filePath =
+      '${_flavorHelper.macOSAssetsAppIconFolder}${template.filename}';
   image.saveResizedPng(template.scaledSize, filePath);
 }

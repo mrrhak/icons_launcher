@@ -168,6 +168,13 @@ class _FlavorHelper {
       return 'LaunchBackground$_iOSFlavorName';
     }
   }
+
+  // MacOS related values
+
+  /// Get macOS assets app icon folder
+  String get macOSAssetsAppIconFolder {
+    return 'macos/Runner/Assets.xcassets/${_flavor ?? ''}AppIcon.appiconset/';
+  }
 }
 
 /// String capitalize extension

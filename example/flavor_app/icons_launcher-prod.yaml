@@ -1,4 +1,5 @@
 # dart run icons_launcher:create --flavor prod
+# dart run icons_launcher:create --flavors dev,stage,prod
 
 icons_launcher:
   platforms:

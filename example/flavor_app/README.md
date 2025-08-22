@@ -10,6 +10,9 @@ Then generate `dev` and `prod` flavors with the commands:
 ```
 dart run icons_launcher:create --flavor dev
 dart run icons_launcher:create --flavor prod
+
+# Or
+dart run icons_launcher:create --flavors dev,prod
 ```
 
 ## Run with flavor

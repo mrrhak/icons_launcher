@@ -1,0 +1,6 @@
+#include "../../Flutter/stageDebug.xcconfig"
+#include "Warnings.xcconfig"
+
+ASSET_PREFIX=stage
+BUNDLE_NAME=Stage App
+BUNDLE_DISPLAY_NAME=Stage App

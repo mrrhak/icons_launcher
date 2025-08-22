@@ -1,0 +1,33 @@
+# dart run flutter_flavorizr
+app:
+  android:
+    flavorDimensions: "flavor-type"
+
+flavors:
+  dev:
+    app:
+      name: "Dev App"
+    android:
+      applicationId: "com.example.flavor_app.dev"
+    ios:
+      bundleId: "com.example.flavor_app.dev"
+    macos:
+      bundleId: "com.example.flavor_app.dev"
+  stage:
+    app:
+      name: "Stage App"
+    android:
+      applicationId: "com.example.flavor_app.stage"
+    ios:
+      bundleId: "com.example.flavor_app.stage"
+    macos:
+      bundleId: "com.example.flavor_app.stage"
+  prod:
+    app:
+      name: "Prod App"
+    android:
+      applicationId: "com.example.flavor_app.prod"
+    ios:
+      bundleId: "com.example.flavor_app.prod"
+    macos:
+      bundleId: "com.example.flavor_app.prod"

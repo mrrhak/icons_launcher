@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.2
+- Add flavor support to macOS
+- Upgrade example app
+- Upgrade dependencies
+
 ## 3.0.1
 - Add support to Flutter v3.29.0
 - Update example app

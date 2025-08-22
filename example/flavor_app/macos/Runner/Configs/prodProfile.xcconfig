@@ -1,0 +1,6 @@
+#include "../../Flutter/prodProfile.xcconfig"
+#include "Warnings.xcconfig"
+
+ASSET_PREFIX=prod
+BUNDLE_NAME=Prod App
+BUNDLE_DISPLAY_NAME=Prod App

@@ -1,0 +1,6 @@
+#include "../../Flutter/devRelease.xcconfig"
+#include "Warnings.xcconfig"
+
+ASSET_PREFIX=dev
+BUNDLE_NAME=Dev App
+BUNDLE_DISPLAY_NAME=Dev App

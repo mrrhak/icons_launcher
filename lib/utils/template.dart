@@ -161,7 +161,7 @@ class MacOSIconTemplate extends AppleIconTemplate {
   });
 
   @override
-  String get filename => '${MACOS_DEFAULT_ICON_NAME}_$scaledSize.png';
+  String get filename => '${MACOS_DEFAULT_ICON_NAME}_$scaledSize12.png';
 
   @override
   Map<String, dynamic> toJson() => <String, String>{

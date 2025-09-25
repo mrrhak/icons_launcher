@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.3
+- Fixed generate flavor and scale icons on macOS
+- Upgrade dependencies
+
 ## 3.0.2
 - Add flavor support to macOS
 - Upgrade example app

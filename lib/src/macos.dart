@@ -44,7 +44,8 @@ void createMacOSIcons({required String imagePath}) {
     }
   }
   CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
-  AppleAppIconType(images: macosIcons, assetPath: _flavorHelper.macOSAssetsAppIconFolder)
+  AppleAppIconType(
+          images: macosIcons, assetPath: _flavorHelper.macOSAssetsAppIconFolder)
       .saveContentsJson();
 }
 

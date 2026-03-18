@@ -20,11 +20,11 @@ icons_launcher:
       tinted_path: "assets/ic_logo_rectangle_tinted.png"
     web:
       enable: true
-      image_path: "assets/ic_logo_radius.png"
+      image_path: "assets/ic_logo_rectangle_light.png"
       favicon_path: "assets/ic_logo_round.png"
     macos:
       enable: true
-      image_path: "assets/ic_logo_radius.png"
+      image_path: "assets/macos_icon.png"
     windows:
       enable: false
       image_path: "assets/ic_logo_radius.png"

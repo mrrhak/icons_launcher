@@ -1,6 +1,7 @@
 # Changelog
 
 ## 3.0.4
+- Refactor(macos): update macos icon generator to follow new flutter template
 - Chore(image): bump image package from `v4.5.4` to `v4.8.0`
 - Chore(path): bump path package from `v1.8.2` to `v1.9.1`
 - Chore(universal_io): bump universal_io package from `v2.2.2` to `v2.3.1`

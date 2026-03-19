@@ -161,20 +161,14 @@ class MacOSIconTemplate extends AppleIconTemplate {
   });
 
   @override
-  String get filename {
-    if (scale == 0) {
-      return '$MACOS_DEFAULT_ICON_NAME-$sizeName.png';
-    } else {
-      return '$MACOS_DEFAULT_ICON_NAME-$sizeName@${scale}x.png';
-    }
-  }
+  String get filename => '${MACOS_DEFAULT_ICON_NAME}_$scaledSize.png';
 
   @override
   Map<String, dynamic> toJson() => <String, String>{
-        'filename': filename,
+        'size': sizeName,
         'idiom': 'mac',
+        'filename': filename,
         'scale': '${scale}x',
-        'size': sizeName
       };
 }
 
@@ -239,8 +233,8 @@ class AppleAppIconType {
     return <String, dynamic>{
       'images': imagesMap,
       'info': {
-        'author': 'icons_launcher',
         'version': 1,
+        'author': 'icons_launcher',
       }
     };
   }

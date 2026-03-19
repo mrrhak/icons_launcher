@@ -301,6 +301,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   }
 
   var faviconPathWeb = imagePathWeb;
+  String faviconOutputExtensionWeb = '.png';
   if (isNeedingNewWebIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['web'] as Map<String, dynamic>,
@@ -308,6 +309,13 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     );
     if (newImagePath != null) {
       faviconPathWeb = newImagePath;
+    }
+
+    final faviconOutputExtension =
+        (platforms['web'] as Map<String, dynamic>)['favicon_output_extension']
+            ?.toString();
+    if (faviconOutputExtension != null) {
+      faviconOutputExtensionWeb = faviconOutputExtension;
     }
   }
 
@@ -436,7 +444,10 @@ void _createIconsByConfig(Map<String, dynamic> config) {
       );
     }
     if (faviconPathWeb != null) {
-      createWebFavicon(imagePath: faviconPathWeb);
+      createWebFavicon(
+        imagePath: faviconPathWeb,
+        faviconOutputExtension: faviconOutputExtensionWeb,
+      );
     }
   }
 

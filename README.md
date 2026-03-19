@@ -166,6 +166,7 @@ Shown below is the full list of attributes which you can specify within your Ico
 | `image_path`   | String  | `null`  | The image file path             |
 | `maskable_image_path` | String  | `null`  | The maskable image file path for PWA    |
 | `favicon_path` | String  | `null`  | The image file path             |
+| `favicon_output_extension` | String | `.png` | Extension for favicon `.png` or `.ico` |
     
 | macOS Option   | Type    | Default | Description                     |
 | -------------- | ------- | ------- | ------------------------------- |
@@ -236,6 +237,7 @@ icons_launcher:
       image_path: "assets/ic_logo_rectangle_light.png"
       maskable_image_path: "assets/ic_logo_radius.png"
       favicon_path: "assets/ic_logo_round.png"
+      # favicon_output_extension: ".ico"
     macos:
       enable: false
       image_path: "assets/macos_icon.png"

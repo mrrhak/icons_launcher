@@ -164,7 +164,9 @@ Shown below is the full list of attributes which you can specify within your Ico
 | -------------- | ------- | ------- | ------------------------------- |
 | `enable`       | Boolean | `false` | Use for enable Web platform     |
 | `image_path`   | String  | `null`  | The image file path             |
+| `maskable_image_path` | String  | `null`  | The maskable image file path for PWA    |
 | `favicon_path` | String  | `null`  | The image file path             |
+| `favicon_output_extension` | String | `.png` | Extension for favicon `.png` or `.ico` |
     
 | macOS Option   | Type    | Default | Description                     |
 | -------------- | ------- | ------- | ------------------------------- |
@@ -214,13 +216,12 @@ The configuration file format is the same.
 
 ```yaml
 icons_launcher:
-  image_path: "assets/ic_logo_radius.png"
   platforms:
     android:
       enable: true
       image_path: "assets/ic_logo_radius.png"
       notification_image: "assets/ic_foreground.png"
-      # adaptive_background_color: '#ffffff'
+      # adaptive_background_color: "#ffffff"
       adaptive_background_image: "assets/ic_background.png"
       adaptive_foreground_image: "assets/ic_foreground.png"
       adaptive_round_image: "assets/ic_logo_round.png"
@@ -232,12 +233,14 @@ icons_launcher:
       dark_path: "assets/ic_logo_rectangle_dark.png"
       tinted_path: "assets/ic_logo_rectangle_tinted.png"
     web:
-      enable: true
-      image_path: "assets/ic_logo_radius.png"
+      enable: false
+      image_path: "assets/ic_logo_rectangle_light.png"
+      maskable_image_path: "assets/ic_logo_radius.png"
       favicon_path: "assets/ic_logo_round.png"
+      # favicon_output_extension: ".ico"
     macos:
       enable: false
-      image_path: "assets/ic_logo_radius.png"
+      image_path: "assets/macos_icon.png"
     windows:
       enable: false
       image_path: "assets/ic_logo_radius.png"

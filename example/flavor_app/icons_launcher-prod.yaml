@@ -21,7 +21,9 @@ icons_launcher:
     web:
       enable: true
       image_path: "assets/ic_logo_rectangle_light.png"
+      maskable_image_path: "assets/ic_logo_radius.png"
       favicon_path: "assets/ic_logo_round.png"
+      # favicon_output_extension: ".ico"
     macos:
       enable: true
       image_path: "assets/macos_icon.png"

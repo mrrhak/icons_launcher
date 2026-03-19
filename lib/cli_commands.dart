@@ -189,7 +189,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   final imagePath = _checkImageExists(config: config, parameter: 'image_path');
   final platforms = config['platforms'] as Map<String, dynamic>;
 
-  var imagePathAndroid = imagePath;
+  String? imagePathAndroid = imagePath;
   if (isNeedingNewAndroidIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['android'] as Map<String, dynamic>,
@@ -204,7 +204,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  var imagePathIos = imagePath;
+  String? imagePathIos = imagePath;
   String? imagePathIosDark;
   String? imagePathIosTinted;
   if (isNeedingNewIosIcon(platforms)) {
@@ -231,7 +231,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     );
   }
 
-  var imagePathMacos = imagePath;
+  String? imagePathMacos = imagePath;
   if (isNeedingNewMacOSIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['macos'] as Map<String, dynamic>,
@@ -246,7 +246,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  var imagePathWindows = imagePath;
+  String? imagePathWindows = imagePath;
   if (isNeedingNewWindowsIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['windows'] as Map<String, dynamic>,
@@ -261,7 +261,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  var imagePathLinux = imagePath;
+  String? imagePathLinux = imagePath;
   if (isNeedingNewLinuxIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['linux'] as Map<String, dynamic>,
@@ -276,7 +276,8 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     }
   }
 
-  var imagePathWeb = imagePath;
+  String? imagePathWeb = imagePath;
+  String? maskableImagePathWeb;
   if (isNeedingNewWebIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['web'] as Map<String, dynamic>,
@@ -289,9 +290,18 @@ void _createIconsByConfig(Map<String, dynamic> config) {
       CliLogger.error('Could not find image path for Web');
       exit(1);
     }
+
+    final newMaskableImagePath = _checkImageExists(
+      config: platforms['web'] as Map<String, dynamic>,
+      parameter: 'maskable_image_path',
+    );
+    if (newMaskableImagePath != null) {
+      maskableImagePathWeb = newMaskableImagePath;
+    }
   }
 
-  var faviconPathWeb = imagePathWeb;
+  String? faviconPathWeb = imagePathWeb;
+  String faviconOutputExtensionWeb = '.png';
   if (isNeedingNewWebIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['web'] as Map<String, dynamic>,
@@ -299,6 +309,13 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     );
     if (newImagePath != null) {
       faviconPathWeb = newImagePath;
+    }
+
+    final faviconOutputExtension =
+        (platforms['web'] as Map<String, dynamic>)['favicon_output_extension']
+            ?.toString();
+    if (faviconOutputExtension != null) {
+      faviconOutputExtensionWeb = faviconOutputExtension;
     }
   }
 
@@ -421,10 +438,16 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   //! Web
   if (isNeedingNewWebIcon(platforms)) {
     if (imagePathWeb != null) {
-      createWebIcons(imagePath: imagePathWeb);
+      createWebIcons(
+        imagePath: imagePathWeb,
+        maskableImagePath: maskableImagePathWeb,
+      );
     }
     if (faviconPathWeb != null) {
-      createWebFavicon(imagePath: faviconPathWeb);
+      createWebFavicon(
+        imagePath: faviconPathWeb,
+        faviconOutputExtension: faviconOutputExtensionWeb,
+      );
     }
   }
 

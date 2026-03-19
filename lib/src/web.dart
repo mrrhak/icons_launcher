@@ -11,9 +11,10 @@ void createWebIcons({required String imagePath, String? maskableImagePath}) {
     exit(1);
   }
 
-  final maskableImageFile = (maskableImagePath == null || maskableImagePath == imagePath)
-      ? image
-      : Icon.loadFile(maskableImagePath);
+  final maskableImageFile =
+      (maskableImagePath == null || maskableImagePath == imagePath)
+          ? image
+          : Icon.loadFile(maskableImagePath);
   if (maskableImageFile == null) {
     CliLogger.error('The file ${maskableImagePath!} could not be read.',
         level: CliLoggerLevel.two);

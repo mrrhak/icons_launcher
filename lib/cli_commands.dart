@@ -277,6 +277,7 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   }
 
   var imagePathWeb = imagePath;
+  var maskableImagePathWeb = imagePath;
   if (isNeedingNewWebIcon(platforms)) {
     final newImagePath = _checkImageExists(
       config: platforms['web'] as Map<String, dynamic>,
@@ -288,6 +289,14 @@ void _createIconsByConfig(Map<String, dynamic> config) {
     if (imagePathWeb == null) {
       CliLogger.error('Could not find image path for Web');
       exit(1);
+    }
+
+    final newMaskableImagePath = _checkImageExists(
+      config: platforms['web'] as Map<String, dynamic>,
+      parameter: 'maskable_image_path',
+    );
+    if (newMaskableImagePath != null) {
+      maskableImagePathWeb = newMaskableImagePath;
     }
   }
 
@@ -421,7 +430,10 @@ void _createIconsByConfig(Map<String, dynamic> config) {
   //! Web
   if (isNeedingNewWebIcon(platforms)) {
     if (imagePathWeb != null) {
-      createWebIcons(imagePath: imagePathWeb);
+      createWebIcons(
+        imagePath: imagePathWeb,
+        maskableImagePath: maskableImagePathWeb,
+      );
     }
     if (faviconPathWeb != null) {
       createWebFavicon(imagePath: faviconPathWeb);

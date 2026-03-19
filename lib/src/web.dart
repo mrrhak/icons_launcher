@@ -1,7 +1,7 @@
 part of '../cli_commands.dart';
 
 /// Start create web icons
-void createWebIcons({required String imagePath}) {
+void createWebIcons({required String imagePath, String? maskableImagePath}) {
   CliLogger.info('Creating Web icons...');
 
   final image = Icon.loadFile(imagePath);
@@ -11,16 +11,32 @@ void createWebIcons({required String imagePath}) {
     exit(1);
   }
 
+  final maskableImage = maskableImagePath ?? imagePath;
+  final maskableImageFile = Icon.loadFile(maskableImage);
+  if (maskableImageFile == null) {
+    CliLogger.error('The file $maskableImage could not be read.',
+        level: CliLoggerLevel.two);
+    exit(1);
+  }
+
   final webIcons = <WebIconTemplate>[
     WebIconTemplate(name: 'Icon-192.png', size: 192),
     WebIconTemplate(name: 'Icon-512.png', size: 512),
-    WebIconTemplate(name: 'Icon-maskable-192.png', size: 192),
-    WebIconTemplate(name: 'Icon-maskable-512.png', size: 512),
   ];
 
   for (final template in webIcons) {
     _saveImageWeb(template, image);
   }
+
+  final pwaIcons = <WebIconTemplate>[
+    WebIconTemplate(name: 'Icon-maskable-192.png', size: 192),
+    WebIconTemplate(name: 'Icon-maskable-512.png', size: 512),
+  ];
+
+  for (final template in pwaIcons) {
+    _saveImageWeb(template, maskableImageFile);
+  }
+
   CliLogger.success('Generated icon images', level: CliLoggerLevel.two);
 }
 

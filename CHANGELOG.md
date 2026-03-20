@@ -3,6 +3,7 @@
 ## 3.1.0
 - Feat(web): add `maskable_image_path` support for web icons generator
 - Feat(web): add `favicon_output_extension` support for web icons generator with `.ico`, `.png` and default `.png` 
+- Feat(linux): add `snapcraft.yaml` and update `desktop` file generator
 - Refactor(macos): update macos icon generator to follow new flutter template
 - Chore(image): bump image package from `v4.5.4` to `v4.8.0`
 - Chore(path): bump path package from `v1.8.2` to `v1.9.1`

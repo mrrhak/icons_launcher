@@ -215,11 +215,14 @@ const String WINDOWS_DEFAULT_ICON_NAME = 'app_icon';
 /// Windows default icon file with extension
 const String WINDOWS_DEFAULT_ICON_FILE_NAME = '$WINDOWS_DEFAULT_ICON_NAME.ico';
 
+/// Linux default snap folder
+const String LINUX_DEFAULT_SNAP_DIR = 'snap/';
+
 /// Linux default icon folder
 const String LINUX_DEFAULT_ICON_DIR = 'snap/gui/';
 
-/// Linux default icon name
-const String LINUX_DEFAULT_ICON_NAME = 'app_icon';
+/// Linux default app name
+const String LINUX_DEFAULT_APP_NAME = 'super-cool-app';
 
-/// Linux default icon file with extension
-const String LINUX_DEFAULT_ICON_FILE_NAME = '$LINUX_DEFAULT_ICON_NAME.png';
+/// Linux default app version
+const String LINUX_DEFAULT_APP_VERSION = '0.0.1';

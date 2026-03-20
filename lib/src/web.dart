@@ -2,22 +2,23 @@ part of '../cli_commands.dart';
 
 /// Start create web icons
 void createWebIcons({required String imagePath, String? maskableImagePath}) {
-  CliLogger.info('Creating Web icons...');
+  CliLogger.info('Creating Web icons...', emoji: '🌐');
 
   final image = Icon.loadFile(imagePath);
   if (image == null) {
-    CliLogger.error('The file $imagePath could not be read.',
-        level: CliLoggerLevel.two);
+    CliLogger.error('The file $imagePath could not be read.', level: .two);
     exit(1);
   }
 
   final maskableImageFile =
       (maskableImagePath == null || maskableImagePath == imagePath)
-          ? image
-          : Icon.loadFile(maskableImagePath);
+      ? image
+      : Icon.loadFile(maskableImagePath);
   if (maskableImageFile == null) {
-    CliLogger.error('The file ${maskableImagePath!} could not be read.',
-        level: CliLoggerLevel.two);
+    CliLogger.error(
+      'The file ${maskableImagePath!} could not be read.',
+      level: .two,
+    );
     exit(1);
   }
 
@@ -39,7 +40,7 @@ void createWebIcons({required String imagePath, String? maskableImagePath}) {
     _saveImageWeb(template, maskableImageFile);
   }
 
-  CliLogger.success('Generated icon images', level: CliLoggerLevel.two);
+  CliLogger.success('Generated icon images', level: .two);
 }
 
 /// Start create web favicon
@@ -49,27 +50,32 @@ void createWebFavicon({
 }) {
   final image = Icon.loadFile(imagePath);
   if (image == null) {
-    CliLogger.error('The file $imagePath could not be read.',
-        level: CliLoggerLevel.two);
+    CliLogger.error('The file $imagePath could not be read.', level: .two);
     exit(1);
   }
 
-  final fileName =
-      faviconOutputExtension.endsWith('ico') ? 'favicon.ico' : 'favicon.png';
-
-  final webFavicon = WebIconTemplate(name: fileName, size: 48);
+  final fileName = faviconOutputExtension.endsWith('ico')
+      ? 'favicon.ico'
+      : 'favicon.png';
 
   if (faviconOutputExtension.endsWith('ico')) {
-    _saveFaviconIcoWeb(webFavicon, image);
-    CliLogger.success('Generated favicon ico image', level: CliLoggerLevel.two);
+    final templates = [
+      WebIconTemplate(name: fileName, size: 16),
+      WebIconTemplate(name: fileName, size: 32),
+      WebIconTemplate(name: fileName, size: 48),
+    ];
+    _saveFaviconIcoWeb(templates, fileName, image);
+    CliLogger.success('Generated favicon ico image', level: .two);
   } else {
-    _saveFaviconPngWeb(webFavicon, image);
-    CliLogger.success('Generated favicon png image', level: CliLoggerLevel.two);
+    final template = WebIconTemplate(name: fileName, size: 48);
+    _saveFaviconPngWeb(template, image);
+    CliLogger.success('Generated favicon png image', level: .two);
   }
 
   // Remove the old favicon if it exists
-  final oldFileName =
-      faviconOutputExtension.endsWith('ico') ? 'favicon.png' : 'favicon.ico';
+  final oldFileName = faviconOutputExtension.endsWith('ico')
+      ? 'favicon.png'
+      : 'favicon.ico';
   final oldFaviconFile = File('$WEB_DEFAULT_FAVICON_DIR$oldFileName');
   if (oldFaviconFile.existsSync()) {
     oldFaviconFile.deleteSync();
@@ -79,17 +85,22 @@ void createWebFavicon({
   final indexHtmlFile = File('${WEB_DEFAULT_FAVICON_DIR}index.html');
   if (indexHtmlFile.existsSync()) {
     var content = indexHtmlFile.readAsStringSync();
-    final newType =
-        faviconOutputExtension.endsWith('ico') ? 'image/x-icon' : 'image/png';
+    final newType = faviconOutputExtension.endsWith('ico')
+        ? 'image/x-icon'
+        : 'image/png';
 
     final regex = RegExp(r'<link rel="icon"([^>]+)>', multiLine: true);
     content = content.replaceAllMapped(regex, (match) {
       var tagInfo = match.group(1)!;
       tagInfo = tagInfo.replaceAll(
-          RegExp(r'href="[^"]*"|href=\x27[^\x27]*\x27'), 'href="$fileName"');
+        RegExp(r'href="[^"]*"|href=\x27[^\x27]*\x27'),
+        'href="$fileName"',
+      );
       if (tagInfo.contains('type=')) {
         tagInfo = tagInfo.replaceAll(
-            RegExp(r'type="[^"]*"|type=\x27[^\x27]*\x27'), 'type="$newType"');
+          RegExp(r'type="[^"]*"|type=\x27[^\x27]*\x27'),
+          'type="$newType"',
+        );
       } else {
         if (tagInfo.endsWith('/')) {
           tagInfo =
@@ -104,7 +115,7 @@ void createWebFavicon({
     indexHtmlFile.writeAsStringSync(content);
   }
 
-  CliLogger.success('Updated index.html', level: CliLoggerLevel.two);
+  CliLogger.success('Updated index.html', level: .two);
 }
 
 /// Save web image
@@ -115,11 +126,22 @@ void _saveImageWeb(WebIconTemplate template, Icon image) {
 /// Save favicon png
 void _saveFaviconPngWeb(WebIconTemplate template, Icon image) {
   image.saveResizedPng(
-      template.size, '$WEB_DEFAULT_FAVICON_DIR${template.name}');
+    template.size,
+    '$WEB_DEFAULT_FAVICON_DIR${template.name}',
+  );
 }
 
 /// Save favicon ico
-void _saveFaviconIcoWeb(WebIconTemplate template, Icon image) {
-  final resizedImage = image.copyResized(template.size);
-  Icon.saveIco([resizedImage], '$WEB_DEFAULT_FAVICON_DIR${template.name}');
+void _saveFaviconIcoWeb(
+  List<WebIconTemplate> templates,
+  String fileName,
+  Icon image,
+) {
+  final images = <Icon>[];
+  for (final template in templates) {
+    final resizedImage = image.copyResized(template.size);
+    images.add(resizedImage);
+  }
+
+  Icon.saveIco(images, '$WEB_DEFAULT_FAVICON_DIR$fileName');
 }

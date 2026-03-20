@@ -27,49 +27,53 @@ class CliLogger {
   /// Log info
   static void info(
     String message, {
-    CliLoggerLevel level = CliLoggerLevel.one,
+    CliLoggerLevel level = .one,
+    String? emoji,
   }) {
     final space = _getSpace(level);
-    print('\x1B[34m$space🌱  $message\x1B[0m');
+    print('\x1B[34m$space${emoji ?? '🌱'}  $message\x1B[0m');
   }
 
   /// Logs a error message at the given level.
   static void error(
     String message, {
-    CliLoggerLevel level = CliLoggerLevel.one,
+    CliLoggerLevel level = .one,
+    String? emoji,
   }) {
     final space = _getSpace(level);
-    print('$space❌  $message');
+    print('\x1B[31m$space${emoji ?? '❌'}  $message\x1B[0m');
   }
 
   /// Logs a warning message at the given level.
   static void warning(
     String message, {
-    CliLoggerLevel level = CliLoggerLevel.one,
+    CliLoggerLevel level = .one,
+    String? emoji,
   }) {
     final space = _getSpace(level);
-    print('\x1B[33m$space🚧 $message\x1B[0m');
+    print('\x1B[33m$space${emoji ?? '🚧'}  $message\x1B[0m');
   }
 
   /// Logs a success message at the given level.
   static void success(
     String message, {
-    CliLoggerLevel level = CliLoggerLevel.one,
+    CliLoggerLevel level = .one,
+    String? emoji,
   }) {
     final space = _getSpace(level);
-    print('\x1B[32m$space✅  $message\x1B[0m');
+    print('\x1B[32m$space${emoji ?? '✅'}  $message\x1B[0m');
   }
 
   static String _getSpace(CliLoggerLevel level) {
     var space = '';
     switch (level) {
-      case CliLoggerLevel.one:
+      case .one:
         space = '';
         break;
-      case CliLoggerLevel.two:
+      case .two:
         space = '      ';
         break;
-      case CliLoggerLevel.three:
+      case .three:
         space = '         ';
         break;
     }

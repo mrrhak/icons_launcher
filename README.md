@@ -180,7 +180,7 @@ Shown below is the full list of attributes which you can specify within your Ico
 
 | Linux Option   | Type    | Default | Description                     |
 | -------------- | ------- | ------- | ------------------------------- |
-| `enable`       | Boolean | `false` | Use for enable Linux platform   |
+| `enable`       | Boolean | `false` | Use for enable Linux platform with snapcraft   |
 | `image_path`   | String  | `null`  | The image file path             |
 
 ---

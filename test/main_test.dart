@@ -12,8 +12,11 @@ void main() {
     final content = file.readAsStringSync();
     final yaml = loadYaml(content) as Map;
 
-    expect(packageVersion, yaml['version'].toString(),
-        reason: 'Version is not correct');
+    expect(
+      packageVersion,
+      yaml['version'].toString(),
+      reason: 'Version is not correct',
+    );
   });
 
   test('Description checker', () {
@@ -23,9 +26,15 @@ void main() {
     final yaml = loadYaml(content) as Map;
 
     final length = yaml['description'].toString().length;
-    expect(length, greaterThan(60),
-        reason: 'Description should be greater than 60 characters');
-    expect(length, lessThan(180),
-        reason: 'Description should be less than 180 characters');
+    expect(
+      length,
+      greaterThan(60),
+      reason: 'Description should be greater than 60 characters',
+    );
+    expect(
+      length,
+      lessThan(180),
+      reason: 'Description should be less than 180 characters',
+    );
   });
 }

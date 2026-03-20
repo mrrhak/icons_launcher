@@ -2,18 +2,17 @@ part of '../cli_commands.dart';
 
 /// Start create windows icons
 void createWindowsIcons({required String imagePath}) {
-  CliLogger.info('Creating Windows icons...');
+  CliLogger.info('Creating Windows icons...', emoji: '🖥️');
 
   final image = Icon.loadFile(imagePath);
   if (image == null) {
-    CliLogger.error('The file $imagePath could not be read.',
-        level: CliLoggerLevel.two);
+    CliLogger.error('The file $imagePath could not be read.', level: .two);
     exit(1);
   }
 
   //? https://www.creativefreedom.co.uk/icon-designers-blog/windows-ico/
-// Give a highest quality icon with a minimum of 256x256 pixels.
-// debug ico file here (https://redketchup.io/icon-editor)
+  // Give a highest quality icon with a minimum of 256x256 pixels.
+  // debug ico file here (https://redketchup.io/icon-editor)
   final windowsIcons = <WindowsIconTemplate>[
     WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 16),
     WindowsIconTemplate(name: WINDOWS_DEFAULT_ICON_NAME, size: 24),
@@ -32,16 +31,10 @@ void createWindowsIcons({required String imagePath}) {
   }
   _saveImageWindow(images, WINDOWS_DEFAULT_ICON_FILE_NAME);
 
-  CliLogger.success(
-    'Generated app icon image',
-    level: CliLoggerLevel.two,
-  );
+  CliLogger.success('Generated app icon image', level: .two);
 }
 
 /// Save windows image
-void _saveImageWindow(
-  List<Icon> images,
-  String fileName,
-) {
+void _saveImageWindow(List<Icon> images, String fileName) {
   Icon.saveIco(images, '$WINDOWS_DEFAULT_ICON_DIR$fileName');
 }

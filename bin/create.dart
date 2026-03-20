@@ -1,5 +1,6 @@
 import 'package:args/args.dart';
 import 'package:icons_launcher/cli_commands.dart';
+import 'package:icons_launcher/utils/cli_logger.dart';
 import 'package:icons_launcher/utils/constants.dart';
 
 /// Run to create icons launcher
@@ -29,6 +30,11 @@ void main(List<String> arguments) {
   } else {
     createIconsLauncher(path: path, flavor: null);
   }
+
+  CliLogger.success(
+    '\n\n==> 🎉 ICONS LAUNCHER GENERATED SUCCESSFULLY 🎉 <==',
+    emoji: '',
+  );
 
   print(END_MESSAGE);
 }

@@ -4,27 +4,31 @@ part of '../cli_commands.dart';
 ///
 /// [size] is the image size @1x scale to use in pixels.
 /// [scales] are the different size multiples for which we will generate images.
-List<MacOSIconTemplate> _createMacTemplates(
-    {required int size, required List<int> scales}) {
+List<MacOSIconTemplate> _createMacTemplates({
+  required int size,
+  required List<int> scales,
+}) {
   final templates = <MacOSIconTemplate>[];
   for (var scale in scales) {
-    templates.add(MacOSIconTemplate(
+    templates.add(
+      MacOSIconTemplate(
         sizeName: '${size}x$size',
         scaledSize: size * scale,
         scale: scale,
-        idiom: 'mac'));
+        idiom: 'mac',
+      ),
+    );
   }
   return templates;
 }
 
 /// Start create macos icons
 void createMacOSIcons({required String imagePath}) {
-  CliLogger.info('Creating macOS icons...');
+  CliLogger.info('Creating macOS icons...', emoji: '🍎');
 
   final image = Icon.loadFile(imagePath);
   if (image == null) {
-    CliLogger.error('The file $imagePath could not be read.',
-        level: CliLoggerLevel.two);
+    CliLogger.error('The file $imagePath could not be read.', level: .two);
     exit(1);
   }
 
@@ -43,10 +47,11 @@ void createMacOSIcons({required String imagePath}) {
       _saveImageMacOS(template, image);
     }
   }
-  CliLogger.success('Generated app icon images', level: CliLoggerLevel.two);
+  CliLogger.success('Generated app icon images', level: .two);
   AppleAppIconType(
-          images: macosIcons, assetPath: _flavorHelper.macOSAssetsAppIconFolder)
-      .saveContentsJson();
+    images: macosIcons,
+    assetPath: _flavorHelper.macOSAssetsAppIconFolder,
+  ).saveContentsJson();
 }
 
 /// Save macos image

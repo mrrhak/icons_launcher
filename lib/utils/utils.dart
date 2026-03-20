@@ -5,7 +5,8 @@ bool hasPlatformConfig(Map<String, dynamic> config) {
   final isHasPlatforms = config.containsKey('platforms');
   if (isHasPlatforms) {
     final platforms = config['platforms'] as Map<String, dynamic>;
-    final isHasPlatformSpecific = isNeedingNewAndroidIcon(platforms) ||
+    final isHasPlatformSpecific =
+        isNeedingNewAndroidIcon(platforms) ||
         isNeedingNewIosIcon(platforms) ||
         isNeedingNewMacOSIcon(platforms) ||
         isNeedingNewWindowsIcon(platforms) ||
@@ -31,19 +32,23 @@ bool isNeedingNewAndroidIcon(Map<String, dynamic> platforms) {
 /// Checks if the config has android adaptive.
 bool hasAndroidAdaptiveConfig(Map<String, dynamic> platforms) {
   return isNeedingNewAndroidIcon(platforms) &&
-      ((platforms['android'] as Map<String, dynamic>)
-              .containsKey('adaptive_background_image') ||
-          (platforms['android'] as Map<String, dynamic>)
-              .containsKey('adaptive_background_color')) &&
-      (platforms['android'] as Map<String, dynamic>)
-          .containsKey('adaptive_foreground_image');
+      ((platforms['android'] as Map<String, dynamic>).containsKey(
+            'adaptive_background_image',
+          ) ||
+          (platforms['android'] as Map<String, dynamic>).containsKey(
+            'adaptive_background_color',
+          )) &&
+      (platforms['android'] as Map<String, dynamic>).containsKey(
+        'adaptive_foreground_image',
+      );
 }
 
 /// Checks if the config has android notification.
 bool hasAndroidNotificationConfig(Map<String, dynamic> platforms) {
   return hasAndroidConfig(platforms) &&
-      (platforms['android'] as Map<String, dynamic>)
-          .containsKey('notification_image');
+      (platforms['android'] as Map<String, dynamic>).containsKey(
+        'notification_image',
+      );
 }
 
 /// Checks if the config has ios.

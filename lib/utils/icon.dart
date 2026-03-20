@@ -44,27 +44,29 @@ class Icon {
     }
 
     image.backgroundColor = ColorUint8.rgb(255, 255, 255);
-    image = image.convert(
-      numChannels: 3,
-    );
+    image = image.convert(numChannels: 3);
   }
 
   /// Create a resized copy of this Icon
   Icon copyResized(int iconSize) {
     if (image.width >= iconSize) {
-      return Icon._(copyResize(
-        image,
-        width: iconSize,
-        height: iconSize,
-        interpolation: Interpolation.average,
-      ));
+      return Icon._(
+        copyResize(
+          image,
+          width: iconSize,
+          height: iconSize,
+          interpolation: .average,
+        ),
+      );
     } else {
-      return Icon._(copyResize(
-        image,
-        width: iconSize,
-        height: iconSize,
-        interpolation: Interpolation.linear,
-      ));
+      return Icon._(
+        copyResize(
+          image,
+          width: iconSize,
+          height: iconSize,
+          interpolation: .linear,
+        ),
+      );
     }
   }
 

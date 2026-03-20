@@ -28,7 +28,7 @@ icons_launcher:
       image_path: "assets/macos_icon.png"
     windows:
       enable: false
-      image_path: "assets/ic_logo_radius.png"
+      image_path: "assets/ic_logo_rectangle_light.png"
     linux:
       enable: false
       image_path: "assets/ic_logo_radius.png"

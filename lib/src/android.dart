@@ -29,22 +29,18 @@ final notificationIcons = <AndroidMipMapIconTemplate>[
 
 /// Start create Android icons
 void createAndroidIcons({required String imagePath}) {
-  CliLogger.info('Creating Android icons...');
+  CliLogger.info('Creating Android icons...', emoji: '🤖');
 
   final image = Icon.loadFile(imagePath);
   if (image == null) {
-    CliLogger.error('The file $imagePath could not be read.',
-        level: CliLoggerLevel.two);
+    CliLogger.error('The file $imagePath could not be read.', level: .two);
     exit(1);
   }
 
   for (final template in androidIcons) {
     _saveImageAndroid(template, image, ANDROID_ICON_FILE_NAME);
   }
-  CliLogger.success(
-    'Generated launcher icon images',
-    level: CliLoggerLevel.two,
-  );
+  CliLogger.success('Generated launcher icon images', level: .two);
 
   _createPlayStoreIcon(image);
   _updateAndroidManifestIconLauncher();
@@ -92,18 +88,17 @@ void _updateAndroidManifestIconLauncher() {
       // repeat as often as wanted with no quote at start: [^"]*(\"[^"]*)*
       // escaping the slash to place in string: [^"]*(\\"[^"]*)*"
       // result: any string which does only include escaped quotes
-      return line.replaceAll(RegExp(r'android:icon="[^"]*(\\"[^"]*)*"'),
-          'android:icon="@mipmap/$ANDROID_ICON_NAME"');
+      return line.replaceAll(
+        RegExp(r'android:icon="[^"]*(\\"[^"]*)*"'),
+        'android:icon="@mipmap/$ANDROID_ICON_NAME"',
+      );
     } else {
       return line;
     }
   }).toList();
 
   androidManifestFile.writeAsStringSync(androidManifestUpdated.join('\n'));
-  CliLogger.success(
-    'Updated android manifest launcher icon',
-    level: CliLoggerLevel.two,
-  );
+  CliLogger.success('Updated android manifest launcher icon', level: .two);
 }
 
 /// Start android adaptive icons
@@ -117,13 +112,17 @@ void createAndroidAdaptiveIcon({
   if (round != null) {
     message = 'Creating Android adaptive icons with round...';
   }
-  CliLogger.info(message);
+  CliLogger.info(message, emoji: '🤖');
 
   _createAdaptiveForeground(adaptiveIcons, foreground);
   _createAdaptiveBackground(adaptiveIcons, background, monochrome);
   if (round != null) {
     _createAdaptiveRound(
-        androidIcons, round, isValidHexaCode(background), monochrome != null);
+      androidIcons,
+      round,
+      isValidHexaCode(background),
+      monochrome != null,
+    );
   } else {
     _removeAdaptiveRound(androidIcons);
   }
@@ -148,10 +147,7 @@ void _createAdaptiveBackground(
     try {
       final backgroundImage = Icon.loadFile(background);
       if (backgroundImage == null) {
-        CliLogger.error(
-          'The file $background could not be read.',
-          level: CliLoggerLevel.two,
-        );
+        CliLogger.error('The file $background could not be read.', level: .two);
         exit(1);
       }
 
@@ -162,15 +158,12 @@ void _createAdaptiveBackground(
           ANDROID_ADAPTIVE_BACKGROUND_ICON_FILE_NAME,
         );
       }
-      CliLogger.success(
-        'Generated adaptive background images',
-        level: CliLoggerLevel.two,
-      );
+      CliLogger.success('Generated adaptive background images', level: .two);
       _createIcLauncherMipMapXmlFile(monochrome != null);
     } catch (e) {
       CliLogger.error(
         'Incorrect `$background` of `adaptive_background_color` or `adaptive_background_image`',
-        level: CliLoggerLevel.two,
+        level: .two,
       );
       exit(1);
     }
@@ -184,10 +177,7 @@ void _createAdaptiveForeground(
 ) {
   final foregroundImage = Icon.loadFile(foreground);
   if (foregroundImage == null) {
-    CliLogger.error(
-      'The file $foreground could not be read.',
-      level: CliLoggerLevel.two,
-    );
+    CliLogger.error('The file $foreground could not be read.', level: .two);
     exit(1);
   }
 
@@ -198,10 +188,7 @@ void _createAdaptiveForeground(
       ANDROID_ADAPTIVE_FOREGROUND_ICON_FILE_NAME,
     );
   }
-  CliLogger.success(
-    'Generated adaptive foreground images',
-    level: CliLoggerLevel.two,
-  );
+  CliLogger.success('Generated adaptive foreground images', level: .two);
 }
 
 /// Create the adaptive round
@@ -213,10 +200,7 @@ void _createAdaptiveRound(
 ) {
   final roundImage = Icon.loadFile(round);
   if (roundImage == null) {
-    CliLogger.error(
-      'The file $round could not be read.',
-      level: CliLoggerLevel.two,
-    );
+    CliLogger.error('The file $round could not be read.', level: .two);
     exit(1);
   }
 
@@ -229,10 +213,7 @@ void _createAdaptiveRound(
   }
   _createIcLauncherRoundMipMapXmlFile(backgroundIsColor, hasMonochrome);
   _createAndroidManifestIconLauncherRound();
-  CliLogger.success(
-    'Generated adaptive round images',
-    level: CliLoggerLevel.two,
-  );
+  CliLogger.success('Generated adaptive round images', level: .two);
 }
 
 /// Remove the adaptive round
@@ -244,10 +225,7 @@ void _removeAdaptiveRound(List<AndroidMipMapIconTemplate> adaptiveIcons) {
   }
   _removeAndroidManifestIconLauncherRound();
   _removeIcLauncherRoundMipMapXmlFile();
-  CliLogger.success(
-    'Removed adaptive round images',
-    level: CliLoggerLevel.two,
-  );
+  CliLogger.success('Removed adaptive round images', level: .two);
 }
 
 /// Create the adaptive monochrome icon
@@ -257,10 +235,7 @@ void _createAdaptiveMonochrome(
 ) {
   final monochromeImage = Icon.loadFile(monochrome);
   if (monochromeImage == null) {
-    CliLogger.error(
-      'The file $monochrome could not be read.',
-      level: CliLoggerLevel.two,
-    );
+    CliLogger.error('The file $monochrome could not be read.', level: .two);
     exit(1);
   }
 
@@ -274,10 +249,7 @@ void _createAdaptiveMonochrome(
       ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME,
     );
   }
-  CliLogger.success(
-    'Generated adaptive monochrome images',
-    level: CliLoggerLevel.two,
-  );
+  CliLogger.success('Generated adaptive monochrome images', level: .two);
 }
 
 /// Remove the adaptive monochrome icon
@@ -287,16 +259,13 @@ void _removeAdaptiveMonochrome(List<AndroidMipMapIconTemplate> templateIcons) {
         '${_flavorHelper.androidResFolder}${template.directoryName}/$ANDROID_ADAPTIVE_MONOCHROME_ICON_FILE_NAME';
     deleteFile(filePath);
   }
-  CliLogger.success(
-    'Removed adaptive monochrome images',
-    level: CliLoggerLevel.two,
-  );
+  CliLogger.success('Removed adaptive monochrome images', level: .two);
 }
 
 /// Start android adaptive icons
 void createAndroidNotificationIcon(String notification) {
   var message = 'Creating Android notification icons...';
-  CliLogger.info(message);
+  CliLogger.info(message, emoji: '🤖');
   _createNotificationIcon(notificationIcons, notification);
 }
 
@@ -309,7 +278,7 @@ void _createNotificationIcon(
   if (notificationImage == null) {
     CliLogger.error(
       'The file $notificationImage could not be read.',
-      level: CliLoggerLevel.two,
+      level: .two,
     );
     exit(1);
   }
@@ -324,26 +293,24 @@ void _createNotificationIcon(
       ANDROID_NOTIFICATION_ICON_FILE_NAME,
     );
   }
-  CliLogger.success(
-    'Generated notification images',
-    level: CliLoggerLevel.two,
-  );
+  CliLogger.success('Generated notification images', level: .two);
 }
 
 /// Handle colors.xml file
 void _handleColorsXmlFile(String backgroundColor) {
-  final colorsXml =
-      File('${_flavorHelper.androidResFolder}$ANDROID_COLOR_FILE');
+  final colorsXml = File(
+    '${_flavorHelper.androidResFolder}$ANDROID_COLOR_FILE',
+  );
   if (colorsXml.existsSync()) {
     CliLogger.success(
       'Updated colors.xml with color `$backgroundColor`',
-      level: CliLoggerLevel.two,
+      level: .two,
     );
     _updateColorsFile(colorsXml, backgroundColor);
   } else {
     CliLogger.success(
       'Created colors.xml with color `$backgroundColor`',
-      level: CliLoggerLevel.two,
+      level: .two,
     );
     _createColorsFile(backgroundColor);
   }
@@ -358,7 +325,7 @@ void _createColorsFile(String backgroundColor) {
   } else {
     CliLogger.error(
       'Incorrect `$backgroundColor` of `adaptive_background_color`',
-      level: CliLoggerLevel.two,
+      level: .two,
     );
     exit(1);
   }
@@ -377,7 +344,7 @@ void _updateColorsFile(File colorsXml, String backgroundColor) {
   } else {
     CliLogger.error(
       'Incorrect `$backgroundColor` of `adaptive_background_color`',
-      level: CliLoggerLevel.two,
+      level: .two,
     );
     exit(1);
   }
@@ -396,8 +363,10 @@ void _updateColorsFile(File colorsXml, String backgroundColor) {
   }
 
   if (!foundExisting) {
-    lines.insert(lines.length - 1,
-        '\t<color name="ic_launcher_background">${color.toUpperCase()}</color>');
+    lines.insert(
+      lines.length - 1,
+      '\t<color name="ic_launcher_background">${color.toUpperCase()}</color>',
+    );
   }
   colorsXml.writeAsStringSync(lines.join('\n'));
 }
@@ -405,36 +374,39 @@ void _updateColorsFile(File colorsXml, String backgroundColor) {
 /// Create ic_launcher_color.xml file
 void _createIcLauncherColorXmlFile(bool hasMonochrome) {
   final icLauncherXml = File(
-      '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_XML_FILE_NAME');
-  icLauncherXml.createSync(recursive: true);
-  icLauncherXml.writeAsStringSync(hasMonochrome
-      ? IC_LAUNCHER_BACKGROUND_COLOR_XML
-      : IC_LAUNCHER_BACKGROUND_COLOR_NO_MONOCHROME_XML);
-  CliLogger.success(
-    'Created `$ANDROID_ADAPTIVE_XML_FILE_NAME`',
-    level: CliLoggerLevel.two,
+    '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_XML_FILE_NAME',
   );
+  icLauncherXml.createSync(recursive: true);
+  icLauncherXml.writeAsStringSync(
+    hasMonochrome
+        ? IC_LAUNCHER_BACKGROUND_COLOR_XML
+        : IC_LAUNCHER_BACKGROUND_COLOR_NO_MONOCHROME_XML,
+  );
+  CliLogger.success('Created `$ANDROID_ADAPTIVE_XML_FILE_NAME`', level: .two);
 }
 
 /// Create ic luncher xml file
 void _createIcLauncherMipMapXmlFile(bool hasMonochrome) {
   final icLauncherXml = File(
-      '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_XML_FILE_NAME');
-  icLauncherXml.createSync(recursive: true);
-  icLauncherXml.writeAsStringSync(hasMonochrome
-      ? IC_LAUNCHER_MIP_MAP_XML
-      : IC_LAUNCHER_MIP_MAP_NO_MONOCHROME_XML);
-  CliLogger.success(
-    'Created `$ANDROID_ADAPTIVE_XML_FILE_NAME`',
-    level: CliLoggerLevel.two,
+    '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_XML_FILE_NAME',
   );
+  icLauncherXml.createSync(recursive: true);
+  icLauncherXml.writeAsStringSync(
+    hasMonochrome
+        ? IC_LAUNCHER_MIP_MAP_XML
+        : IC_LAUNCHER_MIP_MAP_NO_MONOCHROME_XML,
+  );
+  CliLogger.success('Created `$ANDROID_ADAPTIVE_XML_FILE_NAME`', level: .two);
 }
 
 /// Create ic_launcher_round.xml file
 void _createIcLauncherRoundMipMapXmlFile(
-    bool backgroundIsColor, bool hasMonochrome) {
+  bool backgroundIsColor,
+  bool hasMonochrome,
+) {
   final icLauncherXml = File(
-      '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME');
+    '${_flavorHelper.androidResFolder}$ANDROID_ADAPTIVE_XML_DIR/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME',
+  );
   String contents;
   if (backgroundIsColor) {
     if (hasMonochrome) {
@@ -453,7 +425,7 @@ void _createIcLauncherRoundMipMapXmlFile(
   icLauncherXml.writeAsStringSync(contents);
   CliLogger.success(
     'Created `$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME`',
-    level: CliLoggerLevel.two,
+    level: .two,
   );
 }
 
@@ -464,7 +436,7 @@ void _removeIcLauncherRoundMipMapXmlFile() {
   deleteFile(icRoundLauncherXmlPath);
   CliLogger.success(
     'Removed `$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME`',
-    level: CliLoggerLevel.two,
+    level: .two,
   );
 }
 
@@ -474,35 +446,34 @@ void _createAndroidManifestIconLauncherRound() {
   final androidManifestString = androidManifestFile.readAsStringSync();
   final manifestLines = androidManifestString.split('\n');
 
-  final index =
-      manifestLines.indexWhere((line) => line.contains('android:roundIcon'));
+  final index = manifestLines.indexWhere(
+    (line) => line.contains('android:roundIcon'),
+  );
   if (index != -1) {
-    final lineUpdated = manifestLines.elementAt(index).replaceAll(
+    final lineUpdated = manifestLines
+        .elementAt(index)
+        .replaceAll(
           RegExp(r'android:roundIcon="[^"]*(\\"[^"]*)*"'),
           'android:roundIcon="@mipmap/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME_WITHOUT_EXTENSION"',
         );
     manifestLines.replaceRange(index, index + 1, [lineUpdated]);
     androidManifestFile.writeAsStringSync(manifestLines.join('\n'));
-    CliLogger.success(
-      'Updated `android:roundIcon` to manifest',
-      level: CliLoggerLevel.two,
-    );
+    CliLogger.success('Updated `android:roundIcon` to manifest', level: .two);
   } else {
-    final index =
-        manifestLines.indexWhere((line) => line.contains('android:icon'));
+    final index = manifestLines.indexWhere(
+      (line) => line.contains('android:icon'),
+    );
     if (index != -1) {
-      final lineUpdated = manifestLines
-          .elementAt(index)
-          .replaceAll(RegExp(r'android:icon="[^"]*(\\"[^"]*)*"'), '''
+      final lineUpdated = manifestLines.elementAt(index).replaceAll(
+        RegExp(r'android:icon="[^"]*(\\"[^"]*)*"'),
+        '''
 android:icon="@mipmap/$ANDROID_ICON_NAME"
-\t\tandroid:roundIcon="@mipmap/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME_WITHOUT_EXTENSION"''');
+\t\tandroid:roundIcon="@mipmap/$ANDROID_ADAPTIVE_ROUND_XML_FILE_NAME_WITHOUT_EXTENSION"''',
+      );
 
       manifestLines.replaceRange(index, index + 1, [lineUpdated]);
       androidManifestFile.writeAsStringSync(manifestLines.join('\n'));
-      CliLogger.success(
-        'Created `android:roundIcon` to manifest',
-        level: CliLoggerLevel.two,
-      );
+      CliLogger.success('Created `android:roundIcon` to manifest', level: .two);
     }
   }
 }
@@ -513,16 +484,16 @@ void _removeAndroidManifestIconLauncherRound() {
   final androidManifestString = androidManifestFile.readAsStringSync();
   final manifestLines = androidManifestString.split('\n');
 
-  final index =
-      manifestLines.indexWhere((line) => line.contains('android:roundIcon'));
+  final index = manifestLines.indexWhere(
+    (line) => line.contains('android:roundIcon'),
+  );
   if (index != -1) {
     final lineUpdated = manifestLines
         .elementAt(index)
         .replaceAll(RegExp(r'android:roundIcon="[^"]*(\\"[^"]*)*"'), '');
     manifestLines.replaceRange(index, index + 1, [lineUpdated]);
     androidManifestFile.writeAsStringSync(manifestLines.join('\n'));
-    CliLogger.success('Removed `android:roundIcon` from manifest',
-        level: CliLoggerLevel.two);
+    CliLogger.success('Removed `android:roundIcon` from manifest', level: .two);
   }
 }
 
@@ -531,8 +502,9 @@ int _minSdk() {
   String? minSdkValue;
 
   final androidGradleFile = File(ANDROID_GRADLE_FILE);
-  final List<String> androidLines =
-      androidGradleFile.existsSync() ? androidGradleFile.readAsLinesSync() : [];
+  final List<String> androidLines = androidGradleFile.existsSync()
+      ? androidGradleFile.readAsLinesSync()
+      : [];
 
   //! First try -> app/build.gradle file
   const androidLineKey = 'minSdkVersion';

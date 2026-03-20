@@ -23,14 +23,16 @@ List<IosIconTemplate> _createIosTemplates({
   for (var scale in scales) {
     final scaledSize = scale == 0 ? size.round() : (size * scale).round();
 
-    templates.add(IosIconTemplate(
-      sizeName: sizeName,
-      scaledSize: scaledSize,
-      scale: scale,
-      idiom: idiom ?? 'universal',
-      platform: platform,
-      appearances: appearances,
-    ));
+    templates.add(
+      IosIconTemplate(
+        sizeName: sizeName,
+        scaledSize: scaledSize,
+        scale: scale,
+        idiom: idiom ?? 'universal',
+        platform: platform,
+        appearances: appearances,
+      ),
+    );
   }
 
   return templates;
@@ -42,31 +44,28 @@ void createIosIcons({
   final String? darkPath,
   final String? tintedPath,
 }) {
-  CliLogger.info('Creating iOS icons...');
+  CliLogger.info('Creating iOS icons...', emoji: '🍏');
 
   final image = Icon.loadFile(imagePath);
   if (image == null) {
-    CliLogger.error(
-      'The file $imagePath could not be read.',
-      level: CliLoggerLevel.two,
-    );
+    CliLogger.error('The file $imagePath could not be read.', level: .two);
     exit(1);
   }
 
   if (image.hasAlpha) {
-    CliLogger.warning('App icon for iOS/iPadOS not support alpha channel',
-        level: CliLoggerLevel.two);
+    CliLogger.warning(
+      'App icon for iOS/iPadOS not support alpha channel',
+      level: .two,
+    );
     image.removeAlpha();
-    CliLogger.success('Removed alpha channel from icon',
-        level: CliLoggerLevel.two);
+    CliLogger.success('Removed alpha channel from icon', level: .two);
   }
 
   Icon? darkImage;
   if (darkPath != null) {
     darkImage = Icon.loadFile(darkPath);
     if (darkImage == null) {
-      CliLogger.error('The file $darkPath could not be read.',
-          level: CliLoggerLevel.two);
+      CliLogger.error('The file $darkPath could not be read.', level: .two);
       exit(1);
     }
   }
@@ -75,8 +74,7 @@ void createIosIcons({
   if (tintedPath != null) {
     tintedImage = Icon.loadFile(tintedPath);
     if (tintedImage == null) {
-      CliLogger.error('The file $tintedPath could not be read.',
-          level: CliLoggerLevel.two);
+      CliLogger.error('The file $tintedPath could not be read.', level: .two);
       exit(1);
     }
   }
@@ -303,7 +301,7 @@ void createIosIcons({
       _saveImageIos(template, image);
     }
   }
-  CliLogger.success('Generated app light icons', level: CliLoggerLevel.two);
+  CliLogger.success('Generated app light icons', level: .two);
 
   // https://github.com/fluttercommunity/flutter_launcher_icons/pull/569/files
   if (darkImage != null) {
@@ -317,7 +315,7 @@ void createIosIcons({
       }
     }
 
-    CliLogger.success('Generated app dark icons', level: CliLoggerLevel.two);
+    CliLogger.success('Generated app dark icons', level: .two);
   }
 
   if (tintedImage != null) {
@@ -331,7 +329,7 @@ void createIosIcons({
       }
     }
 
-    CliLogger.success('Generated app tinted icons', level: CliLoggerLevel.two);
+    CliLogger.success('Generated app tinted icons', level: .two);
   }
 
   AppleAppIconType(

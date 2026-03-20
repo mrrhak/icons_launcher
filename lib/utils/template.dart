@@ -59,19 +59,13 @@ abstract class AppleIconTemplate {
 }
 
 class IconAppearance {
-  IconAppearance({
-    required this.appearance,
-    required this.value,
-  });
+  IconAppearance({required this.appearance, required this.value});
 
   final String appearance;
   final String value;
 
   Map<String, String> toJson() {
-    return <String, String>{
-      'appearance': appearance,
-      'value': value,
-    };
+    return <String, String>{'appearance': appearance, 'value': value};
   }
 
   IconAppearance fromJson(Map<String, String> json) {
@@ -96,13 +90,17 @@ class IosIconTemplate extends AppleIconTemplate {
 
   @override
   String get filename {
-    var isDarkAppearance = appearances != null &&
-        appearances!
-            .any((e) => e.appearance == 'luminosity' && e.value == 'dark');
+    var isDarkAppearance =
+        appearances != null &&
+        appearances!.any(
+          (e) => e.appearance == 'luminosity' && e.value == 'dark',
+        );
 
-    var isTintedAppearance = appearances != null &&
-        appearances!
-            .any((e) => e.appearance == 'luminosity' && e.value == 'tinted');
+    var isTintedAppearance =
+        appearances != null &&
+        appearances!.any(
+          (e) => e.appearance == 'luminosity' && e.value == 'tinted',
+        );
 
     var defaultName = IOS_DEFAULT_ICON_NAME;
     if (isDarkAppearance) {
@@ -165,11 +163,11 @@ class MacOSIconTemplate extends AppleIconTemplate {
 
   @override
   Map<String, dynamic> toJson() => <String, String>{
-        'size': sizeName,
-        'idiom': 'mac',
-        'filename': filename,
-        'scale': '${scale}x',
-      };
+    'size': sizeName,
+    'idiom': 'mac',
+    'filename': filename,
+    'scale': '${scale}x',
+  };
 }
 
 /// Windows template
@@ -232,10 +230,7 @@ class AppleAppIconType {
 
     return <String, dynamic>{
       'images': imagesMap,
-      'info': {
-        'version': 1,
-        'author': 'icons_launcher',
-      }
+      'info': {'version': 1, 'author': 'icons_launcher'},
     };
   }
 
@@ -244,9 +239,6 @@ class AppleAppIconType {
     final file = File('${assetPath}Contents.json');
     const encoder = JsonEncoder.withIndent('  ');
     file.writeAsStringSync(encoder.convert(this), flush: true);
-    CliLogger.success(
-      'Generated `Contents.json` file',
-      level: CliLoggerLevel.two,
-    );
+    CliLogger.success('Generated `Contents.json` file', level: .two);
   }
 }

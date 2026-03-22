@@ -1,0 +1,25 @@
+version: 2
+
+updates:
+  # GetHub Actions Workflow
+  - package-ecosystem: 'github-actions'
+    # Workflow files stored in the default location of `.github/workflows`. (You don't need to specify `/.github/workflows` for `directory`. You can use `directory: "/"`.)
+    directory: '/'
+    target-branch: 'master'
+    schedule:
+      interval: 'monthly' # Can be "daily", "weekly", "monthly"
+      time: '08:00' # Time of day in 24-hour format (UTC time)
+      timezone: 'Asia/Phnom_Penh' # Set a specific timezone
+    labels:
+      - 'workflows'
+
+  # Pub Package
+  - package-ecosystem: 'pub'
+    directory: '/'
+    target-branch: 'master'
+    schedule:
+      interval: 'monthly' # Can be "daily", "weekly", "monthly"
+      time: '08:00' # Time of day in 24-hour format (UTC time)
+      timezone: 'Asia/Phnom_Penh' # Set a specific timezone
+    labels:
+      - 'dependencies'
